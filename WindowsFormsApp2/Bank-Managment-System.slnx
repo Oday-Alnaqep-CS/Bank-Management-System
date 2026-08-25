@@ -1,0 +1,17 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="../BankSystemBuisniseLayer/BankSystemBuisniseLayer.csproj" Id="d1e9c5c9-6741-45b9-ad7d-a5e2775a3f10">
+    <BuildType Solution="Debug|Any CPU" Project="Release" />
+    <Platform Solution="*|x86" Project="x86" />
+  </Project>
+  <Project Path="../BankSystemDataAccess/BankSystemDataAccess.csproj" Id="2453616e-3329-4f26-a260-1c4bfd524966">
+    <BuildType Solution="Debug|Any CPU" Project="Release" />
+    <Platform Solution="*|x86" Project="x86" />
+  </Project>
+  <Project Path="../WindowsFormsApp2/Bank_Managment_System.csproj" Id="4016540c-2995-4c62-9545-b8ef72c242e0">
+    <Platform Solution="*|x86" Project="x86" />
+  </Project>
+</Solution>

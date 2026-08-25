@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2453616E-3329-4F26-A260-1C4BFD524966}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BankSystemDataAccess</RootNamespace>
+    <AssemblyName>BankSystemDataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClsAccountData.cs" />
+    <Compile Include="ClsBalanceData.cs" />
+    <Compile Include="ClsBranchDataAccess.cs" />
+    <Compile Include="ClsCardData.CRUD.cs" />
+    <Compile Include="ClsCardData.cs" />
+    <Compile Include="ClsCardData.Views.cs" />
+    <Compile Include="ClsClientDataAccess.cs" />
+    <Compile Include="ClsDataAccessSettings.cs" />
+    <Compile Include="ClsGetActiveAccounts.cs" />
+    <Compile Include="ClsGetResult.cs" />
+    <Compile Include="ClsGetTotalBalanceDataAccess.cs" />
+    <Compile Include="ClsGetTotalClientsDataAccess.cs" />
+    <Compile Include="ClsLoanData.CRUD.cs" />
+    <Compile Include="ClsLoanData.cs" />
+    <Compile Include="ClsLoanData.Views.cs" />
+    <Compile Include="ClsNotificationData.CRUD.cs" />
+    <Compile Include="ClsNotificationData.cs" />
+    <Compile Include="ClsNotificationData.Views.cs" />
+    <Compile Include="ClsPermissionDataAccess.cs" />
+    <Compile Include="ClsPersonDataAccess.cs" />
+    <Compile Include="ClsRolePermissionDataAccess.cs" />
+    <Compile Include="ClsTransactionData.CRUD.cs" />
+    <Compile Include="ClsTransactionData.cs" />
+    <Compile Include="ClsTransactionData.Procedures.cs" />
+    <Compile Include="ClsTransactionData.Views.cs" />
+    <Compile Include="ClsUserDataAccess.cs" />
+    <Compile Include="ClsUserRoleDataAccess.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ClsAccountData.CRUD.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="FontAwesome">
+      <Version>4.7.0</Version>
+    </PackageReference>
+    <PackageReference Include="FontAwesome.Sharp">
+      <Version>6.6.0</Version>
+    </PackageReference>
+    <PackageReference Include="FontAwesome.Sharp.Pro">
+      <Version>6.6.0</Version>
+    </PackageReference>
+    <PackageReference Include="FontAwesome.WPF">
+      <Version>4.7.0.9</Version>
+    </PackageReference>
+    <PackageReference Include="Guna.UI2.WinForms">
+      <Version>2.0.4.8</Version>
+    </PackageReference>
+    <PackageReference Include="LiveCharts">
+      <Version>0.9.7</Version>
+    </PackageReference>
+    <PackageReference Include="MaterialSkin">
+      <Version>0.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="MaterialSkin.2">
+      <Version>2.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="Siticone.Desktop.UI">
+      <Version>2.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="ThinkGeo.UI.WinForms">
+      <Version>15.0.0-beta124</Version>
+    </PackageReference>
+    <PackageReference Include="Tulpep.ActiveDirectoryObjectPicker">
+      <Version>3.0.11</Version>
+    </PackageReference>
+    <PackageReference Include="Tulpep.NotificationWindow">
+      <Version>1.1.38</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
