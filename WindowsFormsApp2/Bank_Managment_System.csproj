@@ -93,12 +93,19 @@
     <Compile Include="ClsGetResultWhatDoyouWannt.cs" />
     <Compile Include="ClsGlobal.cs" />
     <Compile Include="ClsShowNotification.cs" />
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="PopupNotifier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="UC_TotalBalance.cs">
       <SubType>UserControl</SubType>
@@ -124,6 +131,9 @@
     <Compile Include="US_CustomersList.Designer.cs">
       <DependentUpon>US_CustomersList.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +159,7 @@
     <EmbeddedResource Include="US_CustomersList.resx">
       <DependentUpon>US_CustomersList.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Flags\MClient.text" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -223,6 +234,78 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Flags\Afghanistan.png" />
+    <Content Include="Flags\Albania.png" />
+    <Content Include="Flags\Algeria.png" />
+    <Content Include="Flags\Argentina.png" />
+    <Content Include="Flags\Australia.png" />
+    <Content Include="Flags\Austria.png" />
+    <Content Include="Flags\Barhain.png" />
+    <Content Include="Flags\Brazil.png" />
+    <Content Include="Flags\Canada.jpeg" />
+    <Content Include="Flags\China.png" />
+    <Content Include="Flags\comoros.png" />
+    <Content Include="Flags\Djibouti.jpg" />
+    <Content Include="Flags\Egypt.png" />
+    <Content Include="Flags\France.png" />
+    <Content Include="Flags\Germany.png" />
+    <Content Include="Flags\India.png" />
+    <Content Include="Flags\Iraq.png" />
+    <Content Include="Flags\Japan.png" />
+    <Content Include="Flags\Jordan.png" />
+    <Content Include="Flags\Kuwait.png" />
+    <Content Include="Flags\Lebanon.png" />
+    <Content Include="Flags\Libya.png" />
+    <Content Include="Flags\Malaysia.png" />
+    <Content Include="Flags\Mauritania.png" />
+    <Content Include="Flags\Mexico.png" />
+    <Content Include="Flags\Morocco.png" />
+    <Content Include="Flags\Netherlands.png" />
+    <Content Include="Flags\New_Zealand.png" />
+    <Content Include="Flags\Norway.png" />
+    <Content Include="Flags\Oman.png" />
+    <Content Include="Flags\Pakistan.jpg" />
+    <Content Include="Flags\Palestine.png" />
+    <Content Include="Flags\Philippines.png" />
+    <Content Include="Flags\Poland.png" />
+    <Content Include="Flags\Qatar.png" />
+    <Content Include="Flags\Russia.png" />
+    <Content Include="Flags\Saudi.png" />
+    <Content Include="Flags\Singapore.png" />
+    <Content Include="Flags\Somalia.png" />
+    <Content Include="Flags\South_Africa.png" />
+    <Content Include="Flags\south_Korea.png" />
+    <Content Include="Flags\sudan.jpg" />
+    <Content Include="Flags\Sweden.png" />
+    <Content Include="Flags\Switzerland.png" />
+    <Content Include="Flags\Syria.png" />
+    <Content Include="Flags\Thailand.png" />
+    <Content Include="Flags\Tunisia.png" />
+    <Content Include="Flags\Turkey.png" />
+    <Content Include="Flags\Ukraine.png" />
+    <Content Include="Flags\UnitatedArabEmarat.png" />
+    <Content Include="Flags\United_Kingdom.png" />
+    <Content Include="Flags\United_States.png" />
+    <Content Include="Flags\Vietnam.png" />
+    <Content Include="Flags\Yemen.png" />
+    <Content Include="Flags\Zimbabwe.png" />
+    <Content Include="FrmLogin.jpg" />
+    <Content Include="Image\Abdelilah.png" />
+    <Content Include="Image\Amr.png" />
+    <Content Include="Image\Ayman.png" />
+    <Content Include="Image\Hafez.png" />
+    <Content Include="Image\MohammedAlh.png" />
+    <Content Include="Image\MohammedNo.png" />
+    <Content Include="Image\Yahya.png" />
+    <Content Include="RememberMe.txt" />
+    <Content Include="Resources\FrmLogin.jpg" />
+    <Content Include="Resources\FrmLogin1.jpg" />
+    <Content Include="Resources\FrmLogin2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Flags\Flag\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

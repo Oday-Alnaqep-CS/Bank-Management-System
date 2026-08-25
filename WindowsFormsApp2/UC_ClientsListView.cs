@@ -30,7 +30,7 @@ namespace Bank_Managment_System
         private void US_ViewAllClients_Load(object sender, EventArgs e)
         {
 
-             this.DoubleBuffered = true;
+            
             btnBacktoDashboardOverview.Image = IconChar.CircleArrowLeft.ToBitmap(Color.Red, 30);
 
             txtSearch.IconRight = IconChar.Search.ToBitmap(Color.Gray, 20);
@@ -82,38 +82,50 @@ namespace Bank_Managment_System
 
             if (dtViewAllClients != null)
             {
-                
+
                 dtViewAllClients.Columns.Add("ClientImage", typeof(Image));
 
-                
+                string projectFolder = @"C:\My Projects - Apps\Bank_Managment_System\WindowsFormsApp2";
+
                 foreach (DataRow row in dtViewAllClients.Rows)
-
-
                 {
-                    string imagePath = row["Profile"] != DBNull.Value ? row["Profile"].ToString() : "";
 
-                    if (!string.IsNullOrEmpty(imagePath) && System.IO.File.Exists(imagePath))
+                    string rawPath = row["Profile"] != DBNull.Value ? row["Profile"].ToString().Trim() : "";
 
+
+                    string fileName = System.IO.Path.GetFileName(rawPath);
+
+
+                    string fullPath = System.IO.Path.Combine(projectFolder, "Image", fileName);
+
+                    if (!string.IsNullOrEmpty(fileName) && System.IO.File.Exists(fullPath))
                     {
-
-                        row["ClientImage"] = Image.FromFile(imagePath);
+                        try
+                        {
+                            using (var ms = new System.IO.MemoryStream(System.IO.File.ReadAllBytes(fullPath)))
+                            {
+                                row["ClientImage"] = new Bitmap(ms);
+                            }
+                        }
+                        catch
+                        {
+                            row["ClientImage"] = Properties.Resources.FrmLogin1;
+                        }
                     }
                     else
                     {
-                       
-                        row["ClientImage"] = Properties.Resources.default_user;
+                        row["ClientImage"] = Properties.Resources.FrmLogin1;
                     }
                 }
 
-              
 
                 DataGridViewAllClients.DataSource = dtViewAllClients;
 
-                
+
                 if (DataGridViewAllClients.Columns.Contains("Profile"))
                     DataGridViewAllClients.Columns["Profile"].Visible = false;
 
-              
+
                 if (DataGridViewAllClients.Columns.Contains("ClientImage"))
                 {
                     DataGridViewAllClients.Columns["ClientImage"].HeaderText = "Profile";
@@ -123,7 +135,7 @@ namespace Bank_Managment_System
                     imageCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
                 }
 
-                
+
                 DataGridViewAllClients.RowTemplate.Height = 90;
                 DataGridViewAllClients.Columns["ClientImage"].Width = 80;
             }
@@ -152,26 +164,38 @@ namespace Bank_Managment_System
 
                 dtViewAllClients.Columns.Add("ClientImage", typeof(Image));
 
+                string projectFolder = @"C:\My Projects - Apps\Bank_Managment_System\WindowsFormsApp2";
 
                 foreach (DataRow row in dtViewAllClients.Rows)
-
-
                 {
-                    string imagePath = row["Profile"] != DBNull.Value ? row["Profile"].ToString() : "";
 
-                    if (!string.IsNullOrEmpty(imagePath) && System.IO.File.Exists(imagePath))
+                    string rawPath = row["Profile"] != DBNull.Value ? row["Profile"].ToString().Trim() : "";
 
+                   
+                    string fileName = System.IO.Path.GetFileName(rawPath);
+
+                    
+                    string fullPath = System.IO.Path.Combine(projectFolder, "Image", fileName);
+
+                    if (!string.IsNullOrEmpty(fileName) && System.IO.File.Exists(fullPath))
                     {
-
-                        row["ClientImage"] = Image.FromFile(imagePath);
+                        try
+                        {
+                            using (var ms = new System.IO.MemoryStream(System.IO.File.ReadAllBytes(fullPath)))
+                            {
+                                row["ClientImage"] = new Bitmap(ms);
+                            }
+                        }
+                        catch
+                        {
+                            row["ClientImage"] = Properties.Resources.FrmLogin1;
+                        }
                     }
                     else
                     {
-
-                        row["ClientImage"] = Properties.Resources.default_user;
+                        row["ClientImage"] = Properties.Resources.FrmLogin1;
                     }
                 }
-
 
 
                 DataGridViewAllClients.DataSource = dtViewAllClients;
@@ -294,65 +318,62 @@ namespace Bank_Managment_System
 
         private void cmbFilterMain_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ApplyClientsFilter();
+        }
 
 
+        private void ApplyClientsFilter()
+        {
             if (DataGridViewAllClients.DataSource is DataTable dt)
-
-
             {
-
-
-                string selectedValue = cmbFilterMain.SelectedItem?.ToString() ?? "All Filters";
-                DataView dv = dt.DefaultView;
+                dt.CaseSensitive = false;
                 string search = txtSearch.Text.Trim().Replace("'", "''");
+                string selectedValue = cmbFilterMain.SelectedItem?.ToString() ?? "All Filters";
 
                 string filter = string.Empty;
-
-                
-                if (string.IsNullOrEmpty(search))
-                {
-                    dv.RowFilter = string.Empty;
-                    return;
-                }
 
                 switch (selectedValue)
                 {
                     case "Client ID":
-                        if (int.TryParse(search, out int id))
-                            filter = $"[Client ID] = {id}";
-                        else
-                            filter = "[Client ID] = 0";
+                        if (!string.IsNullOrEmpty(search))
+                            filter = int.TryParse(search, out int id) ? $"[Client ID] = {id}" : "[Client ID] = 0";
                         break;
 
                     case "Full Name":
-                        filter = $"[Full Name] LIKE '%{search}%'";
+                        if (!string.IsNullOrEmpty(search))
+                            filter = $"[Full Name] LIKE '%{search}%'";
                         break;
 
                     case "Country":
-                        filter = $"[Country] LIKE '%{search}%'";
+                        if (!string.IsNullOrEmpty(search))
+                            filter = $"[Country] LIKE '%{search}%'";
                         break;
 
                     case "Active":
-                        filter = $"[Status] = 'Active' AND ([Full Name] LIKE '%{search}%' OR [Email Address] LIKE '%{search}%')";
+                        filter = "[Status] = 'Active'";
+                        if (!string.IsNullOrEmpty(search))
+                            filter += $" AND ([Full Name] LIKE '%{search}%' OR [Email Address] LIKE '%{search}%')";
                         break;
 
                     case "Inactive":
-                        filter = $"[Status] = 'Inactive' AND ([Full Name] LIKE '%{search}%' OR [Email Address] LIKE '%{search}%')";
+                        filter = "[Status] = 'Inactive'";
+                        if (!string.IsNullOrEmpty(search))
+                            filter += $" AND ([Full Name] LIKE '%{search}%' OR [Email Address] LIKE '%{search}%')";
                         break;
 
-                  
                     case "All Filters":
                     case "All":
                     default:
-                        filter = $"[Full Name] LIKE '%{search}%' OR [Email Address] LIKE '%{search}%' OR [Phone Number] LIKE '%{search}%' OR [Country] LIKE '%{search}%'";
-                        if (int.TryParse(search, out int searchId))
+                        if (!string.IsNullOrEmpty(search))
                         {
-                            filter += $" OR [Client ID] = {searchId}";
+                            filter = $"[Full Name] LIKE '%{search}%' OR [Email Address] LIKE '%{search}%' OR [Phone Number] LIKE '%{search}%' OR [Country] LIKE '%{search}%'";
+                            if (int.TryParse(search, out int searchId))
+                                filter += $" OR [Client ID] = {searchId}";
                         }
                         break;
                 }
 
-                dv.RowFilter = filter;
+                dt.DefaultView.RowFilter = filter;
             }
         }
 

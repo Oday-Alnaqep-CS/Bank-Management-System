@@ -137,9 +137,9 @@ namespace Bank_Managment_System
                 
                 ClsGlobal.CurrentUser = null;
 
-                
-                //FrmLogin frmLogin = new FrmLogin();
-                //frmLogin.Show();
+
+                FrmLogin frmLogin = new FrmLogin();
+                frmLogin.Show();
 
                 this.Close();
             }

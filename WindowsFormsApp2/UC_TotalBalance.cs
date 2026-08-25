@@ -110,87 +110,82 @@ namespace Bank_Managment_System
 
         private void ApplyFilter()
         {
-
             if (DataGridViewAllTotalBalance.DataSource is DataTable dt)
             {
-
                 dt.CaseSensitive = false;
-                string text = txtSearch.Text.Trim().Replace("'", "''"); 
+                string text = txtSearch.Text.Trim().Replace("'", "''");
                 string selectedValue = cmbFilterMain.SelectedItem?.ToString() ?? "All";
-
-                
-                if (string.IsNullOrEmpty(text))
-                {
-                    dt.DefaultView.RowFilter = string.Empty;
-                    return;
-                }
 
                 string filter = string.Empty;
 
                 switch (selectedValue)
                 {
                     case "Client ID":
-                        if (int.TryParse(text, out int id))
-                            filter = $"[Client ID] = {id}";
-                        else
-                            filter = "[Client ID] = 0";
+                        if (!string.IsNullOrEmpty(text))
+                            filter = int.TryParse(text, out int id) ? $"[Client ID] = {id}" : "[Client ID] = 0";
                         break;
 
                     case "Full Name":
-                        filter = $"[Full Name] LIKE '%{text}%'";
+                        if (!string.IsNullOrEmpty(text))
+                            filter = $"[Full Name] LIKE '%{text}%'";
                         break;
 
                     case "Account Number":
-                        filter = $"[Account Number] LIKE '%{text}%'";
+                        if (!string.IsNullOrEmpty(text))
+                            filter = $"[Account Number] LIKE '%{text}%'";
                         break;
 
                     case "Currency":
-                        filter = $"[Currency] LIKE '%{text}%'";
+                        if (!string.IsNullOrEmpty(text))
+                            filter = $"[Currency] LIKE '%{text}%'";
                         break;
 
                     case "Balance":
-                        if (decimal.TryParse(text, out decimal balance))
-                            filter = $"[Balance] = {balance}";
-                        else
-                            filter = $"CONVERT([Balance], 'System.String') LIKE '%{text}%'";
+                        if (!string.IsNullOrEmpty(text))
+                        {
+                            if (decimal.TryParse(text, out decimal balance))
+                                filter = $"[Current Balance] = {balance}";
+                            else
+                                filter = $"CONVERT([Current Balance], 'System.String') LIKE '%{text}%'";
+                        }
                         break;
 
+                    // حالات الـ Status تعمل سواء كان هناك نص أم لا
                     case "Active":
-                    case "Account Status - Active":
-                        filter = $"[Account Status] = 'Active' AND ([Full Name] LIKE '%{text}%' OR [Account Number] LIKE '%{text}%')";
+                        filter = "[Account Status] = 'Active'";
+                        if (!string.IsNullOrEmpty(text))
+                            filter += $" AND ([Full Name] LIKE '%{text}%' OR [Account Number] LIKE '%{text}%')";
                         break;
 
                     case "Dormant":
-                    case "Account Status - Dormant":
-                        filter = $"[Account Status] = 'Dormant' AND ([Full Name] LIKE '%{text}%' OR [Account Number] LIKE '%{text}%')";
+                        filter = "[Account Status] = 'Dormant'";
+                        if (!string.IsNullOrEmpty(text))
+                            filter += $" AND ([Full Name] LIKE '%{text}%' OR [Account Number] LIKE '%{text}%')";
                         break;
 
                     case "Frozen":
-                    case "Account Status - Frozen":
-                        filter = $"[Account Status] = 'Frozen' AND ([Full Name] LIKE '%{text}%' OR [Account Number] LIKE '%{text}%')";
+                        filter = "[Account Status] = 'Frozen'";
+                        if (!string.IsNullOrEmpty(text))
+                            filter += $" AND ([Full Name] LIKE '%{text}%' OR [Account Number] LIKE '%{text}%')";
                         break;
 
-                    case "Country":
-                        filter = $"[Country] LIKE '%{text}%'";
-                        break;
-
-                    
                     case "All":
                     case "All Filters":
                     default:
-                        filter = $"[Full Name] LIKE '%{text}%' OR [Account Number] LIKE '%{text}%' OR [Currency] LIKE '%{text}%' OR [Country] LIKE '%{text}%' OR CONVERT([Balance], 'System.String') LIKE '%{text}%'";
-                        if (int.TryParse(text, out int searchId))
+                        if (!string.IsNullOrEmpty(text))
                         {
-                            filter += $" OR [Client ID] = {searchId}";
+                            filter = $"[Full Name] LIKE '%{text}%' OR [Account Number] LIKE '%{text}%' OR [Currency] LIKE '%{text}%'";
+                            if (int.TryParse(text, out int searchId))
+                                filter += $" OR [Client ID] = {searchId}";
                         }
                         break;
                 }
 
+                // إسناد الفلتر المكتمل للـ DataView
                 dt.DefaultView.RowFilter = filter;
             }
         }
 
-       
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             ApplyFilter();

@@ -63,16 +63,6 @@ namespace Bank_Managment_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap default_user {
-            get {
-                object obj = ResourceManager.GetObject("default_user", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap FrmLogin1 {
             get {
                 object obj = ResourceManager.GetObject("FrmLogin1", resourceCulture);
