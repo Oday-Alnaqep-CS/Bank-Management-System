@@ -150,7 +150,7 @@ namespace Bank_Managment_System
                         }
                         break;
 
-                    // حالات الـ Status تعمل سواء كان هناك نص أم لا
+                   
                     case "Active":
                         filter = "[Account Status] = 'Active'";
                         if (!string.IsNullOrEmpty(text))
@@ -181,7 +181,7 @@ namespace Bank_Managment_System
                         break;
                 }
 
-                // إسناد الفلتر المكتمل للـ DataView
+               
                 dt.DefaultView.RowFilter = filter;
             }
         }

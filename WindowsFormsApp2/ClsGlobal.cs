@@ -74,7 +74,7 @@ namespace Bank_Managment_System
 
             {
 
-                MessageBox.Show("خطأ أثناء حفظ بيانات الدخول: " + ex.Message, "خطأ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message, "Wronge", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
 
             }

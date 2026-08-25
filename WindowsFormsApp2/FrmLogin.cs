@@ -59,7 +59,16 @@ namespace Bank_Managment_System
 
             TextUserName.IconLeft = FontAwesome.Sharp.IconChar.User.ToBitmap(Color.Black, 20);
             TextPassword.IconLeft = FontAwesome.Sharp.IconChar.Lock.ToBitmap(Color.Black, 20);
+           
 
+            
+            TextPassword.IconRight = FontAwesome.Sharp.IconChar.EyeSlash.ToBitmap(Color.Black, 22);
+
+            
+            TextPassword.IconRightCursor = Cursors.Hand;
+
+            TextPassword.IconRightClick -= TextPassword_IconRightClick; 
+            TextPassword.IconRightClick += TextPassword_IconRightClick;
         }
 
         private void TextUserName_Validating(object sender, CancelEventArgs e)
@@ -144,6 +153,25 @@ namespace Bank_Managment_System
             }
 
         }
+
+        private void TextPassword_IconRightClick(object sender, EventArgs e)
+        {
+
+
+            if (TextPassword.PasswordChar == '\0')
+            {
+               
+                TextPassword.PasswordChar = '*';
+                TextPassword.IconRight = FontAwesome.Sharp.IconChar.EyeSlash.ToBitmap(Color.Black, 22);
+            }
+            else
+            {
+               
+                TextPassword.PasswordChar = '\0';
+                TextPassword.IconRight = FontAwesome.Sharp.IconChar.Eye.ToBitmap(Color.Black, 22);
+            }
+        }
+
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
