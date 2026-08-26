@@ -222,7 +222,7 @@ namespace Bank_Managment_System
             else
               {
 
-                MessageBox.Show(ErrorMessage,
+                MessageBox.Show("This User is not found. Please enter the correct User.",
                   "Invalid username or password!",
                   MessageBoxButtons.OK,
                   MessageBoxIcon.Error);
