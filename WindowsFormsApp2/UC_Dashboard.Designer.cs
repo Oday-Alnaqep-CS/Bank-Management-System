@@ -158,7 +158,6 @@
             this.btnCurrencyDiff.FillColor = System.Drawing.Color.MediumSlateBlue;
             this.btnCurrencyDiff.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCurrencyDiff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnCurrencyDiff.Image = global::Bank_Managment_System.Properties.Resources.PN_Icon;
             this.btnCurrencyDiff.ImageOffset = new System.Drawing.Point(35, -15);
             this.btnCurrencyDiff.ImageSize = new System.Drawing.Size(55, 55);
             this.btnCurrencyDiff.Location = new System.Drawing.Point(402, 195);
@@ -180,7 +179,6 @@
             this.btnNewTransfer.FillColor = System.Drawing.Color.MediumSlateBlue;
             this.btnNewTransfer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewTransfer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnNewTransfer.Image = global::Bank_Managment_System.Properties.Resources.PN_Icon;
             this.btnNewTransfer.ImageOffset = new System.Drawing.Point(37, -15);
             this.btnNewTransfer.ImageSize = new System.Drawing.Size(55, 55);
             this.btnNewTransfer.Location = new System.Drawing.Point(209, 195);
@@ -202,7 +200,6 @@
             this.btnNewWithdraw.FillColor = System.Drawing.Color.MediumSlateBlue;
             this.btnNewWithdraw.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewWithdraw.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnNewWithdraw.Image = global::Bank_Managment_System.Properties.Resources.PN_Icon;
             this.btnNewWithdraw.ImageOffset = new System.Drawing.Point(38, -15);
             this.btnNewWithdraw.ImageSize = new System.Drawing.Size(55, 55);
             this.btnNewWithdraw.Location = new System.Drawing.Point(14, 195);
@@ -224,8 +221,7 @@
             this.btnNewDeposit.FillColor = System.Drawing.Color.MediumSlateBlue;
             this.btnNewDeposit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewDeposit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnNewDeposit.Image = global::Bank_Managment_System.Properties.Resources.PN_Icon;
-            this.btnNewDeposit.ImageOffset = new System.Drawing.Point(35, -15);
+             this.btnNewDeposit.ImageOffset = new System.Drawing.Point(35, -15);
             this.btnNewDeposit.ImageSize = new System.Drawing.Size(55, 55);
             this.btnNewDeposit.Location = new System.Drawing.Point(402, 23);
             this.btnNewDeposit.Name = "btnNewDeposit";
@@ -246,8 +242,7 @@
             this.btnNewUser.FillColor = System.Drawing.Color.MediumSlateBlue;
             this.btnNewUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnNewUser.Image = global::Bank_Managment_System.Properties.Resources.PN_Icon;
-            this.btnNewUser.ImageOffset = new System.Drawing.Point(28, -15);
+             this.btnNewUser.ImageOffset = new System.Drawing.Point(28, -15);
             this.btnNewUser.ImageSize = new System.Drawing.Size(55, 55);
             this.btnNewUser.Location = new System.Drawing.Point(209, 23);
             this.btnNewUser.Name = "btnNewUser";
@@ -278,8 +273,7 @@
             this.btnNewClient.FillColor = System.Drawing.Color.MediumSlateBlue;
             this.btnNewClient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.btnNewClient.Image = global::Bank_Managment_System.Properties.Resources.PN_Icon;
-            this.btnNewClient.ImageOffset = new System.Drawing.Point(38, -15);
+             this.btnNewClient.ImageOffset = new System.Drawing.Point(38, -15);
             this.btnNewClient.ImageSize = new System.Drawing.Size(55, 55);
             this.btnNewClient.Location = new System.Drawing.Point(14, 23);
             this.btnNewClient.Name = "btnNewClient";
@@ -826,8 +820,7 @@
             this.guna2Button4.FillColor = System.Drawing.Color.MediumSlateBlue;
             this.guna2Button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.guna2Button4.Image = global::Bank_Managment_System.Properties.Resources.PN_Icon;
-            this.guna2Button4.ImageOffset = new System.Drawing.Point(38, -15);
+             this.guna2Button4.ImageOffset = new System.Drawing.Point(38, -15);
             this.guna2Button4.ImageSize = new System.Drawing.Size(55, 55);
             this.guna2Button4.Location = new System.Drawing.Point(26, 173);
             this.guna2Button4.Name = "guna2Button4";
@@ -847,8 +840,7 @@
             this.guna2Button5.FillColor = System.Drawing.Color.MediumSlateBlue;
             this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.guna2Button5.Image = global::Bank_Managment_System.Properties.Resources.PN_Icon;
-            this.guna2Button5.ImageOffset = new System.Drawing.Point(38, -15);
+             this.guna2Button5.ImageOffset = new System.Drawing.Point(38, -15);
             this.guna2Button5.ImageSize = new System.Drawing.Size(55, 55);
             this.guna2Button5.Location = new System.Drawing.Point(221, 173);
             this.guna2Button5.Name = "guna2Button5";
@@ -868,8 +860,7 @@
             this.guna2Button6.FillColor = System.Drawing.Color.MediumSlateBlue;
             this.guna2Button6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.guna2Button6.Image = global::Bank_Managment_System.Properties.Resources.PN_Icon;
-            this.guna2Button6.ImageOffset = new System.Drawing.Point(38, -15);
+             this.guna2Button6.ImageOffset = new System.Drawing.Point(38, -15);
             this.guna2Button6.ImageSize = new System.Drawing.Size(55, 55);
             this.guna2Button6.Location = new System.Drawing.Point(414, 173);
             this.guna2Button6.Name = "guna2Button6";

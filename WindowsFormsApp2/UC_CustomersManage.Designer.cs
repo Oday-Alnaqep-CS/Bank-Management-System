@@ -1,6 +1,6 @@
 ﻿namespace Bank_Managment_System
 {
-    partial class US_CustomersManage
+    partial class UC_CustomersManage
     {
         /// <summary> 
         /// Required designer variable.
@@ -102,6 +102,7 @@
             this.guna2Panel4K.ShadowDecoration.Color = System.Drawing.Color.White;
             this.guna2Panel4K.Size = new System.Drawing.Size(1338, 734);
             this.guna2Panel4K.TabIndex = 6;
+            this.guna2Panel4K.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel4K_Paint);
             // 
             // guna2Panel2
             // 
@@ -209,7 +210,6 @@
             this.txtSearch.ForeColor = System.Drawing.Color.White;
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearch.IconLeftSize = new System.Drawing.Size(25, 30);
-            this.txtSearch.IconRight = global::Bank_Managment_System.Properties.Resources.FrmLogin1;
             this.txtSearch.IconRightSize = new System.Drawing.Size(30, 30);
             this.txtSearch.Location = new System.Drawing.Point(8, 6);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
@@ -308,7 +308,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Silver;
-            this.label2.Location = new System.Drawing.Point(9, 8);
+            this.label2.Location = new System.Drawing.Point(9, 14);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(268, 36);
             this.label2.TabIndex = 6;
@@ -660,12 +660,12 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Total Customers";
             // 
-            // US_CustomersManage
+            // UC_CustomersManage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.guna2Panel4K);
-            this.Name = "US_CustomersManage";
+            this.Name = "UC_CustomersManage";
             this.Size = new System.Drawing.Size(1338, 734);
             this.Load += new System.EventHandler(this.US_CustomersManage_Load);
             this.guna2Panel4K.ResumeLayout(false);

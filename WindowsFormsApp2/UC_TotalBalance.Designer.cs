@@ -146,8 +146,7 @@
             this.txtSearch.ForeColor = System.Drawing.Color.White;
             this.txtSearch.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtSearch.IconLeftSize = new System.Drawing.Size(0, 0);
-            this.txtSearch.IconRight = global::Bank_Managment_System.Properties.Resources.FrmLogin1;
-            this.txtSearch.IconRightSize = new System.Drawing.Size(30, 30);
+             this.txtSearch.IconRightSize = new System.Drawing.Size(30, 30);
             this.txtSearch.Location = new System.Drawing.Point(9, 2);
             this.txtSearch.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtSearch.Name = "txtSearch";

@@ -29,9 +29,11 @@ namespace Bank_Managment_System
 
 
         private UC_Dashboard _ucDashboard;
-        private US_CustomersManage US_CustomersManage = new US_CustomersManage();
+        private UC_CustomersManage US_CustomersManage = new UC_CustomersManage();
         ClsBankingNotification notification = new ClsBankingNotification();
         public static ClsUser CurrentUser = new ClsUser();
+
+        UC_AddCustomer _AddCustomer = new UC_AddCustomer();
 
         public FrmMain()
         {
@@ -60,7 +62,7 @@ namespace Bank_Managment_System
 
             RenderDatabaseStatus();
             GetBranchName();
-            LoadView(_ucDashboard);
+            LoadView(_AddCustomer);
             SetupSidebarButtons();
 
 

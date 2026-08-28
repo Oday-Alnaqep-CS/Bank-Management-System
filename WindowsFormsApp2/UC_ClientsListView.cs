@@ -63,30 +63,6 @@ namespace Bank_Managment_System
             ((FrmMain)this.FindForm()).LoadUserControl(new UC_Dashboard());
         }
 
-        private Image GetCircularImage(Image originalImage)
-        {
-
-            int size = Math.Min(originalImage.Width, originalImage.Height);
-            Bitmap destinationImage = new Bitmap(size, size);
-
-            using (Graphics g = Graphics.FromImage(destinationImage))
-            {
-
-                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-
-                using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
-                {
-                    path.AddEllipse(0, 0, size, size);
-                    g.SetClip(path);
-                    g.DrawImage(originalImage, 0, 0, size, size);
-                }
-            }
-            return destinationImage;
-
-        }
-
         private void ViewAllClients()
 
 
@@ -105,44 +81,7 @@ namespace Bank_Managment_System
             }
 
 
-            if (dtCustomers != null)
-
-            {
-
-                dtCustomers.Columns.Add("ClientImage", typeof(Image));
-
-                string projectFolder = @"C:\My Projects - Apps\Bank_Managment_System\WindowsFormsApp2";
-
-                foreach (DataRow row in dtCustomers.Rows)
-                {
-                    string rawPath = row["Profile"] != DBNull.Value ? row["Profile"].ToString().Trim() : "";
-                    string fileName = System.IO.Path.GetFileName(rawPath);
-                    string fullPath = System.IO.Path.Combine(projectFolder, "Image", fileName);
-
-                    if (!string.IsNullOrEmpty(fileName) && System.IO.File.Exists(fullPath))
-                    {
-                        try
-                        {
-                            using (var ms = new System.IO.MemoryStream(System.IO.File.ReadAllBytes(fullPath)))
-                            {
-                                using (Image loadedImg = Image.FromStream(ms))
-                                {
-
-                                    row["ClientImage"] = GetCircularImage(loadedImg);
-                                }
-                            }
-                        }
-                        catch
-                        {
-                            row["ClientImage"] = GetCircularImage(Properties.Resources.FrmLogin1);
-                        }
-                    }
-                    else
-                    {
-                        row["ClientImage"] = GetCircularImage(Properties.Resources.FrmLogin1);
-                    }
-                }
-            }
+            ClsImageSetting.GetCustoerImage(dtCustomers);
 
 
             DataGridViewAllClients.DataSource = dtCustomers;
@@ -184,44 +123,7 @@ namespace Bank_Managment_System
                 return;
             }
 
-            if (dtViewAllClients != null)
-            {
-
-                dtViewAllClients.Columns.Add("ClientImage", typeof(Image));
-
-                string projectFolder = @"C:\My Projects - Apps\Bank_Managment_System\WindowsFormsApp2";
-
-                foreach (DataRow row in dtViewAllClients.Rows)
-                {
-                    string rawPath = row["Profile"] != DBNull.Value ? row["Profile"].ToString().Trim() : "";
-                    string fileName = System.IO.Path.GetFileName(rawPath);
-                    string fullPath = System.IO.Path.Combine(projectFolder, "Image", fileName);
-
-                    if (!string.IsNullOrEmpty(fileName) && System.IO.File.Exists(fullPath))
-                    {
-                        try
-                        {
-                            using (var ms = new System.IO.MemoryStream(System.IO.File.ReadAllBytes(fullPath)))
-                            {
-                                using (Image loadedImg = Image.FromStream(ms))
-                                {
-
-                                    row["ClientImage"] = GetCircularImage(loadedImg);
-                                }
-                            }
-                        }
-                        catch
-                        {
-                            row["ClientImage"] = GetCircularImage(Properties.Resources.FrmLogin1);
-                        }
-                    }
-                    else
-                    {
-                        row["ClientImage"] = GetCircularImage(Properties.Resources.FrmLogin1);
-                    }
-                }
-            }
-
+            ClsImageSetting.GetCustoerImage(dtViewAllClients);
 
             DataGridViewAllClients.DataSource = dtViewAllClients;
 

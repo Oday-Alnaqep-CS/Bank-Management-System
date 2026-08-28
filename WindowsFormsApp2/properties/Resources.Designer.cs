@@ -63,9 +63,9 @@ namespace Bank_Managment_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FrmLogin1 {
+        internal static System.Drawing.Bitmap Camera {
             get {
-                object obj = ResourceManager.GetObject("FrmLogin1", resourceCulture);
+                object obj = ResourceManager.GetObject("Camera", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Bank_Managment_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap FrmLogin2 {
+        internal static System.Drawing.Bitmap DefaultFemaleAvatar {
             get {
-                object obj = ResourceManager.GetObject("FrmLogin2", resourceCulture);
+                object obj = ResourceManager.GetObject("DefaultFemaleAvatar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,29 @@ namespace Bank_Managment_System.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap PN_Icon {
+        internal static System.Drawing.Bitmap DefaultMaleAvatar {
             get {
-                object obj = ResourceManager.GetObject("PN_Icon", resourceCulture);
+                object obj = ResourceManager.GetObject("DefaultMaleAvatar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Folder {
+            get {
+                object obj = ResourceManager.GetObject("Folder", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap FrmLogin {
+            get {
+                object obj = ResourceManager.GetObject("FrmLogin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

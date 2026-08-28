@@ -13,9 +13,10 @@ using System.Windows.Forms;
 
 namespace Bank_Managment_System
 {
-    public partial class US_CustomersManage : UserControl
+    public partial class UC_CustomersManage : UserControl
     {
-        public US_CustomersManage()
+        
+        public UC_CustomersManage()
         {
             InitializeComponent();
         }
@@ -184,46 +185,7 @@ namespace Bank_Managment_System
                 return;
             }
 
-
-            if (dtCustomers != null)
-
-            {
-
-                dtCustomers.Columns.Add("ClientImage", typeof(Image));
-
-                string projectFolder = @"C:\My Projects - Apps\Bank_Managment_System\WindowsFormsApp2";
-
-                foreach (DataRow row in dtCustomers.Rows)
-                {
-                    string rawPath = row["Profile"] != DBNull.Value ? row["Profile"].ToString().Trim() : "";
-                    string fileName = System.IO.Path.GetFileName(rawPath);
-                    string fullPath = System.IO.Path.Combine(projectFolder, "Image", fileName);
-
-                    if (!string.IsNullOrEmpty(fileName) && System.IO.File.Exists(fullPath))
-                    {
-                        try
-                        {
-                            using (var ms = new System.IO.MemoryStream(System.IO.File.ReadAllBytes(fullPath)))
-                            {
-                                using (Image loadedImg = Image.FromStream(ms))
-                                {
-                                    
-                                    row["ClientImage"] = GetCircularImage(loadedImg);
-                                }
-                            }
-                        }
-                        catch
-                        {
-                            row["ClientImage"] = GetCircularImage(Properties.Resources.FrmLogin1);
-                        }
-                    }
-                    else
-                    {
-                        row["ClientImage"] = GetCircularImage(Properties.Resources.FrmLogin1);
-                    }
-                }
-            }
-
+            ClsImageSetting.GetCustoerImage(dtCustomers);
 
             DataGridViewAllCustomers.DataSource = dtCustomers;
 
@@ -249,31 +211,9 @@ namespace Bank_Managment_System
         private void btnAddNewCustoer_Click(object sender, EventArgs e)
         {
 
+            ((FrmMain)this.FindForm()).LoadUserControl(new UC_AddCustomer());
         }
 
-        private Image GetCircularImage(Image originalImage)
-        {
-
-            int size = Math.Min(originalImage.Width, originalImage.Height);
-            Bitmap destinationImage = new Bitmap(size, size);
-
-            using (Graphics g = Graphics.FromImage(destinationImage))
-            {
-
-                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
- 
-                using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
-                {
-                    path.AddEllipse(0, 0, size, size);
-                    g.SetClip(path);
-                    g.DrawImage(originalImage, 0, 0, size, size);
-                }
-            }
-            return destinationImage;
-
-        }
 
         private void DataGridViewAllCustomers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -375,5 +315,9 @@ namespace Bank_Managment_System
             }
         }
 
+        private void guna2Panel4K_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

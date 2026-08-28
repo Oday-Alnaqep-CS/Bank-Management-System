@@ -67,6 +67,26 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="LiveCharts.WinForms">
       <HintPath>..\..\packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
@@ -92,6 +112,7 @@
     <Compile Include="ClsEncryption.cs" />
     <Compile Include="ClsGetResultWhatDoyouWannt.cs" />
     <Compile Include="ClsGlobal.cs" />
+    <Compile Include="ClsImageSetting.cs" />
     <Compile Include="ClsShowNotification.cs" />
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -107,6 +128,12 @@
     </Compile>
     <Compile Include="PopupNotifier.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="UC_AddCustomer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_AddCustomer.Designer.cs">
+      <DependentUpon>UC_AddCustomer.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_TotalBalance.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -125,11 +152,11 @@
     <Compile Include="UC_ClientsListView.Designer.cs">
       <DependentUpon>UC_ClientsListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="US_CustomersManage.cs">
+    <Compile Include="UC_CustomersManage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="US_CustomersManage.Designer.cs">
-      <DependentUpon>US_CustomersManage.cs</DependentUpon>
+    <Compile Include="UC_CustomersManage.Designer.cs">
+      <DependentUpon>UC_CustomersManage.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -147,6 +174,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UC_AddCustomer.resx">
+      <DependentUpon>UC_AddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC_TotalBalance.resx">
       <DependentUpon>UC_TotalBalance.cs</DependentUpon>
     </EmbeddedResource>
@@ -156,8 +186,8 @@
     <EmbeddedResource Include="UC_ClientsListView.resx">
       <DependentUpon>UC_ClientsListView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="US_CustomersManage.resx">
-      <DependentUpon>US_CustomersManage.cs</DependentUpon>
+    <EmbeddedResource Include="UC_CustomersManage.resx">
+      <DependentUpon>UC_CustomersManage.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Image\CountriesFlag\MClient.text" />
     <None Include="Properties\Settings.settings">
@@ -174,6 +204,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="AForge.Video">
+      <Version>2.2.5</Version>
+    </PackageReference>
+    <PackageReference Include="AForge.Video.DirectShow">
+      <Version>2.2.5</Version>
+    </PackageReference>
     <PackageReference Include="FontAwesome">
       <Version>4.7.0</Version>
     </PackageReference>
@@ -200,6 +236,15 @@
     </PackageReference>
     <PackageReference Include="MaterialSkin.2">
       <Version>2.3.1</Version>
+    </PackageReference>
+    <PackageReference Include="OpenCvSharp4.Extensions">
+      <Version>4.13.0.20260627</Version>
+    </PackageReference>
+    <PackageReference Include="OpenCvSharp4.runtime.win">
+      <Version>4.13.0.20260627</Version>
+    </PackageReference>
+    <PackageReference Include="OpenCvSharp4.Windows">
+      <Version>4.13.0.20260627</Version>
     </PackageReference>
     <PackageReference Include="Siticone.Desktop.UI">
       <Version>2.1.1</Version>
@@ -292,21 +337,26 @@
     <Content Include="Image\CountriesFlag\Yemen.png" />
     <Content Include="Image\CountriesFlag\Zimbabwe.png" />
     <Content Include="FrmLogin.jpg" />
-    <Content Include="Image\Abdelilah.png" />
-    <Content Include="Image\Amr.png" />
-    <Content Include="Image\Ayman.png" />
-    <Content Include="Image\Hafez.png" />
-    <Content Include="Image\MohammedAlh.png" />
-    <Content Include="Image\MohammedNo.png" />
-    <Content Include="Image\Yahya.png" />
+    <Content Include="Image\CustomersImage\Abdelilah.png" />
+    <Content Include="Image\CustomersImage\Alaa.png" />
+    <Content Include="Image\CustomersImage\Amr.png" />
+    <Content Include="Image\CustomersImage\Ayman.png" />
+    <Content Include="Image\CustomersImage\Hafez.png" />
+    <Content Include="Image\CustomersImage\MohammedAlh.png" />
+    <Content Include="Image\CustomersImage\MohammedNo.png" />
+    <Content Include="Image\CustomersImage\MohammedRa.png" />
+    <Content Include="Image\CustomersImage\Osama.png" />
+    <Content Include="Image\CustomersImage\Waleed.png" />
+    <Content Include="Image\CustomersImage\Yahya.png" />
     <Content Include="RememberMe.txt" />
+    <None Include="Resources\Folder.png" />
+    <None Include="Resources\Camera.png" />
     <Content Include="Resources\FrmLogin.jpg" />
     <Content Include="Resources\FrmLogin1.jpg" />
     <Content Include="Resources\FrmLogin2.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Image\CountriesFlag\Flag\" />
-    <Folder Include="Image\CustomersImage\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

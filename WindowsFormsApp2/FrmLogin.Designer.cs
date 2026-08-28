@@ -124,11 +124,11 @@
             this.TextUserName.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.TextUserName.Name = "TextUserName";
             this.TextUserName.PlaceholderForeColor = System.Drawing.Color.Gray;
-            this.TextUserName.PlaceholderText = "";
+            this.TextUserName.PlaceholderText = "User name";
             this.TextUserName.SelectedText = "";
             this.TextUserName.Size = new System.Drawing.Size(290, 49);
             this.TextUserName.TabIndex = 7;
-            this.TextUserName.TextOffset = new System.Drawing.Point(0, -2);
+            this.TextUserName.TextOffset = new System.Drawing.Point(0, -4);
             this.TextUserName.TextChanged += new System.EventHandler(this.TextUserName_TextChanged);
             this.TextUserName.Validating += new System.ComponentModel.CancelEventHandler(this.TextUserName_Validating);
             // 
@@ -154,11 +154,11 @@
             this.TextPassword.Name = "TextPassword";
             this.TextPassword.PasswordChar = '*';
             this.TextPassword.PlaceholderForeColor = System.Drawing.Color.Gray;
-            this.TextPassword.PlaceholderText = "";
+            this.TextPassword.PlaceholderText = "Password";
             this.TextPassword.SelectedText = "";
             this.TextPassword.Size = new System.Drawing.Size(290, 49);
             this.TextPassword.TabIndex = 8;
-            this.TextPassword.TextOffset = new System.Drawing.Point(0, -1);
+            this.TextPassword.TextOffset = new System.Drawing.Point(0, -4);
             this.TextPassword.TextChanged += new System.EventHandler(this.TextPassword_TextChanged);
             this.TextPassword.Validating += new System.ComponentModel.CancelEventHandler(this.TextPassword_Validating);
             // 
@@ -220,7 +220,7 @@
             // FrmLogin
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.BackgroundImage = global::Bank_Managment_System.Properties.Resources.FrmLogin1;
+            this.BackgroundImage = global::Bank_Managment_System.Properties.Resources.FrmLogin;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(995, 854);
             this.Controls.Add(this.btnSignUp);

@@ -248,6 +248,12 @@ namespace BankSystemDataAccess.EntitiesData
                                        Persons.FirstName + ' ' + Persons.LastName AS [Full Name],
                                        Persons.Email AS [Email Address],
                                        Persons.Phone AS [Phone Number],
+
+                                      CASE 
+                                          When Persons.Gender = 1 Then 'M'
+                                          else 'F'
+                                      END AS [Gender],
+
                                        ISNULL(Countries.CountryName, 'N/A') AS [Country],
                                        COUNT(Accounts.AccountID) AS [Total Accounts], 
 
@@ -263,6 +269,7 @@ namespace BankSystemDataAccess.EntitiesData
                                    LEFT JOIN Cities ON Persons.CityID = Cities.CityID
                                    LEFT JOIN Countries ON Cities.CountryID = Countries.CountryID
                                    LEFT JOIN Accounts ON Clients.ClientID = Accounts.ClientID
+                                   LEFT JOIN Cards Ca ON Ca.AccountID = Accounts.AccountID
                                    LEFT JOIN AccountTypes ON Accounts.AccountTypeID = AccountTypes.AccountTypeID";
 
 
@@ -273,6 +280,7 @@ namespace BankSystemDataAccess.EntitiesData
                                            Persons.LastName, 
                                            Persons.Email, 
                                            Persons.Phone, 
+                                           Persons.Gender,
                                            Countries.CountryName, 
                                            Clients.CreatedDate, 
                                            Clients.Status;";
@@ -317,6 +325,10 @@ namespace BankSystemDataAccess.EntitiesData
                               Persons.FirstName + ' ' + Persons.LastName AS [Full Name],
                               Persons.Email AS [Email Address],
                               Persons.Phone AS [Phone Number], 
+                              CASE 
+                                          When Persons.Gender = 1 Then 'M'
+                                          else 'F'
+                             END AS [Gender],
 
                               CASE 
                                   WHEN Clients.Status = 1 THEN 'Active'
@@ -343,6 +355,7 @@ namespace BankSystemDataAccess.EntitiesData
                           LEFT JOIN Cities ON Persons.CityID = Cities.CityID
                           LEFT JOIN Countries ON Cities.CountryID = Countries.CountryID
                           LEFT JOIN Accounts ON Clients.ClientID = Accounts.ClientID
+                          LEFT JOIN Cards Ca ON Ca.AccountID = Accounts.AccountID
                           LEFT JOIN AccountTypes ON Accounts.AccountTypeID = AccountTypes.AccountTypeID
                           WHERE Clients.Status = 1 ";
 
@@ -353,6 +366,7 @@ namespace BankSystemDataAccess.EntitiesData
                           Persons.LastName, 
                           Persons.Email, 
                           Persons.Phone, 
+                          Persons.Gender,
                           Clients.CreatedDate, 
                           Clients.Status;";
 
