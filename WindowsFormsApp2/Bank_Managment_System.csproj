@@ -125,11 +125,11 @@
     <Compile Include="UC_ClientsListView.Designer.cs">
       <DependentUpon>UC_ClientsListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="US_CustomersList.cs">
+    <Compile Include="US_CustomersManage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="US_CustomersList.Designer.cs">
-      <DependentUpon>US_CustomersList.cs</DependentUpon>
+    <Compile Include="US_CustomersManage.Designer.cs">
+      <DependentUpon>US_CustomersManage.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -156,10 +156,10 @@
     <EmbeddedResource Include="UC_ClientsListView.resx">
       <DependentUpon>UC_ClientsListView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="US_CustomersList.resx">
-      <DependentUpon>US_CustomersList.cs</DependentUpon>
+    <EmbeddedResource Include="US_CustomersManage.resx">
+      <DependentUpon>US_CustomersManage.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Flags\MClient.text" />
+    <None Include="Image\CountriesFlag\MClient.text" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -236,61 +236,61 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Flags\Afghanistan.png" />
-    <Content Include="Flags\Albania.png" />
-    <Content Include="Flags\Algeria.png" />
-    <Content Include="Flags\Argentina.png" />
-    <Content Include="Flags\Australia.png" />
-    <Content Include="Flags\Austria.png" />
-    <Content Include="Flags\Barhain.png" />
-    <Content Include="Flags\Brazil.png" />
-    <Content Include="Flags\Canada.jpeg" />
-    <Content Include="Flags\China.png" />
-    <Content Include="Flags\comoros.png" />
-    <Content Include="Flags\Djibouti.jpg" />
-    <Content Include="Flags\Egypt.png" />
-    <Content Include="Flags\France.png" />
-    <Content Include="Flags\Germany.png" />
-    <Content Include="Flags\India.png" />
-    <Content Include="Flags\Iraq.png" />
-    <Content Include="Flags\Japan.png" />
-    <Content Include="Flags\Jordan.png" />
-    <Content Include="Flags\Kuwait.png" />
-    <Content Include="Flags\Lebanon.png" />
-    <Content Include="Flags\Libya.png" />
-    <Content Include="Flags\Malaysia.png" />
-    <Content Include="Flags\Mauritania.png" />
-    <Content Include="Flags\Mexico.png" />
-    <Content Include="Flags\Morocco.png" />
-    <Content Include="Flags\Netherlands.png" />
-    <Content Include="Flags\New_Zealand.png" />
-    <Content Include="Flags\Norway.png" />
-    <Content Include="Flags\Oman.png" />
-    <Content Include="Flags\Pakistan.jpg" />
-    <Content Include="Flags\Palestine.png" />
-    <Content Include="Flags\Philippines.png" />
-    <Content Include="Flags\Poland.png" />
-    <Content Include="Flags\Qatar.png" />
-    <Content Include="Flags\Russia.png" />
-    <Content Include="Flags\Saudi.png" />
-    <Content Include="Flags\Singapore.png" />
-    <Content Include="Flags\Somalia.png" />
-    <Content Include="Flags\South_Africa.png" />
-    <Content Include="Flags\south_Korea.png" />
-    <Content Include="Flags\sudan.jpg" />
-    <Content Include="Flags\Sweden.png" />
-    <Content Include="Flags\Switzerland.png" />
-    <Content Include="Flags\Syria.png" />
-    <Content Include="Flags\Thailand.png" />
-    <Content Include="Flags\Tunisia.png" />
-    <Content Include="Flags\Turkey.png" />
-    <Content Include="Flags\Ukraine.png" />
-    <Content Include="Flags\UnitatedArabEmarat.png" />
-    <Content Include="Flags\United_Kingdom.png" />
-    <Content Include="Flags\United_States.png" />
-    <Content Include="Flags\Vietnam.png" />
-    <Content Include="Flags\Yemen.png" />
-    <Content Include="Flags\Zimbabwe.png" />
+    <Content Include="Image\CountriesFlag\Afghanistan.png" />
+    <Content Include="Image\CountriesFlag\Albania.png" />
+    <Content Include="Image\CountriesFlag\Algeria.png" />
+    <Content Include="Image\CountriesFlag\Argentina.png" />
+    <Content Include="Image\CountriesFlag\Australia.png" />
+    <Content Include="Image\CountriesFlag\Austria.png" />
+    <Content Include="Image\CountriesFlag\Barhain.png" />
+    <Content Include="Image\CountriesFlag\Brazil.png" />
+    <Content Include="Image\CountriesFlag\Canada.jpeg" />
+    <Content Include="Image\CountriesFlag\China.png" />
+    <Content Include="Image\CountriesFlag\comoros.png" />
+    <Content Include="Image\CountriesFlag\Djibouti.jpg" />
+    <Content Include="Image\CountriesFlag\Egypt.png" />
+    <Content Include="Image\CountriesFlag\France.png" />
+    <Content Include="Image\CountriesFlag\Germany.png" />
+    <Content Include="Image\CountriesFlag\India.png" />
+    <Content Include="Image\CountriesFlag\Iraq.png" />
+    <Content Include="Image\CountriesFlag\Japan.png" />
+    <Content Include="Image\CountriesFlag\Jordan.png" />
+    <Content Include="Image\CountriesFlag\Kuwait.png" />
+    <Content Include="Image\CountriesFlag\Lebanon.png" />
+    <Content Include="Image\CountriesFlag\Libya.png" />
+    <Content Include="Image\CountriesFlag\Malaysia.png" />
+    <Content Include="Image\CountriesFlag\Mauritania.png" />
+    <Content Include="Image\CountriesFlag\Mexico.png" />
+    <Content Include="Image\CountriesFlag\Morocco.png" />
+    <Content Include="Image\CountriesFlag\Netherlands.png" />
+    <Content Include="Image\CountriesFlag\New_Zealand.png" />
+    <Content Include="Image\CountriesFlag\Norway.png" />
+    <Content Include="Image\CountriesFlag\Oman.png" />
+    <Content Include="Image\CountriesFlag\Pakistan.jpg" />
+    <Content Include="Image\CountriesFlag\Palestine.png" />
+    <Content Include="Image\CountriesFlag\Philippines.png" />
+    <Content Include="Image\CountriesFlag\Poland.png" />
+    <Content Include="Image\CountriesFlag\Qatar.png" />
+    <Content Include="Image\CountriesFlag\Russia.png" />
+    <Content Include="Image\CountriesFlag\Saudi.png" />
+    <Content Include="Image\CountriesFlag\Singapore.png" />
+    <Content Include="Image\CountriesFlag\Somalia.png" />
+    <Content Include="Image\CountriesFlag\South_Africa.png" />
+    <Content Include="Image\CountriesFlag\south_Korea.png" />
+    <Content Include="Image\CountriesFlag\sudan.jpg" />
+    <Content Include="Image\CountriesFlag\Sweden.png" />
+    <Content Include="Image\CountriesFlag\Switzerland.png" />
+    <Content Include="Image\CountriesFlag\Syria.png" />
+    <Content Include="Image\CountriesFlag\Thailand.png" />
+    <Content Include="Image\CountriesFlag\Tunisia.png" />
+    <Content Include="Image\CountriesFlag\Turkey.png" />
+    <Content Include="Image\CountriesFlag\Ukraine.png" />
+    <Content Include="Image\CountriesFlag\UnitatedArabEmarat.png" />
+    <Content Include="Image\CountriesFlag\United_Kingdom.png" />
+    <Content Include="Image\CountriesFlag\United_States.png" />
+    <Content Include="Image\CountriesFlag\Vietnam.png" />
+    <Content Include="Image\CountriesFlag\Yemen.png" />
+    <Content Include="Image\CountriesFlag\Zimbabwe.png" />
     <Content Include="FrmLogin.jpg" />
     <Content Include="Image\Abdelilah.png" />
     <Content Include="Image\Amr.png" />
@@ -305,7 +305,8 @@
     <Content Include="Resources\FrmLogin2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Flags\Flag\" />
+    <Folder Include="Image\CountriesFlag\Flag\" />
+    <Folder Include="Image\CustomersImage\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

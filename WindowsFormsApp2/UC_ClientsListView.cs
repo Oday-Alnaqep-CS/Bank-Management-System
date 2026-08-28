@@ -63,39 +63,60 @@ namespace Bank_Managment_System
             ((FrmMain)this.FindForm()).LoadUserControl(new UC_Dashboard());
         }
 
+        private Image GetCircularImage(Image originalImage)
+        {
+
+            int size = Math.Min(originalImage.Width, originalImage.Height);
+            Bitmap destinationImage = new Bitmap(size, size);
+
+            using (Graphics g = Graphics.FromImage(destinationImage))
+            {
+
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+
+                using (System.Drawing.Drawing2D.GraphicsPath path = new System.Drawing.Drawing2D.GraphicsPath())
+                {
+                    path.AddEllipse(0, 0, size, size);
+                    g.SetClip(path);
+                    g.DrawImage(originalImage, 0, 0, size, size);
+                }
+            }
+            return destinationImage;
+
+        }
+
         private void ViewAllClients()
 
 
         {
+
             string ErrorMessage = string.Empty;
 
-          
-            DataTable dtViewAllClients = ClsClient.GetClientsList(ref ErrorMessage);
+            DataTable dtCustomers = ClsClient.GetClientsList(ref ErrorMessage);
 
             if (!string.IsNullOrEmpty(ErrorMessage))
 
-
             {
-                ClsBankingNotification.ShowBankingNotification("Error", ErrorMessage, ClsBankingNotification.NotificationType.Error);
+                ClsBankingNotification.ShowBankingNotification("Get List Customer", ErrorMessage, ClsBankingNotification.NotificationType.Error);
+               
                 return;
             }
 
-            if (dtViewAllClients != null)
+
+            if (dtCustomers != null)
+
             {
 
-                dtViewAllClients.Columns.Add("ClientImage", typeof(Image));
+                dtCustomers.Columns.Add("ClientImage", typeof(Image));
 
                 string projectFolder = @"C:\My Projects - Apps\Bank_Managment_System\WindowsFormsApp2";
 
-                foreach (DataRow row in dtViewAllClients.Rows)
+                foreach (DataRow row in dtCustomers.Rows)
                 {
-
                     string rawPath = row["Profile"] != DBNull.Value ? row["Profile"].ToString().Trim() : "";
-
-
                     string fileName = System.IO.Path.GetFileName(rawPath);
-
-
                     string fullPath = System.IO.Path.Combine(projectFolder, "Image", fileName);
 
                     if (!string.IsNullOrEmpty(fileName) && System.IO.File.Exists(fullPath))
@@ -104,41 +125,45 @@ namespace Bank_Managment_System
                         {
                             using (var ms = new System.IO.MemoryStream(System.IO.File.ReadAllBytes(fullPath)))
                             {
-                                row["ClientImage"] = new Bitmap(ms);
+                                using (Image loadedImg = Image.FromStream(ms))
+                                {
+
+                                    row["ClientImage"] = GetCircularImage(loadedImg);
+                                }
                             }
                         }
                         catch
                         {
-                            row["ClientImage"] = Properties.Resources.FrmLogin1;
+                            row["ClientImage"] = GetCircularImage(Properties.Resources.FrmLogin1);
                         }
                     }
                     else
                     {
-                        row["ClientImage"] = Properties.Resources.FrmLogin1;
+                        row["ClientImage"] = GetCircularImage(Properties.Resources.FrmLogin1);
                     }
                 }
-
-
-                DataGridViewAllClients.DataSource = dtViewAllClients;
-
-
-                if (DataGridViewAllClients.Columns.Contains("Profile"))
-                    DataGridViewAllClients.Columns["Profile"].Visible = false;
-
-
-                if (DataGridViewAllClients.Columns.Contains("ClientImage"))
-                {
-                    DataGridViewAllClients.Columns["ClientImage"].HeaderText = "Profile";
-                    DataGridViewAllClients.Columns["ClientImage"].DisplayIndex = 1;
-
-                    var imageCol = (DataGridViewImageColumn)DataGridViewAllClients.Columns["ClientImage"];
-                    imageCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                }
-
-
-                DataGridViewAllClients.RowTemplate.Height = 90;
-                DataGridViewAllClients.Columns["ClientImage"].Width = 80;
             }
+
+
+            DataGridViewAllClients.DataSource = dtCustomers;
+
+
+            if (DataGridViewAllClients.Columns.Contains("Profile"))
+            {
+                DataGridViewAllClients.Columns["Profile"].Visible = false;
+            }
+
+            if (DataGridViewAllClients.Columns.Contains("ClientImage"))
+            {
+                DataGridViewImageColumn imgCol = (DataGridViewImageColumn)DataGridViewAllClients.Columns["ClientImage"];
+                imgCol.HeaderText = "Profile";
+                imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                imgCol.DisplayIndex = 0;
+                imgCol.Width = 60;
+            }
+
+
+            DataGridViewAllClients.RowTemplate.Height = 50;
 
 
         }
@@ -168,13 +193,8 @@ namespace Bank_Managment_System
 
                 foreach (DataRow row in dtViewAllClients.Rows)
                 {
-
                     string rawPath = row["Profile"] != DBNull.Value ? row["Profile"].ToString().Trim() : "";
-
-                   
                     string fileName = System.IO.Path.GetFileName(rawPath);
-
-                    
                     string fullPath = System.IO.Path.Combine(projectFolder, "Image", fileName);
 
                     if (!string.IsNullOrEmpty(fileName) && System.IO.File.Exists(fullPath))
@@ -183,41 +203,46 @@ namespace Bank_Managment_System
                         {
                             using (var ms = new System.IO.MemoryStream(System.IO.File.ReadAllBytes(fullPath)))
                             {
-                                row["ClientImage"] = new Bitmap(ms);
+                                using (Image loadedImg = Image.FromStream(ms))
+                                {
+
+                                    row["ClientImage"] = GetCircularImage(loadedImg);
+                                }
                             }
                         }
                         catch
                         {
-                            row["ClientImage"] = Properties.Resources.FrmLogin1;
+                            row["ClientImage"] = GetCircularImage(Properties.Resources.FrmLogin1);
                         }
                     }
                     else
                     {
-                        row["ClientImage"] = Properties.Resources.FrmLogin1;
+                        row["ClientImage"] = GetCircularImage(Properties.Resources.FrmLogin1);
                     }
                 }
-
-
-                DataGridViewAllClients.DataSource = dtViewAllClients;
-
-
-                if (DataGridViewAllClients.Columns.Contains("Profile"))
-                    DataGridViewAllClients.Columns["Profile"].Visible = false;
-
-
-                if (DataGridViewAllClients.Columns.Contains("ClientImage"))
-                {
-                    DataGridViewAllClients.Columns["ClientImage"].HeaderText = "Profile";
-                    DataGridViewAllClients.Columns["ClientImage"].DisplayIndex = 1;
-
-                    var imageCol = (DataGridViewImageColumn)DataGridViewAllClients.Columns["ClientImage"];
-                    imageCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
-                }
-
-
-                DataGridViewAllClients.RowTemplate.Height = 90;
-                DataGridViewAllClients.Columns["ClientImage"].Width = 80;
             }
+
+
+            DataGridViewAllClients.DataSource = dtViewAllClients;
+
+
+            if (DataGridViewAllClients.Columns.Contains("Profile"))
+            {
+                DataGridViewAllClients.Columns["Profile"].Visible = false;
+            }
+
+            if (DataGridViewAllClients.Columns.Contains("ClientImage"))
+            {
+                DataGridViewImageColumn imgCol = (DataGridViewImageColumn)DataGridViewAllClients.Columns["ClientImage"];
+                imgCol.HeaderText = "Profile";
+                imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                imgCol.DisplayIndex = 0;
+                imgCol.Width = 60;
+            }
+
+
+            DataGridViewAllClients.RowTemplate.Height = 50;
+
 
 
         }
@@ -272,27 +297,22 @@ namespace Bank_Managment_System
             string columnName = DataGridViewAllClients.Columns[e.ColumnIndex].Name;
 
             if (columnName == "Status")
-
-
             {
-
                 string status = e.Value?.ToString();
 
                 switch (status)
                 {
                     case "Active":
                     case "1":
-                        //   e.CellStyle.BackColor = Color.FromArgb(40, 0, 100, 0);
                         e.CellStyle.ForeColor = Color.LimeGreen;
+                        e.CellStyle.Font = new Font(DataGridViewAllClients.Font, System.Drawing.FontStyle.Bold);
                         break;
 
                     case "Inactive":
                     case "0":
-                        //  e.CellStyle.BackColor = Color.FromArgb(40, 200, 100, 0);
                         e.CellStyle.ForeColor = Color.Red;
+                        e.CellStyle.Font = new Font(DataGridViewAllClients.Font, System.Drawing.FontStyle.Bold);
                         break;
-
-                  
                 }
             }
 

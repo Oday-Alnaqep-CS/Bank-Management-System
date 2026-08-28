@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BankSystemDataAccess
 {
-    public static class ClsGetActiveAccountsDataAccess
+    public static class ClsGetCountOfActiveAccountsDataAccess
     {
 
         public static int GetActiveAccounts(out string ErrorMessage)

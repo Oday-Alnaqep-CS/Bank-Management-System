@@ -62,7 +62,8 @@
     <Compile Include="ClsBalance.cs" />
     <Compile Include="ClsBranch.cs" />
     <Compile Include="ClsCard.cs" />
-    <Compile Include="ClsGetActiveAccounts.cs" />
+    <Compile Include="ClsGetAllCustomers.cs" />
+    <Compile Include="ClsGetStatuOfCustomers.cs" />
     <Compile Include="ClsGetResults.cs" />
     <Compile Include="ClsGetTotalBalances.cs" />
     <Compile Include="ClsGetTotalClients.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="ClsPermission.cs" />
     <Compile Include="ClsRolePermission.cs" />
     <Compile Include="clsSystemHealth.cs" />
+    <Compile Include="ClsTotalNewCustomerBu.cs" />
     <Compile Include="ClsTransaction.cs" />
     <Compile Include="ClsAccount.cs" />
     <Compile Include="ClsClient.cs" />

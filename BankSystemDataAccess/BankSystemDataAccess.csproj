@@ -80,6 +80,7 @@
     <Compile Include="ClsPermissionDataAccess.cs" />
     <Compile Include="ClsPersonDataAccess.cs" />
     <Compile Include="ClsRolePermissionDataAccess.cs" />
+    <Compile Include="ClsTotalNewCustomersDataAccess.cs" />
     <Compile Include="ClsTransactionData.CRUD.cs" />
     <Compile Include="ClsTransactionData.cs" />
     <Compile Include="ClsTransactionData.Procedures.cs" />

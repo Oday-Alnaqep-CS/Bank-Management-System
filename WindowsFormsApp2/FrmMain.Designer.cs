@@ -404,6 +404,7 @@
             this.btnCustomers.Size = new System.Drawing.Size(267, 55);
             this.btnCustomers.TabIndex = 2;
             this.btnCustomers.Text = "Customers";
+            this.btnCustomers.Click += new System.EventHandler(this.btnCustomers_Click);
             // 
             // btnUsers
             // 

@@ -68,7 +68,6 @@ namespace BankSystemBuisniseLayer
             return (this.ClientID != -1);
         }
 
-
         private bool _UpdateClient()
         
         
@@ -85,7 +84,6 @@ namespace BankSystemBuisniseLayer
 
 
         }
-
 
         public bool Save()
         
@@ -123,7 +121,6 @@ namespace BankSystemBuisniseLayer
 
         }
 
-
         public static ClsClient Find(int ClientID, ref string ErrorMessage)
         
         {
@@ -144,7 +141,6 @@ namespace BankSystemBuisniseLayer
             
             return null;
         }
-
 
         public static ClsClient FindByPersonID(int PersonID, ref string ErrorMessage)
         
@@ -169,7 +165,6 @@ namespace BankSystemBuisniseLayer
 
         }
 
-
         public static bool DeletClient(int ClientID, ref string ErrorMessage)
 
         {
@@ -183,45 +178,8 @@ namespace BankSystemBuisniseLayer
 
         {
 
-            string query = @"
-                                   SELECT 
-                                       Clients.ClientID AS [Client ID],
-                                       Persons.ImagePath AS [Profile],
-                                       Persons.FirstName + ' ' + Persons.LastName AS [Full Name],
-                                       Persons.Email AS [Email Address],
-                                       Persons.Phone AS [Phone Number],
-                                       ISNULL(Countries.CountryName, 'N/A') AS [Country],
-                                       COUNT(Accounts.AccountID) AS [Total Accounts], 
+            return ClsClientDataAccess.GetAllClients(ref ErrorMessage);
 
-                                       CASE 
-                                           WHEN Clients.Status = 1 THEN 'Active' 
-                                           ELSE 'Inactive' 
-                                       END AS [Status],
-                                       ISNULL(SUM(Accounts.Balance), 0.00) AS [Total Balance (USD)],
-                                       Clients.CreatedDate AS [Date Registered],
-                                       ISNULL(STRING_AGG(AccountTypes.TypeName, ' & '), 'No Accounts') AS [Account Type(s)]
-                                   FROM Clients
-                                   INNER JOIN Persons ON Clients.PersonID = Persons.PersonID
-                                   LEFT JOIN Cities ON Persons.CityID = Cities.CityID
-                                   LEFT JOIN Countries ON Cities.CountryID = Countries.CountryID
-                                   LEFT JOIN Accounts ON Clients.ClientID = Accounts.ClientID
-                                   LEFT JOIN AccountTypes ON Accounts.AccountTypeID = AccountTypes.AccountTypeID";
-
-
-                                query += @" GROUP BY 
-                                           Clients.ClientID, 
-                                           Persons.ImagePath, 
-                                           Persons.FirstName, 
-                                           Persons.LastName, 
-                                           Persons.Email, 
-                                           Persons.Phone, 
-                                           Countries.CountryName, 
-                                           Clients.CreatedDate, 
-                                           Clients.Status;";
-
-
-
-            return ClsClientDataAccess.GetAllClients(ref ErrorMessage, query);
         }
 
         public static DataTable GetActiveAccounts(ref string ErrorMessage)
@@ -229,48 +187,7 @@ namespace BankSystemBuisniseLayer
 
         {
 
-            string query = @"
-                                 SELECT 
-                                     Clients.ClientID AS [Client ID],
-                                     Persons.ImagePath AS [Profile],
-                                     Persons.FirstName + ' ' + Persons.LastName AS [Full Name],
-                                     Persons.Email AS [Email Address],
-                                     Persons.Phone AS [Phone Number], 
-                                     ISNULL(STRING_AGG(AccountTypes.TypeName, ' & '), 'No Accounts') AS [Account Type(s)],
-                                     ISNULL(STRING_AGG(CAST(Accounts.AccountNumber AS VARCHAR(50)), ' & '), 'N/A') AS [Accounts Number], 
-                                     
-                                     (
-                                         SELECT MAX(T.TransactionDate) 
-                                         FROM Transactions T 
-                                         INNER JOIN Accounts Acc ON T.FromAccountID = Acc.AccountID OR T.ToAccountID = Acc.AccountID 
-                                         WHERE Acc.ClientID = Clients.ClientID
-                                     ) AS [Last TransAction Date],
-                                     
-                                     CASE 
-                                         WHEN Clients.Status = 1 THEN 'Active'
-                                         ELSE 'Inactive' 
-                                     END AS [Status],
-                                     ISNULL(SUM(Accounts.Balance), 0.00) AS [Total Balance (USD)],
-                                     Clients.CreatedDate AS [Date Registered]
-                                 FROM Clients
-                                 INNER JOIN Persons ON Clients.PersonID = Persons.PersonID
-                                 LEFT JOIN Cities ON Persons.CityID = Cities.CityID
-                                 LEFT JOIN Countries ON Cities.CountryID = Countries.CountryID
-                                 LEFT JOIN Accounts ON Clients.ClientID = Accounts.ClientID
-                                 LEFT JOIN AccountTypes ON Accounts.AccountTypeID = AccountTypes.AccountTypeID
-                                 WHERE Clients.Status = 1 ";
-
-            query += @" GROUP BY 
-                                 Clients.ClientID, 
-                                 Persons.ImagePath, 
-                                 Persons.FirstName, 
-                                 Persons.LastName, 
-                                 Persons.Email, 
-                                 Persons.Phone, 
-                                 Clients.CreatedDate, 
-                                 Clients.Status;";
-
-            return ClsClientDataAccess.GetAllClients(ref ErrorMessage, query);
+            return ClsClientDataAccess.GetAllActiveClients(ref ErrorMessage);
 
 
         }
@@ -282,7 +199,6 @@ namespace BankSystemBuisniseLayer
             return ClsClientDataAccess.IsClientExist(ClientID , ref ErrorMessage);
             
         }
-
 
         public static bool IsClientExistByPersonID(int PersonID, ref string ErrorMessage)
 

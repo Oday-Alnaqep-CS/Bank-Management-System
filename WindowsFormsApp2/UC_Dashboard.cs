@@ -42,6 +42,7 @@ namespace Bank_Managment_System
 
             TotalClientIcone.IconChar = FontAwesome.Sharp.IconChar.Users;
             ActiveAccountIcone.IconChar = FontAwesome.Sharp.IconChar.UserCheck;
+            ActiveAccountIcone.IconChar = FontAwesome.Sharp.IconChar.UserCheck;
             TotalBalanceIcone.IconChar = FontAwesome.Sharp.IconChar.Wallet;
             TodayTransIcone.IconChar = FontAwesome.Sharp.IconChar.ExchangeAlt;
            
@@ -76,7 +77,7 @@ namespace Bank_Managment_System
             lblTotalClients.Text = totalClients.ToString("N0");
 
 
-            int activeAccounts = ClsGetActiveAccounts.GetActiveAccounts(out errorMessage);
+            int activeAccounts = ClsGetStatuOfCustomers.GetCountOfActiveAccounts(out errorMessage);
             lblActiveAccount.Text = activeAccounts.ToString("N0");
            // MessageBox.Show(activeAccounts.ToString());
 
@@ -104,7 +105,7 @@ namespace Bank_Managment_System
 
             string ErrorMessage = string.Empty;
 
-            DataTable atTransactions = clsTransaction.GetTransactionsList(ref ErrorMessage);
+            DataTable dtTransactions = clsTransaction.GetTransactionsList(ref ErrorMessage);
 
 
             if (!string.IsNullOrEmpty (ErrorMessage))
@@ -119,7 +120,7 @@ namespace Bank_Managment_System
            
 
 
-            dgvRecentTransactions.DataSource = atTransactions;
+            dgvRecentTransactions.DataSource = dtTransactions;
 
 
 

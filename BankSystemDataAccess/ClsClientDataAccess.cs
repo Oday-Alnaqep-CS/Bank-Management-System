@@ -155,7 +155,6 @@ namespace BankSystemDataAccess.EntitiesData
 
         }
 
-
         public static bool UpdateClient(int clientID, int personID, byte clientType, byte status, DateTime CreatedDate,ref string errorMessage)
 
 
@@ -200,7 +199,6 @@ namespace BankSystemDataAccess.EntitiesData
 
         }
 
-
         public static bool DeleteClient(int clientID, ref string errorMessage)
 
 
@@ -233,16 +231,51 @@ namespace BankSystemDataAccess.EntitiesData
 
         }
 
-        public static DataTable GetAllClients(ref string errorMessage,string query)
+        public static DataTable GetAllClients(ref string errorMessage)
 
 
         {
+
             DataTable dt = new DataTable();
 
             using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
             {
-              
-              
+
+                string query = @"
+                                   SELECT 
+                                       Clients.ClientID AS [Client ID],
+                                       Persons.ImagePath AS [Profile],
+                                       Persons.FirstName + ' ' + Persons.LastName AS [Full Name],
+                                       Persons.Email AS [Email Address],
+                                       Persons.Phone AS [Phone Number],
+                                       ISNULL(Countries.CountryName, 'N/A') AS [Country],
+                                       COUNT(Accounts.AccountID) AS [Total Accounts], 
+
+                                       CASE 
+                                           WHEN Clients.Status = 1 THEN 'Active' 
+                                           ELSE 'Inactive' 
+                                       END AS [Status],
+                                       ISNULL(SUM(Accounts.Balance), 0.00) AS [Total Balance (USD)],
+                                       Clients.CreatedDate AS [Date Registered],
+                                       ISNULL(STRING_AGG(AccountTypes.TypeName, ' & '), 'No Accounts') AS [Account Type(s)]
+                                   FROM Clients
+                                   INNER JOIN Persons ON Clients.PersonID = Persons.PersonID
+                                   LEFT JOIN Cities ON Persons.CityID = Cities.CityID
+                                   LEFT JOIN Countries ON Cities.CountryID = Countries.CountryID
+                                   LEFT JOIN Accounts ON Clients.ClientID = Accounts.ClientID
+                                   LEFT JOIN AccountTypes ON Accounts.AccountTypeID = AccountTypes.AccountTypeID";
+
+
+                query += @" GROUP BY 
+                                           Clients.ClientID, 
+                                           Persons.ImagePath, 
+                                           Persons.FirstName, 
+                                           Persons.LastName, 
+                                           Persons.Email, 
+                                           Persons.Phone, 
+                                           Countries.CountryName, 
+                                           Clients.CreatedDate, 
+                                           Clients.Status;";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -267,6 +300,173 @@ namespace BankSystemDataAccess.EntitiesData
             return dt;
         }
 
+        public static DataTable GetAllActiveClients(ref string errorMessage)
+
+
+        {
+
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+
+                string query = @"
+                          SELECT 
+                              Clients.ClientID AS [Client ID],
+                              Persons.ImagePath AS [Profile],
+                              Persons.FirstName + ' ' + Persons.LastName AS [Full Name],
+                              Persons.Email AS [Email Address],
+                              Persons.Phone AS [Phone Number], 
+
+                              CASE 
+                                  WHEN Clients.Status = 1 THEN 'Active'
+                                  ELSE 'Inactive' 
+                              END AS [Status],
+
+                             (
+                                  SELECT MAX(T.TransactionDate) 
+                                  FROM Transactions T 
+                                  INNER JOIN Accounts Acc ON T.FromAccountID = Acc.AccountID OR T.ToAccountID = Acc.AccountID 
+                                  WHERE Acc.ClientID = Clients.ClientID
+                              ) AS [Last TransAction Date],
+
+                              ISNULL(STRING_AGG(AccountTypes.TypeName, ' & '), 'No Accounts') AS [Account Type(s)],
+                              ISNULL(STRING_AGG(CAST(Accounts.AccountNumber AS VARCHAR(50)), ' & '), 'N/A') AS [Accounts Number], 
+                              
+                             
+                              
+                             
+                              ISNULL(SUM(Accounts.Balance), 0.00) AS [Total Balance (USD)],
+                              Clients.CreatedDate AS [Date Registered]
+                          FROM Clients
+                          INNER JOIN Persons ON Clients.PersonID = Persons.PersonID
+                          LEFT JOIN Cities ON Persons.CityID = Cities.CityID
+                          LEFT JOIN Countries ON Cities.CountryID = Countries.CountryID
+                          LEFT JOIN Accounts ON Clients.ClientID = Accounts.ClientID
+                          LEFT JOIN AccountTypes ON Accounts.AccountTypeID = AccountTypes.AccountTypeID
+                          WHERE Clients.Status = 1 ";
+
+                query += @" GROUP BY 
+                          Clients.ClientID, 
+                          Persons.ImagePath, 
+                          Persons.FirstName, 
+                          Persons.LastName, 
+                          Persons.Email, 
+                          Persons.Phone, 
+                          Clients.CreatedDate, 
+                          Clients.Status;";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        errorMessage = ex.Message;
+                    }
+                }
+            }
+
+            return dt;
+        }
+
+        public static DataTable GetAllCustomers(ref string errorMessage)
+
+
+        {
+
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+
+                string query = @"
+                                  SELECT 
+                                      P.ImagePath AS [Profile],
+                                      ISNULL(MIN(Accounts.AccountNumber), 'N/A') AS [Accounts Number],
+                                      P.FirstName + ' ' + P.LastName AS [Full Name],
+                                      P.Phone AS [Phone Number],
+                                      P.Email AS [Email Address],
+   
+                                      CASE 
+                                          When P.Gender = 1 Then 'M'
+                                          else 'F'
+                                      END AS [Gender],
+                                       
+                                      ISNULL(MIN(Ca.PIN_Hash), 'N/A') AS [PinCode],
+                                      DATEDIFF(YEAR, P.DateOfBirth, GETDATE()) AS Age,
+                                      ISNULL(MIN(Ca.CardNumber), 'N/A') AS [Card Number],
+                                      ISNULL(MIN(Branches.BranchName), 'N/A') AS [Branche],
+                                      ISNULL(Countries.CountryName, 'N/A') AS [Country],
+                                      ISNULL(Cities.CityName, 'N/A') AS [City],
+                                      COUNT(DISTINCT Accounts.AccountID) AS [Total Accounts], 
+
+                                      CASE 
+                                          WHEN Clients.Status = 1 THEN 'Active'
+                                          ELSE 'Inactive'
+                                      END AS [Status],
+
+                                      ISNULL(SUM(Accounts.Balance), 0.00) AS [Total Balance (USD)],
+                                      Clients.CreatedDate AS [Date Registered],
+                                      ISNULL(MIN(AccountTypes.TypeName), 'No Accounts') AS [Account Type(s)]
+
+                                  FROM Clients
+                                  INNER JOIN Persons P ON Clients.PersonID = P.PersonID
+                                  LEFT JOIN Cities ON P.CityID = Cities.CityID
+                                  LEFT JOIN Countries ON Cities.CountryID = Countries.CountryID
+                                  LEFT JOIN Accounts ON Clients.ClientID = Accounts.ClientID
+                                  LEFT JOIN AccountTypes ON Accounts.AccountTypeID = AccountTypes.AccountTypeID
+                                  LEFT JOIN Cards Ca ON Ca.AccountID = Accounts.AccountID
+                                  LEFT JOIN Branches ON Accounts.BranchID = Branches.BranchID
+
+
+
+                                  GROUP BY 
+                                      Clients.ClientID,
+                                      P.ImagePath,
+                                      P.FirstName,
+                                      P.LastName,
+                                      P.Phone,
+                                      P.Email,
+                                      P.Gender,
+                                      P.DateOfBirth,
+                                      Countries.CountryName,
+                                      Cities.CityName,
+                                      Clients.Status,
+                                      Clients.CreatedDate;";
+
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        errorMessage = ex.Message;
+                    }
+                }
+            }
+
+            return dt;
+        }
 
         public static bool IsClientExist(int clientID, ref string errorMessage)
 

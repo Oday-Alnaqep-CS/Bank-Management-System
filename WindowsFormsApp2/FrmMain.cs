@@ -29,6 +29,7 @@ namespace Bank_Managment_System
 
 
         private UC_Dashboard _ucDashboard;
+        private US_CustomersManage US_CustomersManage = new US_CustomersManage();
         ClsBankingNotification notification = new ClsBankingNotification();
         public static ClsUser CurrentUser = new ClsUser();
 
@@ -326,14 +327,17 @@ namespace Bank_Managment_System
 
         }
 
-       
-
         private void btnBranch_Click(object sender, EventArgs e)
         {
 
         }
 
+        private void btnCustomers_Click(object sender, EventArgs e)
+        {
 
+            LoadView(US_CustomersManage);
+
+        }
 
 
 
