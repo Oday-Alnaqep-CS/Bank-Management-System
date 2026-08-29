@@ -351,9 +351,13 @@
     <Content Include="RememberMe.txt" />
     <None Include="Resources\Folder.png" />
     <None Include="Resources\Camera.png" />
+    <None Include="Resources\ActiveImage.png" />
+    <None Include="Resources\DeactiveImage.png" />
     <Content Include="Resources\DefaultFemaleAvatar.png" />
+    <Content Include="Resources\DefaultImage.png" />
     <Content Include="Resources\DefaultMaleAvatar.png" />
-    <Content Include="Resources\DefaultUser.png" />
+    <None Include="Resources\EditImage.png" />
+    <None Include="Resources\DeleteImage.png" />
     <Content Include="Resources\FrmLogin.jpg" />
     <Content Include="Resources\FrmLogin1.jpg" />
     <Content Include="Resources\FrmLogin2.jpg" />

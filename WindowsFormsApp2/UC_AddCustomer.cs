@@ -19,38 +19,72 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static BankSystemBuisniseLayer.ClsClient;
 using static BankSystemDataAccess.Financial.ClsAccount;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
+
 
 namespace Bank_Managment_System
 {
     public partial class UC_AddCustomer : UserControl
     {
 
-
-     
+        private ClsClient _Client = new ClsClient();
         private string _SelectedImagePath = string.Empty;
+        public enum enMode { AddNew = 0, Update = 1 }
+        private enMode _Mode;
+
+        private int _ClientID = -1;
+       
 
         public UC_AddCustomer()
         {
             InitializeComponent();
+            _Mode = enMode.AddNew;
+
+
+        }
+
+        public UC_AddCustomer(int clientID)
+        {
+            InitializeComponent();
+            _ClientID = clientID;
+            _Mode = enMode.Update;
         }
 
         private void UC_AddCustomer_Load(object sender, EventArgs e)
         {
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer |
+                  ControlStyles.AllPaintingInWmPaint |
+                  ControlStyles.UserPaint, true);
+            this.UpdateStyles();
+            this.DoubleBuffered = true;
 
-            //guna2CheckBox4.UncheckedState.BorderRadius = 10;
+            _ResetDefaultValues();
+
+           
             _ApplyRadioButtonStyle(Check_ActiveAccount);
             _ApplyRadioButtonStyle(Check_InActiveAccount);
-            _GenerateNationalID();
-            _GenerateCustomerID();
             _FillCountriesComboBox();
             _LoadAccountTypes();
             _Design();
+
+          
+            if (_Mode == enMode.Update)
+            {
+                _LoadData();
+            }
+            else
+            {
+                _GenerateNationalID();
+                string ErrorMessage = string.Empty;
+                int NextID = ClsClient.GetNextClientID(ErrorMessage);
+                btnCopyAccountNumber.Text = $"CUST-2026-{NextID:D4}";
+            }
+
         }
     
         private void _Design()
 
         {
+
             PersonalInformation.Image = IconChar.UserAlt.ToBitmap(Color.DodgerBlue);
             txtFirstName.IconLeft = IconChar.UserAlt.ToBitmap(Color.FromArgb(68, 88, 150));
             txtSecondName.IconLeft = IconChar.UserAlt.ToBitmap(Color.FromArgb(68, 88, 150));
@@ -58,7 +92,6 @@ namespace Bank_Managment_System
             txtNationalID.IconLeft = IconChar.IdCard.ToBitmap(Color.FromArgb(68, 88, 150));
             txtEmailAddress.IconLeft = IconChar.Envelope.ToBitmap(Color.FromArgb(68, 88, 150));
             txtPhoneNumber.IconLeft = IconChar.Phone.ToBitmap(Color.FromArgb(68, 88, 150));
-           
 
 
             CONTACTLOCATIONDETAILS.Image = IconChar.Phone.ToBitmap(Color.DodgerBlue);
@@ -68,9 +101,7 @@ namespace Bank_Managment_System
             PictAccountTypeIcone.Image = IconChar.Wallet.ToBitmap(Color.DodgerBlue);
             PictInitialDepositIcone.Image  = IconChar.MoneyBill.ToBitmap(Color.DodgerBlue);
             PictIconeCamera.Image = Properties.Resources.Camera;//IconChar.CameraAlt.ToBitmap(Color.White  );
-            PictCustomerPhoto.Image = Properties.Resources.DefaultMaleAvatar;
-
-
+            PictCustomerPhoto.Image = Properties.Resources.DefaultImage;   // PictCustomerPhoto.Image = Properties.Resources.DefaultMaleAvatar;
 
             btnUploadPhoto.Image = IconChar.FolderOpen.ToBitmap(Color.Gold, 20);//IconChar.Upload.ToBitmap(Color.White, 20);
             btnRemovePhoto.Image = IconChar.Trash.ToBitmap(Color.Red, 15);
@@ -137,7 +168,7 @@ namespace Bank_Managment_System
             }
         }
 
-        private void btnUploadPhoto_Click(object sender, EventArgs e)
+        private void UploadPhotoFromFile(object sender, EventArgs e)
         {
 
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
@@ -146,7 +177,7 @@ namespace Bank_Managment_System
 
                 openFileDialog.InitialDirectory = @"C:\My Projects - Apps\Bank_Managment_System\WindowsFormsApp2\Image\CustomersImage";
 
-               
+
                 // openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyPictures);
 
                 openFileDialog.RestoreDirectory = true; //
@@ -162,6 +193,14 @@ namespace Bank_Managment_System
 
                     _SelectedImagePath = openFileDialog.FileName;
 
+                    PictCustomerPhoto.Tag = _SelectedImagePath;
+
+
+                    //if (_Client != null && _Client.PersonInfo != null)
+                    //{
+                    //    _Client.PersonInfo.ImagePath = _SelectedImagePath;
+                    //}
+
                     if (PictCustomerPhoto.Image != null)
                     {
                         PictCustomerPhoto.Image.Dispose();
@@ -174,7 +213,6 @@ namespace Bank_Managment_System
                     }
                 }
             }
-
 
         }
 
@@ -291,11 +329,6 @@ namespace Bank_Managment_System
             isValid &= _ValidateControl(txtInitialDepositBalance, "Please enter an initial deposit amount greater than zero");
 
             return isValid;
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void txtPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
@@ -431,78 +464,227 @@ namespace Bank_Managment_System
             }
         }
 
-        private void AddNewCustomer()
+        private void _SaveCustomer()
         {
-            
-            ClsClient client = new ClsClient();
-            client.PersonInfo = new ClsPerson();
 
-            
-            client.PersonInfo.FirstName = txtFirstName.Text.Trim();
-            client.PersonInfo.LastName = txtLastName.Text.Trim();
-            client.PersonInfo.NationalID = txtNationalID.Text.Trim();
-            client.PersonInfo.DateOFBirth = txtDateOfBirth.Value;
-            client.PersonInfo.Phone = txtPhoneNumber.Text.Trim();
-            client.PersonInfo.Email = txtEmailAddress.Text.Trim();
-            client.PersonInfo.Gender = Gender_Male.Checked ? ClsPerson.enGender.Male : ClsPerson.enGender.Female;
-            client.PersonInfo.CityID = Convert.ToInt32(CbCities.SelectedValue ?? -1);
+            if (_Mode == enMode.AddNew)
+            {
+                _Client.PersonInfo = new ClsPerson();
+            }
+
+          
+
+            if (PictCustomerPhoto.Tag != null)
+            {
+                _Client.PersonInfo.ImagePath = PictCustomerPhoto.Tag.ToString();
+            }
+            else
+            {
+                _Client.PersonInfo.ImagePath = "";
+            }
+            _Client.PersonInfo.FirstName = txtFirstName.Text.Trim();
+            _Client.PersonInfo.LastName = txtLastName.Text.Trim();
+            _Client.PersonInfo.NationalID = txtNationalID.Text.Trim();
+            _Client.PersonInfo.DateOFBirth = txtDateOfBirth.Value;
+            _Client.PersonInfo.Phone = txtPhoneNumber.Text.Trim();
+            _Client.PersonInfo.Email = txtEmailAddress.Text.Trim();
+            _Client.PersonInfo.Gender = Gender_Male.Checked ? ClsPerson.enGender.Male : ClsPerson.enGender.Female;
+            _Client.PersonInfo.CityID = Convert.ToInt32(CbCities.SelectedValue ?? -1);
 
            
-            client.ClientType = (byte)ClsClient.enClientType.Standard;
-            client.Status = (byte)(Check_ActiveAccount.Checked ? 1 : 0);
+            _Client.ClientType = (byte)ClsClient.enClientType.Standard;
+            _Client.Status = (byte)(Check_ActiveAccount.Checked ? 1 : 0);
 
-            
-            if (client.Save())
+
+            if (_Client.Save())
             {
-               
-                ClsAccount account = new ClsAccount();
-                account.ClientID = client.ClientID;
 
 
-                account.AccountNumber = "ACC-" + DateTime.Now.Ticks.ToString().Substring(10);
-                account.IBAN = "YE93BANK" + DateTime.Now.Ticks.ToString().Substring(8);
-                account.AccountTypeID = Convert.ToInt32(CbAccountType.SelectedValue ?? 1);
-                account.BranchID = Convert.ToInt32(CbBranches.SelectedValue ?? 1);
-                account.CurrencyID = 1; // USD default
-                account.Balance = Convert.ToDecimal(txtInitialDepositBalance.Text.Trim());
-                account.Status = 1;
-
-                if (account.Save())
+                if (_Mode == enMode.AddNew)
                 {
 
-                    btnCopyAccountNumber.Text = $"CUST-2026-{client.ClientID:D5}";
+                    ClsAccount account = new ClsAccount();
+                    account.ClientID = _Client.ClientID;
 
-                    MessageBox.Show($"Customer and Bank Account created successfully!\n\n" +
-                                    $"Client ID: {client.ClientID}\n" +
-                                    $"Account ID: {account.AccountID}",
-                                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    account.AccountNumber = "ACC-" + DateTime.Now.Ticks.ToString().Substring(10);
+                    account.IBAN = "YE93BANK" + DateTime.Now.Ticks.ToString().Substring(8);
+                    account.AccountTypeID = Convert.ToInt32(CbAccountType.SelectedValue ?? 1);
+                    account.BranchID = Convert.ToInt32(CbBranches.SelectedValue ?? 1);
+                    account.CurrencyID = 1; // USD default
+                    account.Balance = Convert.ToDecimal(txtInitialDepositBalance.Text.Trim());
+                    account.Status = 1;
+
+                    if (account.Save())
+                    {
+
+
+
+
+
+                        MessageBox.Show($"Customer and Bank Account created successfully!\n\n" +
+                                        $"Client ID: {_Client.ClientID}\n" +
+                                        $"Account ID: {account.AccountID}",
+                                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Customer saved, but failed to create Bank Account:\n{account.ErrorMessage}",
+                                        "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                    _Mode = enMode.Update;
+                    _ClientID = _Client.ClientID;
+
                 }
                 else
                 {
-                    MessageBox.Show($"Customer saved, but failed to create Bank Account:\n{account.ErrorMessage}",
-                                    "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Customer updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show($"Failed to save customer data:\n{client.ErrorMessage}",
+                MessageBox.Show($"Failed to save customer data:\n{_Client.ErrorMessage}",
                                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            
         }
 
+        private void _LoadData()
+
+        {
+
+            string ErrorMessage = string.Empty;
+            if(_Mode == enMode.AddNew)
+            {
+                _Client = new ClsClient();
+                _ResetDefaultValues();
+                return;
+            }
+
+            _Client = ClsClient.Find(_ClientID, ref ErrorMessage);
+
+            if (_Client == null)
+            {
+                MessageBox.Show("This client was not found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            txtFirstName.Text = _Client.PersonInfo.FirstName;
+            txtSecondName.Text = ""; // _Client.PersonInfo.SecondName;
+            txtLastName.Text = _Client.PersonInfo.LastName;
+            txtNationalID.Text = _Client.PersonInfo.NationalID;
+            txtEmailAddress.Text = _Client.PersonInfo.Email;
+            txtPhoneNumber.Text = _Client.PersonInfo.Phone;
+        //    txtDateOfBirth.Value = _Client.PersonInfo.DateOFBirth;
+
+            if (_Client.PersonInfo.Gender == 0) Gender_Female.Checked = true;
+            else Gender_Male.Checked = true;
+
+            if (_Client.Status == 0) Check_InActiveAccount.Checked = true;
+            else Check_ActiveAccount.Checked = true;
+
+            int CountryID = ClsCountry.GetCountryIdByCityID(_Client.PersonInfo.CityID, ref ErrorMessage);
+            int BranchID = ClsBranch.GetBranchIDByCityID(_Client.PersonInfo.CityID,ref ErrorMessage);
+
+            CbCountries.SelectedValue = CountryID;
+            CbCities.SelectedValue = _Client.PersonInfo.CityID;
+            CbBranches.SelectedValue = BranchID;
+
+            if (!string.IsNullOrEmpty(_Client.PersonInfo.ImagePath) && System.IO.File.Exists(_Client.PersonInfo.ImagePath))
+            {
+                PictCustomerPhoto.ImageLocation = _Client.PersonInfo.ImagePath;
+            }
+
+            else
+            {
+                PictCustomerPhoto.Image = _Client.PersonInfo.Gender == 0 ? Properties.Resources.DefaultMaleAvatar : Properties.Resources.DefaultFemaleAvatar;
+            }
+
+          
+            btnCopyAccountNumber.Text = $"CUST-2026-{_Client.ClientID:D5}";
+        }
+
+        private void _ResetDefaultValues()
+        {
+            
+            txtFirstName.Clear();
+            txtSecondName.Clear();
+            txtLastName.Clear();
+            txtNationalID.Clear();
+            txtEmailAddress.Clear();
+            txtPhoneNumber.Clear();
+         
+
+          
+            txtDateOfBirth.Value = DateTime.Now;
+            Gender_Male.Checked = false;            
+            Gender_Female.Checked = false;
+            Check_ActiveAccount.Checked = false;
+            Check_InActiveAccount.Checked = false;
+
+
+
+
+            if (CbCountries.Items.Count > 0) CbCountries.SelectedIndex = 0;
+            if (CbCities.Items.Count > 0) CbCities.SelectedIndex = 0;
+            if (CbBranches.Items.Count > 0) CbBranches.SelectedIndex = 0;
+            if (CbAccountType.Items.Count > 0) CbAccountType.SelectedIndex = 0;
+
+            PictCustomerPhoto.Image = Properties.Resources.DefaultImage;
+            PictCustomerPhoto.Tag = null;
+            _SelectedImagePath = string.Empty;
+
+           
+            _Client = new ClsClient();
+            btnCopyAccountNumber.Text = $"CUST-2026-{ClsClient.GetNextClientID(""):D4}";
+        }
+        
         private void btnSaveClient_Click(object sender, EventArgs e)
         {
             if (_ValidateForm())
             {
-                AddNewCustomer();
+
+                string title = _Mode == enMode.AddNew ? "Are you sure you want to create this client?" : "Are you sure you want to update this client?";
+
+                if (MessageBox.Show(title, "Confirm Action", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    _SaveCustomer();
+                }
+
             }
         }
 
-        private void txtNationalID_TextChanged(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
+
+            if (MessageBox.Show("Are you sure you want to cancel? Any unsaved data will be lost.",
+                        "Confirm Cancel",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                
+                _ResetDefaultValues();
+
+               
+                //this.Parent?.Controls.Remove(this);
+            }
 
         }
 
-    
+        protected override CreateParams CreateParams
+
+
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000; // WS_EX_COMPOSITED
+                return cp;
+            }
+        }
+
     }
+
 }
+

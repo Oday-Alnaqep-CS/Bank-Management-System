@@ -249,6 +249,39 @@ namespace BranchDataAccess.EntitiesData
             return dt;
         }
 
+        public static int GetBranchIDByCityID(int CityID, ref string ErrorMessage)
+        {
+            int branchID = -1; 
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+                
+                string query = @"SELECT BranchID FROM Branches WHERE CityID = @CityID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@CityID", CityID);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar(); 
+
+                        if (result != null && int.TryParse(result.ToString(), out int parsedBranchID))
+                        {
+                            branchID = parsedBranchID;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorMessage = ex.Message;
+                    }
+                }
+            }
+
+            return branchID;
+        }
+
         public static bool IsBranchExist(int branchID, ref string ErrorMessage)
 
 

@@ -33,6 +33,7 @@ namespace Bank_Managment_System
         ClsBankingNotification notification = new ClsBankingNotification();
         public static ClsUser CurrentUser = new ClsUser();
 
+        ClsClient _Client = new ClsClient();
         UC_AddCustomer _AddCustomer = new UC_AddCustomer();
 
         public FrmMain()
@@ -43,26 +44,30 @@ namespace Bank_Managment_System
                   ControlStyles.AllPaintingInWmPaint |
                   ControlStyles.UserPaint, true);
             this.UpdateStyles();
+            this.DoubleBuffered = true;
 
-            
+
 
 
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-           
+            string errorMessage = null;
+
+          //  int NoteCount = ClsNotification.GetNotificationCount(ClsGlobal.CurrentUser.UserID, ref errorMessage);
+            int NoteCount = ClsNotification.GetNotificationCount(1, ref errorMessage);
             string JobTitle = ClsGlobal.CurrentUser.JobTitle;
             string UserName = ClsGlobal.CurrentUser.UserName;
-             //this.DoubleBuffered = true;
+             this.DoubleBuffered = true;
 
             Design();
             _ucDashboard = new UC_Dashboard();
             lblUserInfo.Text = $"{UserName} ({JobTitle})";
-
+            lblNotificationCountf.Text = NoteCount.ToString();
             RenderDatabaseStatus();
             GetBranchName();
-            LoadView(_AddCustomer);
+            LoadView(_ucDashboard);
             SetupSidebarButtons();
 
 

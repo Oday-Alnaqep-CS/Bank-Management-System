@@ -101,5 +101,12 @@ namespace BankSystemBuisniseLayer
         {
             return ClsNotificationData.GetNotificationsByClientID(clientID, ref errorMessage);
         }
+
+        public static int GetNotificationCount(int ClirntID , ref string ErrorMessage)
+
+        {
+
+            return ClsNotificationData.GetUnreadNotificationsCount(ClirntID, ref ErrorMessage);
+        }
     }
 }

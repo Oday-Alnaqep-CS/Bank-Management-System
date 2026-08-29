@@ -12,5 +12,10 @@ namespace BankSystemBuisniseLayer
         {
             return ClsCountryDataAccess.GetCountries(ref ErrorMessage);
         }
+        public static int GetCountryIdByCityID(int CityID ,ref string ErrorMessage)
+        {
+            return ClsCountryDataAccess.GetCountryIDByCityID(CityID,ref ErrorMessage);
+        }
+
     }
 }

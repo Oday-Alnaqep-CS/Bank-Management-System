@@ -15,17 +15,19 @@ namespace Bank_Managment_System
 {
     public partial class UC_CustomersManage : UserControl
     {
-        
+
+        ClsClient _Client = new ClsClient();
         public UC_CustomersManage()
         {
             InitializeComponent();
+          
         }
 
         private void US_CustomersManage_Load(object sender, EventArgs e)
         {
-
+            
             Icones_Setting();
-            LoadSupData();
+            LoadSupData(); 
             ApplyCleanGridViewStyle();
             ViewAllcustomers();
 
@@ -65,24 +67,21 @@ namespace Bank_Managment_System
 
         {
 
-
-            DataGridViewAllCustomers.EnableHeadersVisualStyles = false;
-
             DataGridViewAllCustomers.EnableHeadersVisualStyles = false;
             DataGridViewAllCustomers.BackgroundColor = Color.FromArgb(15, 23, 42);
             DataGridViewAllCustomers.BorderStyle = BorderStyle.None;
             DataGridViewAllCustomers.CellBorderStyle = DataGridViewCellBorderStyle.Single;
             DataGridViewAllCustomers.GridColor = Color.FromArgb(30, 40, 60);
+             
 
             DataGridViewAllCustomers.ColumnHeadersHeight = 40;
             DataGridViewAllCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             DataGridViewAllCustomers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 30, 50);
             DataGridViewAllCustomers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             DataGridViewAllCustomers.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.5F, System.Drawing.FontStyle.Bold);
-            // DataGridViewAllClients.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             DataGridViewAllCustomers.ColumnHeadersDefaultCellStyle.Padding = new Padding(12, 0, 12, 0);
 
-
+            
             DataGridViewAllCustomers.RowTemplate.Height = 70;
             DataGridViewAllCustomers.DefaultCellStyle.BackColor = Color.FromArgb(15, 23, 42);
             DataGridViewAllCustomers.DefaultCellStyle.ForeColor = Color.White;
@@ -91,13 +90,22 @@ namespace Bank_Managment_System
             DataGridViewAllCustomers.DefaultCellStyle.Font = new Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular);
             DataGridViewAllCustomers.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
 
+            // Change size of Image 
+            DataGridViewAllCustomers.RowsDefaultCellStyle.Padding = new Padding(3, 3, 3, 3);
 
-            DataGridViewAllCustomers.RowsDefaultCellStyle.Padding = new Padding(8, 8, 8, 8);
+           
             DataGridViewAllCustomers.RowHeadersVisible = false;
             DataGridViewAllCustomers.AllowUserToResizeRows = false;
             DataGridViewAllCustomers.AllowUserToResizeColumns = true;
             DataGridViewAllCustomers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             DataGridViewAllCustomers.ScrollBars = ScrollBars.Both;
+
+           
+            if (DataGridViewAllCustomers.Columns["Profile"] is DataGridViewImageColumn imgCol)
+            {
+                imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
+                imgCol.Width = 90;
+            }
         }
 
         private void ApplyClientsFilter()
@@ -163,8 +171,8 @@ namespace Bank_Managment_System
 
             lblTotalCustomers.Text = ClsGetTotalClients.GetTotalClients(out ErrorMessage).ToString();
             lblNewcustomers.Text = ClsTotalNewCustomerBu.GetTotalNewCustomer(ref ErrorMessage).ToString();
-            lblInActiveCustomer.Text = ClsGetStatuOfCustomers.GetCountOfInActiveAccounts(out ErrorMessage).ToString();
-            lblActiveCustomer.Text = ClsGetStatuOfCustomers.GetCountOfActiveAccounts(out ErrorMessage).ToString();
+            lblInActiveCustomer.Text = ClsGetStatuOfCustomers.GetCountOfInActiveCustomer(out ErrorMessage).ToString();
+            lblActiveCustomer.Text = ClsGetStatuOfCustomers.GetCountOfActiveCustomer(out ErrorMessage).ToString();
             lblTotalBalance.Text = $"$ {ClsGetTotalBalances.GetTotalBalance(out ErrorMessage).ToString("N0")}";       
 
         }
@@ -214,6 +222,145 @@ namespace Bank_Managment_System
             ((FrmMain)this.FindForm()).LoadUserControl(new UC_AddCustomer());
         }
 
+        private void EditCustomer1_Click(object sender, EventArgs e)
+        {
+            if (DataGridViewAllCustomers.CurrentRow != null)
+
+            {
+                int ClientID = Convert.ToInt32(DataGridViewAllCustomers.CurrentRow.Cells["Client ID"].Value);
+                ((FrmMain)this.FindForm()).LoadUserControl(new UC_AddCustomer(ClientID));
+
+            }
+        }
+
+        private void DeleteCustomer1_Click(object sender, EventArgs e)
+        {
+
+            int ClientID = Convert.ToInt32(DataGridViewAllCustomers.CurrentRow.Cells["Client ID"].Value);
+
+
+            if (ClsGlobal.CurrentUser.UserName != "Oday Al-Naqeeb")
+            {
+
+                MessageBox.Show(
+                                         "╔══════════════════════════════════════════════╗\n" +
+                                         "║              ⚠️  ACCESS DENIED  ⚠️                            ║\n"+
+                                         "╠══════════════════════════════════════════════╣\n" +
+                                         "║                                                                                ║\n" +
+                                         "║  You do not have permission to delete this              ║\n" + " "+
+                                      "║  customer.                                                               ║\n" +
+                                         "║                                                                                ║\n" +
+                                        $"║   👤 Client ID: [ {ClientID} ]                                                   ║\n" +
+                                         "║                                                                                ║\n" +
+                                         "║  🔒 Only authorized administrators can                   ║\n" +
+                                         "║     perform this action.                                             ║\n" +
+                                         "║                                                                                ║\n" +
+                                         "║  ⚠️ Deleting a customer is a high-risk                     ║\n" +
+                                         "║     operation.                                                            ║\n" +
+                                         "║                                                                                ║\n" +
+                                         "╚══════════════════════════════════════════════╝",
+                                         "Access Denied",
+                                         MessageBoxButtons.OK,
+                                         MessageBoxIcon.Error
+                                      );
+                return;
+            }
+            if (DataGridViewAllCustomers.CurrentRow != null)
+
+            {
+
+                string ErrorMessage = string.Empty;
+
+                _Client = ClsClient.Find(ClientID, ref ErrorMessage);
+
+                if (_Client != null)
+                {
+                    int PersonID = _Client.PersonInfo.PersonID;
+
+                    if (MessageBox.Show(
+                                           $"Are you sure you want to permanently delete Client ID [ {ClientID} ]?\n\n" +
+                                           "⚠️ WARNING: This action is irreversible and will delete:\n" +
+                                           " 🔹 Client Profile & Personal Data\n" +
+                                           " 🔹 All Linked Bank Accounts (Savings, Checking, etc.)\n" +
+                                           " 🔹 All Transaction History & Records\n" +
+                                           " 🔹 Associated Cards and System Logs",
+                                           "Confirm Permanent Delete",
+                                           MessageBoxButtons.YesNo,
+                                           MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+
+
+
+                        if (ClsClient.ForceDeleteClient(ClientID, PersonID, ref ErrorMessage))
+                        {
+                            MessageBox.Show("Client deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ViewAllcustomers();
+                        }
+                        else
+                        {
+
+                            MessageBox.Show($"Failed to delete client:\n{ErrorMessage}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+
+                    }
+                }
+                else
+
+                {
+                    MessageBox.Show("Could not find client details.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+            }
+        }
+
+        private void _RefreshClientsList()
+
+        {
+            ViewAllcustomers();
+            LoadSupData();
+        }
+
+        private void _ChangeClientStatus(byte status, string actionName)
+
+        {
+            string ErrorMessage = string.Empty;
+
+            if (DataGridViewAllCustomers.CurrentRow != null)
+
+            {
+
+                int clientID = Convert.ToInt32(DataGridViewAllCustomers.CurrentRow.Cells["Client ID"].Value);
+
+                _Client = ClsClient.Find(clientID, ref ErrorMessage);
+
+                if (_Client != null)
+                {
+                   
+                    if (_Client.UpdateStatusOnly(status))
+                    {
+                        MessageBox.Show($"Client account has been {actionName} successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _RefreshClientsList();
+                        DataGridViewAllCustomers.Refresh();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Failed to update client status:\n{_Client.ErrorMessage}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void DeactiveCustomer_Click(object sender, EventArgs e)
+        {
+            _ChangeClientStatus(0, "Deactivated");
+
+        }
+
+        private void beActiveCustomer_Click(object sender, EventArgs e)
+        {
+            _ChangeClientStatus(1, "Activated");
+        }
 
         private void DataGridViewAllCustomers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -223,7 +370,7 @@ namespace Bank_Managment_System
 
             string columnName = DataGridViewAllCustomers.Columns[e.ColumnIndex].Name;
 
-           
+
             if (columnName == "Status")
             {
                 string status = e.Value?.ToString();
@@ -238,12 +385,12 @@ namespace Bank_Managment_System
 
                     case "Inactive":
                     case "0":
-                        e.CellStyle.ForeColor = Color.Red;  
+                        e.CellStyle.ForeColor = Color.Red;
                         e.CellStyle.Font = new Font(DataGridViewAllCustomers.Font, FontStyle.Bold);
                         break;
                 }
             }
-            
+
             else if (columnName == "Account Type" || columnName == "Account Type(s)")
             {
 
@@ -255,28 +402,28 @@ namespace Bank_Managment_System
                 {
 
                     case "Savings":
-                        e.CellStyle.ForeColor = Color.FromArgb(56, 189, 248);  
+                        e.CellStyle.ForeColor = Color.FromArgb(56, 189, 248);
                         break;
 
                     case "Checking":
-                        e.CellStyle.ForeColor = Color.FromArgb(251, 146, 60);  
+                        e.CellStyle.ForeColor = Color.FromArgb(251, 146, 60);
                         break;
 
                     case "Corporate":
-                        e.CellStyle.ForeColor = Color.FromArgb(250, 204, 21);  
+                        e.CellStyle.ForeColor = Color.FromArgb(250, 204, 21);
                         e.CellStyle.Font = new Font(DataGridViewAllCustomers.Font, FontStyle.Bold);
                         break;
 
                     case "Payroll":
-                        e.CellStyle.ForeColor = Color.FromArgb(168, 85, 247);  
+                        e.CellStyle.ForeColor = Color.FromArgb(168, 85, 247);
                         break;
 
                     case "Weekly":
-                        e.CellStyle.ForeColor = Color.FromArgb(45, 212, 191);  
+                        e.CellStyle.ForeColor = Color.FromArgb(45, 212, 191);
                         break;
 
                     case "No Accounts":
-                        e.CellStyle.ForeColor = Color.Red;  
+                        e.CellStyle.ForeColor = Color.Red;
                         break;
 
                 }
@@ -286,22 +433,57 @@ namespace Bank_Managment_System
             {
                 if (decimal.TryParse(e.Value?.ToString(), out decimal balance))
                 {
-                    e.Value = balance.ToString("N2") + " $"; 
+                    e.Value = balance.ToString("N2") + " $";
                     e.FormattingApplied = true;
 
                     if (balance >= 100000)
                     {
-                        e.CellStyle.ForeColor = Color.FromArgb(45, 212, 191);  
+                        e.CellStyle.ForeColor = Color.FromArgb(45, 212, 191);
                         e.CellStyle.Font = new Font(DataGridViewAllCustomers.Font, FontStyle.Bold);
                     }
                 }
             }
+
+            if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+
+           
+            DataGridViewColumn column = DataGridViewAllCustomers.Columns[e.ColumnIndex];
+
+          
+            if (column.HeaderText == "Status")
+            {
+                string statusValue = e.Value?.ToString();
+
+                if (statusValue == "Inactive" || statusValue == "0" || statusValue == "Deactive")
+                {
+                    
+                    DataGridViewRow row = DataGridViewAllCustomers.Rows[e.RowIndex];
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        cell.Style.BackColor = Color.FromArgb(32, 36, 48);
+                    }
+                }
+            }
+
+
         }
 
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            LoadSupData();
+            //ViewAllcustomers();
+        }
 
+        private void DataGridViewAllCustomers_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+            {
+                DataGridViewAllCustomers.ClearSelection();
+                DataGridViewAllCustomers.Rows[e.RowIndex].Selected = true;
+                DataGridViewAllCustomers.CurrentCell = DataGridViewAllCustomers.Rows[e.RowIndex].Cells[e.ColumnIndex];
+            }
 
-
-
+        }
 
         protected override CreateParams CreateParams
 
@@ -315,14 +497,7 @@ namespace Bank_Managment_System
             }
         }
 
-        private void guna2Panel4K_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+  
+        
     }
 }

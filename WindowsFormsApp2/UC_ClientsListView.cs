@@ -26,7 +26,6 @@ namespace Bank_Managment_System
             Condition = ConditionType;
         }
 
-
         private void US_ViewAllClients_Load(object sender, EventArgs e)
         {
 
@@ -181,7 +180,7 @@ namespace Bank_Managment_System
             DataGridViewAllClients.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
 
 
-            DataGridViewAllClients.RowsDefaultCellStyle.Padding = new Padding(8, 8, 8, 8);
+            DataGridViewAllClients.RowsDefaultCellStyle.Padding = new Padding(3, 3,3 , 3);
             DataGridViewAllClients.RowHeadersVisible = false;
             DataGridViewAllClients.AllowUserToResizeRows = false;
             DataGridViewAllClients.AllowUserToResizeColumns = true;
@@ -243,7 +242,6 @@ namespace Bank_Managment_System
             ApplyClientsFilter();
         }
 
-
         private void ApplyClientsFilter()
         {
             if (DataGridViewAllClients.DataSource is DataTable dt)
@@ -298,7 +296,6 @@ namespace Bank_Managment_System
                 dt.DefaultView.RowFilter = filter;
             }
         }
-
 
         protected override CreateParams CreateParams
 

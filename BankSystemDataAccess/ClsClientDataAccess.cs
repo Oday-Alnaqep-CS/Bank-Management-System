@@ -199,6 +199,38 @@ namespace BankSystemDataAccess.EntitiesData
 
         }
 
+        public static bool UpdateClientStatus(int clientID, byte status, ref string errorMessage)
+
+        {
+            int rowsAffected = 0;
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+                string query = @"UPDATE Clients 
+                         SET Status = @Status 
+                         WHERE ClientID = @ClientID;";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ClientID", clientID);
+                    command.Parameters.AddWithValue("@Status", status);
+
+                    try
+                    {
+                        connection.Open();
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        errorMessage = ex.Message;
+                        return false;
+                    }
+                }
+            }
+
+            return rowsAffected > 0;
+        }
+
         public static bool DeleteClient(int clientID, ref string errorMessage)
 
 
@@ -431,7 +463,8 @@ namespace BankSystemDataAccess.EntitiesData
 
                                       ISNULL(SUM(Accounts.Balance), 0.00) AS [Total Balance (USD)],
                                       Clients.CreatedDate AS [Date Registered],
-                                      ISNULL(MIN(AccountTypes.TypeName), 'No Accounts') AS [Account Type(s)]
+                                      ISNULL(MIN(AccountTypes.TypeName), 'No Accounts') AS [Account Type(s)],
+                                      Clients.ClientID AS [Client ID]
 
                                   FROM Clients
                                   INNER JOIN Persons P ON Clients.PersonID = P.PersonID
@@ -480,6 +513,36 @@ namespace BankSystemDataAccess.EntitiesData
             }
 
             return dt;
+        }
+
+        public static int GetNextClientID(ref string ErrorMessage)
+        {
+            int nextID = 1; 
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+               
+                string query = "SELECT ISNULL(IDENT_CURRENT('Clients'), 0) + 1;";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+                        if (result != null && int.TryParse(result.ToString(), out int parsedID))
+                        {
+                            nextID = parsedID;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorMessage = ex.Message;
+                    }
+                }
+            }
+
+            return nextID;
         }
 
         public static bool IsClientExist(int clientID, ref string errorMessage)
@@ -542,7 +605,34 @@ namespace BankSystemDataAccess.EntitiesData
             return isFound;
         }
 
+        public static bool ForceDeleteClient(int clientID, int personID, ref string errorMessage)
+        {
+            bool isDeleted = false;
 
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand("SP_ForceDeleteClient", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@ClientID", clientID);
+                    command.Parameters.AddWithValue("@PersonID", personID);
+
+                    try
+                    {
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        isDeleted = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        errorMessage = ex.Message;
+                        isDeleted = false;
+                    }
+                }
+            }
+
+            return isDeleted;
+        }
 
 
 

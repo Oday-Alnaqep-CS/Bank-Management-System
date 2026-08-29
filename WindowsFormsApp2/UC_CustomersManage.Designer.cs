@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.guna2Panel4K = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnAddNewCustoer = new Guna.UI2.WinForms.Guna2Button();
@@ -67,6 +68,18 @@
             this.lblTotalCustomers = new System.Windows.Forms.Label();
             this.cardTotalClientsicon = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer = new System.Windows.Forms.Timer(this.components);
+            this.MenuStrip = new Guna.UI2.WinForms.Guna2ContextMenuStrip();
+            this.EditCustomer1 = new Krypton.Toolkit.KryptonToolStripMenuItem();
+            this.DeleteCustomer1 = new Krypton.Toolkit.KryptonToolStripMenuItem();
+            this.EditCustomer = new System.Windows.Forms.ToolStripMenuItem();
+            this.cToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.DeleteCustomer = new Krypton.Toolkit.KryptonToolStripMenuItem();
+            this.kryptonToolStripMenuItem1 = new Krypton.Toolkit.KryptonToolStripMenuItem();
+            this.DeactiveCustomer = new Krypton.Toolkit.KryptonToolStripMenuItem();
+            this.beActiveCustomer = new Krypton.Toolkit.KryptonToolStripMenuItem();
             this.guna2Panel4K.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewAllCustomers)).BeginInit();
@@ -81,6 +94,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ActiveAccountIcone)).BeginInit();
             this.cardTotalClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TotalCustomersIcon)).BeginInit();
+            this.MenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // guna2Panel4K
@@ -102,7 +116,6 @@
             this.guna2Panel4K.ShadowDecoration.Color = System.Drawing.Color.White;
             this.guna2Panel4K.Size = new System.Drawing.Size(1338, 734);
             this.guna2Panel4K.TabIndex = 6;
-            this.guna2Panel4K.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel4K_Paint);
             // 
             // guna2Panel2
             // 
@@ -124,6 +137,7 @@
             this.btnAddNewCustoer.BorderColor = System.Drawing.Color.Navy;
             this.btnAddNewCustoer.BorderRadius = 20;
             this.btnAddNewCustoer.BorderThickness = 2;
+            this.btnAddNewCustoer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddNewCustoer.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAddNewCustoer.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnAddNewCustoer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -144,6 +158,8 @@
             // DataGridViewAllCustomers
             // 
             this.DataGridViewAllCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridViewAllCustomers.ContextMenuStrip = this.MenuStrip;
+            this.DataGridViewAllCustomers.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DataGridViewAllCustomers.Location = new System.Drawing.Point(-1, 61);
             this.DataGridViewAllCustomers.Name = "DataGridViewAllCustomers";
             this.DataGridViewAllCustomers.RowHeadersWidth = 51;
@@ -151,6 +167,7 @@
             this.DataGridViewAllCustomers.Size = new System.Drawing.Size(1338, 450);
             this.DataGridViewAllCustomers.TabIndex = 10;
             this.DataGridViewAllCustomers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewAllCustomers_CellFormatting);
+            this.DataGridViewAllCustomers.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewAllCustomers_CellMouseDown);
             // 
             // iconPictureBox1
             // 
@@ -198,7 +215,7 @@
             // 
             this.txtSearch.BackColor = System.Drawing.Color.Transparent;
             this.txtSearch.BorderRadius = 15;
-            this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -220,7 +237,6 @@
             this.txtSearch.Size = new System.Drawing.Size(380, 46);
             this.txtSearch.TabIndex = 4;
             this.txtSearch.TextOffset = new System.Drawing.Point(0, -3);
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // guna2Panel1
             // 
@@ -661,6 +677,110 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Total Customers";
             // 
+            // timer
+            // 
+            this.timer.Enabled = true;
+            this.timer.Interval = 1000;
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // MenuStrip
+            // 
+            this.MenuStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.MenuStrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.MenuStrip.ImageScalingSize = new System.Drawing.Size(35, 35);
+            this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditCustomer1,
+            this.DeleteCustomer1,
+            this.DeactiveCustomer,
+            this.beActiveCustomer});
+            this.MenuStrip.Name = "tMenuStrip1";
+            this.MenuStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.MenuStrip.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.MenuStrip.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.MenuStrip.RenderStyle.ColorTable = null;
+            this.MenuStrip.RenderStyle.RoundedEdges = true;
+            this.MenuStrip.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.MenuStrip.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.MenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.MenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.MenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.MenuStrip.Size = new System.Drawing.Size(232, 212);
+            // 
+            // EditCustomer1
+            // 
+            this.EditCustomer1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditCustomer1.ForeColor = System.Drawing.Color.White;
+            this.EditCustomer1.Image = global::Bank_Managment_System.Properties.Resources.EditImage;
+            this.EditCustomer1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.EditCustomer1.Name = "EditCustomer1";
+            this.EditCustomer1.Size = new System.Drawing.Size(231, 42);
+            this.EditCustomer1.Text = "Edit Customer";
+            this.EditCustomer1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.EditCustomer1.Click += new System.EventHandler(this.EditCustomer1_Click);
+            // 
+            // DeleteCustomer1
+            // 
+            this.DeleteCustomer1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.DeleteCustomer1.ForeColor = System.Drawing.Color.White;
+            this.DeleteCustomer1.Image = global::Bank_Managment_System.Properties.Resources.DeleteImage;
+            this.DeleteCustomer1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.DeleteCustomer1.Name = "DeleteCustomer1";
+            this.DeleteCustomer1.Size = new System.Drawing.Size(231, 42);
+            this.DeleteCustomer1.Text = "Delete Customer";
+            this.DeleteCustomer1.Click += new System.EventHandler(this.DeleteCustomer1_Click);
+            // 
+            // EditCustomer
+            // 
+            this.EditCustomer.AccessibleRole = System.Windows.Forms.AccessibleRole.ComboBox;
+            this.EditCustomer.Name = "EditCustomer";
+            this.EditCustomer.Size = new System.Drawing.Size(210, 22);
+            this.EditCustomer.Text = "Edit Customer";
+            // 
+            // cToolStripMenuItem
+            // 
+            this.cToolStripMenuItem.Name = "cToolStripMenuItem";
+            this.cToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.cToolStripMenuItem.Text = "c";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(210, 22);
+            // 
+            // DeleteCustomer
+            // 
+            this.DeleteCustomer.Name = "DeleteCustomer";
+            this.DeleteCustomer.Size = new System.Drawing.Size(249, 22);
+            this.DeleteCustomer.Text = "Delete Customer";
+            // 
+            // kryptonToolStripMenuItem1
+            // 
+            this.kryptonToolStripMenuItem1.Name = "kryptonToolStripMenuItem1";
+            this.kryptonToolStripMenuItem1.Size = new System.Drawing.Size(249, 22);
+            this.kryptonToolStripMenuItem1.Text = "kryptonToolStripMenuItem1";
+            // 
+            // DeactiveCustomer
+            // 
+            this.DeactiveCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.DeactiveCustomer.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.DeactiveCustomer.Image = global::Bank_Managment_System.Properties.Resources.DeactiveImage;
+            this.DeactiveCustomer.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.DeactiveCustomer.Name = "DeactiveCustomer";
+            this.DeactiveCustomer.Size = new System.Drawing.Size(231, 42);
+            this.DeactiveCustomer.Text = "Deactive";
+            this.DeactiveCustomer.Click += new System.EventHandler(this.DeactiveCustomer_Click);
+            // 
+            // beActiveCustomer
+            // 
+            this.beActiveCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.beActiveCustomer.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.beActiveCustomer.Image = global::Bank_Managment_System.Properties.Resources.ActiveImage;
+            this.beActiveCustomer.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.beActiveCustomer.Name = "beActiveCustomer";
+            this.beActiveCustomer.Size = new System.Drawing.Size(231, 42);
+            this.beActiveCustomer.Text = "Activation";
+            this.beActiveCustomer.Click += new System.EventHandler(this.beActiveCustomer_Click);
+            // 
             // UC_CustomersManage
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -689,6 +809,7 @@
             this.cardTotalClients.ResumeLayout(false);
             this.cardTotalClients.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TotalCustomersIcon)).EndInit();
+            this.MenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -734,5 +855,17 @@
         private FontAwesome.Sharp.IconPictureBox iconPictureBox1;
         private Guna.UI2.WinForms.Guna2ComboBox cmbFilterMain;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip MenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem EditCustomer;
+        private System.Windows.Forms.ToolStripMenuItem cToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private Krypton.Toolkit.KryptonToolStripMenuItem EditCustomer1;
+        private Krypton.Toolkit.KryptonToolStripMenuItem DeleteCustomer1;
+        private Krypton.Toolkit.KryptonToolStripMenuItem DeleteCustomer;
+        private Krypton.Toolkit.KryptonToolStripMenuItem kryptonToolStripMenuItem1;
+        private Krypton.Toolkit.KryptonToolStripMenuItem DeactiveCustomer;
+        private Krypton.Toolkit.KryptonToolStripMenuItem beActiveCustomer;
     }
 }

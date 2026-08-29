@@ -14,7 +14,7 @@ namespace Bank_Managment_System
     public static class ClsImageSetting
     {
 
-       
+
 
 
 
@@ -81,15 +81,16 @@ namespace Bank_Managment_System
 
                 Data.Columns.Add("ClientImage", typeof(Image));
 
-                string projectFolder = @"C:\My Projects - Apps\Bank_Managment_System\WindowsFormsApp2\Image";
+               // string projectFolder = @"C:\My Projects - Apps\Bank_Managment_System\WindowsFormsApp2\Image";
 
                 foreach (DataRow row in Data.Rows)
                 {
-                    string rawPath = row["Profile"] != DBNull.Value ? row["Profile"].ToString().Trim() : "";
-                    string fileName = System.IO.Path.GetFileName(rawPath);
-                    string fullPath = System.IO.Path.Combine(projectFolder, "CustomersImage", fileName);
+                    string fullPath = row["Profile"] != DBNull.Value ? row["Profile"].ToString().Trim() : "";
+                  
+                    //string fileName = System.IO.Path.GetFileName(rawPath);
+                    //string fullPath = System.IO.Path.Combine(projectFolder, "CustomersImage", fileName);
 
-                    if (!string.IsNullOrEmpty(fileName) && System.IO.File.Exists(fullPath))
+                    if (!string.IsNullOrEmpty(fullPath) && System.IO.File.Exists(fullPath))
                     {
                         try
                         {

@@ -110,6 +110,7 @@
             // DataGridViewAllClients
             // 
             this.DataGridViewAllClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridViewAllClients.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DataGridViewAllClients.Location = new System.Drawing.Point(0, 61);
             this.DataGridViewAllClients.Name = "DataGridViewAllClients";
             this.DataGridViewAllClients.RowHeadersWidth = 51;

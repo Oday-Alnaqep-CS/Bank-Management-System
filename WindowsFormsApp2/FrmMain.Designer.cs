@@ -471,6 +471,7 @@
             this.btnLogout.BorderColor = System.Drawing.Color.Maroon;
             this.btnLogout.BorderRadius = 15;
             this.btnLogout.BorderThickness = 2;
+            this.btnLogout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogout.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnLogout.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnLogout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
@@ -518,7 +519,7 @@
             // txtSearch
             // 
             this.txtSearch.BorderRadius = 15;
-            this.txtSearch.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.txtSearch.DefaultText = "";
             this.txtSearch.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtSearch.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -553,6 +554,7 @@
             // 
             this.btnNotification.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnNotification.BorderThickness = 1;
+            this.btnNotification.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNotification.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnNotification.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnNotification.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));

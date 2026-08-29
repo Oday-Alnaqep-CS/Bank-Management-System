@@ -43,5 +43,38 @@ namespace BankSystemDataAccess
             return dt;
 
         }
+
+        public static int GetCountryIDByCityID(int CityID, ref string ErrorMessage)
+        {
+            int CountryID = -1; 
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+                
+                string query = @"SELECT CountryID FROM Cities WHERE CityID = @CityID";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@CityID", CityID);
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar(); 
+
+                        if (result != null && int.TryParse(result.ToString(), out int parsedCountryID))
+                        {
+                            CountryID = parsedCountryID;
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorMessage = ex.Message;
+                    }
+                }
+            }
+
+            return CountryID;
+        }
     }
 }

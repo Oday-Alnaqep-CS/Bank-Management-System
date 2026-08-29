@@ -1,6 +1,7 @@
 using BankSystemDataAccess.EntitiesData;
 using System;
 using System.Data;
+using System.Windows.Media.Converters;
 
 namespace BankSystemBuisniseLayer
 {
@@ -99,6 +100,22 @@ namespace BankSystemBuisniseLayer
             return isUpdated;
         }
 
+        public bool UpdateStatusOnly(byte newStatus)
+
+        {
+            string errorMessage = "";
+            this.Status = newStatus;
+
+            bool isUpdated = ClsClientDataAccess.UpdateClientStatus(this.ClientID, this.Status, ref errorMessage);
+
+            if (!isUpdated)
+            {
+                this.ErrorMessage = errorMessage;
+            }
+
+            return isUpdated;
+        }
+
         public bool Save()
 
         {
@@ -180,6 +197,11 @@ namespace BankSystemBuisniseLayer
             return ClsClientDataAccess.DeleteClient(clientID, ref errorMessage);
         }
 
+        public static bool ForceDeleteClient(int ClientID,int PersonID,ref string errorMessage)
+        {
+            return ClsClientDataAccess.ForceDeleteClient(ClientID, PersonID, ref errorMessage);
+        }
+
         public static DataTable GetClientsList(ref string errorMessage)
         {
             return ClsClientDataAccess.GetAllClients(ref errorMessage);
@@ -198,6 +220,11 @@ namespace BankSystemBuisniseLayer
         public static bool IsClientExistByPersonID(int personID, ref string errorMessage)
         {
             return ClsClientDataAccess.IsClientExistByPersonID(personID, ref errorMessage);
+        }
+
+        public static int GetNextClientID(string errorMessage)
+        {
+            return ClsClientDataAccess.GetNextClientID(ref errorMessage);
         }
 
         public static string GetClientTypeName(byte clientType)

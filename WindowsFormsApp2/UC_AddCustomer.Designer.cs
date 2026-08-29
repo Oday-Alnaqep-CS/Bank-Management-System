@@ -285,6 +285,7 @@
             this.CbAccountType.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.CbAccountType.BorderRadius = 7;
             this.CbAccountType.BorderThickness = 0;
+            this.CbAccountType.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CbAccountType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.CbAccountType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbAccountType.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(28)))), ((int)(((byte)(53)))));
@@ -409,6 +410,7 @@
             this.CbBranches.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.CbBranches.BorderRadius = 7;
             this.CbBranches.BorderThickness = 0;
+            this.CbBranches.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CbBranches.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.CbBranches.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbBranches.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(28)))), ((int)(((byte)(53)))));
@@ -467,6 +469,7 @@
             this.CbCities.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.CbCities.BorderRadius = 7;
             this.CbCities.BorderThickness = 0;
+            this.CbCities.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CbCities.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.CbCities.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbCities.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(28)))), ((int)(((byte)(53)))));
@@ -526,6 +529,7 @@
             this.CbCountries.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.CbCountries.BorderRadius = 7;
             this.CbCountries.BorderThickness = 0;
+            this.CbCountries.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CbCountries.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
             this.CbCountries.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbCountries.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(18)))), ((int)(((byte)(28)))), ((int)(((byte)(53)))));
@@ -760,6 +764,7 @@
             this.Gender_Female.CheckedState.BorderThickness = 0;
             this.Gender_Female.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Gender_Female.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.Gender_Female.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Gender_Female.Location = new System.Drawing.Point(812, 198);
             this.Gender_Female.Name = "Gender_Female";
             this.Gender_Female.Size = new System.Drawing.Size(23, 30);
@@ -776,6 +781,7 @@
             this.Gender_Male.CheckedState.BorderThickness = 0;
             this.Gender_Male.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Gender_Male.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.Gender_Male.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Gender_Male.Location = new System.Drawing.Point(652, 198);
             this.Gender_Male.Name = "Gender_Male";
             this.Gender_Male.Size = new System.Drawing.Size(23, 30);
@@ -1066,6 +1072,7 @@
             this.Check_InActiveAccount.CheckedState.BorderThickness = 0;
             this.Check_InActiveAccount.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Check_InActiveAccount.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.Check_InActiveAccount.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Check_InActiveAccount.Location = new System.Drawing.Point(214, 258);
             this.Check_InActiveAccount.Name = "Check_InActiveAccount";
             this.Check_InActiveAccount.Size = new System.Drawing.Size(23, 30);
@@ -1083,6 +1090,7 @@
             this.Check_ActiveAccount.CheckedState.BorderThickness = 0;
             this.Check_ActiveAccount.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.Check_ActiveAccount.CheckedState.InnerColor = System.Drawing.Color.White;
+            this.Check_ActiveAccount.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Check_ActiveAccount.Location = new System.Drawing.Point(54, 258);
             this.Check_ActiveAccount.Name = "Check_ActiveAccount";
             this.Check_ActiveAccount.Size = new System.Drawing.Size(23, 30);
@@ -1182,11 +1190,12 @@
             this.btnUploadPhoto.Size = new System.Drawing.Size(259, 50);
             this.btnUploadPhoto.TabIndex = 103;
             this.btnUploadPhoto.Text = "Upload Photo";
-            this.btnUploadPhoto.Click += new System.EventHandler(this.btnUploadPhoto_Click);
+            this.btnUploadPhoto.Click += new System.EventHandler(this.UploadPhotoFromFile);
             // 
             // PictIconeCamera
             // 
             this.PictIconeCamera.BackColor = System.Drawing.Color.Transparent;
+            this.PictIconeCamera.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PictIconeCamera.ImageRotate = 0F;
             this.PictIconeCamera.Location = new System.Drawing.Point(197, 189);
             this.PictIconeCamera.Name = "PictIconeCamera";
@@ -1196,6 +1205,7 @@
             this.PictIconeCamera.TabIndex = 101;
             this.PictIconeCamera.TabStop = false;
             this.PictIconeCamera.UseTransparentBackground = true;
+            this.PictIconeCamera.Click += new System.EventHandler(this.UploadPhotoFromFile);
             // 
             // guna2HtmlLabel8
             // 
@@ -1221,6 +1231,7 @@
             // 
             // PictCustomerPhoto
             // 
+            this.PictCustomerPhoto.Cursor = System.Windows.Forms.Cursors.Hand;
             this.PictCustomerPhoto.ImageRotate = 0F;
             this.PictCustomerPhoto.Location = new System.Drawing.Point(85, 74);
             this.PictCustomerPhoto.Name = "PictCustomerPhoto";
