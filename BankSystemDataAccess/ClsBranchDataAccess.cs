@@ -6,7 +6,7 @@ using System.Data;
 
 namespace BranchDataAccess.EntitiesData
 {
-    public static class clsBranchData
+    public static class clsBranchDataAccess
     {
 
         public static bool GetBranchInfoByID(int BranchID, ref string branchName, ref string address, 
@@ -54,7 +54,6 @@ namespace BranchDataAccess.EntitiesData
 
             return isFound;
         }
-
 
         public static int AddNewBranch(string branchName, string address, string phone, int cityID, ref string ErrorMessage)
 
@@ -175,7 +174,6 @@ namespace BranchDataAccess.EntitiesData
 
         }
 
-
         public static DataTable GetAllBranches(ref string ErrorMessage)
 
 
@@ -192,6 +190,44 @@ namespace BranchDataAccess.EntitiesData
                 {
                     try
                     {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        ErrorMessage = ex.Message;
+
+                    }
+                }
+            }
+
+            return dt;
+        }
+
+        public static DataTable GetBranchesByCityID(int CityID ,ref string ErrorMessage)
+
+
+        {
+
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+
+                string query = @"SELECT BranchID, BranchName FROM Branches WHERE CityID = @CityID ORDER BY BranchName";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        command.Parameters.AddWithValue("@CityID", CityID);
                         connection.Open();
                         using (SqlDataReader reader = command.ExecuteReader())
                         {

@@ -83,7 +83,9 @@
     <Compile Include="ClsCardData.CRUD.cs" />
     <Compile Include="ClsCardData.cs" />
     <Compile Include="ClsCardData.Views.cs" />
+    <Compile Include="ClsCitiesDataAccess.cs" />
     <Compile Include="ClsClientDataAccess.cs" />
+    <Compile Include="ClsCountryDataAccess.cs" />
     <Compile Include="ClsDataAccessSettings.cs" />
     <Compile Include="ClsGetActiveAccounts.cs" />
     <Compile Include="ClsGetResult.cs" />

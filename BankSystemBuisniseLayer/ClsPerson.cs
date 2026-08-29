@@ -24,8 +24,8 @@ namespace BankSystemBuisniseLayer
         public string Phone { get; set; }
         public string Address { get; set; }
         public int CityID { get; set; }
+        public DateTime DateOFBirth { get; set; }
         public string ErrorMessage { get; set; } = "";
-
 
         public ClsPerson()
 
@@ -39,13 +39,14 @@ namespace BankSystemBuisniseLayer
             this.Phone = "";
             this.Address = "";
             this.CityID = -1;
+            this.DateOFBirth = DateTime.Now;
 
             Mode = enMode.AddNew;
         }
 
 
         protected ClsPerson(int personID, string nationalID, string firstName, string lastName,
-                            byte gender, string email, string phone, string address, int cityID)
+                            byte gender, string email, string phone, string address, int cityID, DateTime dateOFBirth)
         {
             this.PersonID = personID;
             this.NationalID = nationalID;
@@ -56,6 +57,7 @@ namespace BankSystemBuisniseLayer
             this.Phone = phone;
             this.Address = address;
             this.CityID = cityID;
+            this.DateOFBirth = dateOFBirth;
 
             Mode = enMode.Update;
         }
@@ -69,11 +71,11 @@ namespace BankSystemBuisniseLayer
 
             this.PersonID = ClsPersonDataAccess.AddNewPerson(this.NationalID, this.FirstName, this.LastName,
                                                    (byte)this.Gender, this.Email, this.Phone,
-                                                   this.Address, this.CityID, ref ErrorMessage);
+                                                   this.Address, this.CityID, this.DateOFBirth, ref ErrorMessage);
 
 
             this.ErrorMessage = ErrorMessage;
-            return (this.PersonID != 0);
+            return (this.PersonID != -1);
           
 
         }
@@ -86,7 +88,7 @@ namespace BankSystemBuisniseLayer
             bool IsUpdate = ClsPersonDataAccess.UpdatePerson(this.PersonID, this.NationalID,
                 this.FirstName, this.LastName,
                                                    (byte)this.Gender, this.Email, this.Phone,
-                                                   this.Address, this.CityID, ref ErrorMessage);
+                                                   this.Address, this.CityID, this.DateOFBirth, ref ErrorMessage);
 
             this.ErrorMessage = ErrorMessage;
             return IsUpdate;
@@ -133,13 +135,14 @@ namespace BankSystemBuisniseLayer
             string NationalID = "", FirstName = "", LastName = "", Email = "", Phone = "", Address = "";
             byte Gender = 1;
             int CityID = -1;
+            DateTime dateOFBirth = DateTime.Now;
 
             if (ClsPersonDataAccess.GetPersonByID(ID, ref NationalID, ref FirstName, ref LastName,
                                             ref Gender, ref Email, ref Phone, ref Address, ref
-                                            CityID, ref ErrorMessage))
+                                            CityID, ref dateOFBirth, ref ErrorMessage))
             {
 
-                return new ClsPerson(ID, NationalID, FirstName, LastName, Gender, Email, Phone, Address, CityID);
+                return new ClsPerson(ID, NationalID, FirstName, LastName, Gender, Email, Phone, Address, CityID, dateOFBirth);
             }
 
             return null;
@@ -153,13 +156,14 @@ namespace BankSystemBuisniseLayer
             string  FirstName = "", LastName = "", Email = "", Phone = "", Address = "";
             byte Gender = 1;
             int CityID = -1;
+            DateTime dateOFBirth = DateTime.Now;
 
             if (ClsPersonDataAccess.GetPersonByNationalID(NationalID, ref PersonID, ref FirstName, ref LastName,
                                             ref Gender, ref Email, ref Phone, ref Address, ref
-                                            CityID, ref ErrorMessage))
+                                            CityID, ref dateOFBirth ,ref ErrorMessage))
             {
 
-                return new ClsPerson(PersonID, NationalID, FirstName, LastName, Gender, Email, Phone, Address, CityID);
+                return new ClsPerson(PersonID, NationalID, FirstName, LastName, Gender, Email, Phone, Address, CityID, dateOFBirth);
             }
 
             return null;

@@ -417,7 +417,7 @@ namespace BankSystemDataAccess.EntitiesData
                                       END AS [Gender],
                                        
                                       ISNULL(MIN(Ca.PIN_Hash), 'N/A') AS [PinCode],
-                                      DATEDIFF(YEAR, P.DateOfBirth, GETDATE()) AS Age,
+                                      ISNULL(DATEDIFF(YEAR, TRY_CAST(P.DateOfBirth AS DATETIME), GETDATE()), 0) AS Age,
                                       ISNULL(MIN(Ca.CardNumber), 'N/A') AS [Card Number],
                                       ISNULL(MIN(Branches.BranchName), 'N/A') AS [Branche],
                                       ISNULL(Countries.CountryName, 'N/A') AS [Country],
@@ -540,6 +540,86 @@ namespace BankSystemDataAccess.EntitiesData
 
 
             return isFound;
+        }
+
+
+
+
+
+        public static bool UpdateCustomer(
+    int CustomerID,
+    int PersonID,
+    string FirstName,
+    string LastName,
+    string Email,
+    string Phone,
+    string Address,
+    string AccountNumber,
+    string CustomerStatus)
+        {
+            using (SqlConnection connection =
+                new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+                connection.Open();
+
+                // بدء Transaction
+                SqlTransaction transaction = connection.BeginTransaction();
+
+                try
+                {
+                    // تحديث بيانات الشخص
+                    string personQuery = @"
+                UPDATE Persons
+                SET FirstName = @FirstName,
+                    LastName = @LastName,
+                    Email = @Email,
+                    Phone = @Phone,
+                    Address = @Address
+                WHERE PersonID = @PersonID;";
+
+                    using (SqlCommand personCommand =
+                        new SqlCommand(personQuery, connection, transaction))
+                    {
+                        personCommand.Parameters.AddWithValue("@FirstName", FirstName);
+                        personCommand.Parameters.AddWithValue("@LastName", LastName);
+                        personCommand.Parameters.AddWithValue("@Email", Email);
+                        personCommand.Parameters.AddWithValue("@Phone", Phone);
+                        personCommand.Parameters.AddWithValue("@Address", Address);
+                        personCommand.Parameters.AddWithValue("@PersonID", PersonID);
+
+                        personCommand.ExecuteNonQuery();
+                    }
+
+                    // تحديث بيانات العميل
+                    string customerQuery = @"
+                UPDATE Customers
+                SET AccountNumber = @AccountNumber,
+                    CustomerStatus = @CustomerStatus
+                WHERE CustomerID = @CustomerID;";
+
+                    using (SqlCommand customerCommand =
+                        new SqlCommand(customerQuery, connection, transaction))
+                    {
+                        customerCommand.Parameters.AddWithValue("@AccountNumber", AccountNumber);
+                        customerCommand.Parameters.AddWithValue("@CustomerStatus", CustomerStatus);
+                        customerCommand.Parameters.AddWithValue("@CustomerID", CustomerID);
+
+                        customerCommand.ExecuteNonQuery();
+                    }
+
+                    // إذا نجحت كل العمليات
+                    transaction.Commit();
+
+                    return true;
+                }
+                catch
+                {
+                    // إذا فشلت أي عملية
+                    transaction.Rollback();
+
+                    return false;
+                }
+            }
         }
     }
 }

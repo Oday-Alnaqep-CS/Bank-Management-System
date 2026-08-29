@@ -113,7 +113,7 @@ namespace Bank_Managment_System
             string ErrorMessage = string.Empty;
 
 
-            DataTable dtViewAllClients = ClsClient.GetActiveAccounts(ref ErrorMessage);
+            DataTable dtViewAllClients = ClsClient.GetActiveClients(ref ErrorMessage);
 
             if (!string.IsNullOrEmpty(ErrorMessage))
 

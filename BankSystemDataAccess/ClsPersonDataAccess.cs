@@ -14,7 +14,7 @@ namespace BankSystemDataAccess.EntitiesData
 
         public static bool GetPersonByID(int PersonID, ref string NationalID, ref string FirstName,
                                         ref string LastName, ref byte Gender, ref string Email,
-                                        ref string Phone, ref string Address, ref int CityID,ref string ErrorMessage )
+                                        ref string Phone, ref string Address, ref int CityID,ref DateTime DateOFBirth,ref string ErrorMessage )
         {
 
             bool isFound = false;
@@ -50,6 +50,8 @@ namespace BankSystemDataAccess.EntitiesData
 
                     CityID = Convert.ToInt32(reader["CityID"]);
 
+                    DateOFBirth = reader["DateOFBirth"] != DBNull.Value ? Convert.ToDateTime(reader["DateOFBirth"]) : DateTime.Now;
+
                 }
                 else
                 {
@@ -79,7 +81,7 @@ namespace BankSystemDataAccess.EntitiesData
 
         public static bool GetPersonByNationalID(string NationalID, ref int PersonID, ref string FirstName,
                                         ref string LastName, ref byte Gender, ref string Email,
-                                        ref string Phone, ref string Address, ref int CityID, ref string ErrorMessage)
+                                        ref string Phone, ref string Address, ref int CityID, ref DateTime DateOFBirth, ref string ErrorMessage)
         {
             bool isFound = false;
 
@@ -98,14 +100,22 @@ namespace BankSystemDataAccess.EntitiesData
                 if (reader.Read())
                 {
                     isFound = true;
-                    PersonID = Convert.ToInt32(reader["PersonID"]);
+
+                    PersonID = (int)reader["PersonID"];
+                    NationalID = reader["NationalID"].ToString();
                     FirstName = reader["FirstName"].ToString();
                     LastName = reader["LastName"].ToString();
-                    Gender = Convert.ToByte(reader["Gender"]);
-                    Email = reader["Email"] != DBNull.Value ? reader["Email"].ToString() : "";
-                    Phone = reader["Phone"] != DBNull.Value ? reader["Phone"].ToString() : "";
-                    Address = reader["Address"] != DBNull.Value ? reader["Address"].ToString() : "";
+                    Gender = (byte)reader["Gender"];
+
+                    
+                    Email = reader["Email"] as string ?? "";
+                    Phone = reader["Phone"] as string ?? "";
+                    Address = reader["Address"] as string ?? "";
+
                     CityID = reader["CityID"] != DBNull.Value ? Convert.ToInt32(reader["CityID"]) : -1;
+                    DateOFBirth = reader["DateOFBirth"] != DBNull.Value ? Convert.ToDateTime(reader["DateOFBirth"]) : DateTime.Now;
+
+
                 }
                 else
                 {
@@ -177,15 +187,15 @@ namespace BankSystemDataAccess.EntitiesData
 
         public static int AddNewPerson(string NationalID, string FirstName, string LastName,
                                        byte Gender, string Email, string Phone, string Address,
-                                       int CityID , ref string ErrorMessage )
+                                       int CityID , DateTime DateOFBirth,ref string ErrorMessage )
         {
 
             int NewID = -1;
 
             SqlConnection Connection = new SqlConnection(ClsDataAccessSettings.ConnectionString);
 
-            string Query = @"INSERT INTO Persons (NationalID, FirstName, LastName, Gender, Email, Phone, Address, CityID)
-                                 VALUES (@NationalID, @FirstName, @LastName, @Gender, @Email, @Phone, @Address, @CityID);
+            string Query = @"INSERT INTO Persons (NationalID, FirstName, LastName, Gender, Email, Phone, Address, CityID,DateOFBirth)
+                                 VALUES (@NationalID, @FirstName, @LastName, @Gender, @Email, @Phone, @Address, @CityID,@DateOFBirth);
                                  SELECT SCOPE_IDENTITY();";
 
             SqlCommand Command = new SqlCommand(Query, Connection);
@@ -198,6 +208,7 @@ namespace BankSystemDataAccess.EntitiesData
             Command.Parameters.AddWithValue("@Phone", (object)Phone ?? DBNull.Value);
             Command.Parameters.AddWithValue("@Address", (object)Address ?? DBNull.Value);
             Command.Parameters.AddWithValue("@CityID", CityID);
+            Command.Parameters.AddWithValue("@DateOFBirth", DateOFBirth);
 
             try
             {
@@ -230,7 +241,7 @@ namespace BankSystemDataAccess.EntitiesData
 
         public static bool UpdatePerson(int personID, string nationalID, string firstName, string lastName,
                                         byte gender, string email, string phone, string address, int cityID, 
-                                        ref string ErrorMessage)
+                                        DateTime DateOFBirth, ref string ErrorMessage)
         {
 
             int rowsAffected = 0;
@@ -245,6 +256,7 @@ namespace BankSystemDataAccess.EntitiesData
                                      Phone = @Phone,
                                      Address = @Address,
                                      CityID = @CityID
+                                     DateOFBirth = @DateOFBirth
                                  WHERE PersonID = @PersonID;";
 
 

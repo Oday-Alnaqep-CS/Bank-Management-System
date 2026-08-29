@@ -220,6 +220,7 @@
             this.txtSearch.Size = new System.Drawing.Size(380, 46);
             this.txtSearch.TabIndex = 4;
             this.txtSearch.TextOffset = new System.Drawing.Point(0, -3);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // guna2Panel1
             // 

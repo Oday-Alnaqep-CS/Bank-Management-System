@@ -319,5 +319,10 @@ namespace Bank_Managment_System
         {
 
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

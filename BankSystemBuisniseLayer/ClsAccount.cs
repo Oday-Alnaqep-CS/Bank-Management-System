@@ -11,6 +11,16 @@ namespace BankSystemDataAccess.Financial
     public partial class ClsAccount
     {
 
+
+        public enum enAccountType
+        {
+            CheckingAccountIndividual = 1,
+            SavingsAccountInvestment = 2,
+            CorporateCommercialAccount = 3,
+            WeeklyDepositAccount = 4,
+            PayrollAccount = 5
+        }
+
         public enum enMode { AddNew = 0, Update = 1 };
         public enMode Mode = enMode.AddNew;
 
@@ -216,6 +226,12 @@ namespace BankSystemDataAccess.Financial
 
         }
 
+        public static DataTable GetAccountType(ref string ErroeMessage)
+
+        {
+
+            return ClsAccountData.GetAccountsType(ref ErroeMessage);
+        }
 
         public static bool Delete(int AccountID, ref string ErrorMessage)
 

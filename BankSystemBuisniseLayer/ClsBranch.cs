@@ -42,7 +42,7 @@ namespace BankSystemBuisniseLayer
         {
             string errorMessage = "";
 
-            this.BranchID = clsBranchData.AddNewBranch(this.BranchName, this.Address, this.Phone, this.CityID, ref errorMessage);
+            this.BranchID = clsBranchDataAccess.AddNewBranch(this.BranchName, this.Address, this.Phone, this.CityID, ref errorMessage);
 
             this.ErrorMessage = errorMessage;
 
@@ -53,7 +53,7 @@ namespace BankSystemBuisniseLayer
         {
             string errorMessage = "";
 
-            bool isUpdated = clsBranchData.UpdateBranch(this.BranchID, this.BranchName, this.Address, this.Phone, this.CityID, ref errorMessage);
+            bool isUpdated = clsBranchDataAccess.UpdateBranch(this.BranchID, this.BranchName, this.Address, this.Phone, this.CityID, ref errorMessage);
 
             this.ErrorMessage = errorMessage;
 
@@ -90,7 +90,7 @@ namespace BankSystemBuisniseLayer
             string branchName = "", address = "", phone = "";
             int cityID = -1;
 
-            if (clsBranchData.GetBranchInfoByID(branchID, ref branchName, ref address, ref phone, ref cityID, ref errorMessage))
+            if (clsBranchDataAccess.GetBranchInfoByID(branchID, ref branchName, ref address, ref phone, ref cityID, ref errorMessage))
             {
                 return new ClsBranch(branchID, branchName, address, phone, cityID);
             }
@@ -100,17 +100,22 @@ namespace BankSystemBuisniseLayer
 
         public static bool DeleteBranch(int branchID, ref string errorMessage)
         {
-            return clsBranchData.DeleteBranch(branchID, ref errorMessage);
+            return clsBranchDataAccess.DeleteBranch(branchID, ref errorMessage);
         }
 
         public static bool IsBranchExist(int branchID, ref string errorMessage)
         {
-            return clsBranchData.IsBranchExist(branchID, ref errorMessage);
+            return clsBranchDataAccess.IsBranchExist(branchID, ref errorMessage);
         }
 
         public static DataTable GetAllBranches(ref string errorMessage)
         {
-            return clsBranchData.GetAllBranches(ref errorMessage);
+            return clsBranchDataAccess.GetAllBranches(ref errorMessage);
+        }
+
+        public static DataTable GetBranchesByCityID(int CityID, ref string ErrorMessage)
+        {
+            return clsBranchDataAccess.GetBranchesByCityID(CityID, ref ErrorMessage);
         }
     }
 }

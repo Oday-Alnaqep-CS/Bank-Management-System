@@ -248,6 +248,44 @@ namespace BankSystemDataAccess.FinancialData
             return dt;
         }
 
+        public static DataTable GetAccountsType( ref string errorMessage)
+
+
+        {
+
+            DataTable dt = new DataTable();
+
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+
+                string query = "SELECT TypeName , AccountTypeID from AccountTypes";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+
+                 
+
+                    try
+                    {
+
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows) dt.Load(reader);
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        errorMessage = ex.Message;
+                    }
+                }
+            }
+
+            return dt;
+        }
+
 
 
         public static bool Deposit(int AccountID,decimal Amount,ref string ErrorMessage)
