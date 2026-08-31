@@ -1,6 +1,7 @@
-﻿using System;
-using System.Data;
+﻿using BankSystemDataAccess;
 using BankSystemDataAccess.EntitiesData;
+using System;
+using System.Data;
 
 namespace BankSystemBuisniseLayer
 {
@@ -127,9 +128,10 @@ namespace BankSystemBuisniseLayer
 
         public static DataTable GetAllUsers(ref string errorMessage)
         {
-            return ClsUserDataAccess.GetAllUsers(ref errorMessage);
+            return ClsUserDataAccess.GetUsersInFo(ref errorMessage);
         }
 
+    
         public static bool IsUserExist(int userID, ref string errorMessage)
         {
             return ClsUserDataAccess.IsUserExistByID(userID, ref errorMessage);
@@ -146,6 +148,17 @@ namespace BankSystemBuisniseLayer
             return ClsUserRoleDataAccess.DoesUserHavePermission(this.UserID, permissionName, ref errorMessage);
         }
 
+        public static int GetCountOfAllUsers(out string errorMessage) =>
+          ClsUserDataAccess.GetTotalUsers(out errorMessage);
+
+        public static int GetCountOfActiveUsers(out string errorMessage) =>
+                  ClsUserDataAccess.GetTotalActiveUsers(out errorMessage);
+
+        public static int GetCountOfInActiveUsers(out string ErrorMessage) =>
+                 ClsUserDataAccess.GetTotalUsers(out ErrorMessage) - ClsUserDataAccess.GetTotalActiveUsers(out ErrorMessage);
+
+        public static int GetCountOfUsersRoles(out string errorMessage) =>
+                  ClsUserRoleDataAccess.GetTotalUsersRoles(out errorMessage);
 
         public static ClsUser FindByUsernameAndPassword(string username, string password, ref string errorMessage)
 

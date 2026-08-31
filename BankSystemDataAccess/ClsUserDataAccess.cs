@@ -151,7 +151,71 @@ namespace BankSystemDataAccess.EntitiesData
             DataTable dt = new DataTable();
             SqlConnection Connection = new SqlConnection(ClsDataAccessSettings.ConnectionString);
 
-            string Query = "Select * from Users";
+            string Query = "Select * from UserCredentials";
+            SqlCommand Command = new SqlCommand(Query, Connection);
+
+
+            try
+            {
+
+                Connection.Open();
+                SqlDataReader reader = Command.ExecuteReader();
+
+
+                if (reader.HasRows)
+                {
+
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+
+                ErrorMessage = ex.Message;
+
+            }
+            finally
+            {
+
+                Connection.Close();
+            }
+
+
+            return dt;
+
+
+        }
+
+        public static DataTable GetUsersInFo(ref string ErrorMessage)
+        {
+
+
+            DataTable dt = new DataTable();
+            SqlConnection Connection = new SqlConnection(ClsDataAccessSettings.ConnectionString);
+
+            string Query = "SELECT P.ImagePath AS [Profile], " +
+                           "FORMAT(U.UserID, 'USR-2026-000') AS [User ID], " +
+                           "UC.Username AS [User Name], " +
+                           "P.FirstName + ' ' + P.LastName AS [Full Name], " +
+                           "R.RoleName AS [Role / Permissions], " +
+                           "U.HireDate AS [Hire Date], " +
+                           "U.JobTitle AS [Job Title], " +
+                           "CASE WHEN U.Status = 1 THEN 'Active' ELSE 'Inactive' END AS [Status] " +
+                           "FROM Users U " +
+                           "INNER JOIN Persons P ON U.PersonID = P.PersonID AND P.PersonType = 'User' " +
+                           "LEFT JOIN UserCredentials UC ON U.UserID = UC.UserID " +
+                           "LEFT JOIN UserRoles UR ON U.UserID = UR.UserID " +
+                           "LEFT JOIN Roles R ON UR.RoleID = R.RoleID;";
+
+
+
+
+
+
+
             SqlCommand Command = new SqlCommand(Query, Connection);
 
 
@@ -483,5 +547,95 @@ namespace BankSystemDataAccess.EntitiesData
             return isFound;
         }
 
+
+        public static int GetTotalUsers(out string ErrorMessage)
+
+
+
+        {
+
+            int TotalClients = 0;
+            ErrorMessage = string.Empty;
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+
+            {
+                string query = "SELECT COUNT(*) FROM Users";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value)
+
+
+                        {
+
+                            TotalClients = Convert.ToInt32(result);
+
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorMessage = ex.Message;
+                        System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+                    }
+                }
+            }
+
+            return TotalClients;
+        }
+
+        public static int GetTotalActiveUsers(out string ErrorMessage)
+
+
+
+        {
+
+            int TotalClients = 0;
+            ErrorMessage = string.Empty;
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+
+            {
+                string query = "SELECT COUNT(*) FROM Users where Users.Status = 1";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value)
+
+
+                        {
+
+                            TotalClients = Convert.ToInt32(result);
+
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorMessage = ex.Message;
+                        System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+                    }
+                }
+            }
+
+            return TotalClients;
+        }
+
+    
     }
 }

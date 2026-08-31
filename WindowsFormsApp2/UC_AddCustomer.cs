@@ -666,12 +666,13 @@ namespace Bank_Managment_System
                 
                 _ResetDefaultValues();
 
-               
+                ((FrmMain)this.FindForm()).LoadUserControl(new UC_CustomersManagement());
                 //this.Parent?.Controls.Remove(this);
             }
-
+            
         }
 
+       
         protected override CreateParams CreateParams
 
 

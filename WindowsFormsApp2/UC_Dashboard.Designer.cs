@@ -80,6 +80,7 @@
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2ProgressBar5 = new Guna.UI2.WinForms.Guna2ProgressBar();
             this.guna2Panel4K.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -98,8 +99,9 @@
             // guna2Panel4K
             // 
             this.guna2Panel4K.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.guna2Panel4K.BorderColor = System.Drawing.Color.White;
+            this.guna2Panel4K.BorderColor = System.Drawing.Color.Transparent;
             this.guna2Panel4K.BorderThickness = 1;
+            this.guna2Panel4K.Controls.Add(this.guna2ProgressBar5);
             this.guna2Panel4K.Controls.Add(this.guna2Panel2);
             this.guna2Panel4K.Controls.Add(this.guna2Panel1);
             this.guna2Panel4K.Controls.Add(this.label2);
@@ -221,7 +223,7 @@
             this.btnNewDeposit.FillColor = System.Drawing.Color.MediumSlateBlue;
             this.btnNewDeposit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewDeposit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-             this.btnNewDeposit.ImageOffset = new System.Drawing.Point(35, -15);
+            this.btnNewDeposit.ImageOffset = new System.Drawing.Point(35, -15);
             this.btnNewDeposit.ImageSize = new System.Drawing.Size(55, 55);
             this.btnNewDeposit.Location = new System.Drawing.Point(402, 23);
             this.btnNewDeposit.Name = "btnNewDeposit";
@@ -242,7 +244,7 @@
             this.btnNewUser.FillColor = System.Drawing.Color.MediumSlateBlue;
             this.btnNewUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-             this.btnNewUser.ImageOffset = new System.Drawing.Point(28, -15);
+            this.btnNewUser.ImageOffset = new System.Drawing.Point(28, -15);
             this.btnNewUser.ImageSize = new System.Drawing.Size(55, 55);
             this.btnNewUser.Location = new System.Drawing.Point(209, 23);
             this.btnNewUser.Name = "btnNewUser";
@@ -273,7 +275,7 @@
             this.btnNewClient.FillColor = System.Drawing.Color.MediumSlateBlue;
             this.btnNewClient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNewClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-             this.btnNewClient.ImageOffset = new System.Drawing.Point(38, -15);
+            this.btnNewClient.ImageOffset = new System.Drawing.Point(38, -15);
             this.btnNewClient.ImageSize = new System.Drawing.Size(55, 55);
             this.btnNewClient.Location = new System.Drawing.Point(14, 23);
             this.btnNewClient.Name = "btnNewClient";
@@ -350,13 +352,13 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Tahoma", 17.2F);
             this.label2.ForeColor = System.Drawing.Color.Silver;
-            this.label2.Location = new System.Drawing.Point(23, 18);
+            this.label2.Location = new System.Drawing.Point(23, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(306, 28);
+            this.label2.Size = new System.Drawing.Size(279, 35);
             this.label2.TabIndex = 6;
-            this.label2.Text = "DASHBOARD  OVERVIEW";
+            this.label2.Text = "Dashboard Overview";
             // 
             // guna2Panel7
             // 
@@ -820,7 +822,7 @@
             this.guna2Button4.FillColor = System.Drawing.Color.MediumSlateBlue;
             this.guna2Button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-             this.guna2Button4.ImageOffset = new System.Drawing.Point(38, -15);
+            this.guna2Button4.ImageOffset = new System.Drawing.Point(38, -15);
             this.guna2Button4.ImageSize = new System.Drawing.Size(55, 55);
             this.guna2Button4.Location = new System.Drawing.Point(26, 173);
             this.guna2Button4.Name = "guna2Button4";
@@ -840,7 +842,7 @@
             this.guna2Button5.FillColor = System.Drawing.Color.MediumSlateBlue;
             this.guna2Button5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-             this.guna2Button5.ImageOffset = new System.Drawing.Point(38, -15);
+            this.guna2Button5.ImageOffset = new System.Drawing.Point(38, -15);
             this.guna2Button5.ImageSize = new System.Drawing.Size(55, 55);
             this.guna2Button5.Location = new System.Drawing.Point(221, 173);
             this.guna2Button5.Name = "guna2Button5";
@@ -860,7 +862,7 @@
             this.guna2Button6.FillColor = System.Drawing.Color.MediumSlateBlue;
             this.guna2Button6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-             this.guna2Button6.ImageOffset = new System.Drawing.Point(38, -15);
+            this.guna2Button6.ImageOffset = new System.Drawing.Point(38, -15);
             this.guna2Button6.ImageSize = new System.Drawing.Size(55, 55);
             this.guna2Button6.Location = new System.Drawing.Point(414, 173);
             this.guna2Button6.Name = "guna2Button6";
@@ -868,6 +870,17 @@
             this.guna2Button6.TabIndex = 5;
             this.guna2Button6.Text = "New Deposit";
             this.guna2Button6.TextOffset = new System.Drawing.Point(-10, 30);
+            // 
+            // guna2ProgressBar5
+            // 
+            this.guna2ProgressBar5.BorderRadius = 20;
+            this.guna2ProgressBar5.FillColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.guna2ProgressBar5.Location = new System.Drawing.Point(15, 49);
+            this.guna2ProgressBar5.Name = "guna2ProgressBar5";
+            this.guna2ProgressBar5.Size = new System.Drawing.Size(1300, 2);
+            this.guna2ProgressBar5.TabIndex = 113;
+            this.guna2ProgressBar5.Text = "guna2ProgressBar5";
+            this.guna2ProgressBar5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             // 
             // UC_Dashboard
             // 
@@ -954,5 +967,6 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private Guna.UI2.WinForms.Guna2Button guna2Button5;
         private Guna.UI2.WinForms.Guna2Button guna2Button6;
+        private Guna.UI2.WinForms.Guna2ProgressBar guna2ProgressBar5;
     }
 }

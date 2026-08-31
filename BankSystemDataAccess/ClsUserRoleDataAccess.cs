@@ -198,5 +198,51 @@ namespace BankSystemDataAccess.EntitiesData
 
             return hasPermission;
         }
+
+
+        public static int GetTotalUsersRoles(out string ErrorMessage)
+
+
+
+        {
+
+            int TotalClients = 0;
+            ErrorMessage = string.Empty;
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+
+            {
+                string query = "SELECT COUNT(*) FROM Roles";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+
+
+                    try
+                    {
+                        connection.Open();
+                        object result = command.ExecuteScalar();
+
+                        if (result != null && result != DBNull.Value)
+
+
+                        {
+
+                            TotalClients = Convert.ToInt32(result);
+
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorMessage = ex.Message;
+                        System.Diagnostics.Debug.WriteLine($"Error: {ex.Message}");
+                    }
+                }
+            }
+
+            return TotalClients;
+        }
+
     }
 }

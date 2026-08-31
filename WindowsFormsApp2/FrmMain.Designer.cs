@@ -119,7 +119,6 @@
             this.btnBranch.TabIndex = 16;
             this.btnBranch.Text = "Branch : Main Branch ( Taiz )";
             this.btnBranch.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnBranch.Click += new System.EventHandler(this.btnBranch_Click);
             // 
             // lblServerState
             // 
@@ -269,7 +268,7 @@
             this.btnFXRates.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnFXRates.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnFXRates.FillColor = System.Drawing.Color.Transparent;
-            this.btnFXRates.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFXRates.Font = new System.Drawing.Font("Century Schoolbook", 13F, System.Drawing.FontStyle.Bold);
             this.btnFXRates.ForeColor = System.Drawing.Color.White;
             this.btnFXRates.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(30)))), ((int)(((byte)(100)))));
             this.btnFXRates.ImageSize = new System.Drawing.Size(30, 30);
@@ -311,7 +310,7 @@
             this.btnAccounts.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnAccounts.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnAccounts.FillColor = System.Drawing.Color.Transparent;
-            this.btnAccounts.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAccounts.Font = new System.Drawing.Font("Century Schoolbook", 13F, System.Drawing.FontStyle.Bold);
             this.btnAccounts.ForeColor = System.Drawing.Color.White;
             this.btnAccounts.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(30)))), ((int)(((byte)(100)))));
             this.btnAccounts.ImageSize = new System.Drawing.Size(30, 30);
@@ -353,7 +352,7 @@
             this.btnTransactions.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnTransactions.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnTransactions.FillColor = System.Drawing.Color.Transparent;
-            this.btnTransactions.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTransactions.Font = new System.Drawing.Font("Century Schoolbook", 13F, System.Drawing.FontStyle.Bold);
             this.btnTransactions.ForeColor = System.Drawing.Color.White;
             this.btnTransactions.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(30)))), ((int)(((byte)(100)))));
             this.btnTransactions.ImageSize = new System.Drawing.Size(30, 30);
@@ -374,7 +373,7 @@
             this.btnTransfers.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnTransfers.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnTransfers.FillColor = System.Drawing.Color.Transparent;
-            this.btnTransfers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTransfers.Font = new System.Drawing.Font("Century Schoolbook", 13F, System.Drawing.FontStyle.Bold);
             this.btnTransfers.ForeColor = System.Drawing.Color.White;
             this.btnTransfers.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(30)))), ((int)(((byte)(100)))));
             this.btnTransfers.ImageSize = new System.Drawing.Size(30, 30);
@@ -395,7 +394,7 @@
             this.btnCustomers.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnCustomers.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnCustomers.FillColor = System.Drawing.Color.Transparent;
-            this.btnCustomers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCustomers.Font = new System.Drawing.Font("Century Schoolbook", 13F, System.Drawing.FontStyle.Bold);
             this.btnCustomers.ForeColor = System.Drawing.Color.White;
             this.btnCustomers.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(30)))), ((int)(((byte)(100)))));
             this.btnCustomers.ImageSize = new System.Drawing.Size(30, 30);
@@ -417,7 +416,7 @@
             this.btnUsers.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnUsers.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnUsers.FillColor = System.Drawing.Color.Transparent;
-            this.btnUsers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsers.Font = new System.Drawing.Font("Century Schoolbook", 13F, System.Drawing.FontStyle.Bold);
             this.btnUsers.ForeColor = System.Drawing.Color.White;
             this.btnUsers.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(30)))), ((int)(((byte)(100)))));
             this.btnUsers.ImageSize = new System.Drawing.Size(30, 30);
@@ -426,6 +425,7 @@
             this.btnUsers.Size = new System.Drawing.Size(267, 55);
             this.btnUsers.TabIndex = 1;
             this.btnUsers.Text = "Users";
+            this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
             // 
             // btnDashBoard
             // 
@@ -438,7 +438,7 @@
             this.btnDashBoard.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnDashBoard.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnDashBoard.FillColor = System.Drawing.Color.Transparent;
-            this.btnDashBoard.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashBoard.Font = new System.Drawing.Font("Century Schoolbook", 13F, System.Drawing.FontStyle.Bold);
             this.btnDashBoard.ForeColor = System.Drawing.Color.White;
             this.btnDashBoard.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(30)))), ((int)(((byte)(100)))));
             this.btnDashBoard.ImageSize = new System.Drawing.Size(30, 30);

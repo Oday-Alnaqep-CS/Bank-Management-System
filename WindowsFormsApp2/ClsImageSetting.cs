@@ -71,7 +71,7 @@ namespace Bank_Managment_System
 
         }
 
-        public static DataTable GetCustoerImage(DataTable Data)
+        public static DataTable GetImage(DataTable Data)
 
         {
 
@@ -79,7 +79,7 @@ namespace Bank_Managment_System
 
             {
 
-                Data.Columns.Add("ClientImage", typeof(Image));
+                Data.Columns.Add("Image", typeof(Image));
 
                // string projectFolder = @"C:\My Projects - Apps\Bank_Managment_System\WindowsFormsApp2\Image";
 
@@ -99,18 +99,18 @@ namespace Bank_Managment_System
                                 using (Image loadedImg = Image.FromStream(ms))
                                 {
 
-                                    row["ClientImage"] = ClsImageSetting.GetCircularImage(loadedImg);
+                                    row["Image"] = ClsImageSetting.GetCircularImage(loadedImg);
                                 }
                             }
                         }
                         catch
                         {
-                            row["ClientImage"] = ClsImageSetting.GetDefaultAvatarByGender(row);
+                            row["Image"] = ClsImageSetting.GetDefaultAvatarByGender(row);
                         }
                     }
                     else
                     {
-                        row["ClientImage"] = ClsImageSetting.GetDefaultAvatarByGender(row);
+                        row["Image"] = ClsImageSetting.GetDefaultAvatarByGender(row);
                     }
                 }
 

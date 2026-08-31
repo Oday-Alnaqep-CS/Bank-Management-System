@@ -28,12 +28,14 @@ namespace Bank_Managment_System
     {
 
 
-        private UC_Dashboard _ucDashboard;
-        private UC_CustomersManage US_CustomersManage = new UC_CustomersManage();
+        private UC_Dashboard _US_Dashboard;
+        private UC_CustomersManagement _US_CustomersManage = new UC_CustomersManagement();
+        private US_UsersManagement _US_UserManagement = new US_UsersManagement();
         ClsBankingNotification notification = new ClsBankingNotification();
         public static ClsUser CurrentUser = new ClsUser();
 
         ClsClient _Client = new ClsClient();
+
         UC_AddCustomer _AddCustomer = new UC_AddCustomer();
 
         public FrmMain()
@@ -62,12 +64,12 @@ namespace Bank_Managment_System
              this.DoubleBuffered = true;
 
             Design();
-            _ucDashboard = new UC_Dashboard();
+            _US_Dashboard = new UC_Dashboard();
             lblUserInfo.Text = $"{UserName} ({JobTitle})";
             lblNotificationCountf.Text = NoteCount.ToString();
             RenderDatabaseStatus();
             GetBranchName();
-            LoadView(_ucDashboard);
+            LoadUserControl(_US_Dashboard);
             SetupSidebarButtons();
 
 
@@ -108,11 +110,6 @@ namespace Bank_Managment_System
 
                // lblNotificationCountf.Visible = false;
             }
-        }
-
-        private void guna2Panel4_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void SetupTopBarIconsAndData()
@@ -198,41 +195,21 @@ namespace Bank_Managment_System
 
         }
 
-        public void LoadView(UserControl userControl)
+        public void LoadUserControl(UserControl userControl)
 
 
         {
-            
+
+
             pnlContainer.Controls.Clear();
 
-          
+
             userControl.Dock = DockStyle.Fill;
 
-          
+
             pnlContainer.Controls.Add(userControl);
             userControl.BringToFront();
 
-
-        }
-
-        public void LoadUserControl(UserControl uc)
-
-
-        {
-
-
-            pnlContainer.SuspendLayout();
-
-        
-            pnlContainer.Controls.Clear();
-
-          
-            uc.Dock = DockStyle.Fill;
-            pnlContainer.Controls.Add(uc);
-
-         
-            pnlContainer.ResumeLayout();
-          
 
         }
 
@@ -272,7 +249,6 @@ namespace Bank_Managment_System
 
         }
 
-
         private void RenderDatabaseStatus()
 
         {
@@ -302,7 +278,6 @@ namespace Bank_Managment_System
             }
         }
 
-
         private void GetBranchName()
 
         {
@@ -328,26 +303,25 @@ namespace Bank_Managment_System
         private void btnBashBoard_Click(object sender, EventArgs e)
         {
 
-            
-            LoadView(_ucDashboard);
 
+            LoadUserControl(_US_Dashboard);
 
-        }
-
-        private void btnBranch_Click(object sender, EventArgs e)
-        {
 
         }
 
         private void btnCustomers_Click(object sender, EventArgs e)
         {
 
-            LoadView(US_CustomersManage);
+            LoadUserControl(_US_CustomersManage);
 
         }
 
+        private void btnUsers_Click(object sender, EventArgs e)
+        {
 
+            LoadUserControl(_US_UserManagement);
 
+        }
 
 
         protected override CreateParams CreateParams
@@ -362,5 +336,6 @@ namespace Bank_Managment_System
             }
         }
 
+     
     }
 }

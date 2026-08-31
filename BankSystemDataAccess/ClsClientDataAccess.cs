@@ -275,7 +275,7 @@ namespace BankSystemDataAccess.EntitiesData
 
                 string query = @"
                                    SELECT 
-                                       Clients.ClientID AS [Client ID],
+                                       FORMAT(Clients.ClientID, 'CUST-2026-000') AS [Customer ID],
                                        Persons.ImagePath AS [Profile],
                                        Persons.FirstName + ' ' + Persons.LastName AS [Full Name],
                                        Persons.Email AS [Email Address],
@@ -352,7 +352,7 @@ namespace BankSystemDataAccess.EntitiesData
 
                 string query = @"
                           SELECT 
-                              Clients.ClientID AS [Client ID],
+                              FORMAT(Clients.ClientID, 'CUST-2026-000') AS [Customer ID],
                               Persons.ImagePath AS [Profile],
                               Persons.FirstName + ' ' + Persons.LastName AS [Full Name],
                               Persons.Email AS [Email Address],
@@ -464,7 +464,7 @@ namespace BankSystemDataAccess.EntitiesData
                                       ISNULL(SUM(Accounts.Balance), 0.00) AS [Total Balance (USD)],
                                       Clients.CreatedDate AS [Date Registered],
                                       ISNULL(MIN(AccountTypes.TypeName), 'No Accounts') AS [Account Type(s)],
-                                      Clients.ClientID AS [Client ID]
+                                      Clients.ClientID AS [Customer ID]
 
                                   FROM Clients
                                   INNER JOIN Persons P ON Clients.PersonID = P.PersonID

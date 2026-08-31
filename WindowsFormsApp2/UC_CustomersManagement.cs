@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace Bank_Managment_System
 {
-    public partial class UC_CustomersManage : UserControl
+    public partial class UC_CustomersManagement : UserControl
     {
 
         ClsClient _Client = new ClsClient();
-        public UC_CustomersManage()
+        public UC_CustomersManagement()
         {
             InitializeComponent();
           
@@ -26,14 +26,14 @@ namespace Bank_Managment_System
         private void US_CustomersManage_Load(object sender, EventArgs e)
         {
             
-            Icones_Setting();
-            LoadSupData(); 
-            ApplyCleanGridViewStyle();
-            ViewAllcustomers();
+            _Icones_Setting();
+            _LoadSupData(); 
+            _ApplyCleanGridViewStyle();
+            _ViewAllcustomers();
 
         }
 
-        private void Icones_Setting()
+        private void _Icones_Setting()
 
         {
 
@@ -48,9 +48,14 @@ namespace Bank_Managment_System
 
             TotalCustomersIcon.IconColor = Color.FromArgb(94, 148, 255);
             NewCustomersIcon.IconColor = Color.FromArgb(46, 196, 182);
-            InActiveCustomerIcon.IconColor = Color.FromArgb(230, 57, 70);
-            ActiveAccountIcone.IconColor = Color.FromArgb(162, 89, 255);
+            ActiveAccountIcone.IconColor = Color.MediumSpringGreen;
+            InActiveCustomerIcon.IconColor = Color.FromArgb(231, 76, 60);
             TotalBalanceIcone.IconColor = Color.FromArgb(231, 111, 81);
+
+
+
+
+
 
             TotalCustomersIcon.BackColor = Color.Transparent;
             NewCustomersIcon.BackColor = Color.Transparent;
@@ -62,7 +67,7 @@ namespace Bank_Managment_System
             btnAddNewCustoer.Image = IconChar.UserPlus.ToBitmap(Color.Blue);
         }
 
-        private void ApplyCleanGridViewStyle()
+        private void _ApplyCleanGridViewStyle()
 
 
         {
@@ -78,7 +83,7 @@ namespace Bank_Managment_System
             DataGridViewAllCustomers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             DataGridViewAllCustomers.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 30, 50);
             DataGridViewAllCustomers.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            DataGridViewAllCustomers.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.5F, System.Drawing.FontStyle.Bold);
+            DataGridViewAllCustomers.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 11F, FontStyle.Bold);
             DataGridViewAllCustomers.ColumnHeadersDefaultCellStyle.Padding = new Padding(12, 0, 12, 0);
 
             
@@ -87,7 +92,7 @@ namespace Bank_Managment_System
             DataGridViewAllCustomers.DefaultCellStyle.ForeColor = Color.White;
             DataGridViewAllCustomers.DefaultCellStyle.SelectionBackColor = Color.FromArgb(30, 58, 138);
             DataGridViewAllCustomers.DefaultCellStyle.SelectionForeColor = Color.Cyan;
-            DataGridViewAllCustomers.DefaultCellStyle.Font = new Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular);
+            DataGridViewAllCustomers.DefaultCellStyle.Font = new Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular);
             DataGridViewAllCustomers.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
 
             // Change size of Image 
@@ -108,7 +113,7 @@ namespace Bank_Managment_System
             }
         }
 
-        private void ApplyClientsFilter()
+        private void _ApplyClientsFilter()
         {
             if (DataGridViewAllCustomers.DataSource is DataTable dt)
             {
@@ -163,7 +168,7 @@ namespace Bank_Managment_System
             }
         }
 
-        private void LoadSupData()
+        private void _LoadSupData()
 
         {
 
@@ -177,7 +182,7 @@ namespace Bank_Managment_System
 
         }
 
-        private void ViewAllcustomers()
+        private void _ViewAllcustomers()
 
         {
 
@@ -193,7 +198,7 @@ namespace Bank_Managment_System
                 return;
             }
 
-            ClsImageSetting.GetCustoerImage(dtCustomers);
+            ClsImageSetting.GetImage(dtCustomers);
 
             DataGridViewAllCustomers.DataSource = dtCustomers;
 
@@ -203,9 +208,9 @@ namespace Bank_Managment_System
                 DataGridViewAllCustomers.Columns["Profile"].Visible = false; 
             }
 
-            if (DataGridViewAllCustomers.Columns.Contains("ClientImage"))
+            if (DataGridViewAllCustomers.Columns.Contains("Image"))
             {
-                DataGridViewImageColumn imgCol = (DataGridViewImageColumn)DataGridViewAllCustomers.Columns["ClientImage"];
+                DataGridViewImageColumn imgCol = (DataGridViewImageColumn)DataGridViewAllCustomers.Columns["Image"];
                 imgCol.HeaderText = "Profile";
                 imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom; 
                 imgCol.DisplayIndex = 0; 
@@ -294,7 +299,7 @@ namespace Bank_Managment_System
                         if (ClsClient.ForceDeleteClient(ClientID, PersonID, ref ErrorMessage))
                         {
                             MessageBox.Show("Client deleted successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            ViewAllcustomers();
+                            _ViewAllcustomers();
                         }
                         else
                         {
@@ -317,8 +322,8 @@ namespace Bank_Managment_System
         private void _RefreshClientsList()
 
         {
-            ViewAllcustomers();
-            LoadSupData();
+            _ViewAllcustomers();
+            _LoadSupData();
         }
 
         private void _ChangeClientStatus(byte status, string actionName)
@@ -330,7 +335,7 @@ namespace Bank_Managment_System
 
             {
 
-                int clientID = Convert.ToInt32(DataGridViewAllCustomers.CurrentRow.Cells["Client ID"].Value);
+                int clientID = Convert.ToInt32(DataGridViewAllCustomers.CurrentRow.Cells["Customer ID"].Value);
 
                 _Client = ClsClient.Find(clientID, ref ErrorMessage);
 
@@ -351,6 +356,29 @@ namespace Bank_Managment_System
             }
         }
 
+        private void cmbFilterMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _ApplyClientsFilter();
+
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+
+            if (DataGridViewAllCustomers.DataSource is DataTable dt)
+
+            {
+
+                dt.CaseSensitive = false;
+
+                string Text = txtSearch.Text.Trim();
+
+                dt.DefaultView.RowFilter = string.IsNullOrEmpty(Text)
+                    ? string.Empty
+                    : string.Format("[Full Name] LIKE '%{0}%' OR [Email Address] LIKE '%{0}%' OR [Phone Number] LIKE '%{0}%'", Text);
+            }
+
+        }
         private void DeactiveCustomer_Click(object sender, EventArgs e)
         {
             _ChangeClientStatus(0, "Deactivated");
@@ -460,7 +488,10 @@ namespace Bank_Managment_System
                     DataGridViewRow row = DataGridViewAllCustomers.Rows[e.RowIndex];
                     foreach (DataGridViewCell cell in row.Cells)
                     {
-                        cell.Style.BackColor = Color.FromArgb(32, 36, 48);
+                        // cell.Style.BackColor = Color.FromArgb(32, 40, 50);
+                        //cell.Style.BackColor = Color.FromArgb(42, 53, 70);
+                         cell.Style.BackColor = Color.FromArgb(30, 58, 95);
+                        //  cell.Style.BackColor = Color.FromArgb(50, 65, 85);
                     }
                 }
             }
@@ -470,8 +501,8 @@ namespace Bank_Managment_System
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            LoadSupData();
-            //ViewAllcustomers();
+            _LoadSupData();
+            //_ViewAllcustomers();
         }
 
         private void DataGridViewAllCustomers_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -497,7 +528,6 @@ namespace Bank_Managment_System
             }
         }
 
-  
-        
+       
     }
 }

@@ -152,11 +152,17 @@
     <Compile Include="UC_ClientsListView.Designer.cs">
       <DependentUpon>UC_ClientsListView.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_CustomersManage.cs">
+    <Compile Include="UC_CustomersManagement.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_CustomersManage.Designer.cs">
-      <DependentUpon>UC_CustomersManage.cs</DependentUpon>
+    <Compile Include="UC_CustomersManagement.Designer.cs">
+      <DependentUpon>UC_CustomersManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="US_UsersManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="US_UsersManagement.Designer.cs">
+      <DependentUpon>US_UsersManagement.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -186,8 +192,11 @@
     <EmbeddedResource Include="UC_ClientsListView.resx">
       <DependentUpon>UC_ClientsListView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_CustomersManage.resx">
-      <DependentUpon>UC_CustomersManage.cs</DependentUpon>
+    <EmbeddedResource Include="UC_CustomersManagement.resx">
+      <DependentUpon>UC_CustomersManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="US_UsersManagement.resx">
+      <DependentUpon>US_UsersManagement.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Image\CountriesFlag\MClient.text" />
     <None Include="Properties\Settings.settings">
@@ -348,6 +357,8 @@
     <Content Include="Image\CustomersImage\Osama.png" />
     <Content Include="Image\CustomersImage\Waleed.png" />
     <Content Include="Image\CustomersImage\Yahya.png" />
+    <Content Include="Image\UsersImage\Oday.jpg" />
+    <Content Include="Image\UsersImage\Salah.jpg" />
     <Content Include="RememberMe.txt" />
     <None Include="Resources\Folder.png" />
     <None Include="Resources\Camera.png" />

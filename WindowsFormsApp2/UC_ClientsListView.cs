@@ -80,7 +80,7 @@ namespace Bank_Managment_System
             }
 
 
-            ClsImageSetting.GetCustoerImage(dtCustomers);
+            ClsImageSetting.GetImage(dtCustomers);
 
 
             DataGridViewAllClients.DataSource = dtCustomers;
@@ -91,9 +91,9 @@ namespace Bank_Managment_System
                 DataGridViewAllClients.Columns["Profile"].Visible = false;
             }
 
-            if (DataGridViewAllClients.Columns.Contains("ClientImage"))
+            if (DataGridViewAllClients.Columns.Contains("Image"))
             {
-                DataGridViewImageColumn imgCol = (DataGridViewImageColumn)DataGridViewAllClients.Columns["ClientImage"];
+                DataGridViewImageColumn imgCol = (DataGridViewImageColumn)DataGridViewAllClients.Columns["Image"];
                 imgCol.HeaderText = "Profile";
                 imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
                 imgCol.DisplayIndex = 0;
@@ -122,7 +122,7 @@ namespace Bank_Managment_System
                 return;
             }
 
-            ClsImageSetting.GetCustoerImage(dtViewAllClients);
+            ClsImageSetting.GetImage(dtViewAllClients);
 
             DataGridViewAllClients.DataSource = dtViewAllClients;
 
@@ -132,9 +132,9 @@ namespace Bank_Managment_System
                 DataGridViewAllClients.Columns["Profile"].Visible = false;
             }
 
-            if (DataGridViewAllClients.Columns.Contains("ClientImage"))
+            if (DataGridViewAllClients.Columns.Contains("Image"))
             {
-                DataGridViewImageColumn imgCol = (DataGridViewImageColumn)DataGridViewAllClients.Columns["ClientImage"];
+                DataGridViewImageColumn imgCol = (DataGridViewImageColumn)DataGridViewAllClients.Columns["Image"];
                 imgCol.HeaderText = "Profile";
                 imgCol.ImageLayout = DataGridViewImageCellLayout.Zoom;
                 imgCol.DisplayIndex = 0;
@@ -166,8 +166,8 @@ namespace Bank_Managment_System
             DataGridViewAllClients.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
              DataGridViewAllClients.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(20, 30, 50);
             DataGridViewAllClients.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            DataGridViewAllClients.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.5F, System.Drawing.FontStyle.Bold);
-           // DataGridViewAllClients.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            DataGridViewAllClients.ColumnHeadersDefaultCellStyle.Font = new Font("Georgia", 12F, System.Drawing.FontStyle.Bold);
+            // DataGridViewAllClients.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             DataGridViewAllClients.ColumnHeadersDefaultCellStyle.Padding = new Padding(12, 0, 12, 0);
 
 
@@ -176,7 +176,7 @@ namespace Bank_Managment_System
             DataGridViewAllClients.DefaultCellStyle.ForeColor = Color.White;
             DataGridViewAllClients.DefaultCellStyle.SelectionBackColor = Color.FromArgb(30, 58, 138);
             DataGridViewAllClients.DefaultCellStyle.SelectionForeColor = Color.Cyan;
-            DataGridViewAllClients.DefaultCellStyle.Font = new Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular);
+            DataGridViewAllClients.DefaultCellStyle.Font = new Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular);
             DataGridViewAllClients.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
 
 

@@ -122,6 +122,9 @@
             // 
             // PictC
             // 
+            this.PictC.BorderColor = System.Drawing.Color.DimGray;
+            this.PictC.BorderRadius = 12;
+            this.PictC.BorderThickness = 1;
             this.PictC.Controls.Add(this.btnCancel);
             this.PictC.Controls.Add(this.btnSaveClient);
             this.PictC.Controls.Add(this.guna2Panel5);
