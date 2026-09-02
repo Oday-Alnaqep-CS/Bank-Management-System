@@ -40,9 +40,7 @@ namespace BankSystemDataAccess.FinancialData
 
             return dt;
         }
-
-
-        public static DataTable GetNotificationsByClientID(int clientID, ref string errorMessage)
+        public static DataTable GetNotificationsByClientID(string UserID, ref string errorMessage)
 
 
         {
@@ -57,12 +55,12 @@ namespace BankSystemDataAccess.FinancialData
 
                 string query = @"SELECT NotificationID, Title, Message, IsRead, CreatedDate 
                              FROM Notifications 
-                             WHERE ClientID = @ClientID 
+                             WHERE UserID = @UserID 
                              ORDER BY CreatedDate DESC;";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@ClientID", clientID);
+                    command.Parameters.AddWithValue("@UserID", UserID);
 
                     try
                     {
@@ -82,5 +80,6 @@ namespace BankSystemDataAccess.FinancialData
 
             return dt;
         }
+
     }
 }

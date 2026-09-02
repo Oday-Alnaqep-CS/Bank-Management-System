@@ -7,7 +7,7 @@ namespace BankSystemDataAccess.EntitiesData
 {
     public class ClsUserRoleDataAccess
     {
-        public static bool AddUserRole(int userID, int roleID, ref string errorMessage)
+        public static bool AddUserRole(string userID, int roleID, ref string errorMessage)
         {
             int rowsAffected = 0;
 
@@ -36,7 +36,7 @@ namespace BankSystemDataAccess.EntitiesData
             return (rowsAffected > 0);
         }
 
-        public static bool DeleteUserRole(int userID, int roleID, ref string errorMessage)
+        public static bool DeleteUserRole(string userID, int roleID, ref string errorMessage)
         {
             int rowsAffected = 0;
 
@@ -65,7 +65,7 @@ namespace BankSystemDataAccess.EntitiesData
             return (rowsAffected > 0);
         }
 
-        public static bool DeleteAllRolesByUserID(int userID, ref string errorMessage)
+        public static bool DeleteAllRolesByUserID(string userID, ref string errorMessage)
         {
             int rowsAffected = 0;
 
@@ -92,7 +92,7 @@ namespace BankSystemDataAccess.EntitiesData
             return (rowsAffected >= 0);
         }
 
-        public static DataTable GetRolesByUserID(int userID, ref string errorMessage)
+        public static DataTable GetRolesByUserID(string userID, ref string errorMessage)
         {
             DataTable dt = new DataTable();
 
@@ -128,7 +128,7 @@ namespace BankSystemDataAccess.EntitiesData
             return dt;
         }
 
-        public static bool IsUserInRole(int userID, int roleID, ref string errorMessage)
+        public static bool IsUserInRole(string userID, int roleID, ref string errorMessage)
         {
             bool isFound = false;
 
@@ -162,7 +162,7 @@ namespace BankSystemDataAccess.EntitiesData
             return isFound;
         }
 
-        public static bool DoesUserHavePermission(int userID, string permissionName, ref string errorMessage)
+        public static bool DoesUserHavePermission(string userID, string permissionName, ref string errorMessage)
         {
             bool hasPermission = false;
 

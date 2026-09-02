@@ -387,6 +387,36 @@ namespace Bank_Managment_System
 
         }
 
+        private void btnNewClient_Click(object sender, EventArgs e)
+        {
+
+            ((FrmMain)this.FindForm()).LoadUserControl(new UC_AddCustomer());
+        }
+
+        private void btnNewUser_Click(object sender, EventArgs e)
+        {
+            ((FrmMain)this.FindForm()).LoadUserControl(new UC_AddUser());
+        }
+
+        private void btnNewDeposit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNewWithdraw_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNewTransfer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCurrencyDiff_Click(object sender, EventArgs e)
+        {
+
+        }
 
 
 
@@ -405,5 +435,6 @@ namespace Bank_Managment_System
             }
         }
 
+       
     }
 }

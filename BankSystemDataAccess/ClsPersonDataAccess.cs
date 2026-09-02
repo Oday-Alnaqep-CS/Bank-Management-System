@@ -291,6 +291,44 @@ namespace BankSystemDataAccess.EntitiesData
             return (rowsAffected > 0);
         }
 
+
+        public static bool UpdatePersonTypr(int personID, string PersonType)
+        {
+
+            int rowsAffected = 0;
+            SqlConnection Connection = new SqlConnection(ClsDataAccessSettings.ConnectionString);
+
+                        
+            
+            string query = @"UPDATE Persons 
+                     SET PersonType = @PersonType 
+                     WHERE PersonID = @PersonID;";
+
+            SqlCommand command = new SqlCommand(query, Connection);
+
+             
+            command.Parameters.AddWithValue("@PersonType", PersonType);
+            command.Parameters.AddWithValue("@PersonID", personID);
+
+
+
+            try
+            {
+                Connection.Open();
+                rowsAffected = command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+               
+            }
+            finally
+            {
+                Connection.Close();
+            }
+
+            return (rowsAffected > 0);
+        }
+
         public static bool DeletePerson(int PersonID,ref string ErrorMessage)
 
 

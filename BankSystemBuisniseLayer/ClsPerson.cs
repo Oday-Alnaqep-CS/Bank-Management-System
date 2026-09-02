@@ -19,6 +19,7 @@ namespace BankSystemBuisniseLayer
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string FullName => $"{FirstName} {LastName}";
+        public string PersonType { get; set; }
         public enGender Gender { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
@@ -74,12 +75,12 @@ namespace BankSystemBuisniseLayer
 
             this.PersonID = ClsPersonDataAccess.AddNewPerson(this.NationalID, this.FirstName, this.LastName,
                                                    (byte)this.Gender, this.Email, this.Phone,
-                                                   this.Address, this.CityID, this.DateOFBirth,this.ImagePath, ref ErrorMessage);
+                                                   this.Address, this.CityID, this.DateOFBirth, this.ImagePath, ref ErrorMessage);
 
 
             this.ErrorMessage = ErrorMessage;
             return (this.PersonID != -1);
-          
+
 
         }
 
@@ -91,7 +92,7 @@ namespace BankSystemBuisniseLayer
             bool IsUpdate = ClsPersonDataAccess.UpdatePerson(this.PersonID, this.NationalID,
                 this.FirstName, this.LastName,
                                                    (byte)this.Gender, this.Email, this.Phone,
-                                                   this.Address, this.CityID, this.DateOFBirth,this.ImagePath, ref ErrorMessage);
+                                                   this.Address, this.CityID, this.DateOFBirth, this.ImagePath, ref ErrorMessage);
 
             this.ErrorMessage = ErrorMessage;
             return IsUpdate;
@@ -132,7 +133,7 @@ namespace BankSystemBuisniseLayer
             return IsSuccessed;
         }
 
-        public static ClsPerson Find(int ID ,ref string ErrorMessage )
+        public static ClsPerson Find(int ID, ref string ErrorMessage)
         {
 
             string NationalID = "", FirstName = "", LastName = "", Email = "", Phone = "", Address = "", ImagePath = "";
@@ -156,14 +157,14 @@ namespace BankSystemBuisniseLayer
         {
 
             int PersonID = -1;
-            string  FirstName = "", LastName = "", Email = "", Phone = "", Address = "", ImagePath = "";
+            string FirstName = "", LastName = "", Email = "", Phone = "", Address = "", ImagePath = "";
             byte Gender = 1;
             int CityID = -1;
             DateTime dateOFBirth = DateTime.Now;
 
             if (ClsPersonDataAccess.GetPersonByNationalID(NationalID, ref PersonID, ref FirstName, ref LastName,
                                             ref Gender, ref Email, ref Phone, ref Address, ref
-                                            CityID, ref dateOFBirth ,ref ImagePath,ref ErrorMessage))
+                                            CityID, ref dateOFBirth, ref ImagePath, ref ErrorMessage))
             {
 
                 return new ClsPerson(PersonID, NationalID, FirstName, LastName, Gender, Email, Phone, Address, ImagePath, CityID, dateOFBirth);
@@ -176,7 +177,7 @@ namespace BankSystemBuisniseLayer
 
         public static bool DeletePerson(int personID, ref string errorMessage)
         {
-             return ClsPersonDataAccess.DeletePerson(personID, ref errorMessage);
+            return ClsPersonDataAccess.DeletePerson(personID, ref errorMessage);
         }
 
         public static DataTable GetAllPersons(ref string errorMessage)
@@ -194,7 +195,11 @@ namespace BankSystemBuisniseLayer
             return ClsPersonDataAccess.IsPersonExist(nationalID, ref errorMessage);
         }
 
+        public static bool SetPersonType(int personID, string personType)
+        {
+            return ClsPersonDataAccess.UpdatePersonTypr(personID,personType);
 
+        }
 
     }
 }

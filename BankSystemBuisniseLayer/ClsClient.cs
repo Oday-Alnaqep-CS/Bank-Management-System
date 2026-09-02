@@ -1,4 +1,5 @@
 using BankSystemDataAccess.EntitiesData;
+using BankSystemDataAccess.Financial;
 using System;
 using System.Data;
 using System.Windows.Media.Converters;
@@ -63,41 +64,74 @@ namespace BankSystemBuisniseLayer
             Mode = enMode.Update;
         }
 
-        private bool _AddNewClient()
+        private bool _AddNewClient(ClsAccount account)
 
         {
+            int ClientID = -1;
+            int AccountID = -1;
+            string ErrorMessage = "";
 
-            string errorMessage = "";
+            
+            string accountNumber = account != null ? account.AccountNumber : "";
+            string iban = account != null ? account.IBAN : "";
+            int accountTypeID = account != null ? account.AccountTypeID : 1;
+            int branchID = account != null ? account.BranchID : 1;
+            int currencyID = account != null ? account.CurrencyID : 1;
+            decimal balance = account != null ? account.Balance : 0;
+            byte accountStatus = account != null ? account.Status : (byte)1;
 
-            this.ClientID = ClsClientDataAccess.AddNewClient(
-                this.PersonID,
-                this.ClientType,
-                this.CreatedDate,
-                this.Status,
-                ref errorMessage
+
+            bool isAdded = ClsClientDataAccess.AddNewClientWithAccount(this.PersonInfo.FirstName,
+                this.PersonInfo.LastName,this.PersonInfo.NationalID,this.PersonInfo.DateOFBirth,this.PersonInfo.Phone,
+                this.PersonInfo.Email,(byte)this.PersonInfo.Gender,this.PersonInfo.CityID,this.PersonInfo.ImagePath,this.ClientType,
+                this.Status,accountNumber,iban,accountTypeID,branchID,currencyID,balance,accountStatus,ref ClientID,ref AccountID,ref ErrorMessage
+
             );
 
-            this.ErrorMessage = errorMessage;
-            return (this.ClientID != -1);
+            if (isAdded)
+            {
+               
+
+                this.ClientID = ClientID;
+                if (account != null)
+
+                {
+
+                    account.AccountID = AccountID;
+                    account.ClientID = ClientID;
+
+                }
+                return true;
+            }
+            else
+            {
+
+                this.ErrorMessage = ErrorMessage;
+                return false;
+
+            }
         }
 
         private bool _UpdateClient()
 
         {
-
             string errorMessage = "";
 
-            bool isUpdated = ClsClientDataAccess.UpdateClient(
-                this.ClientID,
-                this.PersonID,
-                this.ClientType,
-                this.Status,
-                this.CreatedDate,
+            bool isUpdated = ClsClientDataAccess.UpdateClientWithPerson(this.ClientID,this.PersonID,this.PersonInfo.FirstName,this.PersonInfo.LastName,
+                this.PersonInfo.NationalID,this.PersonInfo.DateOFBirth,this.PersonInfo.Phone,this.PersonInfo.Email,
+                (byte)this.PersonInfo.Gender,this.PersonInfo.CityID,this.PersonInfo.ImagePath,this.ClientType,this.Status,
                 ref errorMessage
             );
 
-            this.ErrorMessage = errorMessage;
-            return isUpdated;
+            if (isUpdated)
+            {
+                return true;
+            }
+            else
+            {
+                this.ErrorMessage = errorMessage;
+                return false;
+            }
         }
 
         public bool UpdateStatusOnly(byte newStatus)
@@ -116,32 +150,13 @@ namespace BankSystemBuisniseLayer
             return isUpdated;
         }
 
-        public bool Save()
-
+        public bool Save(ClsAccount account = null)
         {
-            
-            if (this.PersonInfo != null)
-
-            {
-
-                string personErr = "";
-                if (!this.PersonInfo.Save())
-                {
-                    this.ErrorMessage = "Error Dosen't Saved a Person Details : " + personErr;
-                    return false;
-                }
-                this.PersonID = this.PersonInfo.PersonID;
-
-            }
-
-           
             switch (Mode)
-
             {
-
                 case enMode.AddNew:
-                    if (_AddNewClient())
-
+                  
+                    if (_AddNewClient(account))
                     {
                         Mode = enMode.Update;
                         return true;
@@ -150,6 +165,17 @@ namespace BankSystemBuisniseLayer
 
 
                 case enMode.Update:
+                   
+                    if (this.PersonInfo != null)
+                    {
+                        if (!this.PersonInfo.Save())
+                        {
+                            this.ErrorMessage = "Error Doesn't Save Person Details: " + this.PersonInfo.ErrorMessage;
+                            return false;
+                        }
+                        this.PersonID = this.PersonInfo.PersonID;
+                    }
+
                     return _UpdateClient();
             }
 

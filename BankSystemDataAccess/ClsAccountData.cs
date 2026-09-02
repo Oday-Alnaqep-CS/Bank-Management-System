@@ -8,7 +8,6 @@ namespace BankSystemDataAccess.FinancialData
     public static partial class ClsAccountData
     {
 
-
         public static bool GetAccountByID(int accountID, ref string accountNumber, ref string iban,
                                            ref int clientID, ref int accountTypeID, ref int branchID,
                                            ref int currencyID, ref decimal balance, ref byte status,
@@ -69,7 +68,6 @@ namespace BankSystemDataAccess.FinancialData
             }
             return isFound;
         }
-
 
         public static bool GetAccountByAccountNumber(string accountNumber, ref int accountID, ref string iban,
                                                       ref int clientID, ref int accountTypeID, ref int branchID,
@@ -132,7 +130,6 @@ namespace BankSystemDataAccess.FinancialData
 
         }
 
-
         public static bool IsAccountExist(int AccountID, ref string errorMessage)
 
 
@@ -172,8 +169,6 @@ namespace BankSystemDataAccess.FinancialData
 
         }
 
-
-
         public static DataTable GetAccountsView(ref string errorMessage)
 
 
@@ -208,7 +203,6 @@ namespace BankSystemDataAccess.FinancialData
             return dt;
 
         }
-
 
         public static DataTable GetAccountsByClientID(int clientID, ref string errorMessage)
 
@@ -286,8 +280,6 @@ namespace BankSystemDataAccess.FinancialData
             return dt;
         }
 
-
-
         public static bool Deposit(int AccountID,decimal Amount,ref string ErrorMessage)
 
 
@@ -301,8 +293,7 @@ namespace BankSystemDataAccess.FinancialData
                                           SET Balance = Balance + @Amount
                                           WHERE AccountID = @AccountID;";
 
-                using (SqlCommand command =
-                       new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@AccountID", AccountID);
                     command.Parameters.AddWithValue("@Amount", Amount);
@@ -327,10 +318,7 @@ namespace BankSystemDataAccess.FinancialData
 
         }
 
-
-
-
-        public static bool Withdraw( int AccountID,decimal Amount,ref string ErrorMessage)
+        public static bool Withdraw(int AccountID, decimal Amount, ref string ErrorMessage)
 
 
         {
@@ -376,6 +364,121 @@ namespace BankSystemDataAccess.FinancialData
             }
 
         }
+
+        public static int GetTotalAccounts(ref string ErrorMessage)
+
+
+        {
+
+            int AccountCount = 0;
+
+            using (SqlConnection connection =  new SqlConnection(ClsDataAccessSettings.ConnectionString))
+
+
+            {
+                        string query = @"select COUNT(*) from Accounts";
+
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+
+                {
+
+             
+
+                    try
+                    {
+                        connection.Open();
+
+                            AccountCount = (int)command.ExecuteScalar();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorMessage = ex.Message;
+                        return 0;
+                    }
+
+                }
+
+            }
+            return AccountCount;
+
+        }
+
+        public static int GetTotalActiveAccounts(ref string ErrorMessage)
+
+        {
+
+            int ActiveAccountCount = 0;
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+                string query = @"select COUNT(*) from Accounts where Status = 1";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        ActiveAccountCount = (int)command.ExecuteScalar();
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorMessage = ex.Message;
+                        return 0;
+                    }
+                }
+            }
+            return ActiveAccountCount;
+        }
+
+        public static int GetTotalDormantAccounts(ref string ErrorMessage)
+
+        {
+            int DormantAccountCount = 0;
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+                string query = @"select COUNT(*) from Accounts where Status = 2";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        DormantAccountCount = (int)command.ExecuteScalar();
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorMessage = ex.Message;
+                        return 0;
+                    }
+                }
+            }
+            return DormantAccountCount;
+        }
+
+        public static int GetTotalInactiveAccounts(ref string ErrorMessage)
+        {
+            int InactiveAccountCount = 0;
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+                string query = @"select COUNT(*) from Accounts where Status = 0";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        InactiveAccountCount = (int)command.ExecuteScalar();
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorMessage = ex.Message;
+                        return 0;
+                    }
+                }
+            }
+            return InactiveAccountCount;
+        }
+
 
 
     }

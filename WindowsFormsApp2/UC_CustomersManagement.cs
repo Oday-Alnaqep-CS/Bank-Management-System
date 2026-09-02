@@ -30,12 +30,18 @@ namespace Bank_Managment_System
             _LoadSupData(); 
             _ApplyCleanGridViewStyle();
             _ViewAllcustomers();
-
         }
 
         private void _Icones_Setting()
 
         {
+
+
+            DeleteCustomer1.Image = IconChar.UserTimes.ToBitmap(Color.FromArgb(239, 68, 68));
+            EditCustomer1.Image = IconChar.UserEdit.ToBitmap(Color.FromArgb(59, 130, 246));
+            DeactiveCustomer.Image = IconChar.UserSlash.ToBitmap(Color.FromArgb(245, 158, 11));
+            beActiveCustomer.Image = IconChar.UserCheck.ToBitmap(Color.FromArgb(16, 185, 129));
+          //  LockedUser.Image = IconChar.Lock.ToBitmap(Color.FromArgb(255, 193, 7));
 
             txtSearch.IconRight = IconChar.Search.ToBitmap(Color.Gray, 20);
 
@@ -232,7 +238,7 @@ namespace Bank_Managment_System
             if (DataGridViewAllCustomers.CurrentRow != null)
 
             {
-                int ClientID = Convert.ToInt32(DataGridViewAllCustomers.CurrentRow.Cells["Client ID"].Value);
+                 int ClientID = Convert.ToInt32(DataGridViewAllCustomers.CurrentRow.Cells["Customer ID"].Value);
                 ((FrmMain)this.FindForm()).LoadUserControl(new UC_AddCustomer(ClientID));
 
             }
@@ -241,7 +247,7 @@ namespace Bank_Managment_System
         private void DeleteCustomer1_Click(object sender, EventArgs e)
         {
 
-            int ClientID = Convert.ToInt32(DataGridViewAllCustomers.CurrentRow.Cells["Client ID"].Value);
+            int ClientID = Convert.ToInt32(DataGridViewAllCustomers.CurrentRow.Cells["Customer ID"].Value);
 
 
             if (ClsGlobal.CurrentUser.UserName != "Oday Al-Naqeeb")
@@ -379,6 +385,7 @@ namespace Bank_Managment_System
             }
 
         }
+
         private void DeactiveCustomer_Click(object sender, EventArgs e)
         {
             _ChangeClientStatus(0, "Deactivated");
@@ -490,7 +497,7 @@ namespace Bank_Managment_System
                     {
                         // cell.Style.BackColor = Color.FromArgb(32, 40, 50);
                         //cell.Style.BackColor = Color.FromArgb(42, 53, 70);
-                         cell.Style.BackColor = Color.FromArgb(30, 58, 95);
+                         cell.Style.BackColor = Color.FromArgb(30, 53, 75);
                         //  cell.Style.BackColor = Color.FromArgb(50, 65, 85);
                     }
                 }

@@ -56,9 +56,7 @@ namespace BankSystemDataAccess.EntitiesData
 
             return isFound;
         }
-
-
-
+ 
         public static bool GetPermissionByName(string permissionName, ref int permissionID, ref string description, ref string errorMessage)
 
 
@@ -104,8 +102,6 @@ namespace BankSystemDataAccess.EntitiesData
 
             return isFound;
         }
-
-
 
         public static int AddNewPermission(string permissionName, string description, ref string errorMessage)
         {
@@ -301,6 +297,42 @@ namespace BankSystemDataAccess.EntitiesData
             return isExist;
         }
 
+        public static bool CheckUserPermission(string userID, string permissionName)
+
+        {
+            bool hasPermission = false;
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+               
+                string query = @"SELECT COUNT(1) 
+                         FROM UserRoles ur
+                         INNER JOIN RolePermissions rp ON ur.RoleID = rp.RoleID
+                         INNER JOIN Permissions p ON rp.PermissionID = p.PermissionID
+                         WHERE ur.UserID = @UserID AND p.PermissionName = @PermissionName;";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@UserID", userID);
+                    command.Parameters.AddWithValue("@PermissionName", permissionName);
+
+                    try
+                    {
+                        connection.Open();
+                        int result = Convert.ToInt32(command.ExecuteScalar());
+                        hasPermission = (result > 0);
+                    }
+                    catch (Exception ex)
+                    {
+                      
+                        hasPermission = false;
+                    }
+                }
+            }
+
+            return hasPermission;
+        }
+
         public static DataTable GetAllPermissions(ref string errorMessage)
         {
             DataTable dt = new DataTable();
@@ -331,5 +363,42 @@ namespace BankSystemDataAccess.EntitiesData
 
             return dt;
         }
+
+        public static DataTable GetPermissionsByRoleID(int roleID, ref string errorMessage)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+                string query = @"SELECT P.PermissionID, P.PermissionName, P.Description
+                                 FROM RolePermissions RP
+                                 INNER JOIN Permissions P ON RP.PermissionID = P.PermissionID
+                                 WHERE RP.RoleID = @RoleID;";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@RoleID", roleID);
+
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        errorMessage = ex.Message;
+                    }
+                }
+            }
+
+            return dt;
+        }
+
     }
 }

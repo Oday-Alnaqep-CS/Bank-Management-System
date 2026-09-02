@@ -18,6 +18,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static BankSystemBuisniseLayer.ClsClient;
+using static BankSystemBuisniseLayer.ClsPerson;
 using static BankSystemDataAccess.Financial.ClsAccount;
 
 
@@ -38,6 +39,9 @@ namespace Bank_Managment_System
         {
             InitializeComponent();
             _Mode = enMode.AddNew;
+            lblTitle1.Text = "Customer Management  > Add New Customer";
+            lblTitle.Text = "New Customer";
+            lblTitle.Image = IconChar.AddressCard.ToBitmap(Color.DodgerBlue);
 
 
         }
@@ -47,6 +51,10 @@ namespace Bank_Managment_System
             InitializeComponent();
             _ClientID = clientID;
             _Mode = enMode.Update;
+
+            lblTitle1.Text = "Customer Management  > Edit Customer";
+            lblTitle.Text = "Edit Customer";
+            lblTitle.Image = IconChar.Edit.ToBitmap(Color.DodgerBlue);
         }
 
         private void UC_AddCustomer_Load(object sender, EventArgs e)
@@ -86,6 +94,10 @@ namespace Bank_Managment_System
         {
 
             PersonalInformation.Image = IconChar.UserAlt.ToBitmap(Color.DodgerBlue);
+      
+            AccountDetailsIcone.Image = IconChar.AddressBook.ToBitmap(Color.DodgerBlue);
+
+      
             txtFirstName.IconLeft = IconChar.UserAlt.ToBitmap(Color.FromArgb(68, 88, 150));
             txtSecondName.IconLeft = IconChar.UserAlt.ToBitmap(Color.FromArgb(68, 88, 150));
             txtLastName.IconLeft = IconChar.UserAlt.ToBitmap(Color.FromArgb(68, 88, 150));
@@ -258,8 +270,11 @@ namespace Bank_Managment_System
 
 
                 bool hasText = !string.IsNullOrEmpty(txt.Text.Trim());
+                
                 Color iconColor = hasText ? Color.DodgerBlue : Color.FromArgb(68, 88, 112);
 
+                
+                txt.BorderColor = hasText ? Color.DodgerBlue : Color.FromArgb(68, 88, 112);
 
                 Image oldImage = txt.IconLeft;
                 txt.IconLeft = icon.ToBitmap(iconColor, 20);
@@ -465,6 +480,7 @@ namespace Bank_Managment_System
         }
 
         private void _SaveCustomer()
+
         {
 
             if (_Mode == enMode.AddNew)
@@ -472,82 +488,84 @@ namespace Bank_Managment_System
                 _Client.PersonInfo = new ClsPerson();
             }
 
-          
 
-            if (PictCustomerPhoto.Tag != null)
-            {
-                _Client.PersonInfo.ImagePath = PictCustomerPhoto.Tag.ToString();
-            }
-            else
-            {
-                _Client.PersonInfo.ImagePath = "";
-            }
+            _Client.PersonInfo.ImagePath = PictCustomerPhoto.Tag != null ? PictCustomerPhoto.Tag.ToString(): "";
+
             _Client.PersonInfo.FirstName = txtFirstName.Text.Trim();
             _Client.PersonInfo.LastName = txtLastName.Text.Trim();
             _Client.PersonInfo.NationalID = txtNationalID.Text.Trim();
             _Client.PersonInfo.DateOFBirth = txtDateOfBirth.Value;
             _Client.PersonInfo.Phone = txtPhoneNumber.Text.Trim();
             _Client.PersonInfo.Email = txtEmailAddress.Text.Trim();
+
             _Client.PersonInfo.Gender = Gender_Male.Checked ? ClsPerson.enGender.Male : ClsPerson.enGender.Female;
+
             _Client.PersonInfo.CityID = Convert.ToInt32(CbCities.SelectedValue ?? -1);
 
-           
+
+
             _Client.ClientType = (byte)ClsClient.enClientType.Standard;
+
             _Client.Status = (byte)(Check_ActiveAccount.Checked ? 1 : 0);
 
 
-            if (_Client.Save())
+          
+
+            ClsAccount account = null;
+
+            if (_Mode == enMode.AddNew)
+
             {
+                account = new ClsAccount();
+
+                account.AccountNumber =
+                    "ACC-" + DateTime.Now.Ticks.ToString().Substring(10);
+
+                account.IBAN =
+                    "YE93BANK" + DateTime.Now.Ticks.ToString().Substring(8);
+
+                account.AccountTypeID =
+                    Convert.ToInt32(CbAccountType.SelectedValue ?? 1);
+
+                account.BranchID =
+                    Convert.ToInt32(CbBranches.SelectedValue ?? 1);
+
+                account.CurrencyID = 1;
+
+                account.Balance =
+                    Convert.ToDecimal(txtInitialDepositBalance.Text.Trim());
+
+                account.Status = 1;
+            }
 
 
+
+            if (_Client.Save(account))
+
+            {
                 if (_Mode == enMode.AddNew)
+
                 {
 
-                    ClsAccount account = new ClsAccount();
-                    account.ClientID = _Client.ClientID;
-
-
-                    account.AccountNumber = "ACC-" + DateTime.Now.Ticks.ToString().Substring(10);
-                    account.IBAN = "YE93BANK" + DateTime.Now.Ticks.ToString().Substring(8);
-                    account.AccountTypeID = Convert.ToInt32(CbAccountType.SelectedValue ?? 1);
-                    account.BranchID = Convert.ToInt32(CbBranches.SelectedValue ?? 1);
-                    account.CurrencyID = 1; // USD default
-                    account.Balance = Convert.ToDecimal(txtInitialDepositBalance.Text.Trim());
-                    account.Status = 1;
-
-                    if (account.Save())
-                    {
-
-
-
-
-
-                        MessageBox.Show($"Customer and Bank Account created successfully!\n\n" +
-                                        $"Client ID: {_Client.ClientID}\n" +
-                                        $"Account ID: {account.AccountID}",
-                                        "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Customer saved, but failed to create Bank Account:\n{account.ErrorMessage}",
-                                        "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    MessageBox.Show( $"Customer and Bank Account created successfully!\n\n" +$"Client ID: {_Client.ClientID}\n" +$"Account ID: {account.AccountID}","Success",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
 
                     _Mode = enMode.Update;
                     _ClientID = _Client.ClientID;
 
                 }
+
                 else
+
                 {
-                    MessageBox.Show("Customer updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show( "Customer updated successfully!","Success",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 }
             }
             else
             {
-                MessageBox.Show($"Failed to save customer data:\n{_Client.ErrorMessage}",
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Failed to save customer data:\n{_Client.ErrorMessage}","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
-            
         }
 
         private void _LoadData()
@@ -586,11 +604,12 @@ namespace Bank_Managment_System
 
             int CountryID = ClsCountry.GetCountryIdByCityID(_Client.PersonInfo.CityID, ref ErrorMessage);
             int BranchID = ClsBranch.GetBranchIDByCityID(_Client.PersonInfo.CityID,ref ErrorMessage);
-
+            ClsAccount account = new ClsAccount();
+            account.ClientID = _Client.ClientID;
             CbCountries.SelectedValue = CountryID;
             CbCities.SelectedValue = _Client.PersonInfo.CityID;
             CbBranches.SelectedValue = BranchID;
-
+            CbAccountType.SelectedValue = account.AccountTypeID;
             if (!string.IsNullOrEmpty(_Client.PersonInfo.ImagePath) && System.IO.File.Exists(_Client.PersonInfo.ImagePath))
             {
                 PictCustomerPhoto.ImageLocation = _Client.PersonInfo.ImagePath;
@@ -598,7 +617,10 @@ namespace Bank_Managment_System
 
             else
             {
-                PictCustomerPhoto.Image = _Client.PersonInfo.Gender == 0 ? Properties.Resources.DefaultMaleAvatar : Properties.Resources.DefaultFemaleAvatar;
+               
+                PictCustomerPhoto.Image = (_Client.PersonInfo.Gender == enGender.Female)
+                    ? Properties.Resources.DefaultFemaleAvatar
+                    : Properties.Resources.DefaultMaleAvatar;
             }
 
           
@@ -672,7 +694,17 @@ namespace Bank_Managment_System
             
         }
 
-       
+        private void guna2Panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Gender_Male_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
         protected override CreateParams CreateParams
 
 

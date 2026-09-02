@@ -8,6 +8,7 @@ namespace BankSystemDataAccess.EntitiesData
     public static partial class ClsClientDataAccess
     {
 
+        
         public static bool GetClientByID(int clientID, ref int personID, ref byte clientType,
                                          ref DateTime createdDate, ref byte status, ref string errorMessage)
         {
@@ -155,7 +156,117 @@ namespace BankSystemDataAccess.EntitiesData
 
         }
 
-        public static bool UpdateClient(int clientID, int personID, byte clientType, byte status, DateTime CreatedDate,ref string errorMessage)
+        public static bool AddNewClientWithAccount(
+                                                    string firstName, string lastName, string nationalID, DateTime dateOfBirth,
+                                                    string phone, string email, byte gender, int cityID, string imagePath,
+                                                    byte clientType, byte status, string accountNumber, string iban,
+                                                    int accountTypeID, int branchID, int currencyID, decimal balance,
+                                                    byte accountStatus, ref int clientID, ref int accountID, ref string errorMessage)
+
+
+        {
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+
+            {
+                connection.Open();
+
+                using (SqlTransaction transaction = connection.BeginTransaction())
+
+                {
+                    try
+
+                    {
+                        
+
+                        string personQuery = @"INSERT INTO Persons 
+                                     (FirstName, LastName, NationalID, DateOFBirth, Phone, Email, Gender, CityID, ImagePath)
+                                     VALUES 
+                                     (@FirstName, @LastName, @NationalID, @DateOFBirth, @Phone, @Email, @Gender, @CityID, @ImagePath);
+                                     SELECT SCOPE_IDENTITY();";
+
+                        int personID;
+
+                        using (SqlCommand command = new SqlCommand(personQuery, connection, transaction))
+
+                        {
+                            command.Parameters.AddWithValue("@FirstName", firstName);
+                            command.Parameters.AddWithValue("@LastName", lastName);
+                            command.Parameters.AddWithValue("@NationalID", nationalID);
+                            command.Parameters.AddWithValue("@DateOFBirth", dateOfBirth);
+                            command.Parameters.AddWithValue("@Phone", phone);
+                            command.Parameters.AddWithValue("@Email", email);
+                            command.Parameters.AddWithValue("@Gender", gender);
+                            command.Parameters.AddWithValue("@CityID", cityID);
+                            command.Parameters.AddWithValue("@ImagePath", imagePath ?? "");
+
+                            personID = Convert.ToInt32(command.ExecuteScalar());
+                        }
+
+                        
+                        string clientQuery = @"INSERT INTO Clients 
+                                     (PersonID, ClientType, CreatedDate, Status)
+                                     VALUES 
+                                     (@PersonID, @ClientType, @CreatedDate, @Status);
+                                     SELECT SCOPE_IDENTITY();";
+
+                        using (SqlCommand command = new SqlCommand(clientQuery, connection, transaction))
+
+                        {
+                            command.Parameters.AddWithValue("@PersonID", personID);
+                            command.Parameters.AddWithValue("@ClientType", clientType);
+                            command.Parameters.AddWithValue("@CreatedDate", DateTime.Now);
+                            command.Parameters.AddWithValue("@Status", status);
+
+                            clientID = Convert.ToInt32(command.ExecuteScalar());
+                        }
+
+                        
+                        string accountQuery = @"INSERT INTO Accounts 
+                                      (ClientID, AccountNumber, IBAN, AccountTypeID, BranchID, CurrencyID, Balance, Status)
+                                      VALUES 
+                                      (@ClientID, @AccountNumber, @IBAN, @AccountTypeID, @BranchID, @CurrencyID, @Balance, @Status);
+                                      SELECT SCOPE_IDENTITY();";
+
+                        using (SqlCommand command = new SqlCommand(accountQuery, connection, transaction))
+
+                        {
+                            command.Parameters.AddWithValue("@ClientID", clientID);
+                            command.Parameters.AddWithValue("@AccountNumber", accountNumber);
+                            command.Parameters.AddWithValue("@IBAN", iban);
+                            command.Parameters.AddWithValue("@AccountTypeID", accountTypeID);
+                            command.Parameters.AddWithValue("@BranchID", branchID);
+                            command.Parameters.AddWithValue("@CurrencyID", currencyID);
+                            command.Parameters.AddWithValue("@Balance", balance);
+                            command.Parameters.AddWithValue("@Status", accountStatus);
+
+                            accountID = Convert.ToInt32(command.ExecuteScalar());
+                        }
+
+                        
+                        transaction.Commit();
+                        return true;
+                    }
+
+                    catch (Exception ex)
+
+                    {
+
+                        
+                        transaction.Rollback();
+
+                        errorMessage = ex.Message;
+                        clientID = -1;
+                        accountID = -1;
+
+                        return false;
+
+                    }
+                }
+            }
+        }
+
+        public static bool UpdateClient(int clientID, int personID, byte clientType, byte status, ref string errorMessage)
 
 
         {
@@ -176,7 +287,7 @@ namespace BankSystemDataAccess.EntitiesData
                     command.Parameters.AddWithValue("@PersonID", personID);
                     command.Parameters.AddWithValue("@ClientType", clientType);
                     command.Parameters.AddWithValue("@Status", status);
-                    command.Parameters.AddWithValue("@CreatedDate", CreatedDate);
+                    
 
 
                     try
@@ -197,6 +308,85 @@ namespace BankSystemDataAccess.EntitiesData
             return rowsAffected > 0;
 
 
+        }
+
+        public static bool UpdateClientWithPerson(
+                                                   int clientID, int personID, string firstName, string lastName,
+                                                   string nationalID, DateTime dateOfBirth, string phone, string email,
+                                                   byte gender, int cityID, string imagePath, byte clientType, byte status,
+                                                   ref string errorMessage)
+        {
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+
+            {
+
+                connection.Open();
+
+
+                using (SqlTransaction transaction = connection.BeginTransaction())
+
+                {
+                    try
+
+                    {
+                       
+                        string personQuery = @"UPDATE Persons SET 
+                                     FirstName = @FirstName, 
+                                     LastName = @LastName, 
+                                     NationalID = @NationalID, 
+                                     DateOFBirth = @DateOFBirth, 
+                                     Phone = @Phone, 
+                                     Email = @Email, 
+                                     Gender = @Gender, 
+                                     CityID = @CityID, 
+                                     ImagePath = @ImagePath
+                                     WHERE PersonID = @PersonID;";
+
+                        using (SqlCommand command = new SqlCommand(personQuery, connection, transaction))
+
+                        {
+                            command.Parameters.AddWithValue("@PersonID", personID);
+                            command.Parameters.AddWithValue("@FirstName", firstName);
+                            command.Parameters.AddWithValue("@LastName", lastName);
+                            command.Parameters.AddWithValue("@NationalID", nationalID);
+                            command.Parameters.AddWithValue("@DateOFBirth", dateOfBirth);
+                            command.Parameters.AddWithValue("@Phone", phone);
+                            command.Parameters.AddWithValue("@Email", email);
+                            command.Parameters.AddWithValue("@Gender", gender);
+                            command.Parameters.AddWithValue("@CityID", cityID);
+                            command.Parameters.AddWithValue("@ImagePath", imagePath ?? "");
+
+                            command.ExecuteNonQuery();
+                        }
+
+                        
+                        string clientQuery = @"UPDATE Clients SET 
+                                     ClientType = @ClientType, 
+                                     Status = @Status
+                                     WHERE ClientID = @ClientID;";
+
+                        using (SqlCommand command = new SqlCommand(clientQuery, connection, transaction))
+                        {
+                            command.Parameters.AddWithValue("@ClientID", clientID);
+                            command.Parameters.AddWithValue("@ClientType", clientType);
+                            command.Parameters.AddWithValue("@Status", status);
+
+                            command.ExecuteNonQuery();
+                        }
+
+                     
+                        transaction.Commit();
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        
+                        transaction.Rollback();
+                        errorMessage = ex.Message;
+                        return false;
+                    }
+                }
+            }
         }
 
         public static bool UpdateClientStatus(int clientID, byte status, ref string errorMessage)
@@ -634,8 +824,6 @@ namespace BankSystemDataAccess.EntitiesData
             return isDeleted;
         }
 
-
-
         public static bool UpdateCustomer(
     int CustomerID,
     int PersonID,
@@ -652,7 +840,7 @@ namespace BankSystemDataAccess.EntitiesData
             {
                 connection.Open();
 
-                // بدء Transaction
+               
                 SqlTransaction transaction = connection.BeginTransaction();
 
                 try

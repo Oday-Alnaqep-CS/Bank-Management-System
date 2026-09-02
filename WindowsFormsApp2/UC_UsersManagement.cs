@@ -14,12 +14,12 @@ using System.Windows.Forms;
 
 namespace Bank_Managment_System
 {
-    public partial class US_UsersManagement : UserControl
+    public partial class UC_UsersManagement : UserControl
     {
          
         private ContextMenuStrip cmsActions = new ContextMenuStrip();
-
-        public US_UsersManagement()
+        ClsUser _User = new ClsUser();
+        public UC_UsersManagement()
         {
             InitializeComponent();
         }
@@ -46,6 +46,14 @@ namespace Bank_Managment_System
         private void _Icones_Setting()
 
         {
+
+
+
+            DeleteUser.Image = IconChar.UserTimes.ToBitmap(Color.FromArgb(239, 68, 68));     
+            EditUser.Image = IconChar.UserEdit.ToBitmap(Color.FromArgb(59, 130, 246));       
+            DeactiveUser.Image = IconChar.UserSlash.ToBitmap(Color.FromArgb(245, 158, 11));  
+            ActivationUser.Image = IconChar.UserCheck.ToBitmap(Color.FromArgb(16, 185, 129));
+            LockedUser.Image = IconChar.Lock.ToBitmap(Color.FromArgb(255, 193, 7)); 
 
 
             TotalUsersIcon.IconChar = FontAwesome.Sharp.IconChar.Users;
@@ -231,15 +239,23 @@ namespace Bank_Managment_System
 
                 switch (status)
                 {
+                  
+
+                    case "Inactive":
+                    case "0":
+                        e.CellStyle.ForeColor = Color.Red;
+                        e.CellStyle.Font = new Font(DataGridViewAllUsere.Font, FontStyle.Bold);
+                        break;
+
                     case "Active":
                     case "1":
                         e.CellStyle.ForeColor = Color.LimeGreen;
                         e.CellStyle.Font = new Font(DataGridViewAllUsere.Font, FontStyle.Bold);
                         break;
 
-                    case "Inactive":
-                    case "0":
-                        e.CellStyle.ForeColor = Color.Red;
+                    case "Locked":
+                    case "2":
+                        e.CellStyle.ForeColor = Color.Orange;
                         e.CellStyle.Font = new Font(DataGridViewAllUsere.Font, FontStyle.Bold);
                         break;
                 }
@@ -313,6 +329,25 @@ namespace Bank_Managment_System
                 }
             }
 
+            DataGridViewColumn column = DataGridViewAllUsere.Columns[e.ColumnIndex];
+
+            if (column.HeaderText == "Status")
+            {
+                string statusValue = e.Value?.ToString();
+
+                if (statusValue == "Inactive" || statusValue == "0" || statusValue == "Deactive")
+                {
+
+                    DataGridViewRow row = DataGridViewAllUsere.Rows[e.RowIndex];
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        // cell.Style.BackColor = Color.FromArgb(32, 40, 50);
+                        cell.Style.BackColor = Color.FromArgb(42, 53, 70);
+                        //cell.Style.BackColor = Color.FromArgb(30, 53, 75);
+                        // cell.Style.BackColor = Color.FromArgb(50, 65, 85);
+                    }
+                }
+            }
         }
 
         private void cmbFilterMain_SelectedIndexChanged(object sender, EventArgs e)
@@ -324,5 +359,136 @@ namespace Bank_Managment_System
         {
             _ApplyStatusFilter();
         }
+
+        private void btnAddNewUser_Click(object sender, EventArgs e)
+        {
+            ((FrmMain)this.FindForm()).LoadUserControl(new UC_AddUser());
+        }
+
+        private void _RefreshUserList()
+        {
+            _LoadViewAllUsers();
+        }
+
+        private void _ChaingUserStatus(byte newStatus, string ActionType)
+
+        {
+
+            string ErrorMessage = string.Empty;
+
+            if (DataGridViewAllUsere.CurrentRow != null)
+
+            {
+
+                string UserID = Convert.ToString(DataGridViewAllUsere.CurrentRow.Cells["User ID"].Value);
+               // MessageBox.Show("ID Found: " + UserID);
+                _User = ClsUser.Find(UserID, ref ErrorMessage);
+
+                if (_User != null)
+
+                {
+                    if (_User.UpdateStatusOnly(newStatus))
+                    {
+                        MessageBox.Show($"User status changed to {ActionType} successfully.", "Change User Status", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        _RefreshUserList();
+                        DataGridViewAllUsere.Refresh();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Failed to change user status to {ActionType}. Error: {ErrorMessage}", "Change User Status", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                   
+                }
+                else
+                {
+                    MessageBox.Show($"Could not find User with ID: '{UserID}' in database! Error: {ErrorMessage}", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            
+
+        }
+
+        private void EditUser_Click(object sender, EventArgs e)
+        {
+            string UserID = Convert.ToString(DataGridViewAllUsere.CurrentRow.Cells["User ID"].Value);
+            ((FrmMain)this.FindForm()).LoadUserControl(new UC_AddUser(UserID));
+        }
+
+        private void DeleteUser_Click(object sender, EventArgs e)
+        {
+
+            string ErrorMessage = string.Empty;
+            if (DataGridViewAllUsere.CurrentRow != null)
+
+            {
+                string UserID = Convert.ToString(DataGridViewAllUsere.CurrentRow.Cells["User ID"].Value);
+                MessageBox.Show("ID Found: " + UserID);
+
+                _User = ClsUser.Find(UserID, ref ErrorMessage);
+                if (_User != null)
+                {
+                    var confirmResult = MessageBox.Show($"Are you sure to delete user '{_User.UserName}'?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (confirmResult == DialogResult.Yes)
+
+                    {
+                       
+                        if (ClsUser.DeleteUser(UserID, ref ErrorMessage))
+
+                        {
+                            MessageBox.Show($"User '{_User.UserName}' deleted successfully.", "Delete User", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            _RefreshUserList();
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Failed to delete user '{_User.UserName}'. Error: {ErrorMessage}", "Delete User", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show($"Could not find User with ID: '{UserID}' in database!", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void DeactiveUser_Click(object sender, EventArgs e)
+        {
+
+             _ChaingUserStatus(0, "Deactivated");
+
+        }
+
+        private void ActivationUser_Click(object sender, EventArgs e)
+        {
+
+            _ChaingUserStatus(1, "Activated");
+
+        }
+
+        private void LockedUser_Click(object sender, EventArgs e)
+        {
+
+            _ChaingUserStatus(2, "Locked");
+        }
+
+        private void DataGridViewAllUsere_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
+            {
+              
+                DataGridViewAllUsere.ClearSelection();
+                DataGridViewAllUsere.Rows[e.RowIndex].Selected = true;
+                DataGridViewAllUsere.CurrentCell = DataGridViewAllUsere.Rows[e.RowIndex].Cells[e.ColumnIndex];
+
+            }
+        }
+
+        private void DataGridViewAllUsere_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
+
+   
 }

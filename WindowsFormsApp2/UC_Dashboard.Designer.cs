@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UC_Dashboard));
             this.guna2Panel4K = new Guna.UI2.WinForms.Guna2Panel();
+            this.guna2ProgressBar5 = new Guna.UI2.WinForms.Guna2ProgressBar();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnCurrencyDiff = new Guna.UI2.WinForms.Guna2Button();
@@ -80,7 +81,6 @@
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button6 = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2ProgressBar5 = new Guna.UI2.WinForms.Guna2ProgressBar();
             this.guna2Panel4K.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
@@ -116,6 +116,17 @@
             this.guna2Panel4K.Size = new System.Drawing.Size(1338, 734);
             this.guna2Panel4K.TabIndex = 5;
             this.guna2Panel4K.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel4K_Paint);
+            // 
+            // guna2ProgressBar5
+            // 
+            this.guna2ProgressBar5.BorderRadius = 20;
+            this.guna2ProgressBar5.FillColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.guna2ProgressBar5.Location = new System.Drawing.Point(15, 49);
+            this.guna2ProgressBar5.Name = "guna2ProgressBar5";
+            this.guna2ProgressBar5.Size = new System.Drawing.Size(1300, 2);
+            this.guna2ProgressBar5.TabIndex = 113;
+            this.guna2ProgressBar5.Text = "guna2ProgressBar5";
+            this.guna2ProgressBar5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             // 
             // guna2Panel2
             // 
@@ -158,7 +169,7 @@
             this.btnCurrencyDiff.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnCurrencyDiff.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnCurrencyDiff.FillColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnCurrencyDiff.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCurrencyDiff.Font = new System.Drawing.Font("Century Schoolbook", 12F, System.Drawing.FontStyle.Bold);
             this.btnCurrencyDiff.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnCurrencyDiff.ImageOffset = new System.Drawing.Point(35, -15);
             this.btnCurrencyDiff.ImageSize = new System.Drawing.Size(55, 55);
@@ -167,7 +178,8 @@
             this.btnCurrencyDiff.Size = new System.Drawing.Size(177, 125);
             this.btnCurrencyDiff.TabIndex = 8;
             this.btnCurrencyDiff.Text = "Currency Diff";
-            this.btnCurrencyDiff.TextOffset = new System.Drawing.Point(-10, 30);
+            this.btnCurrencyDiff.TextOffset = new System.Drawing.Point(-16, 30);
+            this.btnCurrencyDiff.Click += new System.EventHandler(this.btnCurrencyDiff_Click);
             // 
             // btnNewTransfer
             // 
@@ -179,7 +191,7 @@
             this.btnNewTransfer.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnNewTransfer.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnNewTransfer.FillColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnNewTransfer.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewTransfer.Font = new System.Drawing.Font("Century Schoolbook", 12F, System.Drawing.FontStyle.Bold);
             this.btnNewTransfer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnNewTransfer.ImageOffset = new System.Drawing.Point(37, -15);
             this.btnNewTransfer.ImageSize = new System.Drawing.Size(55, 55);
@@ -188,7 +200,8 @@
             this.btnNewTransfer.Size = new System.Drawing.Size(177, 125);
             this.btnNewTransfer.TabIndex = 7;
             this.btnNewTransfer.Text = "New Transfer";
-            this.btnNewTransfer.TextOffset = new System.Drawing.Point(-10, 30);
+            this.btnNewTransfer.TextOffset = new System.Drawing.Point(-16, 30);
+            this.btnNewTransfer.Click += new System.EventHandler(this.btnNewTransfer_Click);
             // 
             // btnNewWithdraw
             // 
@@ -200,7 +213,7 @@
             this.btnNewWithdraw.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnNewWithdraw.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnNewWithdraw.FillColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnNewWithdraw.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewWithdraw.Font = new System.Drawing.Font("Century Schoolbook", 12F, System.Drawing.FontStyle.Bold);
             this.btnNewWithdraw.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnNewWithdraw.ImageOffset = new System.Drawing.Point(38, -15);
             this.btnNewWithdraw.ImageSize = new System.Drawing.Size(55, 55);
@@ -209,7 +222,8 @@
             this.btnNewWithdraw.Size = new System.Drawing.Size(177, 125);
             this.btnNewWithdraw.TabIndex = 6;
             this.btnNewWithdraw.Text = "New Withdraw";
-            this.btnNewWithdraw.TextOffset = new System.Drawing.Point(-10, 30);
+            this.btnNewWithdraw.TextOffset = new System.Drawing.Point(-16, 30);
+            this.btnNewWithdraw.Click += new System.EventHandler(this.btnNewWithdraw_Click);
             // 
             // btnNewDeposit
             // 
@@ -221,7 +235,7 @@
             this.btnNewDeposit.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnNewDeposit.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnNewDeposit.FillColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnNewDeposit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewDeposit.Font = new System.Drawing.Font("Century Schoolbook", 12F, System.Drawing.FontStyle.Bold);
             this.btnNewDeposit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnNewDeposit.ImageOffset = new System.Drawing.Point(35, -15);
             this.btnNewDeposit.ImageSize = new System.Drawing.Size(55, 55);
@@ -230,7 +244,8 @@
             this.btnNewDeposit.Size = new System.Drawing.Size(177, 125);
             this.btnNewDeposit.TabIndex = 5;
             this.btnNewDeposit.Text = "New Deposit";
-            this.btnNewDeposit.TextOffset = new System.Drawing.Point(-10, 30);
+            this.btnNewDeposit.TextOffset = new System.Drawing.Point(-16, 30);
+            this.btnNewDeposit.Click += new System.EventHandler(this.btnNewDeposit_Click);
             // 
             // btnNewUser
             // 
@@ -242,7 +257,7 @@
             this.btnNewUser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnNewUser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnNewUser.FillColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnNewUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewUser.Font = new System.Drawing.Font("Century Schoolbook", 12F, System.Drawing.FontStyle.Bold);
             this.btnNewUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnNewUser.ImageOffset = new System.Drawing.Point(28, -15);
             this.btnNewUser.ImageSize = new System.Drawing.Size(55, 55);
@@ -251,7 +266,8 @@
             this.btnNewUser.Size = new System.Drawing.Size(177, 125);
             this.btnNewUser.TabIndex = 4;
             this.btnNewUser.Text = "New User";
-            this.btnNewUser.TextOffset = new System.Drawing.Point(-10, 30);
+            this.btnNewUser.TextOffset = new System.Drawing.Point(-16, 30);
+            this.btnNewUser.Click += new System.EventHandler(this.btnNewUser_Click);
             // 
             // label12
             // 
@@ -273,7 +289,7 @@
             this.btnNewClient.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnNewClient.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnNewClient.FillColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnNewClient.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewClient.Font = new System.Drawing.Font("Century Schoolbook", 12F, System.Drawing.FontStyle.Bold);
             this.btnNewClient.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.btnNewClient.ImageOffset = new System.Drawing.Point(38, -15);
             this.btnNewClient.ImageSize = new System.Drawing.Size(55, 55);
@@ -282,7 +298,8 @@
             this.btnNewClient.Size = new System.Drawing.Size(177, 125);
             this.btnNewClient.TabIndex = 3;
             this.btnNewClient.Text = "New Customer";
-            this.btnNewClient.TextOffset = new System.Drawing.Point(-10, 30);
+            this.btnNewClient.TextOffset = new System.Drawing.Point(-16, 30);
+            this.btnNewClient.Click += new System.EventHandler(this.btnNewClient_Click);
             // 
             // label11
             // 
@@ -352,11 +369,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 17.2F);
+            this.label2.Font = new System.Drawing.Font("Century Schoolbook", 19F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.Silver;
             this.label2.Location = new System.Drawing.Point(23, 12);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(279, 35);
+            this.label2.Size = new System.Drawing.Size(370, 37);
             this.label2.TabIndex = 6;
             this.label2.Text = "Dashboard Overview";
             // 
@@ -870,17 +887,6 @@
             this.guna2Button6.TabIndex = 5;
             this.guna2Button6.Text = "New Deposit";
             this.guna2Button6.TextOffset = new System.Drawing.Point(-10, 30);
-            // 
-            // guna2ProgressBar5
-            // 
-            this.guna2ProgressBar5.BorderRadius = 20;
-            this.guna2ProgressBar5.FillColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.guna2ProgressBar5.Location = new System.Drawing.Point(15, 49);
-            this.guna2ProgressBar5.Name = "guna2ProgressBar5";
-            this.guna2ProgressBar5.Size = new System.Drawing.Size(1300, 2);
-            this.guna2ProgressBar5.TabIndex = 113;
-            this.guna2ProgressBar5.Text = "guna2ProgressBar5";
-            this.guna2ProgressBar5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             // 
             // UC_Dashboard
             // 

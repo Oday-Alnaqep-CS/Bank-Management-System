@@ -115,7 +115,7 @@
             this.TextUserName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.TextUserName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.TextUserName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TextUserName.Font = new System.Drawing.Font("Segoe UI", 16F);
+            this.TextUserName.Font = new System.Drawing.Font("Akhbar MT", 13F);
             this.TextUserName.ForeColor = System.Drawing.Color.Black;
             this.TextUserName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.TextUserName.IconLeftSize = new System.Drawing.Size(30, 30);
@@ -128,7 +128,6 @@
             this.TextUserName.SelectedText = "";
             this.TextUserName.Size = new System.Drawing.Size(290, 49);
             this.TextUserName.TabIndex = 7;
-            this.TextUserName.TextOffset = new System.Drawing.Point(0, -4);
             this.TextUserName.TextChanged += new System.EventHandler(this.TextUserName_TextChanged);
             this.TextUserName.Validating += new System.ComponentModel.CancelEventHandler(this.TextUserName_Validating);
             // 
@@ -144,7 +143,7 @@
             this.TextPassword.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.TextPassword.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.TextPassword.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TextPassword.Font = new System.Drawing.Font("Segoe UI", 16F);
+            this.TextPassword.Font = new System.Drawing.Font("Akhbar MT", 13F);
             this.TextPassword.ForeColor = System.Drawing.Color.Black;
             this.TextPassword.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.TextPassword.IconLeftSize = new System.Drawing.Size(35, 35);
@@ -158,7 +157,6 @@
             this.TextPassword.SelectedText = "";
             this.TextPassword.Size = new System.Drawing.Size(290, 49);
             this.TextPassword.TabIndex = 8;
-            this.TextPassword.TextOffset = new System.Drawing.Point(0, -4);
             this.TextPassword.TextChanged += new System.EventHandler(this.TextPassword_TextChanged);
             this.TextPassword.Validating += new System.ComponentModel.CancelEventHandler(this.TextPassword_Validating);
             // 

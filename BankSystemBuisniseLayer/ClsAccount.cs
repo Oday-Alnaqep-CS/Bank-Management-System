@@ -207,8 +207,6 @@ namespace BankSystemDataAccess.Financial
 
         }
 
-
-
         public static DataTable FindByClientID(int ClientID, ref string ErrorMessage)
         {
             return ClsAccountData.GetAccountsByClientID(
@@ -216,7 +214,6 @@ namespace BankSystemDataAccess.Financial
                 ref ErrorMessage
             );
         }
-
 
         public static DataTable GetAllAccounts(ref string ErrorMessage)
 
@@ -226,7 +223,7 @@ namespace BankSystemDataAccess.Financial
 
         }
 
-        public static DataTable GetAccountType(ref string ErroeMessage)
+        public static DataTable GetAccountType( ref string ErroeMessage)
 
         {
 
@@ -241,14 +238,12 @@ namespace BankSystemDataAccess.Financial
 
         }
 
-
         public static bool IsAccountExist(int AccountID, ref string ErrorMessage)
         {
 
             return ClsAccountData.IsAccountExist(AccountID, ref ErrorMessage);
 
         }
-
 
         public bool Deposit(decimal Amount)
 
@@ -290,7 +285,6 @@ namespace BankSystemDataAccess.Financial
 
         }
 
-
         public bool Withdraw(decimal Amount)
 
         {
@@ -329,6 +323,26 @@ namespace BankSystemDataAccess.Financial
             this.ErrorMessage = ErrorMessage;
             return false;
 
+        }
+
+        public  int GetTotalAccountsCount(ref string ErrorMessage)
+        {
+            return ClsAccountData.GetTotalAccounts(ref ErrorMessage);
+        }
+
+        public  int GetTotalActiveAccountsCount(ref string ErrorMessage)
+        {
+            return ClsAccountData.GetTotalActiveAccounts(ref ErrorMessage);
+        }
+
+        public  int GetTotalDormantAccountsCount(ref string ErrorMessage)
+        {
+            return ClsAccountData.GetTotalDormantAccounts(ref ErrorMessage);
+        }
+
+        public int GetTotalInactiveAccountsCount(ref string ErrorMessage)
+        {
+            return ClsAccountData.GetTotalInactiveAccounts(ref ErrorMessage);
         }
     }
 }

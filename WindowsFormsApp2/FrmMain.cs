@@ -14,6 +14,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 using System.Windows.Forms;
 using Tulpep.NotificationWindow;
 using static Bank_Managment_System.ClsBankingNotification;
@@ -30,7 +31,9 @@ namespace Bank_Managment_System
 
         private UC_Dashboard _US_Dashboard;
         private UC_CustomersManagement _US_CustomersManage = new UC_CustomersManagement();
-        private US_UsersManagement _US_UserManagement = new US_UsersManagement();
+        private UC_UsersManagement _US_UserManagement = new UC_UsersManagement();
+
+        private UC_AccountManagement _US_AccountManagement = new UC_AccountManagement();
         ClsBankingNotification notification = new ClsBankingNotification();
         public static ClsUser CurrentUser = new ClsUser();
 
@@ -57,7 +60,7 @@ namespace Bank_Managment_System
         {
             string errorMessage = null;
 
-          //  int NoteCount = ClsNotification.GetNotificationCount(ClsGlobal.CurrentUser.UserID, ref errorMessage);
+           
             int NoteCount = ClsNotification.GetNotificationCount(1, ref errorMessage);
             string JobTitle = ClsGlobal.CurrentUser.JobTitle;
             string UserName = ClsGlobal.CurrentUser.UserName;
@@ -108,7 +111,7 @@ namespace Bank_Managment_System
 
                 lblNotificationCountf.Text = 0.ToString();
 
-               // lblNotificationCountf.Visible = false;
+                
             }
         }
 
@@ -119,14 +122,14 @@ namespace Bank_Managment_System
            
             if (ClsGlobal.CurrentUser != null)
             {
-                lblUserInfo.Text = $"  {ClsGlobal.CurrentUser.PersonInfo.FullName } ({ClsGlobal.CurrentUser.JobTitle}) |";
+               lblUserInfo.Text = $"  {ClsGlobal.CurrentUser.PersonInfo.FullName } ({ClsGlobal.CurrentUser.JobTitle}) |";
             }
             else
             {
                 lblUserInfo.Text = "Oday Al-Naqep (System Admin)"; 
             }
 
-          //  btnLogout.Click += BtnLogout_Click;
+         
            
         }
 
@@ -158,7 +161,7 @@ namespace Bank_Managment_System
 
             Font logoFont = new Font("Segoe MDL2 Assets", 22F, FontStyle.Regular);
             Font iconFont = new Font("Segoe MDL2 Assets", 12F, FontStyle.Regular);
-
+           // Font logoFont = new Font("Century Schoolbook", 20F, FontStyle.Bold);
             lblBankLogo.Font = logoFont;
             lblBankLogo.Text = "\uE80F  BANK MANAGEMENT SYSTEM";
 
@@ -323,6 +326,11 @@ namespace Bank_Managment_System
 
         }
 
+        private void btnAccounts_Click(object sender, EventArgs e)
+        {
+
+            LoadUserControl(_US_AccountManagement);
+        }
 
         protected override CreateParams CreateParams
 
@@ -336,6 +344,6 @@ namespace Bank_Managment_System
             }
         }
 
-     
+  
     }
 }

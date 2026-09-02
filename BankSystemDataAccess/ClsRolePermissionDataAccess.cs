@@ -67,70 +67,6 @@ namespace BankSystemDataAccess.EntitiesData
             return (rowsAffected > 0);
         }
 
-        public static bool DeletePermissionsByRoleID(int roleID, ref string errorMessage)
-        {
-            int rowsAffected = 0;
-
-            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
-            {
-                string query = @"DELETE FROM RolePermissions WHERE RoleID = @RoleID;";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@RoleID", roleID);
-
-                    try
-                    {
-                        connection.Open();
-                        rowsAffected = command.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        errorMessage = ex.Message;
-                        return false; // Explicitly return false on exception
-                    }
-                }
-            }
-
-            return (rowsAffected >= 0);
-        }
-
-        public static DataTable GetPermissionsByRoleID(int roleID, ref string errorMessage)
-        {
-            DataTable dt = new DataTable();
-
-            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
-            {
-                string query = @"SELECT P.PermissionID, P.PermissionName, P.Description
-                                 FROM RolePermissions RP
-                                 INNER JOIN Permissions P ON RP.PermissionID = P.PermissionID
-                                 WHERE RP.RoleID = @RoleID;";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    command.Parameters.AddWithValue("@RoleID", roleID);
-
-                    try
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            if (reader.HasRows)
-                            {
-                                dt.Load(reader);
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        errorMessage = ex.Message;
-                    }
-                }
-            }
-
-            return dt;
-        }
-
         public static bool DoesRoleHavePermission(int roleID, string permissionName, ref string errorMessage)
         {
             bool hasPermission = false;
@@ -201,5 +137,37 @@ namespace BankSystemDataAccess.EntitiesData
 
             return hasPermission;
         }
+
+        public static DataTable GetAllRolePermissions(ref string errorMessage)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+                string query = @"SELECT RoleID, RoleName FROM Roles;";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        errorMessage = ex.Message;
+                    }
+                }
+            }
+
+            return dt;
+        }
+
     }
 }

@@ -97,7 +97,7 @@ namespace BankSystemBuisniseLayer
             return ClsNotificationData.MarkAsRead(notificationID, ref errorMessage);
         }
 
-        public static DataTable GetNotificationsByClientID(int clientID, ref string errorMessage)
+        public static DataTable GetNotificationsByClientID(string clientID, ref string errorMessage)
         {
             return ClsNotificationData.GetNotificationsByClientID(clientID, ref errorMessage);
         }

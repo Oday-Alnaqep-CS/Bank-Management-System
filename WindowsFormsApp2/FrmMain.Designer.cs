@@ -319,6 +319,7 @@
             this.btnAccounts.Size = new System.Drawing.Size(267, 55);
             this.btnAccounts.TabIndex = 6;
             this.btnAccounts.Text = "Accounts";
+            this.btnAccounts.Click += new System.EventHandler(this.btnAccounts_Click);
             // 
             // btnLones
             // 
@@ -573,11 +574,11 @@
             // lblBankLogo
             // 
             this.lblBankLogo.BackColor = System.Drawing.Color.Transparent;
-            this.lblBankLogo.Font = new System.Drawing.Font("Tahoma", 20F);
+            this.lblBankLogo.Font = new System.Drawing.Font("Century Schoolbook", 20F, System.Drawing.FontStyle.Bold);
             this.lblBankLogo.ForeColor = System.Drawing.Color.White;
             this.lblBankLogo.Location = new System.Drawing.Point(26, 11);
             this.lblBankLogo.Name = "lblBankLogo";
-            this.lblBankLogo.Size = new System.Drawing.Size(434, 42);
+            this.lblBankLogo.Size = new System.Drawing.Size(544, 41);
             this.lblBankLogo.TabIndex = 0;
             this.lblBankLogo.Text = "BANK MANAGEMENT SYSTEM";
             // 

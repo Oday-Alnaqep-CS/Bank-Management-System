@@ -126,7 +126,7 @@
             this.guna2Panel2.Controls.Add(this.iconPictureBox1);
             this.guna2Panel2.Controls.Add(this.cmbFilterMain);
             this.guna2Panel2.Controls.Add(this.txtSearch);
-            this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(125)))), ((int)(((byte)(160)))));
+            this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(75)))));
             this.guna2Panel2.Location = new System.Drawing.Point(1, 220);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(1338, 511);
@@ -134,7 +134,7 @@
             // 
             // btnAddNewCustoer
             // 
-            this.btnAddNewCustoer.BorderColor = System.Drawing.Color.Navy;
+            this.btnAddNewCustoer.BorderColor = System.Drawing.Color.MediumSlateBlue;
             this.btnAddNewCustoer.BorderRadius = 20;
             this.btnAddNewCustoer.BorderThickness = 2;
             this.btnAddNewCustoer.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -190,16 +190,15 @@
             this.MenuStrip.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
             this.MenuStrip.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
             this.MenuStrip.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.MenuStrip.Size = new System.Drawing.Size(232, 212);
+            this.MenuStrip.Size = new System.Drawing.Size(213, 156);
             // 
             // EditCustomer1
             // 
             this.EditCustomer1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EditCustomer1.ForeColor = System.Drawing.Color.White;
-            this.EditCustomer1.Image = global::Bank_Managment_System.Properties.Resources.EditImage;
             this.EditCustomer1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.EditCustomer1.Name = "EditCustomer1";
-            this.EditCustomer1.Size = new System.Drawing.Size(231, 42);
+            this.EditCustomer1.Size = new System.Drawing.Size(212, 28);
             this.EditCustomer1.Text = "Edit Customer";
             this.EditCustomer1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             this.EditCustomer1.Click += new System.EventHandler(this.EditCustomer1_Click);
@@ -208,10 +207,9 @@
             // 
             this.DeleteCustomer1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.DeleteCustomer1.ForeColor = System.Drawing.Color.White;
-            this.DeleteCustomer1.Image = global::Bank_Managment_System.Properties.Resources.DeleteImage;
             this.DeleteCustomer1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.DeleteCustomer1.Name = "DeleteCustomer1";
-            this.DeleteCustomer1.Size = new System.Drawing.Size(231, 42);
+            this.DeleteCustomer1.Size = new System.Drawing.Size(212, 28);
             this.DeleteCustomer1.Text = "Delete Customer";
             this.DeleteCustomer1.Click += new System.EventHandler(this.DeleteCustomer1_Click);
             // 
@@ -219,10 +217,9 @@
             // 
             this.DeactiveCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.DeactiveCustomer.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.DeactiveCustomer.Image = global::Bank_Managment_System.Properties.Resources.DeactiveImage;
             this.DeactiveCustomer.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.DeactiveCustomer.Name = "DeactiveCustomer";
-            this.DeactiveCustomer.Size = new System.Drawing.Size(231, 42);
+            this.DeactiveCustomer.Size = new System.Drawing.Size(212, 28);
             this.DeactiveCustomer.Text = "Deactive";
             this.DeactiveCustomer.Click += new System.EventHandler(this.DeactiveCustomer_Click);
             // 
@@ -230,10 +227,9 @@
             // 
             this.beActiveCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.beActiveCustomer.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.beActiveCustomer.Image = global::Bank_Managment_System.Properties.Resources.ActiveImage;
             this.beActiveCustomer.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.beActiveCustomer.Name = "beActiveCustomer";
-            this.beActiveCustomer.Size = new System.Drawing.Size(231, 42);
+            this.beActiveCustomer.Size = new System.Drawing.Size(212, 28);
             this.beActiveCustomer.Text = "Activation";
             this.beActiveCustomer.Click += new System.EventHandler(this.beActiveCustomer_Click);
             // 
@@ -393,11 +389,11 @@
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Century Schoolbook", 19F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.Silver;
             this.label2.Location = new System.Drawing.Point(9, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(336, 36);
+            this.label2.Size = new System.Drawing.Size(421, 37);
             this.label2.TabIndex = 6;
             this.label2.Text = "Customers Management";
             // 

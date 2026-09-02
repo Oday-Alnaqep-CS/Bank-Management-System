@@ -128,5 +128,17 @@ namespace BankSystemBusinessLayer
         {
             return ClsPermissionDataAccess.GetAllPermissions(ref errorMessage);
         }
+
+        public static DataTable GetPermissionByRoleID(int RoleID, ref string ErrorMessage)
+
+        {
+            return ClsPermissionDataAccess.GetPermissionsByRoleID(RoleID, ref ErrorMessage);
+
+        }
+
+        public static bool CheckUserPermission(string roleID, string permissionName)
+        {
+            return ClsPermissionDataAccess.CheckUserPermission(roleID, permissionName);
+        }
     }
 }
