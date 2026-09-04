@@ -17,7 +17,7 @@ namespace BankSystemDataAccess.FinancialData
             using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
             {
 
-                string query = "SELECT * FROM vw_Notifications ORDER BY NotificationID DESC;";
+                string query = "SELECT * FROM Notifications ORDER BY NotificationID DESC;";
 
 
                 using (SqlCommand command = new SqlCommand(query, connection))
@@ -40,7 +40,8 @@ namespace BankSystemDataAccess.FinancialData
 
             return dt;
         }
-        public static DataTable GetNotificationsByClientID(string UserID, ref string errorMessage)
+
+        public static DataTable GetNotificationsByUserID(string UserID, ref string errorMessage)
 
 
         {
@@ -53,10 +54,11 @@ namespace BankSystemDataAccess.FinancialData
             {
 
 
-                string query = @"SELECT NotificationID, Title, Message, IsRead, CreatedDate 
+                string query = @"SELECT NotificationID AS [Notification ID] , Title, Message, CASE 
+                             WHEN IsRead = 1 THEN 'Read' ELSE 'Unread' END AS [Is Read], SentDate AS [Sent Date]
                              FROM Notifications 
                              WHERE UserID = @UserID 
-                             ORDER BY CreatedDate DESC;";
+                             ORDER BY SentDate DESC;";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {

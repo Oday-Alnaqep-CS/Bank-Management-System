@@ -579,6 +579,7 @@
             this.CbDepartment.Size = new System.Drawing.Size(250, 44);
             this.CbDepartment.StartIndex = 0;
             this.CbDepartment.TabIndex = 117;
+            this.CbDepartment.SelectedIndexChanged += new System.EventHandler(this.CbDepartment_SelectedIndexChanged);
             // 
             // Gender_Female
             // 

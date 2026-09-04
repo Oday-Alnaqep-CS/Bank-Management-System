@@ -9,7 +9,7 @@ namespace BankSystemDataAccess.FinancialData
     {
         
         public static bool Transfers(int fromAccountID, int toAccountID, decimal amount,
-                                         int currencyID, int? performedByClientID, int? executedByUserID,
+                                         int currencyID, int? performedByClientID, string executedByUserID,
                                          string description, ref string errorMessage)
 
         {
@@ -37,11 +37,9 @@ namespace BankSystemDataAccess.FinancialData
 
                             if (withdrawCmd.ExecuteNonQuery() == 0)
                             {
-
                                 transaction.Rollback();
-                                errorMessage = "فشلت العملية : الرصيد غير كافٍ أو الحساب غير موجود.";
+                                errorMessage = "Transaction failed: Insufficient balance or sender account not found.";
                                 return false;
-
                             }
                         }
 
@@ -59,9 +57,8 @@ namespace BankSystemDataAccess.FinancialData
 
                             if (depositCmd.ExecuteNonQuery() == 0)
                             {
-
                                 transaction.Rollback();
-                                errorMessage = "فشلت العملية: حساب المستلم غير موجود.";
+                                errorMessage = "Transaction failed: Receiver account not found.";
                                 return false;
                             }
                         }

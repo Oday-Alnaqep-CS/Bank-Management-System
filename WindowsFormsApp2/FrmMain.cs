@@ -32,8 +32,9 @@ namespace Bank_Managment_System
         private UC_Dashboard _US_Dashboard;
         private UC_CustomersManagement _US_CustomersManage = new UC_CustomersManagement();
         private UC_UsersManagement _US_UserManagement = new UC_UsersManagement();
-
         private UC_AccountManagement _US_AccountManagement = new UC_AccountManagement();
+        private UC_TransfersManagement _US_TransfersManagement = new UC_TransfersManagement();
+        private UC_Notifications _UC_Notifications = new UC_Notifications();
         ClsBankingNotification notification = new ClsBankingNotification();
         public static ClsUser CurrentUser = new ClsUser();
 
@@ -61,7 +62,7 @@ namespace Bank_Managment_System
             string errorMessage = null;
 
            
-            int NoteCount = ClsNotification.GetNotificationCount(1, ref errorMessage);
+           
             string JobTitle = ClsGlobal.CurrentUser.JobTitle;
             string UserName = ClsGlobal.CurrentUser.UserName;
              this.DoubleBuffered = true;
@@ -69,12 +70,11 @@ namespace Bank_Managment_System
             Design();
             _US_Dashboard = new UC_Dashboard();
             lblUserInfo.Text = $"{UserName} ({JobTitle})";
-            lblNotificationCountf.Text = NoteCount.ToString();
             RenderDatabaseStatus();
             GetBranchName();
             LoadUserControl(_US_Dashboard);
             SetupSidebarButtons();
-
+            timer1.Start();
 
         }
 
@@ -87,7 +87,7 @@ namespace Bank_Managment_System
             if (ClsGlobal.CurrentUser == null) return;
 
             string ErrorMessage = "";
-            DataTable dtNotifications = ClsNotification.GetNotificationsByClientID(ClsGlobal.CurrentUser.UserID, ref ErrorMessage);
+            DataTable dtNotifications = ClsNotification.GetNotificationsByUserID(ClsGlobal.CurrentUser.UserID, ref ErrorMessage);
 
             int unreadCount = (dtNotifications != null) ? dtNotifications.Rows.Count : 0;
 
@@ -332,6 +332,31 @@ namespace Bank_Managment_System
             LoadUserControl(_US_AccountManagement);
         }
 
+        private void btnTransfers_Click(object sender, EventArgs e)
+        {
+
+            LoadUserControl(_US_TransfersManagement);
+        }
+
+        private void btnNotification_Click(object sender, EventArgs e)
+        {
+            LoadUserControl(_UC_Notifications);
+        }
+
+
+        private void _LoadNotificationData()
+
+        {
+            string ErrorMessage = string.Empty;
+            lblNotificationCountf.Text = ClsNotification.GetNotificationCount(ClsGlobal.CurrentUser.UserID, ref ErrorMessage).ToString();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            _LoadNotificationData();
+        }
+
+        
         protected override CreateParams CreateParams
 
 
@@ -344,6 +369,5 @@ namespace Bank_Managment_System
             }
         }
 
-  
     }
 }

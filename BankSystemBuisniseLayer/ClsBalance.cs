@@ -16,5 +16,10 @@ namespace BankSystemBuisniseLayer
 
             return ClsBalanceData.GetAllBalance(ref ErrirMessage);
         }
+        public static DataTable GetAccountDetailsByAccountNumber(string AccountNumber, ref string ErrorMessage)
+        {
+
+            return ClsBalanceData.GetAccountDetailsByAccountNumber(AccountNumber, ref ErrorMessage);
+        }
     }
 }

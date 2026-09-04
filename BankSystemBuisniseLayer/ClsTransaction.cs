@@ -170,7 +170,7 @@ namespace BankSystemBusinessLayer
 
 
         public static bool Transfer(int fromAccountID, int toAccountID, decimal amount,
-                                    int currencyID, int? performedByClientID, int? executedByUserID,
+                                    int currencyID, int? performedByClientID, string executedByUserID,
                                     string description, ref string errorMessage)
         {
 

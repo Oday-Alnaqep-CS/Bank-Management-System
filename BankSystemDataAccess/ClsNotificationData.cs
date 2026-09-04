@@ -9,7 +9,7 @@ namespace BankSystemDataAccess.FinancialData
     {
        
 
-        public static bool GetNotificationByID(int notificationID, ref int clientID, ref string title,
+        public static bool GetNotificationByID(int notificationID, ref string UserID, ref string title,
                                                 ref string message, ref bool isRead,
                                                 ref DateTime createdDate, ref string errorMessage)
         {
@@ -37,7 +37,7 @@ namespace BankSystemDataAccess.FinancialData
                             if (reader.Read())
                             {
                                 isFound = true;
-                                clientID = (int)reader["ClientID"];
+                                UserID = (string)reader["UserID"];
                                 title = (string)reader["Title"];
                                 message = (string)reader["Message"];
                                 isRead = (bool)reader["IsRead"];
@@ -59,7 +59,7 @@ namespace BankSystemDataAccess.FinancialData
         }
 
         
-        public static int GetUnreadNotificationsCount(int clientID, ref string errorMessage)
+        public static int GetUnreadNotificationsCount(string UserID, ref string errorMessage)
         {
 
             int count = 0;
@@ -70,13 +70,13 @@ namespace BankSystemDataAccess.FinancialData
             {
 
 
-                string query = "SELECT COUNT(*) FROM Notifications WHERE ClientID = @ClientID AND IsRead = 0;";
+                string query = "SELECT COUNT(*) FROM Notifications WHERE UserID = @UserID AND IsRead = 0;";
 
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
 
-                    command.Parameters.AddWithValue("@ClientID", clientID);
+                    command.Parameters.AddWithValue("@UserID", UserID);
 
                     try
                     {
@@ -100,4 +100,5 @@ namespace BankSystemDataAccess.FinancialData
 
         }
     }
+
 }

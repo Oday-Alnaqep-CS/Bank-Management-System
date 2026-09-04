@@ -232,10 +232,19 @@ namespace BankSystemBuisniseLayer
         {
             return ClsClientDataAccess.GetAllClients(ref errorMessage);
         }
+        public static DataTable GetClientsInfo(ref string errorMessage)
+        {
+            return ClsClientDataAccess.GetAllClientsinfo(ref errorMessage);
+        }
 
         public static DataTable GetActiveClients(ref string errorMessage)
         {
             return ClsClientDataAccess.GetAllActiveClients(ref errorMessage);
+        }
+
+        public static DataTable GetClientNameAndAccountNumber(ref string errorMessage)
+        {
+            return ClsClientDataAccess.GetClientNameAndAccountNumber(ref errorMessage);
         }
 
         public static bool IsClientExist(int clientID, ref string errorMessage)

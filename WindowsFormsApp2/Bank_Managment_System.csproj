@@ -141,6 +141,12 @@
     <Compile Include="UC_AddCustomer.Designer.cs">
       <DependentUpon>UC_AddCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_Notifications.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Notifications.Designer.cs">
+      <DependentUpon>UC_Notifications.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_TotalBalance.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -153,11 +159,11 @@
     <Compile Include="UC_Dashboard.Designer.cs">
       <DependentUpon>UC_Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_ClientsListView.cs">
+    <Compile Include="UC_CustomerListView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_ClientsListView.Designer.cs">
-      <DependentUpon>UC_ClientsListView.cs</DependentUpon>
+    <Compile Include="UC_CustomerListView.Designer.cs">
+      <DependentUpon>UC_CustomerListView.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_CustomersManagement.cs">
       <SubType>UserControl</SubType>
@@ -170,6 +176,12 @@
     </Compile>
     <Compile Include="UC_AddUser.Designer.cs">
       <DependentUpon>UC_AddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_TransfersManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_TransfersManagement.Designer.cs">
+      <DependentUpon>UC_TransfersManagement.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_UsersManagement.cs">
       <SubType>UserControl</SubType>
@@ -199,20 +211,26 @@
     <EmbeddedResource Include="UC_AddCustomer.resx">
       <DependentUpon>UC_AddCustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UC_Notifications.resx">
+      <DependentUpon>UC_Notifications.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC_TotalBalance.resx">
       <DependentUpon>UC_TotalBalance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Dashboard.resx">
       <DependentUpon>UC_Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_ClientsListView.resx">
-      <DependentUpon>UC_ClientsListView.cs</DependentUpon>
+    <EmbeddedResource Include="UC_CustomerListView.resx">
+      <DependentUpon>UC_CustomerListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_CustomersManagement.resx">
       <DependentUpon>UC_CustomersManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_AddUser.resx">
       <DependentUpon>UC_AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_TransfersManagement.resx">
+      <DependentUpon>UC_TransfersManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_UsersManagement.resx">
       <DependentUpon>UC_UsersManagement.cs</DependentUpon>

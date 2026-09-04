@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnBranch = new Guna.UI2.WinForms.Guna2Button();
@@ -57,6 +58,7 @@
             this.btnNotification = new Guna.UI2.WinForms.Guna2CircleButton();
             this.lblBankLogo = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.popupNotifier1f = new Tulpep.NotificationWindow.PopupNotifier();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.guna2Panel3.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
@@ -383,6 +385,7 @@
             this.btnTransfers.Size = new System.Drawing.Size(267, 55);
             this.btnTransfers.TabIndex = 3;
             this.btnTransfers.Text = "Transfers";
+            this.btnTransfers.Click += new System.EventHandler(this.btnTransfers_Click);
             // 
             // btnCustomers
             // 
@@ -570,6 +573,7 @@
             this.btnNotification.Size = new System.Drawing.Size(57, 48);
             this.btnNotification.TabIndex = 0;
             this.btnNotification.Text = "guna2CircleButton1";
+            this.btnNotification.Click += new System.EventHandler(this.btnNotification_Click);
             // 
             // lblBankLogo
             // 
@@ -592,6 +596,11 @@
             this.popupNotifier1f.Size = new System.Drawing.Size(400, 100);
             this.popupNotifier1f.TitleFont = new System.Drawing.Font("Segoe UI", 9F);
             this.popupNotifier1f.TitleText = null;
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FrmMain
             // 
@@ -644,5 +653,6 @@
         private Guna.UI2.WinForms.Guna2Button btnUsers;
         private Guna.UI2.WinForms.Guna2Button btnSettings;
         private Guna.UI2.WinForms.Guna2Button btnFXRates;
+        private System.Windows.Forms.Timer timer1;
     }
 }

@@ -112,7 +112,7 @@ namespace Bank_Managment_System
         {
             if (DataGridViewAllTotalBalance.DataSource is DataTable dt)
             {
-                dt.CaseSensitive = false;
+                dt.CaseSensitive = true;
                 string text = txtSearch.Text.Trim().Replace("'", "''");
                 string selectedValue = cmbFilterMain.SelectedItem?.ToString() ?? "All";
 

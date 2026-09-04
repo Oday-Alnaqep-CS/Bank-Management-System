@@ -180,7 +180,6 @@ namespace BankSystemDataAccess.Financial
             return null;
         }
 
-
         public static ClsAccount FindByAccountNumber(string AccountNumber, ref string ErrorMessage)
 
 
@@ -207,7 +206,7 @@ namespace BankSystemDataAccess.Financial
 
         }
 
-        public static DataTable FindByClientID(int ClientID, ref string ErrorMessage)
+        public static DataTable FindAccountByClientID(int ClientID, ref string ErrorMessage)
         {
             return ClsAccountData.GetAccountsByClientID(
                 ClientID,
@@ -322,6 +321,46 @@ namespace BankSystemDataAccess.Financial
 
             this.ErrorMessage = ErrorMessage;
             return false;
+
+        }
+
+        public bool TransferTo(ClsAccount SenderAccount, ClsAccount receiverAccount, decimal amount, int currencyID, int? performedByClientID, string executedByUserID, string description)
+
+        {
+           
+            if (amount <= 0)
+            {
+                this.ErrorMessage = "Transfer amount must be greater than zero.";
+                return false;
+            }
+
+            string error = "";
+
+          
+            bool isSuccess = ClsTransactionData.Transfers(
+                SenderAccount.AccountID,
+                receiverAccount.AccountID,
+                amount,
+                currencyID,
+                performedByClientID,
+                executedByUserID,
+                description,
+                ref error
+            );
+
+            if (isSuccess)
+            {
+               
+                this.Balance -= amount;
+                receiverAccount.Balance += amount;
+                this.ErrorMessage = "";
+                return true;
+            }
+            else
+            {
+                this.ErrorMessage = error;
+                return false;
+            }
 
         }
 

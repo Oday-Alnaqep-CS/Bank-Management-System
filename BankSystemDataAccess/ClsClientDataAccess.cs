@@ -530,6 +530,125 @@ namespace BankSystemDataAccess.EntitiesData
             return dt;
         }
 
+        public static DataTable GetAllClientsinfo(ref string errorMessage)
+
+
+        {
+
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+
+                string query = @"
+                                   SELECT 
+                                       Clients.ClientID AS [Customer ID],
+                                       Persons.ImagePath AS [Profile],
+                                       Persons.FirstName + ' ' + Persons.LastName AS [Full Name],
+                                       Persons.Email AS [Email Address],
+                                       Persons.Phone AS [Phone Number],
+
+                                      CASE 
+                                          When Persons.Gender = 1 Then 'M'
+                                          else 'F'
+                                      END AS [Gender],
+
+                                       ISNULL(Countries.CountryName, 'N/A') AS [Country],
+                                       COUNT(Accounts.AccountID) AS [Total Accounts], 
+
+                                       CASE 
+                                           WHEN Clients.Status = 1 THEN 'Active' 
+                                           ELSE 'Inactive' 
+                                       END AS [Status],
+                                       ISNULL(SUM(Accounts.Balance), 0.00) AS [Total Balance (USD)],
+                                       Clients.CreatedDate AS [Date Registered],
+                                       ISNULL(STRING_AGG(AccountTypes.TypeName, ' & '), 'No Accounts') AS [Account Type(s)]
+                                   FROM Clients
+                                   INNER JOIN Persons ON Clients.PersonID = Persons.PersonID
+                                   LEFT JOIN Cities ON Persons.CityID = Cities.CityID
+                                   LEFT JOIN Countries ON Cities.CountryID = Countries.CountryID
+                                   LEFT JOIN Accounts ON Clients.ClientID = Accounts.ClientID
+                                   LEFT JOIN Cards Ca ON Ca.AccountID = Accounts.AccountID
+                                   LEFT JOIN AccountTypes ON Accounts.AccountTypeID = AccountTypes.AccountTypeID";
+
+
+                query += @" GROUP BY 
+                                           Clients.ClientID, 
+                                           Persons.ImagePath, 
+                                           Persons.FirstName, 
+                                           Persons.LastName, 
+                                           Persons.Email, 
+                                           Persons.Phone, 
+                                           Persons.Gender,
+                                           Countries.CountryName, 
+                                           Clients.CreatedDate, 
+                                           Clients.Status;";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        errorMessage = ex.Message;
+                    }
+                }
+            }
+
+            return dt;
+        }
+
+        public static DataTable GetClientNameAndAccountNumber(ref string errorMessage)
+
+
+        {
+
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+
+                string query = @"
+                                  select Acc.AccountNumber AS [Account Number], P.FirstName + ' ' + P.LastName AS [Full Name]
+                                  from Accounts Acc
+                                  INNER JOIN Clients C ON  Acc.ClientID = C.clientID 
+                                  INNER JOIN Persons P ON C.PersonID = P.PersonID";
+
+
+          
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        errorMessage = ex.Message;
+                    }
+                }
+            }
+
+            return dt;
+        }
+
         public static DataTable GetAllActiveClients(ref string errorMessage)
 
 

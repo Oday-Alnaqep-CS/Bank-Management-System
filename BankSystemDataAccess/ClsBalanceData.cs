@@ -13,7 +13,7 @@ namespace BankSystemDataAccess
         {
 
             DataTable dt = new DataTable();
-           
+
             using (SqlConnection Connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
 
             {
@@ -43,7 +43,7 @@ namespace BankSystemDataAccess
                                   LEFT JOIN AccountTypes ON Acc.AccountTypeID = AccountTypes.AccountTypeID
                                   LEFT JOIN Currencies ON Acc.CurrencyID = Currencies.CurrencyID;";
 
-                using(SqlCommand Command = new SqlCommand(query,Connection))
+                using (SqlCommand Command = new SqlCommand(query, Connection))
 
                 {
 
@@ -62,7 +62,7 @@ namespace BankSystemDataAccess
                             }
                         }
                     }
-                    catch(Exception ex)
+                    catch (Exception ex)
                     {
                         ErrorMessage = ex.Message;
                     }
@@ -73,6 +73,61 @@ namespace BankSystemDataAccess
 
             return dt;
 
+        }
+
+        public static DataTable GetAccountDetailsByAccountNumber(string AccountNumber, ref string ErrorMessage)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection Connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+                string query = @"SELECT 
+                              ISNULL(Acc.Balance, 0.00) AS [Current Balance (USD)],                                                 
+                              CASE 
+                                  WHEN Acc.Status = 1 THEN 'Active'
+                                  WHEN Acc.Status = 2 THEN 'Dormant'
+                                  WHEN Acc.Status = 3 THEN 'Frozen'
+                                  ELSE 'Unknown'
+                              END AS [Account Status],
+                               (
+                                 SELECT MAX(T.TransactionDate) 
+                                 FROM Transactions T 
+                                 WHERE T.FromAccountID = Acc.AccountID OR T.ToAccountID = Acc.AccountID
+                               ) AS [Last Transaction Date],
+
+                              ISNULL(Currencies.CurrencyCode, 'USD') AS [Currency]
+                          FROM Accounts AS Acc
+                          INNER JOIN Clients ON Acc.ClientID = Clients.ClientID
+                          INNER JOIN Persons AS P ON Clients.PersonID = P.PersonID
+                          LEFT JOIN AccountTypes ON Acc.AccountTypeID = AccountTypes.AccountTypeID
+                          LEFT JOIN Currencies ON Acc.CurrencyID = Currencies.CurrencyID
+                          WHERE Acc.AccountNumber = @AccountNumber;";
+
+                using (SqlCommand Command = new SqlCommand(query, Connection))
+                {
+                   
+                    Command.Parameters.AddWithValue("@AccountNumber", AccountNumber);
+
+                    try
+                    {
+                        Connection.Open();
+
+                        using (SqlDataReader Reader = Command.ExecuteReader())
+                        {
+                            if (Reader.HasRows)
+                            {
+                                dt.Load(Reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        ErrorMessage = ex.Message;
+                    }
+                }
+            }
+
+            return dt;
         }
     }
 }

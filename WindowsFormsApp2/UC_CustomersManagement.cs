@@ -375,7 +375,7 @@ namespace Bank_Managment_System
 
             {
 
-                dt.CaseSensitive = false;
+                dt.CaseSensitive = true;
 
                 string Text = txtSearch.Text.Trim();
 

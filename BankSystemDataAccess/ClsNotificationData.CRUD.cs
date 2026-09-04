@@ -9,7 +9,7 @@ namespace BankSystemDataAccess.FinancialData
     {
         
 
-        public static int AddNewNotification(int clientID, string title, string message, ref string errorMessage)
+        public static int AddNewNotification(string UserID, string title, string message, ref string errorMessage)
         {
 
             int notificationID = -1;
@@ -20,13 +20,13 @@ namespace BankSystemDataAccess.FinancialData
             {
 
 
-                string query = @"INSERT INTO Notifications (ClientID, Title, Message, IsRead, CreatedDate)
-                             VALUES (@ClientID, @Title, @Message, 0, GETDATE());
+                string query = @"INSERT INTO Notifications (UserID, Title, Message, IsRead, SentDate)
+                             VALUES (@UserID, @Title, @Message, 0, GETDATE());
                              SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@ClientID", clientID);
+                    command.Parameters.AddWithValue("@UserID", UserID);
                     command.Parameters.AddWithValue("@Title", title);
                     command.Parameters.AddWithValue("@Message", message);
 
@@ -51,7 +51,7 @@ namespace BankSystemDataAccess.FinancialData
         }
 
        
-        public static bool MarkAsRead(int notificationID, ref string errorMessage)
+        public static bool MarkAsRead(string UserID, ref string errorMessage)
 
 
         {
@@ -62,12 +62,12 @@ namespace BankSystemDataAccess.FinancialData
             using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
             {
 
-                string query = "UPDATE Notifications SET IsRead = 1 WHERE NotificationID = @NotificationID;";
+                string query = "UPDATE Notifications SET IsRead = 1 WHERE UserID = @UserID;";
 
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    command.Parameters.AddWithValue("@NotificationID", notificationID);
+                    command.Parameters.AddWithValue("@UserID", UserID);
 
                     try
                     {

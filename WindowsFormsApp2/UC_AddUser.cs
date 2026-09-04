@@ -19,7 +19,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web.Security;
 using System.Windows.Forms;
-using static BankSystemBuisniseLayer.ClsClient;
+
 using static BankSystemBuisniseLayer.ClsPerson;
 using static BankSystemDataAccess.Financial.ClsAccount;
 using static OpenCvSharp.Stitcher;
@@ -783,7 +783,10 @@ namespace Bank_Managment_System
             }
         }
 
+        private void CbDepartment_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }
 
