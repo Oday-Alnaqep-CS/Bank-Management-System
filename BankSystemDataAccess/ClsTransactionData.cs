@@ -11,7 +11,7 @@ namespace BankSystemDataAccess.FinancialData
 
         public static bool GetTransactionByID(int transactionID, ref int? fromAccountID, ref int? toAccountID,
                                                ref byte transactionTypeID, ref int currencyID,
-                                               ref int? performedByClientID, ref int? executedByUserID,
+                                               ref int? performedByClientID, ref string executedByUserID,
                                                ref decimal amount, ref string description,
                                                ref DateTime transactionDate, ref string errorMessage)
         {
@@ -49,7 +49,7 @@ namespace BankSystemDataAccess.FinancialData
                                 transactionTypeID = (byte)reader["TransactionTypeID"];
                                 currencyID = (int)reader["CurrencyID"];
                                 performedByClientID = reader["PerformedByClientID"] != DBNull.Value ? (int?)reader["PerformedByClientID"] : null;
-                                executedByUserID = reader["ExecutedByUserID"] != DBNull.Value ? (int?)reader["ExecutedByUserID"] : null;
+                                executedByUserID = reader["ExecutedByUserID"] != DBNull.Value ? (string)reader["ExecutedByUserID"] : null;
                                 amount = (decimal)reader["Amount"];
                                 description = reader["Description"] != DBNull.Value ? (string)reader["Description"] : string.Empty;
                                 transactionDate = (DateTime)reader["TransactionDate"];

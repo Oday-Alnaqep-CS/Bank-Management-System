@@ -99,6 +99,7 @@
     <Compile Include="ClsNotificationData.Views.cs" />
     <Compile Include="ClsPermissionDataAccess.cs" />
     <Compile Include="ClsPersonDataAccess.cs" />
+    <Compile Include="ClsRateDataAccess.cs" />
     <Compile Include="ClsRolePermissionDataAccess.cs" />
     <Compile Include="ClsTotalNewCustomersDataAccess.cs" />
     <Compile Include="ClsTransactionData.CRUD.cs" />

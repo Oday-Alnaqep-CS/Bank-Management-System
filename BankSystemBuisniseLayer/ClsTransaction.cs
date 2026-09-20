@@ -13,11 +13,15 @@ namespace BankSystemBusinessLayer
         public int TransactionID { get; set; }
         public int? FromAccountID { get; set; }
         public int? ToAccountID { get; set; }
+        public string FromCustomerName { get; set; }
+        public string ToCustomerName { get; set; }
+
         public byte TransactionTypeID { get; set; }
         public int CurrencyID { get; set; }
         public int? PerformedByClientID { get; set; }
-        public int? ExecutedByUserID { get; set; }
+        public string ExecutedByUserID { get; set; }
         public decimal Amount { get; set; }
+        public decimal AmountAfter { get; set; }
         public string Description { get; set; }
         public DateTime TransactionDate { get; set; }
         public string ErrorMessage { get; set; }
@@ -35,7 +39,10 @@ namespace BankSystemBusinessLayer
             this.PerformedByClientID = null;
             this.ExecutedByUserID = null;
             this.Amount = 0M;
+            this.AmountAfter = 0M;
             this.Description = "";
+            this.FromCustomerName = null;
+            this.ToCustomerName = null;
             this.TransactionDate = DateTime.Now;
 
             Mode = enMode.AddNew;
@@ -45,7 +52,7 @@ namespace BankSystemBusinessLayer
 
         private clsTransaction(int transactionID, int? fromAccountID, int? toAccountID,
                               byte transactionTypeID, int currencyID, int? performedByClientID,
-                              int? executedByUserID, decimal amount, string description, DateTime transactionDate)
+                              string executedByUserID, decimal amount, string description, DateTime transactionDate)
 
 
 
@@ -79,7 +86,7 @@ namespace BankSystemBusinessLayer
             this.TransactionID = ClsTransactionData.AddNewTransaction(this.FromAccountID, this.ToAccountID,
                                                                              this.TransactionTypeID, this.CurrencyID,
                                                                              this.PerformedByClientID, this.ExecutedByUserID,
-                                                                             this.Amount, this.Description, ref ErrorMessage);
+                                                                             this.Amount,this.AmountAfter, this.Description,this.FromCustomerName ,this.ToCustomerName, ref ErrorMessage);
 
             this.ErrorMessage = ErrorMessage;
 
@@ -113,7 +120,7 @@ namespace BankSystemBusinessLayer
 
         {
 
-            int? fromAccountID = null, toAccountID = null, performedByClientID = null, executedByUserID = null;
+            int? fromAccountID = null, toAccountID = null, performedByClientID = null; string executedByUserID = null;
             byte transactionTypeID = 0;
             int currencyID = 0;
             decimal amount = 0M;
@@ -169,13 +176,13 @@ namespace BankSystemBusinessLayer
 
 
 
-        public static bool Transfer(int fromAccountID, int toAccountID, decimal amount,
+        public static bool Transfer(int fromAccountID, int toAccountID, decimal amount,decimal amountAfter,
                                     int currencyID, int? performedByClientID, string executedByUserID,
                                     string description, ref string errorMessage)
         {
 
 
-            return ClsTransactionData.Transfers(fromAccountID, toAccountID, amount,
+            return ClsTransactionData.Transfers(fromAccountID, toAccountID, amount, amountAfter,
                                                     currencyID, performedByClientID, executedByUserID,
                                                     description, ref errorMessage);
 

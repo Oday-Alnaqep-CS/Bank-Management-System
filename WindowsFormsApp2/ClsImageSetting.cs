@@ -85,8 +85,18 @@ namespace Bank_Managment_System
 
                 foreach (DataRow row in Data.Rows)
                 {
-                    string fullPath = row["Profile"] != DBNull.Value ? row["Profile"].ToString().Trim() : "";
-                  
+
+                    string fullPath = string.Empty;
+
+                    if (Data.Columns.Contains("Profile") && row["Profile"] != DBNull.Value)
+                    {
+                        fullPath = row["Profile"].ToString().Trim();
+                    }
+                    else if (Data.Columns.Contains("Flag") && row["Flag"] != DBNull.Value)
+                    {
+                        fullPath = row["Flag"].ToString().Trim();
+                    }
+
                     //string fileName = System.IO.Path.GetFileName(rawPath);
                     //string fullPath = System.IO.Path.Combine(projectFolder, "CustomersImage", fileName);
 

@@ -249,6 +249,44 @@ namespace BranchDataAccess.EntitiesData
             return dt;
         }
 
+        public static DataTable GetBrancheByUserID(string UserID ,ref string ErrorMessage)
+
+
+        {
+
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
+            {
+
+                string query = @"SELECT BranchName FROM Branches WHERE UserID = @UserID ORDER BY BranchName";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    try
+                    {
+                        command.Parameters.AddWithValue("@UserID", UserID);
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+
+                        ErrorMessage = ex.Message;
+
+                    }
+                }
+            }
+
+            return dt;
+        }
+
         public static int GetBranchIDByCityID(int CityID, ref string ErrorMessage)
         {
             int branchID = -1; 

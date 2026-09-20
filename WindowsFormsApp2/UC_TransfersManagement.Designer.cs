@@ -202,9 +202,9 @@
             this.lblCurrentBalanceOfReciver.ForeColor = System.Drawing.Color.Transparent;
             this.lblCurrentBalanceOfReciver.Location = new System.Drawing.Point(22, 350);
             this.lblCurrentBalanceOfReciver.Name = "lblCurrentBalanceOfReciver";
-            this.lblCurrentBalanceOfReciver.Size = new System.Drawing.Size(83, 33);
+            this.lblCurrentBalanceOfReciver.Size = new System.Drawing.Size(68, 33);
             this.lblCurrentBalanceOfReciver.TabIndex = 2;
-            this.lblCurrentBalanceOfReciver.Text = "1,235";
+            this.lblCurrentBalanceOfReciver.Text = "0.00";
             // 
             // CurrentBalanceIcone1
             // 
@@ -523,9 +523,9 @@
             this.lblCurrentBalanceOfSender.ForeColor = System.Drawing.Color.Transparent;
             this.lblCurrentBalanceOfSender.Location = new System.Drawing.Point(20, 352);
             this.lblCurrentBalanceOfSender.Name = "lblCurrentBalanceOfSender";
-            this.lblCurrentBalanceOfSender.Size = new System.Drawing.Size(83, 33);
+            this.lblCurrentBalanceOfSender.Size = new System.Drawing.Size(68, 33);
             this.lblCurrentBalanceOfSender.TabIndex = 2;
-            this.lblCurrentBalanceOfSender.Text = "1,235";
+            this.lblCurrentBalanceOfSender.Text = "0.00";
             // 
             // CurrentBalanceIcone
             // 
@@ -895,8 +895,8 @@
             this.txtTransferAmount.Location = new System.Drawing.Point(39, 1);
             this.txtTransferAmount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTransferAmount.Maximum = new decimal(new int[] {
-            1000000,
-            0,
+            276447232,
+            23283,
             0,
             0});
             this.txtTransferAmount.Name = "txtTransferAmount";
@@ -905,6 +905,7 @@
             this.txtTransferAmount.ThousandsSeparator = true;
             this.txtTransferAmount.UpDownButtonFillColor = System.Drawing.Color.Transparent;
             this.txtTransferAmount.UpDownButtonForeColor = System.Drawing.Color.Transparent;
+            this.txtTransferAmount.ValueChanged += new System.EventHandler(this.txtTransferAmount_ValueChanged);
             // 
             // guna2HtmlLabel17
             // 
@@ -988,13 +989,11 @@
         private FontAwesome.Sharp.IconPictureBox CurrentBalanceIcone;
         private Guna.UI2.WinForms.Guna2Button cardTotalClientsicon;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblAmountAftertransferOfsender;
         private System.Windows.Forms.Label label3;
         private FontAwesome.Sharp.IconPictureBox AfterTransferIcone;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
-        private System.Windows.Forms.Label lblAmountAftertransferOfReciver;
         private System.Windows.Forms.Label label5;
         private FontAwesome.Sharp.IconPictureBox AfterTransferIcone1;
         private System.Windows.Forms.Label lblCurrentBalanceOfReciver;
@@ -1026,5 +1025,7 @@
         private Guna.UI2.WinForms.Guna2PictureBox PctAccountIcone;
         private Guna.UI2.WinForms.Guna2ComboBox CbSenderAccount;
         private Guna.UI2.WinForms.Guna2HtmlLabel lbl;
+        private System.Windows.Forms.Label lblAmountAftertransferOfReciver;
+        private System.Windows.Forms.Label lblAmountAftertransferOfsender;
     }
 }

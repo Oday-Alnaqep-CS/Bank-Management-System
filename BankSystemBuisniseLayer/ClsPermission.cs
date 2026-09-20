@@ -6,6 +6,37 @@ namespace BankSystemBusinessLayer
 {
     public class ClsPermission
     {
+
+        public enum enPermissions
+        {
+            Manage_Users = 1,
+            Manage_Roles = 2,
+            System_Settings = 3,
+            View_Audit_Logs = 4,
+            Full_Access = 5,
+
+            System_Maintenance = 6,
+            View_Error_Logs = 7,
+            Manage_Database = 8,
+            Developer_Tools = 9,
+
+            View_Branch_Reports = 10,
+            Approve_Transactions = 11,
+            Supervise_Tellers = 12,
+            Manage_Branch_Accounts = 13,
+
+            Perform_Deposit = 14,
+            Perform_Withdrawal = 15,
+            Manage_Customers = 16,
+            Execute_Transfers = 17,
+            Daily_Cash_Operations = 18,
+
+            View_Loan_Applications = 19,
+            Analyze_Risk = 20,
+            Approve_Reject_Loans = 21,
+            View_Customer_Financials = 22
+        }
+
         public enum enMode { AddNew = 1, Update = 2 }
         public enMode Mode = enMode.AddNew;
 

@@ -1,4 +1,5 @@
 ﻿using BankSystemBuisniseLayer;
+using BankSystemBusinessLayer;
 using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
@@ -218,28 +219,26 @@ namespace Bank_Managment_System
 
         }
 
-        private void DataGridViewAllUsere_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void DataGridViewAllUsere_CellFormatting_1(object sender, DataGridViewCellFormattingEventArgs e)
         {
-
-
             if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
 
             string columnName = DataGridViewAllUsere.Columns[e.ColumnIndex].Name;
 
-      
+
             if (columnName == "User Name" || columnName == "Username")
             {
                 e.CellStyle.ForeColor = Color.FromArgb(56, 189, 248);
                 e.CellStyle.Font = new Font(DataGridViewAllUsere.Font, FontStyle.Bold);
             }
-           
+
             else if (columnName == "Status")
             {
                 string status = e.Value?.ToString();
 
                 switch (status)
                 {
-                  
+
 
                     case "Inactive":
                     case "0":
@@ -260,7 +259,7 @@ namespace Bank_Managment_System
                         break;
                 }
             }
-          
+
             else if (columnName == "Role / Permissions" || columnName == "RoleName")
             {
                 string roleName = e.Value?.ToString();
@@ -269,32 +268,32 @@ namespace Bank_Managment_System
                 switch (roleName)
                 {
                     case "Full Admin (ALL)":
-                        e.CellStyle.ForeColor = Color.FromArgb(168, 85, 247); 
+                        e.CellStyle.ForeColor = Color.FromArgb(168, 85, 247);
                         e.CellStyle.Font = new Font(DataGridViewAllUsere.Font, FontStyle.Bold);
                         break;
 
                     case "System Developer":
-                        e.CellStyle.ForeColor = Color.FromArgb(56, 189, 248);  
+                        e.CellStyle.ForeColor = Color.FromArgb(56, 189, 248);
                         e.CellStyle.Font = new Font(DataGridViewAllUsere.Font, FontStyle.Bold);
                         break;
 
                     case "Branch Supervisor":
-                        e.CellStyle.ForeColor = Color.FromArgb(163, 230, 53);  
+                        e.CellStyle.ForeColor = Color.FromArgb(163, 230, 53);
                         e.CellStyle.Font = new Font(DataGridViewAllUsere.Font, FontStyle.Bold);
                         break;
 
                     case "Loan Analyst":
-                        e.CellStyle.ForeColor = Color.FromArgb(250, 204, 21);  
+                        e.CellStyle.ForeColor = Color.FromArgb(250, 204, 21);
                         e.CellStyle.Font = new Font(DataGridViewAllUsere.Font, FontStyle.Bold);
                         break;
 
                     case "Teller / Operations":
-                        e.CellStyle.ForeColor = Color.FromArgb(45, 212, 191); 
+                        e.CellStyle.ForeColor = Color.FromArgb(45, 212, 191);
                         e.CellStyle.Font = new Font(DataGridViewAllUsere.Font, FontStyle.Bold);
                         break;
                 }
             }
-    
+
             else if (columnName == "Account Type" || columnName == "Account Type(s)")
             {
                 string accountType = e.Value?.ToString();
@@ -350,18 +349,26 @@ namespace Bank_Managment_System
             }
         }
 
-        private void cmbFilterMain_SelectedIndexChanged(object sender, EventArgs e)
+        private void cmbFilterMain_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             _ApplyRolesFilter();
         }
 
-        private void cbFilterStatus_SelectedIndexChanged(object sender, EventArgs e)
+        private void cbFilterStatus_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             _ApplyStatusFilter();
         }
 
-        private void btnAddNewUser_Click(object sender, EventArgs e)
+        private void btnAddNewUser_Click_1(object sender, EventArgs e)
         {
+
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Users.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
             ((FrmMain)this.FindForm()).LoadUserControl(new UC_AddUser());
         }
 
@@ -373,6 +380,13 @@ namespace Bank_Managment_System
         private void _ChaingUserStatus(byte newStatus, string ActionType)
 
         {
+
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Users.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
 
             string ErrorMessage = string.Empty;
 
@@ -408,15 +422,30 @@ namespace Bank_Managment_System
 
         }
 
-        private void EditUser_Click(object sender, EventArgs e)
+        private void EditUser_Click_1(object sender, EventArgs e)
         {
+
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Users.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
             string UserID = Convert.ToString(DataGridViewAllUsere.CurrentRow.Cells["User ID"].Value);
             ((FrmMain)this.FindForm()).LoadUserControl(new UC_AddUser(UserID));
+
         }
 
-        private void DeleteUser_Click(object sender, EventArgs e)
+        private void DeleteUser_Click_1(object sender, EventArgs e)
         {
 
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Users.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
             string ErrorMessage = string.Empty;
             if (DataGridViewAllUsere.CurrentRow != null)
 
@@ -431,7 +460,7 @@ namespace Bank_Managment_System
                     if (confirmResult == DialogResult.Yes)
 
                     {
-                       
+
                         if (ClsUser.DeleteUser(UserID, ref ErrorMessage))
 
                         {
@@ -449,44 +478,60 @@ namespace Bank_Managment_System
                     MessageBox.Show($"Could not find User with ID: '{UserID}' in database!", "Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-        }
-
-        private void DeactiveUser_Click(object sender, EventArgs e)
-        {
-
-             _ChaingUserStatus(0, "Deactivated");
 
         }
 
-        private void ActivationUser_Click(object sender, EventArgs e)
+        private void ActivationUser_Click_1(object sender, EventArgs e)
         {
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Users.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
 
             _ChaingUserStatus(1, "Activated");
 
         }
 
-        private void LockedUser_Click(object sender, EventArgs e)
+        private void DeactiveUser_Click_1(object sender, EventArgs e)
         {
 
-            _ChaingUserStatus(2, "Locked");
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Users.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
+            _ChaingUserStatus(0, "Deactivated");
+
         }
 
-        private void DataGridViewAllUsere_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        private void LockedUser_Click_1(object sender, EventArgs e)
         {
 
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Users.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
+            _ChaingUserStatus(2, "Locked");
+
+        }
+
+        private void DataGridViewAllUsere_CellMouseDown_1(object sender, DataGridViewCellMouseEventArgs e)
+        {
             if (e.Button == MouseButtons.Right && e.RowIndex >= 0)
             {
-              
+
                 DataGridViewAllUsere.ClearSelection();
                 DataGridViewAllUsere.Rows[e.RowIndex].Selected = true;
                 DataGridViewAllUsere.CurrentCell = DataGridViewAllUsere.Rows[e.RowIndex].Cells[e.ColumnIndex];
 
             }
-        }
-
-        private void DataGridViewAllUsere_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 

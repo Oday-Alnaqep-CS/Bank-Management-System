@@ -118,6 +118,11 @@ namespace BankSystemBuisniseLayer
             return clsBranchDataAccess.GetBranchesByCityID(CityID, ref ErrorMessage);
         }
 
+        public static DataTable GetCurrentBranchName(string UserID, ref string ErrorMessage)
+        {
+            return clsBranchDataAccess.GetBrancheByUserID(UserID, ref ErrorMessage);
+        }
+
         public static int GetBranchIDByCityID(int CityID, ref string ErrorMessage)
         {
             return clsBranchDataAccess.GetBranchIDByCityID(CityID, ref ErrorMessage);

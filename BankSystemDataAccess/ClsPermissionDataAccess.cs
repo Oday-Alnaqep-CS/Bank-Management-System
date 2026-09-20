@@ -309,7 +309,8 @@ namespace BankSystemDataAccess.EntitiesData
                          FROM UserRoles ur
                          INNER JOIN RolePermissions rp ON ur.RoleID = rp.RoleID
                          INNER JOIN Permissions p ON rp.PermissionID = p.PermissionID
-                         WHERE ur.UserID = @UserID AND p.PermissionName = @PermissionName;";
+                         WHERE ur.UserID = @UserID 
+                               AND (p.PermissionName = @PermissionName OR p.PermissionName = 'Full_Access') ;";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {

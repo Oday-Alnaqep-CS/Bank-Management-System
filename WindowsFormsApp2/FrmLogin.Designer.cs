@@ -51,7 +51,7 @@
             this.label1.ForeColor = System.Drawing.Color.Khaki;
             this.label1.Location = new System.Drawing.Point(12, 68);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(685, 51);
+            this.label1.Size = new System.Drawing.Size(653, 48);
             this.label1.TabIndex = 0;
             this.label1.Text = "BANK MANAGEMENT SYSTEM";
             // 
@@ -63,7 +63,7 @@
             this.label2.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label2.Location = new System.Drawing.Point(708, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(239, 58);
+            this.label2.Size = new System.Drawing.Size(231, 56);
             this.label2.TabIndex = 1;
             this.label2.Text = "Welcome!";
             // 
@@ -75,7 +75,7 @@
             this.label3.ForeColor = System.Drawing.Color.MediumBlue;
             this.label3.Location = new System.Drawing.Point(669, 103);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(329, 39);
+            this.label3.Size = new System.Drawing.Size(305, 36);
             this.label3.TabIndex = 2;
             this.label3.Text = "Sign into your Account";
             // 
@@ -87,7 +87,7 @@
             this.label4.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label4.Location = new System.Drawing.Point(656, 259);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 33);
+            this.label4.Size = new System.Drawing.Size(139, 31);
             this.label4.TabIndex = 4;
             this.label4.Text = "User Name";
             // 
@@ -99,7 +99,7 @@
             this.label5.ForeColor = System.Drawing.Color.MidnightBlue;
             this.label5.Location = new System.Drawing.Point(656, 355);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 33);
+            this.label5.Size = new System.Drawing.Size(123, 31);
             this.label5.TabIndex = 6;
             this.label5.Text = "Password";
             // 
@@ -166,7 +166,7 @@
             this.CheRememberMe.Font = new System.Drawing.Font("Times New Roman", 16.8F, System.Drawing.FontStyle.Bold);
             this.CheRememberMe.Location = new System.Drawing.Point(700, 470);
             this.CheRememberMe.Name = "CheRememberMe";
-            this.CheRememberMe.Size = new System.Drawing.Size(208, 36);
+            this.CheRememberMe.Size = new System.Drawing.Size(204, 35);
             this.CheRememberMe.TabIndex = 9;
             this.CheRememberMe.Text = "Remember Me";
             this.CheRememberMe.UseVisualStyleBackColor = true;
@@ -217,8 +217,8 @@
             // 
             // FrmLogin
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.BackgroundImage = global::Bank_Managment_System.Properties.Resources.FrmLogin;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(115F, 115F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(995, 854);
             this.Controls.Add(this.btnSignUp);

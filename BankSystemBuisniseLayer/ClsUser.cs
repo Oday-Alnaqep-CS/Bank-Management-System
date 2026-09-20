@@ -3,6 +3,7 @@ using BankSystemDataAccess.EntitiesData;
 using System;
 using System.Data;
 using System.Runtime.CompilerServices;
+using System.Windows;
 
 namespace BankSystemBuisniseLayer
 {
@@ -21,6 +22,7 @@ namespace BankSystemBuisniseLayer
         public decimal Salary { get; set; }
         public byte Status { get; set; }
         public int RoleID { get; set; }
+        public string RoleName { get; set; }
         public string PasswordHash { get; set; }
         public string ErrorMessage { get; set; }
         public ClsPerson PersonInfo { get; set; }
@@ -49,7 +51,7 @@ namespace BankSystemBuisniseLayer
             this.UserID = userID;
             this.PersonID = personID;
             this.DepartmentID = departmentID;
-
+            this.BranchID = branchID;
             this.JobTitle = jobTitle;
             this.HireDate = hireDate;
             this.Salary = salary;
@@ -139,26 +141,33 @@ namespace BankSystemBuisniseLayer
         public static ClsUser Find(string userID, ref string errorMessage)
         {
             int personID = 0, departmentID = 0, branchID = 0;
-            string jobTitle = "", UserName = "", PasswordHash = "";
+            string jobTitle = "", UserName = "", PasswordHash = "" , RoleName = "";
             DateTime hireDate = DateTime.Now;
             decimal salary = 0M;
             byte status = 0;
             int RoleID = 0;
 
             if (ClsUserDataAccess.GetUserByID(userID, ref personID, ref departmentID, ref branchID,
-                                             ref jobTitle, ref hireDate, ref salary, ref status,ref UserName,ref PasswordHash,ref RoleID, ref errorMessage))
+                                             ref jobTitle, ref hireDate, ref salary, ref status, ref UserName, ref PasswordHash,ref RoleName, ref RoleID, ref errorMessage))
 
 
             {
-               
+
 
                 ClsUser User = new ClsUser(userID, personID, departmentID, branchID, jobTitle, hireDate, salary, status);
+             
                 User.UserName = UserName;
                 User.PasswordHash = PasswordHash;
                 User.RoleID = RoleID;
+                User.RoleName = RoleName;
                 User.PersonInfo = ClsPerson.Find(personID, ref errorMessage);
+              
+
                 return User;
+
             }
+            
+         
 
             return null;
         }

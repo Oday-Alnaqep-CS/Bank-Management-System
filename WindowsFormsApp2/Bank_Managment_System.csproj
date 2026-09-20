@@ -88,6 +88,9 @@
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="LiveCharts.WinForms">
       <HintPath>..\..\packages\LiveCharts.WinForms.0.9.7.1\lib\net45\LiveCharts.WinForms.dll</HintPath>
@@ -115,6 +118,18 @@
     <Compile Include="ClsGlobal.cs" />
     <Compile Include="ClsImageSetting.cs" />
     <Compile Include="ClsShowNotification.cs" />
+    <Compile Include="FrmCurrencyDifference.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCurrencyDifference.Designer.cs">
+      <DependentUpon>FrmCurrencyDifference.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDeposit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDeposit.Designer.cs">
+      <DependentUpon>FrmDeposit.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +141,24 @@
     </Compile>
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUpdateFX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpdateFX.Designer.cs">
+      <DependentUpon>FrmUpdateFX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmWithdraw.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmWithdraw.Designer.cs">
+      <DependentUpon>FrmWithdraw.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mainss.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mainss.Designer.cs">
+      <DependentUpon>Mainss.cs</DependentUpon>
     </Compile>
     <Compile Include="PopupNotifier.cs" />
     <Compile Include="Program.cs" />
@@ -140,6 +173,12 @@
     </Compile>
     <Compile Include="UC_AddCustomer.Designer.cs">
       <DependentUpon>UC_AddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_FXRates.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_FXRates.Designer.cs">
+      <DependentUpon>UC_FXRates.cs</DependentUpon>
     </Compile>
     <Compile Include="UC_Notifications.cs">
       <SubType>UserControl</SubType>
@@ -177,6 +216,12 @@
     <Compile Include="UC_AddUser.Designer.cs">
       <DependentUpon>UC_AddUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_TransactionsManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_TransactionsManagement.Designer.cs">
+      <DependentUpon>UC_TransactionsManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="UC_TransfersManagement.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -189,11 +234,26 @@
     <Compile Include="UC_UsersManagement.Designer.cs">
       <DependentUpon>UC_UsersManagement.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="FrmCurrencyDifference.resx">
+      <DependentUpon>FrmCurrencyDifference.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDeposit.resx">
+      <DependentUpon>FrmDeposit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpdateFX.resx">
+      <DependentUpon>FrmUpdateFX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmWithdraw.resx">
+      <DependentUpon>FrmWithdraw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mainss.resx">
+      <DependentUpon>Mainss.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -210,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UC_AddCustomer.resx">
       <DependentUpon>UC_AddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_FXRates.resx">
+      <DependentUpon>UC_FXRates.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_Notifications.resx">
       <DependentUpon>UC_Notifications.cs</DependentUpon>
@@ -229,12 +292,16 @@
     <EmbeddedResource Include="UC_AddUser.resx">
       <DependentUpon>UC_AddUser.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UC_TransactionsManagement.resx">
+      <DependentUpon>UC_TransactionsManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UC_TransfersManagement.resx">
       <DependentUpon>UC_TransfersManagement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UC_UsersManagement.resx">
       <DependentUpon>UC_UsersManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="Image\CountriesFlag\MClient.text" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

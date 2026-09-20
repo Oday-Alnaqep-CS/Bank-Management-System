@@ -1,4 +1,5 @@
-﻿using BankSystemDataAccess.Financial;
+﻿using BankSystemBusinessLayer;
+using BankSystemDataAccess.Financial;
 using FontAwesome.Sharp;
 using System;
 using System.Collections.Generic;
@@ -42,7 +43,6 @@ namespace Bank_Managment_System
             _ApplyCleanGridViewStyle();
             _LoadAllAccountsIntoGridView();
         }
-
 
         private void _SupInFo()
 
@@ -124,14 +124,15 @@ namespace Bank_Managment_System
 
         }
 
-
-
-
-
-
         private void btnAddNewCustoer_Click(object sender, EventArgs e)
         {
 
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Customers.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied","You do not have the required permissions to perform this action.",ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+            return;
         }
 
         private void DataGridViewAllAccount_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -217,6 +218,11 @@ namespace Bank_Managment_System
                     }
                 }
             }
+
+        }
+
+        private void cmbFilterMain_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

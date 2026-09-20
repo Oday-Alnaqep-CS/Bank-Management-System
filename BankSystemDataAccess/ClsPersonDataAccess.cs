@@ -2,6 +2,7 @@ using ContactsDataAccessLayer;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows;
 
 
 
@@ -49,6 +50,7 @@ namespace BankSystemDataAccess.EntitiesData
                   
                     ImagePath = reader["ImagePath"] != DBNull.Value ? reader["ImagePath"].ToString() : "";
 
+                  
                 }
                 else
                 {

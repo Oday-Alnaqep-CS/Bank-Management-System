@@ -324,7 +324,7 @@ namespace BankSystemDataAccess.Financial
 
         }
 
-        public bool TransferTo(ClsAccount SenderAccount, ClsAccount receiverAccount, decimal amount, int currencyID, int? performedByClientID, string executedByUserID, string description)
+        public bool TransferTo(ClsAccount SenderAccount, ClsAccount receiverAccount, decimal amount,decimal Amountafter,  int currencyID, int? performedByClientID, string executedByUserID, string description)
 
         {
            
@@ -341,6 +341,7 @@ namespace BankSystemDataAccess.Financial
                 SenderAccount.AccountID,
                 receiverAccount.AccountID,
                 amount,
+                Amountafter,
                 currencyID,
                 performedByClientID,
                 executedByUserID,

@@ -363,6 +363,14 @@ namespace Bank_Managment_System
 
         private void btnViewAllClients_Click(object sender, EventArgs e)
         {
+           
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Customers.ToString()) &&
+                !ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.View_Customer_Financials.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
 
             ((FrmMain)this.FindForm()).LoadUserControl(new US_ViewAllClients("View All Clients"));
 
@@ -371,6 +379,16 @@ namespace Bank_Managment_System
         private void btnViewAllActiveAccounts_Click(object sender, EventArgs e)
         {
 
+
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Branch_Accounts.ToString()) &&
+               !ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.View_Branch_Reports.ToString()))
+
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
             ((FrmMain)this.FindForm()).LoadUserControl(new US_ViewAllClients("View All Active Accounts"));
 
         }
@@ -378,10 +396,17 @@ namespace Bank_Managment_System
         private void btnViewTotalBalance_Click(object sender, EventArgs e)
         {
 
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.View_Branch_Reports.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
             ((FrmMain)this.FindForm()).LoadUserControl(new UC_TotalBalance());
 
         }
-
+        
         private void btnViewAllTodayTrans_Click(object sender, EventArgs e)
         {
 
@@ -389,32 +414,80 @@ namespace Bank_Managment_System
 
         private void btnNewClient_Click(object sender, EventArgs e)
         {
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Customers.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
 
             ((FrmMain)this.FindForm()).LoadUserControl(new UC_AddCustomer());
         }
 
         private void btnNewUser_Click(object sender, EventArgs e)
         {
+
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Users.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
             ((FrmMain)this.FindForm()).LoadUserControl(new UC_AddUser());
+
         }
 
         private void btnNewDeposit_Click(object sender, EventArgs e)
         {
 
+
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Perform_Deposit.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
+            FrmDeposit frm = new FrmDeposit(null);
+            frm.ShowDialog();
+
         }
 
         private void btnNewWithdraw_Click(object sender, EventArgs e)
         {
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Perform_Withdrawal.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
 
+            FrmWithdraw frm = new FrmWithdraw(null);
+            frm.ShowDialog();
         }
 
         private void btnNewTransfer_Click(object sender, EventArgs e)
         {
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Execute_Transfers.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
 
+            ((FrmMain)this.FindForm()).LoadUserControl(new UC_TransfersManagement());
         }
 
         private void btnCurrencyDiff_Click(object sender, EventArgs e)
         {
+
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.System_Settings.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
 
         }
 

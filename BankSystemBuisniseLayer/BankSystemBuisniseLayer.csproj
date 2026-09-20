@@ -90,6 +90,7 @@
     <Compile Include="ClsLoan.cs" />
     <Compile Include="ClsNotification.cs" />
     <Compile Include="ClsPermission.cs" />
+    <Compile Include="ClsRates.cs" />
     <Compile Include="ClsRolePermission.cs" />
     <Compile Include="clsSystemHealth.cs" />
     <Compile Include="ClsTotalNewCustomerBu.cs" />

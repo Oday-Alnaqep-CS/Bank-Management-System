@@ -1,4 +1,5 @@
 ﻿using BankSystemBuisniseLayer;
+using BankSystemBusinessLayer;
 using BankSystemDataAccess.Financial;
 using FontAwesome.Sharp;
 using System;
@@ -21,11 +22,12 @@ namespace Bank_Managment_System
 
         ClsUser _User = new ClsUser();
         ClsNotification _Notification = new ClsNotification();
+        clsTransaction _transaction = new clsTransaction();
         int _currentCurrencyID = 0;
         public UC_TransfersManagement()
         {
             InitializeComponent();
-           
+
         }
 
         private void UC_TransactionManage_Load(object sender, EventArgs e)
@@ -312,6 +314,36 @@ namespace Bank_Managment_System
 
         }
 
+        private void CalculateTransfer()
+        {
+            
+            if (string.IsNullOrWhiteSpace(txtSenderAccount.Text) || string.IsNullOrWhiteSpace(txtReceiverAccount.Text))
+            {
+                lblAmountAftertransferOfsender.Text = "0.00";
+                lblAmountAftertransferOfReciver.Text = "0.00";
+                return;
+            }
+
+            string senderError = string.Empty;
+            string receiverError = string.Empty;
+
+           
+            ClsAccount senderAccount = ClsAccount.FindByAccountNumber(txtSenderAccount.Text.Trim(), ref senderError);
+            ClsAccount receiverAccount = ClsAccount.FindByAccountNumber(txtReceiverAccount.Text.Trim(), ref receiverError);
+
+            
+
+           
+            decimal senderAmount = txtTransferAmount.Value;
+
+           
+            decimal newSenderBalance = senderAccount.Balance - senderAmount;
+            decimal newReceiverBalance = receiverAccount.Balance + senderAmount;
+
+            lblAmountAftertransferOfsender.Text = newSenderBalance.ToString("N2");
+            lblAmountAftertransferOfReciver.Text = newReceiverBalance.ToString("N2");
+        }
+
         private void btnConfirmTransfer_Click(object sender, EventArgs e)
         {
 
@@ -333,7 +365,7 @@ namespace Bank_Managment_System
                 return;
             }
 
-            if (receiverAccount == null)
+            if (receiverAccount == null && CbReciverCustomer.Text == null)
             {
                 MessageBox.Show("Receiver account not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -345,6 +377,7 @@ namespace Bank_Managment_System
                 return;
             }
 
+    
             if (senderAccount.AccountID == receiverAccount.AccountID)
             {
                 MessageBox.Show("Cannot transfer funds to the same account!  Sender and receiver accounts are the same.", "Invalid Transfer", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -353,8 +386,9 @@ namespace Bank_Managment_System
 
             if (senderAccount.Balance < transferAmount)
             {
-                MessageBox.Show("Insufficient balance in the sender's account.", "Insufficient Balance", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                MessageBox.Show($"You cannot Transfer an amount bigger than ( {senderAccount.Balance} )" +
+                                       $"From Customer: ' {CbSenderCustomer.Text} ' ID: {CbSenderAccount.Text} . " +
+                                       "Please enter a valid transfer amount.", "Invalid Amount", MessageBoxButtons.OK, MessageBoxIcon.Warning); return;
             }
 
             if (MessageBox.Show("Are you sure you want to perform this transfer?", "Confirm Transfer", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
@@ -385,15 +419,19 @@ namespace Bank_Managment_System
             string description = $"Transfer from  {senderAccount.AccountNumber} to {receiverAccount.AccountNumber} Amount {transferAmount:C}";
 
         
-            bool isSuccess = senderAccount.TransferTo(
+            bool isSuccess = senderAccount.  TransferTo(
                 senderAccount,
                 receiverAccount,
                 transferAmount,
+                senderAccount.Balance - transferAmount,
                 currencyID,
                 performedByClientID,
                 executedByUserID,
                 description
             );
+
+
+
 
             if (isSuccess)
             {
@@ -426,5 +464,11 @@ namespace Bank_Managment_System
              
             }
         }
+
+        private void txtTransferAmount_ValueChanged(object sender, EventArgs e)
+        {
+            CalculateTransfer();
+        }
+
     }
 }

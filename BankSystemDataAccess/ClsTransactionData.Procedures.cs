@@ -8,7 +8,7 @@ namespace BankSystemDataAccess.FinancialData
     public static partial class ClsTransactionData
     {
         
-        public static bool Transfers(int fromAccountID, int toAccountID, decimal amount,
+        public static bool Transfers(int fromAccountID, int toAccountID, decimal amount, decimal amountAfter,
                                          int currencyID, int? performedByClientID, string executedByUserID,
                                          string description, ref string errorMessage)
 
@@ -65,8 +65,8 @@ namespace BankSystemDataAccess.FinancialData
 
                        
                         string logQuery = @"INSERT INTO Transactions 
-                                            (FromAccountID, ToAccountID, TransactionTypeID, CurrencyID, PerformedByClientID, ExecutedByUserID, Amount, Description, TransactionDate)
-                                            VALUES (@FromAccountID, @ToAccountID, 3, @CurrencyID, @PerformedByClientID, @ExecutedByUserID, @Amount, @Description, GETDATE());";
+                                            (FromAccountID, ToAccountID, TransactionTypeID, CurrencyID, PerformedByClientID, ExecutedByUserID, Amount, AmountAfter, Description, TransactionDate)
+                                            VALUES (@FromAccountID, @ToAccountID, 3, @CurrencyID, @PerformedByClientID, @ExecutedByUserID, @Amount, @AmountAfter, @Description, GETDATE());";
 
                         using (SqlCommand logCmd = new SqlCommand(logQuery, connection, transaction))
                         {
@@ -77,6 +77,7 @@ namespace BankSystemDataAccess.FinancialData
                             logCmd.Parameters.AddWithValue("@PerformedByClientID", (object)performedByClientID ?? DBNull.Value);
                             logCmd.Parameters.AddWithValue("@ExecutedByUserID", (object)executedByUserID ?? DBNull.Value);
                             logCmd.Parameters.AddWithValue("@Amount", amount);
+                            logCmd.Parameters.AddWithValue("@AmountAfter", amountAfter);
                             logCmd.Parameters.AddWithValue("@Description", string.IsNullOrEmpty(description) ? DBNull.Value : (object)description);
 
 

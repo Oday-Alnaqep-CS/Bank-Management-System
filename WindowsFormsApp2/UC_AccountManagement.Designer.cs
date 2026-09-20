@@ -32,9 +32,11 @@
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.btnAddNewAccount = new Guna.UI2.WinForms.Guna2Button();
             this.DataGridViewAllAccount = new System.Windows.Forms.DataGridView();
+            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
             this.cmbFilterMain = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.InActiveAccountIcon = new FontAwesome.Sharp.IconPictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.lblInActiveAccounts = new System.Windows.Forms.Label();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
@@ -42,36 +44,34 @@
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
+            this.TotalDromantsICone = new FontAwesome.Sharp.IconPictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.lblDormantAccounts = new System.Windows.Forms.Label();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
+            this.ActiveAccountIcone = new FontAwesome.Sharp.IconPictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.lblActiveAccounts = new System.Windows.Forms.Label();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.label3 = new System.Windows.Forms.Label();
             this.cardTotalClients = new Guna.UI2.WinForms.Guna2Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.TotalAccountIcone = new FontAwesome.Sharp.IconPictureBox();
             this.lblTotalAccounts = new System.Windows.Forms.Label();
             this.cardTotalClientsicon = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
-            this.InActiveAccountIcon = new FontAwesome.Sharp.IconPictureBox();
-            this.TotalDromantsICone = new FontAwesome.Sharp.IconPictureBox();
-            this.ActiveAccountIcone = new FontAwesome.Sharp.IconPictureBox();
-            this.TotalAccountIcone = new FontAwesome.Sharp.IconPictureBox();
             this.guna2Panel4K.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewAllAccount)).BeginInit();
-            this.guna2Panel1.SuspendLayout();
-            this.guna2Panel6.SuspendLayout();
-            this.guna2Panel5.SuspendLayout();
-            this.cardTotalClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
+            this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.InActiveAccountIcon)).BeginInit();
+            this.guna2Panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TotalDromantsICone)).BeginInit();
+            this.guna2Panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ActiveAccountIcone)).BeginInit();
+            this.cardTotalClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TotalAccountIcone)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,6 +144,20 @@
             this.DataGridViewAllAccount.TabIndex = 10;
             this.DataGridViewAllAccount.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewAllAccount_CellFormatting);
             // 
+            // iconPictureBox1
+            // 
+            this.iconPictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Filter;
+            this.iconPictureBox1.IconColor = System.Drawing.Color.White;
+            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconPictureBox1.IconSize = 50;
+            this.iconPictureBox1.Location = new System.Drawing.Point(601, 15);
+            this.iconPictureBox1.Name = "iconPictureBox1";
+            this.iconPictureBox1.Size = new System.Drawing.Size(32, 32);
+            this.iconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.iconPictureBox1.TabIndex = 9;
+            this.iconPictureBox1.TabStop = false;
+            // 
             // cmbFilterMain
             // 
             this.cmbFilterMain.BackColor = System.Drawing.Color.Transparent;
@@ -171,6 +185,7 @@
             this.cmbFilterMain.Size = new System.Drawing.Size(220, 41);
             this.cmbFilterMain.StartIndex = 0;
             this.cmbFilterMain.TabIndex = 7;
+            this.cmbFilterMain.SelectedIndexChanged += new System.EventHandler(this.cmbFilterMain_SelectedIndexChanged);
             // 
             // txtSearch
             // 
@@ -215,6 +230,20 @@
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(311, 132);
             this.guna2Panel1.TabIndex = 7;
+            // 
+            // InActiveAccountIcon
+            // 
+            this.InActiveAccountIcon.BackColor = System.Drawing.Color.Transparent;
+            this.InActiveAccountIcon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.InActiveAccountIcon.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.InActiveAccountIcon.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.InActiveAccountIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.InActiveAccountIcon.IconSize = 50;
+            this.InActiveAccountIcon.Location = new System.Drawing.Point(21, 35);
+            this.InActiveAccountIcon.Name = "InActiveAccountIcon";
+            this.InActiveAccountIcon.Size = new System.Drawing.Size(60, 50);
+            this.InActiveAccountIcon.TabIndex = 4;
+            this.InActiveAccountIcon.TabStop = false;
             // 
             // label11
             // 
@@ -317,6 +346,20 @@
             this.guna2Button4.TabIndex = 7;
             this.guna2Button4.Text = "View All Clients ->";
             // 
+            // TotalDromantsICone
+            // 
+            this.TotalDromantsICone.BackColor = System.Drawing.Color.Transparent;
+            this.TotalDromantsICone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TotalDromantsICone.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.TotalDromantsICone.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TotalDromantsICone.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.TotalDromantsICone.IconSize = 50;
+            this.TotalDromantsICone.Location = new System.Drawing.Point(21, 35);
+            this.TotalDromantsICone.Name = "TotalDromantsICone";
+            this.TotalDromantsICone.Size = new System.Drawing.Size(60, 50);
+            this.TotalDromantsICone.TabIndex = 4;
+            this.TotalDromantsICone.TabStop = false;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -383,6 +426,20 @@
             this.guna2Panel5.Name = "guna2Panel5";
             this.guna2Panel5.Size = new System.Drawing.Size(311, 132);
             this.guna2Panel5.TabIndex = 4;
+            // 
+            // ActiveAccountIcone
+            // 
+            this.ActiveAccountIcone.BackColor = System.Drawing.Color.Transparent;
+            this.ActiveAccountIcone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ActiveAccountIcone.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.ActiveAccountIcone.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ActiveAccountIcone.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.ActiveAccountIcone.IconSize = 50;
+            this.ActiveAccountIcone.Location = new System.Drawing.Point(21, 35);
+            this.ActiveAccountIcone.Name = "ActiveAccountIcone";
+            this.ActiveAccountIcone.Size = new System.Drawing.Size(60, 50);
+            this.ActiveAccountIcone.TabIndex = 4;
+            this.ActiveAccountIcone.TabStop = false;
             // 
             // label6
             // 
@@ -462,6 +519,20 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "All Bank Accounts";
             // 
+            // TotalAccountIcone
+            // 
+            this.TotalAccountIcone.BackColor = System.Drawing.Color.Transparent;
+            this.TotalAccountIcone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TotalAccountIcone.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.TotalAccountIcone.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TotalAccountIcone.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.TotalAccountIcone.IconSize = 50;
+            this.TotalAccountIcone.Location = new System.Drawing.Point(23, 35);
+            this.TotalAccountIcone.Name = "TotalAccountIcone";
+            this.TotalAccountIcone.Size = new System.Drawing.Size(60, 50);
+            this.TotalAccountIcone.TabIndex = 4;
+            this.TotalAccountIcone.TabStop = false;
+            // 
             // lblTotalAccounts
             // 
             this.lblTotalAccounts.AutoSize = true;
@@ -501,76 +572,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Total Accounts";
             // 
-            // iconPictureBox1
-            // 
-            this.iconPictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.Filter;
-            this.iconPictureBox1.IconColor = System.Drawing.Color.White;
-            this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconPictureBox1.IconSize = 50;
-            this.iconPictureBox1.Location = new System.Drawing.Point(601, 15);
-            this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.iconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.iconPictureBox1.TabIndex = 9;
-            this.iconPictureBox1.TabStop = false;
-            // 
-            // InActiveAccountIcon
-            // 
-            this.InActiveAccountIcon.BackColor = System.Drawing.Color.Transparent;
-            this.InActiveAccountIcon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.InActiveAccountIcon.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.InActiveAccountIcon.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.InActiveAccountIcon.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.InActiveAccountIcon.IconSize = 50;
-            this.InActiveAccountIcon.Location = new System.Drawing.Point(21, 35);
-            this.InActiveAccountIcon.Name = "InActiveAccountIcon";
-            this.InActiveAccountIcon.Size = new System.Drawing.Size(60, 50);
-            this.InActiveAccountIcon.TabIndex = 4;
-            this.InActiveAccountIcon.TabStop = false;
-            // 
-            // TotalDromantsICone
-            // 
-            this.TotalDromantsICone.BackColor = System.Drawing.Color.Transparent;
-            this.TotalDromantsICone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.TotalDromantsICone.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.TotalDromantsICone.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.TotalDromantsICone.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.TotalDromantsICone.IconSize = 50;
-            this.TotalDromantsICone.Location = new System.Drawing.Point(21, 35);
-            this.TotalDromantsICone.Name = "TotalDromantsICone";
-            this.TotalDromantsICone.Size = new System.Drawing.Size(60, 50);
-            this.TotalDromantsICone.TabIndex = 4;
-            this.TotalDromantsICone.TabStop = false;
-            // 
-            // ActiveAccountIcone
-            // 
-            this.ActiveAccountIcone.BackColor = System.Drawing.Color.Transparent;
-            this.ActiveAccountIcone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.ActiveAccountIcone.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.ActiveAccountIcone.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.ActiveAccountIcone.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.ActiveAccountIcone.IconSize = 50;
-            this.ActiveAccountIcone.Location = new System.Drawing.Point(21, 35);
-            this.ActiveAccountIcone.Name = "ActiveAccountIcone";
-            this.ActiveAccountIcone.Size = new System.Drawing.Size(60, 50);
-            this.ActiveAccountIcone.TabIndex = 4;
-            this.ActiveAccountIcone.TabStop = false;
-            // 
-            // TotalAccountIcone
-            // 
-            this.TotalAccountIcone.BackColor = System.Drawing.Color.Transparent;
-            this.TotalAccountIcone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.TotalAccountIcone.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.TotalAccountIcone.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.TotalAccountIcone.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.TotalAccountIcone.IconSize = 50;
-            this.TotalAccountIcone.Location = new System.Drawing.Point(23, 35);
-            this.TotalAccountIcone.Name = "TotalAccountIcone";
-            this.TotalAccountIcone.Size = new System.Drawing.Size(60, 50);
-            this.TotalAccountIcone.TabIndex = 4;
-            this.TotalAccountIcone.TabStop = false;
-            // 
             // UC_AccountManagement
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -583,18 +584,18 @@
             this.guna2Panel4K.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewAllAccount)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InActiveAccountIcon)).EndInit();
             this.guna2Panel6.ResumeLayout(false);
             this.guna2Panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TotalDromantsICone)).EndInit();
             this.guna2Panel5.ResumeLayout(false);
             this.guna2Panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ActiveAccountIcone)).EndInit();
             this.cardTotalClients.ResumeLayout(false);
             this.cardTotalClients.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.InActiveAccountIcon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TotalDromantsICone)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ActiveAccountIcone)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.TotalAccountIcone)).EndInit();
             this.ResumeLayout(false);
 

@@ -166,6 +166,7 @@
             this.DataGridViewAllCustomers.RowTemplate.Height = 26;
             this.DataGridViewAllCustomers.Size = new System.Drawing.Size(1338, 450);
             this.DataGridViewAllCustomers.TabIndex = 10;
+            this.DataGridViewAllCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewAllCustomers_CellContentClick);
             this.DataGridViewAllCustomers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewAllCustomers_CellFormatting);
             this.DataGridViewAllCustomers.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewAllCustomers_CellMouseDown);
             // 
@@ -353,7 +354,7 @@
             this.lblInActiveCustomer.ForeColor = System.Drawing.Color.White;
             this.lblInActiveCustomer.Location = new System.Drawing.Point(88, 46);
             this.lblInActiveCustomer.Name = "lblInActiveCustomer";
-            this.lblInActiveCustomer.Size = new System.Drawing.Size(83, 33);
+            this.lblInActiveCustomer.Size = new System.Drawing.Size(78, 31);
             this.lblInActiveCustomer.TabIndex = 2;
             this.lblInActiveCustomer.Text = "1,235";
             // 
@@ -381,7 +382,7 @@
             this.label13.ForeColor = System.Drawing.Color.LightGray;
             this.label13.Location = new System.Drawing.Point(89, 16);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(170, 23);
+            this.label13.Size = new System.Drawing.Size(163, 22);
             this.label13.TabIndex = 0;
             this.label13.Text = "InActive Customers";
             // 
@@ -393,7 +394,7 @@
             this.label2.ForeColor = System.Drawing.Color.Silver;
             this.label2.Location = new System.Drawing.Point(9, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(421, 37);
+            this.label2.Size = new System.Drawing.Size(407, 37);
             this.label2.TabIndex = 6;
             this.label2.Text = "Customers Management";
             // 
@@ -446,7 +447,7 @@
             this.lblNewcustomers.ForeColor = System.Drawing.Color.White;
             this.lblNewcustomers.Location = new System.Drawing.Point(88, 46);
             this.lblNewcustomers.Name = "lblNewcustomers";
-            this.lblNewcustomers.Size = new System.Drawing.Size(83, 33);
+            this.lblNewcustomers.Size = new System.Drawing.Size(78, 31);
             this.lblNewcustomers.TabIndex = 2;
             this.lblNewcustomers.Text = "1,235";
             // 
@@ -474,7 +475,7 @@
             this.label7.ForeColor = System.Drawing.Color.LightGray;
             this.label7.Location = new System.Drawing.Point(92, 16);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(140, 23);
+            this.label7.Size = new System.Drawing.Size(133, 22);
             this.label7.TabIndex = 0;
             this.label7.Text = "New Customers";
             // 
@@ -549,7 +550,7 @@
             this.lblTotalBalance.ForeColor = System.Drawing.Color.White;
             this.lblTotalBalance.Location = new System.Drawing.Point(89, 46);
             this.lblTotalBalance.Name = "lblTotalBalance";
-            this.lblTotalBalance.Size = new System.Drawing.Size(83, 33);
+            this.lblTotalBalance.Size = new System.Drawing.Size(78, 31);
             this.lblTotalBalance.TabIndex = 2;
             this.lblTotalBalance.Text = "1,235";
             // 
@@ -577,7 +578,7 @@
             this.label5.ForeColor = System.Drawing.Color.LemonChiffon;
             this.label5.Location = new System.Drawing.Point(86, 16);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(122, 23);
+            this.label5.Size = new System.Drawing.Size(116, 22);
             this.label5.TabIndex = 0;
             this.label5.Text = "Total Balance";
             // 
@@ -630,7 +631,7 @@
             this.lblActiveCustomer.ForeColor = System.Drawing.Color.White;
             this.lblActiveCustomer.Location = new System.Drawing.Point(94, 43);
             this.lblActiveCustomer.Name = "lblActiveCustomer";
-            this.lblActiveCustomer.Size = new System.Drawing.Size(27, 33);
+            this.lblActiveCustomer.Size = new System.Drawing.Size(26, 31);
             this.lblActiveCustomer.TabIndex = 2;
             this.lblActiveCustomer.Text = "c";
             // 
@@ -658,7 +659,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label3.Location = new System.Drawing.Point(91, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(152, 23);
+            this.label3.Size = new System.Drawing.Size(146, 22);
             this.label3.TabIndex = 0;
             this.label3.Text = "Active Customers";
             // 
@@ -711,7 +712,7 @@
             this.lblTotalCustomers.ForeColor = System.Drawing.Color.White;
             this.lblTotalCustomers.Location = new System.Drawing.Point(89, 52);
             this.lblTotalCustomers.Name = "lblTotalCustomers";
-            this.lblTotalCustomers.Size = new System.Drawing.Size(83, 33);
+            this.lblTotalCustomers.Size = new System.Drawing.Size(78, 31);
             this.lblTotalCustomers.TabIndex = 2;
             this.lblTotalCustomers.Text = "1,235";
             // 
@@ -739,7 +740,7 @@
             this.label1.ForeColor = System.Drawing.Color.LightGray;
             this.label1.Location = new System.Drawing.Point(91, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(144, 23);
+            this.label1.Size = new System.Drawing.Size(139, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "Total Customers";
             // 

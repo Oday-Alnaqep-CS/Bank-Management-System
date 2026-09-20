@@ -28,6 +28,7 @@ namespace Bank_Managment_System
         private void FrmLogin_Load(object sender, EventArgs e)
         {
 
+            this.BackgroundImage = Properties.Resources.FrmLogin1;
 
             this.DialogResult = DialogResult.None;
  
@@ -214,7 +215,7 @@ namespace Bank_Managment_System
                     ClsGlobal.RememberUsernameAndPassword("", "");
                 }
 
-                FrmMain MainForm = new FrmMain();
+                Mainss MainForm = new Mainss();
                 MainForm.Show();
                 this.Hide();
 

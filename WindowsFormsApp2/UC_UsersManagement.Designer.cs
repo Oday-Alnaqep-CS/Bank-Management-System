@@ -28,6 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btnAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalRolesIcone = new FontAwesome.Sharp.IconPictureBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblTotalRoles = new System.Windows.Forms.Label();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.InActiveUsersIcon = new FontAwesome.Sharp.IconPictureBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblInActiveUsers = new System.Windows.Forms.Label();
+            this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel4K = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2ProgressBar5 = new Guna.UI2.WinForms.Guna2ProgressBar();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
@@ -43,20 +55,9 @@
             this.DeactiveUser = new Krypton.Toolkit.KryptonToolStripMenuItem();
             this.ActivationUser = new Krypton.Toolkit.KryptonToolStripMenuItem();
             this.LockedUser = new Krypton.Toolkit.KryptonToolStripMenuItem();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.InActiveUsersIcon = new FontAwesome.Sharp.IconPictureBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.lblInActiveUsers = new System.Windows.Forms.Label();
-            this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
-            this.label13 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
-            this.TotalRolesIcone = new FontAwesome.Sharp.IconPictureBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.lblTotalRoles = new System.Windows.Forms.Label();
-            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.ActiveUsersIcone = new FontAwesome.Sharp.IconPictureBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -69,261 +70,63 @@
             this.lblTotalUsers = new System.Windows.Forms.Label();
             this.cardTotalClientsicon = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnActions = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.TotalRolesIcone)).BeginInit();
+            this.guna2Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InActiveUsersIcon)).BeginInit();
             this.guna2Panel4K.SuspendLayout();
             this.guna2Panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewAllUsere)).BeginInit();
             this.MenuStrip1.SuspendLayout();
-            this.guna2Panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.InActiveUsersIcon)).BeginInit();
             this.guna2Panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TotalRolesIcone)).BeginInit();
             this.guna2Panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ActiveUsersIcone)).BeginInit();
             this.cardTotalClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TotalUsersIcon)).BeginInit();
             this.SuspendLayout();
             // 
-            // guna2Panel4K
+            // btnAction
             // 
-            this.guna2Panel4K.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.guna2Panel4K.BorderColor = System.Drawing.Color.White;
-            this.guna2Panel4K.BorderThickness = 1;
-            this.guna2Panel4K.Controls.Add(this.guna2ProgressBar5);
-            this.guna2Panel4K.Controls.Add(this.guna2Panel2);
-            this.guna2Panel4K.Controls.Add(this.guna2Panel1);
-            this.guna2Panel4K.Controls.Add(this.label2);
-            this.guna2Panel4K.Controls.Add(this.guna2Panel6);
-            this.guna2Panel4K.Controls.Add(this.guna2Panel5);
-            this.guna2Panel4K.Controls.Add(this.cardTotalClients);
-            this.guna2Panel4K.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.guna2Panel4K.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(15)))), ((int)(((byte)(30)))));
-            this.guna2Panel4K.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel4K.Name = "guna2Panel4K";
-            this.guna2Panel4K.ShadowDecoration.Color = System.Drawing.Color.White;
-            this.guna2Panel4K.Size = new System.Drawing.Size(1338, 734);
-            this.guna2Panel4K.TabIndex = 7;
+            this.btnAction.HeaderText = "Column1";
+            this.btnAction.MinimumWidth = 6;
+            this.btnAction.Name = "btnAction";
+            this.btnAction.Width = 125;
             // 
-            // guna2ProgressBar5
+            // TotalRolesIcone
             // 
-            this.guna2ProgressBar5.BorderRadius = 20;
-            this.guna2ProgressBar5.FillColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.guna2ProgressBar5.Location = new System.Drawing.Point(15, 53);
-            this.guna2ProgressBar5.Name = "guna2ProgressBar5";
-            this.guna2ProgressBar5.Size = new System.Drawing.Size(1300, 2);
-            this.guna2ProgressBar5.TabIndex = 114;
-            this.guna2ProgressBar5.Text = "guna2ProgressBar5";
-            this.guna2ProgressBar5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.TotalRolesIcone.BackColor = System.Drawing.Color.Transparent;
+            this.TotalRolesIcone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TotalRolesIcone.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.TotalRolesIcone.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.TotalRolesIcone.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.TotalRolesIcone.IconSize = 50;
+            this.TotalRolesIcone.Location = new System.Drawing.Point(17, 35);
+            this.TotalRolesIcone.Name = "TotalRolesIcone";
+            this.TotalRolesIcone.Size = new System.Drawing.Size(60, 50);
+            this.TotalRolesIcone.TabIndex = 4;
+            this.TotalRolesIcone.TabStop = false;
             // 
-            // guna2Panel2
+            // label9
             // 
-            this.guna2Panel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Panel2.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Panel2.BorderRadius = 15;
-            this.guna2Panel2.BorderThickness = 1;
-            this.guna2Panel2.Controls.Add(this.cbFilterStatus);
-            this.guna2Panel2.Controls.Add(this.label8);
-            this.guna2Panel2.Controls.Add(this.cmbFilterMain);
-            this.guna2Panel2.Controls.Add(this.label7);
-            this.guna2Panel2.Controls.Add(this.btnAddNewUser);
-            this.guna2Panel2.Controls.Add(this.DataGridViewAllUsere);
-            this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(75)))));
-            this.guna2Panel2.Location = new System.Drawing.Point(1, 208);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(1338, 524);
-            this.guna2Panel2.TabIndex = 8;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.label9.ForeColor = System.Drawing.Color.Gray;
+            this.label9.Location = new System.Drawing.Point(104, 91);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(106, 24);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Full Access";
             // 
-            // cbFilterStatus
+            // lblTotalRoles
             // 
-            this.cbFilterStatus.BackColor = System.Drawing.Color.Transparent;
-            this.cbFilterStatus.BorderColor = System.Drawing.Color.DarkGray;
-            this.cbFilterStatus.BorderRadius = 10;
-            this.cbFilterStatus.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cbFilterStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cbFilterStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbFilterStatus.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(30)))));
-            this.cbFilterStatus.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbFilterStatus.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cbFilterStatus.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.cbFilterStatus.ForeColor = System.Drawing.Color.White;
-            this.cbFilterStatus.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cbFilterStatus.ItemHeight = 35;
-            this.cbFilterStatus.Items.AddRange(new object[] {
-            "All Status",
-            "Active",
-            "InActive"});
-            this.cbFilterStatus.Location = new System.Drawing.Point(613, 9);
-            this.cbFilterStatus.Name = "cbFilterStatus";
-            this.cbFilterStatus.Size = new System.Drawing.Size(219, 41);
-            this.cbFilterStatus.StartIndex = 0;
-            this.cbFilterStatus.TabIndex = 14;
-            this.cbFilterStatus.TextOffset = new System.Drawing.Point(8, 0);
-            this.cbFilterStatus.SelectedIndexChanged += new System.EventHandler(this.cbFilterStatus_SelectedIndexChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Tahoma", 13F);
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label8.Location = new System.Drawing.Point(522, 13);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(87, 27);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Status :";
-            // 
-            // cmbFilterMain
-            // 
-            this.cmbFilterMain.BackColor = System.Drawing.Color.Transparent;
-            this.cmbFilterMain.BorderColor = System.Drawing.Color.DarkGray;
-            this.cmbFilterMain.BorderRadius = 10;
-            this.cmbFilterMain.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cmbFilterMain.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbFilterMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbFilterMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(30)))));
-            this.cmbFilterMain.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbFilterMain.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbFilterMain.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.cmbFilterMain.ForeColor = System.Drawing.Color.White;
-            this.cmbFilterMain.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.cmbFilterMain.ItemHeight = 35;
-            this.cmbFilterMain.Items.AddRange(new object[] {
-            "All Roles",
-            "Full Admin (ALL)",
-            "System Developer",
-            "Branch Supervisor",
-            "Teller / Operations",
-            "Loan Analyst"});
-            this.cmbFilterMain.Location = new System.Drawing.Point(209, 9);
-            this.cmbFilterMain.Name = "cmbFilterMain";
-            this.cmbFilterMain.Size = new System.Drawing.Size(246, 41);
-            this.cmbFilterMain.StartIndex = 0;
-            this.cmbFilterMain.TabIndex = 7;
-            this.cmbFilterMain.TextOffset = new System.Drawing.Point(9, 0);
-            this.cmbFilterMain.SelectedIndexChanged += new System.EventHandler(this.cmbFilterMain_SelectedIndexChanged);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 13F);
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label7.Location = new System.Drawing.Point(76, 14);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(125, 27);
-            this.label7.TabIndex = 13;
-            this.label7.Text = "Role Filter :";
-            // 
-            // btnAddNewUser
-            // 
-            this.btnAddNewUser.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.btnAddNewUser.BorderRadius = 20;
-            this.btnAddNewUser.BorderThickness = 2;
-            this.btnAddNewUser.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAddNewUser.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddNewUser.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnAddNewUser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnAddNewUser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnAddNewUser.FillColor = System.Drawing.Color.Transparent;
-            this.btnAddNewUser.Font = new System.Drawing.Font("Century Schoolbook", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddNewUser.ForeColor = System.Drawing.Color.White;
-            this.btnAddNewUser.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnAddNewUser.ImageSize = new System.Drawing.Size(33, 33);
-            this.btnAddNewUser.Location = new System.Drawing.Point(1108, 4);
-            this.btnAddNewUser.Name = "btnAddNewUser";
-            this.btnAddNewUser.Size = new System.Drawing.Size(210, 48);
-            this.btnAddNewUser.TabIndex = 12;
-            this.btnAddNewUser.Text = "Add User";
-            this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click);
-            // 
-            // DataGridViewAllUsere
-            // 
-            this.DataGridViewAllUsere.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewAllUsere.ContextMenuStrip = this.MenuStrip1;
-            this.DataGridViewAllUsere.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DataGridViewAllUsere.Location = new System.Drawing.Point(-1, 56);
-            this.DataGridViewAllUsere.Name = "DataGridViewAllUsere";
-            this.DataGridViewAllUsere.RowHeadersWidth = 51;
-            this.DataGridViewAllUsere.RowTemplate.Height = 26;
-            this.DataGridViewAllUsere.Size = new System.Drawing.Size(1338, 470);
-            this.DataGridViewAllUsere.TabIndex = 10;
-            this.DataGridViewAllUsere.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewAllUsere_CellContentClick);
-            this.DataGridViewAllUsere.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewAllUsere_CellFormatting);
-            this.DataGridViewAllUsere.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewAllUsere_CellMouseDown);
-            // 
-            // MenuStrip1
-            // 
-            this.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
-            this.MenuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.MenuStrip1.ImageScalingSize = new System.Drawing.Size(35, 35);
-            this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.EditUser,
-            this.DeleteUser,
-            this.DeactiveUser,
-            this.ActivationUser,
-            this.LockedUser});
-            this.MenuStrip1.Name = "tMenuStrip1";
-            this.MenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.MenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
-            this.MenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
-            this.MenuStrip1.RenderStyle.ColorTable = null;
-            this.MenuStrip1.RenderStyle.RoundedEdges = true;
-            this.MenuStrip1.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
-            this.MenuStrip1.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.MenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
-            this.MenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
-            this.MenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            this.MenuStrip1.Size = new System.Drawing.Size(171, 194);
-            // 
-            // EditUser
-            // 
-            this.EditUser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EditUser.ForeColor = System.Drawing.Color.White;
-            this.EditUser.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.EditUser.Name = "EditUser";
-            this.EditUser.Size = new System.Drawing.Size(170, 28);
-            this.EditUser.Text = "Edit User";
-            this.EditUser.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
-            this.EditUser.Click += new System.EventHandler(this.EditUser_Click);
-            // 
-            // DeleteUser
-            // 
-            this.DeleteUser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.DeleteUser.ForeColor = System.Drawing.Color.White;
-            this.DeleteUser.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.DeleteUser.Name = "DeleteUser";
-            this.DeleteUser.Size = new System.Drawing.Size(170, 28);
-            this.DeleteUser.Text = "Delete User";
-            this.DeleteUser.Click += new System.EventHandler(this.DeleteUser_Click);
-            // 
-            // DeactiveUser
-            // 
-            this.DeactiveUser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.DeactiveUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.DeactiveUser.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.DeactiveUser.Name = "DeactiveUser";
-            this.DeactiveUser.Size = new System.Drawing.Size(170, 28);
-            this.DeactiveUser.Text = "Deactive";
-            this.DeactiveUser.Click += new System.EventHandler(this.DeactiveUser_Click);
-            // 
-            // ActivationUser
-            // 
-            this.ActivationUser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.ActivationUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ActivationUser.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.ActivationUser.Name = "ActivationUser";
-            this.ActivationUser.Size = new System.Drawing.Size(170, 28);
-            this.ActivationUser.Text = "Activation";
-            this.ActivationUser.Click += new System.EventHandler(this.ActivationUser_Click);
-            // 
-            // LockedUser
-            // 
-            this.LockedUser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.LockedUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LockedUser.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.LockedUser.Name = "LockedUser";
-            this.LockedUser.Size = new System.Drawing.Size(170, 28);
-            this.LockedUser.Text = "Lock";
-            this.LockedUser.Click += new System.EventHandler(this.LockedUser_Click);
+            this.lblTotalRoles.AutoSize = true;
+            this.lblTotalRoles.Font = new System.Drawing.Font("Tahoma", 16F);
+            this.lblTotalRoles.ForeColor = System.Drawing.Color.MediumSlateBlue;
+            this.lblTotalRoles.Location = new System.Drawing.Point(95, 46);
+            this.lblTotalRoles.Name = "lblTotalRoles";
+            this.lblTotalRoles.Size = new System.Drawing.Size(83, 33);
+            this.lblTotalRoles.TabIndex = 2;
+            this.lblTotalRoles.Text = "1,235";
             // 
             // guna2Panel1
             // 
@@ -407,6 +210,273 @@
             this.label13.TabIndex = 0;
             this.label13.Text = "InActive Users";
             // 
+            // guna2Button2
+            // 
+            this.guna2Button2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.guna2Button2.BorderRadius = 10;
+            this.guna2Button2.BorderThickness = 1;
+            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button2.FillColor = System.Drawing.Color.Transparent;
+            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button2.ForeColor = System.Drawing.Color.White;
+            this.guna2Button2.Location = new System.Drawing.Point(13, 32);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.Size = new System.Drawing.Size(67, 58);
+            this.guna2Button2.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.label5.ForeColor = System.Drawing.Color.LemonChiffon;
+            this.label5.Location = new System.Drawing.Point(97, 16);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(113, 23);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "Admin Roles";
+            // 
+            // guna2Panel4K
+            // 
+            this.guna2Panel4K.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.guna2Panel4K.BorderColor = System.Drawing.Color.White;
+            this.guna2Panel4K.BorderThickness = 1;
+            this.guna2Panel4K.Controls.Add(this.guna2ProgressBar5);
+            this.guna2Panel4K.Controls.Add(this.guna2Panel2);
+            this.guna2Panel4K.Controls.Add(this.guna2Panel1);
+            this.guna2Panel4K.Controls.Add(this.label2);
+            this.guna2Panel4K.Controls.Add(this.guna2Panel6);
+            this.guna2Panel4K.Controls.Add(this.guna2Panel5);
+            this.guna2Panel4K.Controls.Add(this.cardTotalClients);
+            this.guna2Panel4K.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.guna2Panel4K.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(15)))), ((int)(((byte)(30)))));
+            this.guna2Panel4K.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel4K.Name = "guna2Panel4K";
+            this.guna2Panel4K.ShadowDecoration.Color = System.Drawing.Color.White;
+            this.guna2Panel4K.Size = new System.Drawing.Size(1338, 734);
+            this.guna2Panel4K.TabIndex = 8;
+            // 
+            // guna2ProgressBar5
+            // 
+            this.guna2ProgressBar5.BorderRadius = 20;
+            this.guna2ProgressBar5.FillColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.guna2ProgressBar5.Location = new System.Drawing.Point(15, 53);
+            this.guna2ProgressBar5.Name = "guna2ProgressBar5";
+            this.guna2ProgressBar5.Size = new System.Drawing.Size(1300, 2);
+            this.guna2ProgressBar5.TabIndex = 114;
+            this.guna2ProgressBar5.Text = "guna2ProgressBar5";
+            this.guna2ProgressBar5.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            // 
+            // guna2Panel2
+            // 
+            this.guna2Panel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel2.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Panel2.BorderRadius = 15;
+            this.guna2Panel2.BorderThickness = 1;
+            this.guna2Panel2.Controls.Add(this.cbFilterStatus);
+            this.guna2Panel2.Controls.Add(this.label8);
+            this.guna2Panel2.Controls.Add(this.cmbFilterMain);
+            this.guna2Panel2.Controls.Add(this.label7);
+            this.guna2Panel2.Controls.Add(this.btnAddNewUser);
+            this.guna2Panel2.Controls.Add(this.DataGridViewAllUsere);
+            this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(75)))));
+            this.guna2Panel2.Location = new System.Drawing.Point(1, 208);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.Size = new System.Drawing.Size(1338, 524);
+            this.guna2Panel2.TabIndex = 8;
+            // 
+            // cbFilterStatus
+            // 
+            this.cbFilterStatus.BackColor = System.Drawing.Color.Transparent;
+            this.cbFilterStatus.BorderColor = System.Drawing.Color.DarkGray;
+            this.cbFilterStatus.BorderRadius = 10;
+            this.cbFilterStatus.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbFilterStatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbFilterStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbFilterStatus.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(30)))));
+            this.cbFilterStatus.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbFilterStatus.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbFilterStatus.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.cbFilterStatus.ForeColor = System.Drawing.Color.White;
+            this.cbFilterStatus.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.cbFilterStatus.ItemHeight = 35;
+            this.cbFilterStatus.Items.AddRange(new object[] {
+            "All Status",
+            "Active",
+            "InActive"});
+            this.cbFilterStatus.Location = new System.Drawing.Point(613, 9);
+            this.cbFilterStatus.Name = "cbFilterStatus";
+            this.cbFilterStatus.Size = new System.Drawing.Size(219, 41);
+            this.cbFilterStatus.StartIndex = 0;
+            this.cbFilterStatus.TabIndex = 14;
+            this.cbFilterStatus.TextOffset = new System.Drawing.Point(8, 0);
+            this.cbFilterStatus.SelectedIndexChanged += new System.EventHandler(this.cbFilterStatus_SelectedIndexChanged_1);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 13F);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label8.Location = new System.Drawing.Point(522, 13);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(87, 27);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Status :";
+            // 
+            // cmbFilterMain
+            // 
+            this.cmbFilterMain.BackColor = System.Drawing.Color.Transparent;
+            this.cmbFilterMain.BorderColor = System.Drawing.Color.DarkGray;
+            this.cmbFilterMain.BorderRadius = 10;
+            this.cmbFilterMain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cmbFilterMain.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbFilterMain.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFilterMain.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(30)))));
+            this.cmbFilterMain.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbFilterMain.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cmbFilterMain.Font = new System.Drawing.Font("Segoe UI", 11F);
+            this.cmbFilterMain.ForeColor = System.Drawing.Color.White;
+            this.cmbFilterMain.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.cmbFilterMain.ItemHeight = 35;
+            this.cmbFilterMain.Items.AddRange(new object[] {
+            "All Roles",
+            "Full Admin (ALL)",
+            "System Developer",
+            "Branch Supervisor",
+            "Teller / Operations",
+            "Loan Analyst"});
+            this.cmbFilterMain.Location = new System.Drawing.Point(209, 9);
+            this.cmbFilterMain.Name = "cmbFilterMain";
+            this.cmbFilterMain.Size = new System.Drawing.Size(246, 41);
+            this.cmbFilterMain.StartIndex = 0;
+            this.cmbFilterMain.TabIndex = 7;
+            this.cmbFilterMain.TextOffset = new System.Drawing.Point(9, 0);
+            this.cmbFilterMain.SelectedIndexChanged += new System.EventHandler(this.cmbFilterMain_SelectedIndexChanged_1);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 13F);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label7.Location = new System.Drawing.Point(76, 14);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(125, 27);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "Role Filter :";
+            // 
+            // btnAddNewUser
+            // 
+            this.btnAddNewUser.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.btnAddNewUser.BorderRadius = 20;
+            this.btnAddNewUser.BorderThickness = 2;
+            this.btnAddNewUser.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAddNewUser.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddNewUser.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnAddNewUser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnAddNewUser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnAddNewUser.FillColor = System.Drawing.Color.Transparent;
+            this.btnAddNewUser.Font = new System.Drawing.Font("Century Schoolbook", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddNewUser.ForeColor = System.Drawing.Color.White;
+            this.btnAddNewUser.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnAddNewUser.ImageSize = new System.Drawing.Size(33, 33);
+            this.btnAddNewUser.Location = new System.Drawing.Point(1108, 4);
+            this.btnAddNewUser.Name = "btnAddNewUser";
+            this.btnAddNewUser.Size = new System.Drawing.Size(210, 48);
+            this.btnAddNewUser.TabIndex = 12;
+            this.btnAddNewUser.Text = "Add User";
+            this.btnAddNewUser.Click += new System.EventHandler(this.btnAddNewUser_Click_1);
+            // 
+            // DataGridViewAllUsere
+            // 
+            this.DataGridViewAllUsere.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridViewAllUsere.ContextMenuStrip = this.MenuStrip1;
+            this.DataGridViewAllUsere.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DataGridViewAllUsere.Location = new System.Drawing.Point(-1, 56);
+            this.DataGridViewAllUsere.Name = "DataGridViewAllUsere";
+            this.DataGridViewAllUsere.RowHeadersWidth = 51;
+            this.DataGridViewAllUsere.RowTemplate.Height = 26;
+            this.DataGridViewAllUsere.Size = new System.Drawing.Size(1338, 470);
+            this.DataGridViewAllUsere.TabIndex = 10;
+            this.DataGridViewAllUsere.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewAllUsere_CellFormatting_1);
+            this.DataGridViewAllUsere.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DataGridViewAllUsere_CellMouseDown_1);
+            // 
+            // MenuStrip1
+            // 
+            this.MenuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
+            this.MenuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.MenuStrip1.ImageScalingSize = new System.Drawing.Size(35, 35);
+            this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.EditUser,
+            this.DeleteUser,
+            this.DeactiveUser,
+            this.ActivationUser,
+            this.LockedUser});
+            this.MenuStrip1.Name = "tMenuStrip1";
+            this.MenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
+            this.MenuStrip1.RenderStyle.ArrowColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
+            this.MenuStrip1.RenderStyle.BorderColor = System.Drawing.Color.Gainsboro;
+            this.MenuStrip1.RenderStyle.ColorTable = null;
+            this.MenuStrip1.RenderStyle.RoundedEdges = true;
+            this.MenuStrip1.RenderStyle.SelectionArrowColor = System.Drawing.Color.White;
+            this.MenuStrip1.RenderStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.MenuStrip1.RenderStyle.SelectionForeColor = System.Drawing.Color.White;
+            this.MenuStrip1.RenderStyle.SeparatorColor = System.Drawing.Color.Gainsboro;
+            this.MenuStrip1.RenderStyle.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            this.MenuStrip1.Size = new System.Drawing.Size(171, 194);
+            // 
+            // EditUser
+            // 
+            this.EditUser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditUser.ForeColor = System.Drawing.Color.White;
+            this.EditUser.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.EditUser.Name = "EditUser";
+            this.EditUser.Size = new System.Drawing.Size(170, 28);
+            this.EditUser.Text = "Edit User";
+            this.EditUser.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.EditUser.Click += new System.EventHandler(this.EditUser_Click_1);
+            // 
+            // DeleteUser
+            // 
+            this.DeleteUser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.DeleteUser.ForeColor = System.Drawing.Color.White;
+            this.DeleteUser.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.DeleteUser.Name = "DeleteUser";
+            this.DeleteUser.Size = new System.Drawing.Size(170, 28);
+            this.DeleteUser.Text = "Delete User";
+            this.DeleteUser.Click += new System.EventHandler(this.DeleteUser_Click_1);
+            // 
+            // DeactiveUser
+            // 
+            this.DeactiveUser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.DeactiveUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.DeactiveUser.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.DeactiveUser.Name = "DeactiveUser";
+            this.DeactiveUser.Size = new System.Drawing.Size(170, 28);
+            this.DeactiveUser.Text = "Deactive";
+            this.DeactiveUser.Click += new System.EventHandler(this.DeactiveUser_Click_1);
+            // 
+            // ActivationUser
+            // 
+            this.ActivationUser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.ActivationUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ActivationUser.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.ActivationUser.Name = "ActivationUser";
+            this.ActivationUser.Size = new System.Drawing.Size(170, 28);
+            this.ActivationUser.Text = "Activation";
+            this.ActivationUser.Click += new System.EventHandler(this.ActivationUser_Click_1);
+            // 
+            // LockedUser
+            // 
+            this.LockedUser.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.LockedUser.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.LockedUser.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.LockedUser.Name = "LockedUser";
+            this.LockedUser.Size = new System.Drawing.Size(170, 28);
+            this.LockedUser.Text = "Lock";
+            this.LockedUser.Click += new System.EventHandler(this.LockedUser_Click_1);
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -458,70 +528,6 @@
             this.guna2Button4.Size = new System.Drawing.Size(278, 45);
             this.guna2Button4.TabIndex = 7;
             this.guna2Button4.Text = "View All Clients ->";
-            // 
-            // TotalRolesIcone
-            // 
-            this.TotalRolesIcone.BackColor = System.Drawing.Color.Transparent;
-            this.TotalRolesIcone.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.TotalRolesIcone.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.TotalRolesIcone.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.TotalRolesIcone.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.TotalRolesIcone.IconSize = 50;
-            this.TotalRolesIcone.Location = new System.Drawing.Point(17, 35);
-            this.TotalRolesIcone.Name = "TotalRolesIcone";
-            this.TotalRolesIcone.Size = new System.Drawing.Size(60, 50);
-            this.TotalRolesIcone.TabIndex = 4;
-            this.TotalRolesIcone.TabStop = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.label9.ForeColor = System.Drawing.Color.Gray;
-            this.label9.Location = new System.Drawing.Point(104, 91);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(106, 24);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "Full Access";
-            // 
-            // lblTotalRoles
-            // 
-            this.lblTotalRoles.AutoSize = true;
-            this.lblTotalRoles.Font = new System.Drawing.Font("Tahoma", 16F);
-            this.lblTotalRoles.ForeColor = System.Drawing.Color.MediumSlateBlue;
-            this.lblTotalRoles.Location = new System.Drawing.Point(95, 46);
-            this.lblTotalRoles.Name = "lblTotalRoles";
-            this.lblTotalRoles.Size = new System.Drawing.Size(83, 33);
-            this.lblTotalRoles.TabIndex = 2;
-            this.lblTotalRoles.Text = "1,235";
-            // 
-            // guna2Button2
-            // 
-            this.guna2Button2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.guna2Button2.BorderRadius = 10;
-            this.guna2Button2.BorderThickness = 1;
-            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button2.FillColor = System.Drawing.Color.Transparent;
-            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(13, 32);
-            this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(67, 58);
-            this.guna2Button2.TabIndex = 1;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Tahoma", 11F);
-            this.label5.ForeColor = System.Drawing.Color.LemonChiffon;
-            this.label5.Location = new System.Drawing.Point(97, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 23);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Admin Roles";
             // 
             // guna2Panel5
             // 
@@ -687,13 +693,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Total Users";
             // 
-            // btnAction
-            // 
-            this.btnAction.HeaderText = "Column1";
-            this.btnAction.MinimumWidth = 6;
-            this.btnAction.Name = "btnAction";
-            this.btnAction.Width = 125;
-            // 
             // btnActions
             // 
             this.btnActions.HeaderText = "Actions";
@@ -709,18 +708,18 @@
             this.Name = "UC_UsersManagement";
             this.Size = new System.Drawing.Size(1338, 734);
             this.Load += new System.EventHandler(this.US_UsersManagement_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.TotalRolesIcone)).EndInit();
+            this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.InActiveUsersIcon)).EndInit();
             this.guna2Panel4K.ResumeLayout(false);
             this.guna2Panel4K.PerformLayout();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewAllUsere)).EndInit();
             this.MenuStrip1.ResumeLayout(false);
-            this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.InActiveUsersIcon)).EndInit();
             this.guna2Panel6.ResumeLayout(false);
             this.guna2Panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TotalRolesIcone)).EndInit();
             this.guna2Panel5.ResumeLayout(false);
             this.guna2Panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ActiveUsersIcone)).EndInit();
@@ -733,25 +732,36 @@
 
         #endregion
 
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel4K;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private Guna.UI2.WinForms.Guna2Button btnAddNewUser;
-        private System.Windows.Forms.DataGridView DataGridViewAllUsere;
-        private Guna.UI2.WinForms.Guna2ComboBox cmbFilterMain;
+        private System.Windows.Forms.DataGridViewTextBoxColumn btnAction;
+        private FontAwesome.Sharp.IconPictureBox TotalRolesIcone;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblTotalRoles;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private FontAwesome.Sharp.IconPictureBox InActiveUsersIcon;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label lblInActiveUsers;
         private Guna.UI2.WinForms.Guna2Button guna2Button5;
         private System.Windows.Forms.Label label13;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private System.Windows.Forms.Label label5;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel4K;
+        private Guna.UI2.WinForms.Guna2ProgressBar guna2ProgressBar5;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
+        private Guna.UI2.WinForms.Guna2ComboBox cbFilterStatus;
+        private System.Windows.Forms.Label label8;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbFilterMain;
+        private System.Windows.Forms.Label label7;
+        private Guna.UI2.WinForms.Guna2Button btnAddNewUser;
+        private System.Windows.Forms.DataGridView DataGridViewAllUsere;
+        private Guna.UI2.WinForms.Guna2ContextMenuStrip MenuStrip1;
+        private Krypton.Toolkit.KryptonToolStripMenuItem EditUser;
+        private Krypton.Toolkit.KryptonToolStripMenuItem DeleteUser;
+        private Krypton.Toolkit.KryptonToolStripMenuItem DeactiveUser;
+        private Krypton.Toolkit.KryptonToolStripMenuItem ActivationUser;
+        private Krypton.Toolkit.KryptonToolStripMenuItem LockedUser;
         private System.Windows.Forms.Label label2;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
-        private FontAwesome.Sharp.IconPictureBox TotalRolesIcone;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label lblTotalRoles;
-        private Guna.UI2.WinForms.Guna2Button guna2Button2;
-        private System.Windows.Forms.Label label5;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
         private FontAwesome.Sharp.IconPictureBox ActiveUsersIcone;
         private System.Windows.Forms.Label label6;
@@ -764,17 +774,6 @@
         private System.Windows.Forms.Label lblTotalUsers;
         private Guna.UI2.WinForms.Guna2Button cardTotalClientsicon;
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2ComboBox cbFilterStatus;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private Guna.UI2.WinForms.Guna2ProgressBar guna2ProgressBar5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn btnAction;
         private System.Windows.Forms.DataGridViewTextBoxColumn btnActions;
-        private Guna.UI2.WinForms.Guna2ContextMenuStrip MenuStrip1;
-        private Krypton.Toolkit.KryptonToolStripMenuItem EditUser;
-        private Krypton.Toolkit.KryptonToolStripMenuItem DeleteUser;
-        private Krypton.Toolkit.KryptonToolStripMenuItem DeactiveUser;
-        private Krypton.Toolkit.KryptonToolStripMenuItem ActivationUser;
-        private Krypton.Toolkit.KryptonToolStripMenuItem LockedUser;
     }
 }

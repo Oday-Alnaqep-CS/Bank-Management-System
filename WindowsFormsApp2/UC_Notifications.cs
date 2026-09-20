@@ -162,6 +162,14 @@ namespace Bank_Managment_System
                     e.FormattingApplied = true;
                 }
             }
+            if (ColumnName == "Sent Date" && e.Value != null)
+            {
+                if (DateTime.TryParse(e.Value.ToString(), out DateTime dt))
+                {
+                    e.Value = dt.ToString("MMM d yyyy h:mm tt", new System.Globalization.CultureInfo("en-US"));
+                    e.FormattingApplied = true;
+                }
+            }
 
         }
 

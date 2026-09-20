@@ -1,4 +1,5 @@
 ﻿using BankSystemBuisniseLayer;
+using BankSystemBusinessLayer;
 using FontAwesome.Sharp;
 using Krypton.Toolkit;
 using System;
@@ -123,7 +124,7 @@ namespace Bank_Managment_System
         {
             if (DataGridViewAllCustomers.DataSource is DataTable dt)
             {
-                dt.CaseSensitive = false;
+                dt.CaseSensitive = true;
                 string search = txtSearch.Text.Trim().Replace("'", "''");
                 string selectedValue = cmbFilterMain.SelectedItem?.ToString() ?? "All Filters";
 
@@ -230,11 +231,25 @@ namespace Bank_Managment_System
         private void btnAddNewCustoer_Click(object sender, EventArgs e)
         {
 
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Customers.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
             ((FrmMain)this.FindForm()).LoadUserControl(new UC_AddCustomer());
         }
 
         private void EditCustomer1_Click(object sender, EventArgs e)
         {
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Customers.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
             if (DataGridViewAllCustomers.CurrentRow != null)
 
             {
@@ -246,6 +261,13 @@ namespace Bank_Managment_System
 
         private void DeleteCustomer1_Click(object sender, EventArgs e)
         {
+
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Customers.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
 
             int ClientID = Convert.ToInt32(DataGridViewAllCustomers.CurrentRow.Cells["Customer ID"].Value);
 
@@ -335,6 +357,13 @@ namespace Bank_Managment_System
         private void _ChangeClientStatus(byte status, string actionName)
 
         {
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Customers.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
             string ErrorMessage = string.Empty;
 
             if (DataGridViewAllCustomers.CurrentRow != null)
@@ -388,12 +417,26 @@ namespace Bank_Managment_System
 
         private void DeactiveCustomer_Click(object sender, EventArgs e)
         {
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Customers.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
             _ChangeClientStatus(0, "Deactivated");
 
         }
 
         private void beActiveCustomer_Click(object sender, EventArgs e)
         {
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Customers.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
+                                                                   ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
             _ChangeClientStatus(1, "Activated");
         }
 
@@ -535,6 +578,9 @@ namespace Bank_Managment_System
             }
         }
 
-       
+        private void DataGridViewAllCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

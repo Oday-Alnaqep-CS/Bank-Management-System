@@ -18,20 +18,22 @@ namespace BankSystemDataAccess.FinancialData
 
             using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
             {
-
-                string query = @"SELECT
-                    ISNULL(A.AccountNumber, 'N/A') AS [Account No.], 
-                    CONCAT(P.FirstName, ' ', P.LastName) AS [Client Name],
+                string query = @"SELECT 
+                    T.TransactionID AS [Transaction ID],
+                    CONVERT(VARCHAR(30), T.TransactionDate , 100) AS [Date & Time],
                     Tr.TypeName AS [Type],
+                    ISNULL(T.FromClientName, 'N/A') AS [From Customer Name],
+                    ISNULL(T.ToClientName, 'N/A') AS [To Customer Name],
+                    ISNULL(A.AccountNumber, 'N/A') AS [Account No.], 
                     T.Amount AS [Amount],
-                    T.TransactionDate AS [Date & Time],
+                    T.AmountAfter AS [Amount After],
                     CASE T.Status
                         WHEN 1 THEN 'Success'
                         WHEN 2 THEN 'Cancelled'
                         WHEN 3 THEN 'Pending'
                         ELSE 'Failed'
                     END AS [Status]
-                 FROM Transactions T
+                 FROM Transactions T  
                  LEFT JOIN Accounts A ON COALESCE(T.FromAccountID, T.ToAccountID) = A.AccountID
                  LEFT JOIN Clients C ON A.ClientID = C.ClientID
                  LEFT JOIN Persons P ON C.PersonID = P.PersonID

@@ -7,24 +7,22 @@ namespace BankSystemDataAccess.FinancialData
 {
     public static partial class ClsTransactionData
     {
-        
         public static int AddNewTransaction(int? fromAccountID, int? toAccountID, byte transactionTypeID,
-                                            int currencyID, int? performedByClientID, int? executedByUserID,
-                                            decimal amount, string description, ref string errorMessage)
+                            int currencyID, int? performedByClientID, string executedByUserID,
+                            decimal amount, decimal amountafter, string description, string FromClientName, string ToClientName, ref string errorMessage)
+
+
         {
             int transactionID = -1;
-           
-
 
             using (SqlConnection connection = new SqlConnection(ClsDataAccessSettings.ConnectionString))
             {
-
+              
                 string query = @"INSERT INTO Transactions 
-                             (FromAccountID, ToAccountID, TransactionTypeID, CurrencyID, PerformedByClientID, ExecutedByUserID, Amount, Description, TransactionDate)
-                             VALUES 
-                             (@FromAccountID, @ToAccountID, @TransactionTypeID, @CurrencyID, @PerformedByClientID, @ExecutedByUserID, @Amount, @Description, GETDATE());
-                             SELECT SCOPE_IDENTITY();";
-
+                                (FromAccountID, ToAccountID, TransactionTypeID, CurrencyID, PerformedByClientID, ExecutedByUserID, Amount, AmountAfter, Description, TransactionDate, FromClientName, ToClientName)
+                                VALUES 
+                                (@FromAccountID, @ToAccountID, @TransactionTypeID, @CurrencyID, @PerformedByClientID, @ExecutedByUserID, @Amount, @AmountAfter, @Description, GETDATE(), @FromClientName, @ToClientName);
+                                SELECT SCOPE_IDENTITY();";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
@@ -35,7 +33,11 @@ namespace BankSystemDataAccess.FinancialData
                     command.Parameters.AddWithValue("@PerformedByClientID", (object)performedByClientID ?? DBNull.Value);
                     command.Parameters.AddWithValue("@ExecutedByUserID", (object)executedByUserID ?? DBNull.Value);
                     command.Parameters.AddWithValue("@Amount", amount);
+                    command.Parameters.AddWithValue("@AmountAfter", amountafter);
                     command.Parameters.AddWithValue("@Description", string.IsNullOrEmpty(description) ? DBNull.Value : (object)description);
+
+                    command.Parameters.AddWithValue("@FromClientName", string.IsNullOrEmpty(FromClientName) ? DBNull.Value : (object)FromClientName);
+                    command.Parameters.AddWithValue("@ToClientName", string.IsNullOrEmpty(ToClientName) ? DBNull.Value : (object)ToClientName);
 
                     try
                     {
@@ -51,13 +53,12 @@ namespace BankSystemDataAccess.FinancialData
                         errorMessage = ex.Message;
                     }
                 }
-
             }
 
             return transactionID;
         }
 
- 
+
         public static bool UpdateTransactionDescription(int transactionID, string newDescription, ref string errorMessage)
         {
 

@@ -14,7 +14,7 @@ namespace BankSystemDataAccess.EntitiesData
 
         public static bool GetUserByID(string UserID, ref int PersonID, ref int DepartmentID, ref int BranchID
                                        , ref string JobTitle, ref DateTime HirdDate, ref decimal Salary
-                                       , ref byte Status,ref string  UserName, ref string PasswordHash,ref int RoleID, ref string ErrorMessage)
+                                       , ref byte Status,ref string  UserName, ref string PasswordHash , ref string RoleName, ref int RoleID, ref string ErrorMessage)
 
         {
 
@@ -23,10 +23,11 @@ namespace BankSystemDataAccess.EntitiesData
 
             SqlConnection Connection = new SqlConnection(ClsDataAccessSettings.ConnectionString);
 
-            string Query = @"SELECT Users.*, UserRoles.RoleID, UserCredentials.Username, UserCredentials.PasswordHash 
+            string Query = @"SELECT Users.*, Roles.RoleName ,UserRoles.RoleID, UserCredentials.Username, UserCredentials.PasswordHash 
                  FROM Users 
                  INNER JOIN UserCredentials ON Users.UserID = UserCredentials.UserID 
                  LEFT JOIN UserRoles ON Users.UserID = UserRoles.UserID 
+                 LEFT JOIN Roles ON UserRoles.RoleID = Roles.RoleID
                  WHERE Users.UserID = @UserID;";
 
             SqlCommand Command = new SqlCommand(Query, Connection);
@@ -55,6 +56,7 @@ namespace BankSystemDataAccess.EntitiesData
                     Status = reader["Status"] != DBNull.Value ? Convert.ToByte(reader["Status"]) : (byte)0;
 
                     RoleID = reader["RoleID"] != DBNull.Value ? Convert.ToInt32(reader["RoleID"]) : 0;
+                    RoleName = reader["RoleName"] != DBNull.Value ? Convert.ToString(reader["RoleName"]) : string.Empty;
                     UserName = reader["Username"] != DBNull.Value ? reader["Username"].ToString() : string.Empty;
                     PasswordHash = reader["PasswordHash"] != DBNull.Value ? reader["PasswordHash"].ToString() : string.Empty;
                 }

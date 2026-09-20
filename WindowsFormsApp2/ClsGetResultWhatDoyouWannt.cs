@@ -32,20 +32,16 @@ namespace Bank_Managment_System
 
         }
 
-
-        public static string GetRole(int currentUserID, out string errorMessage)
-
+        public static string GetRole(string currentUserID, out string errorMessage)
         {
+            string query = "SELECT RoleName FROM Roles WHERE UserID = @UserID";
 
-            string query = "SELECT Role FROM Rols WHERE UserID = @UserID";
             SqlParameter[] parameters =
             {
-                new SqlParameter("@UserID", SqlDbType.Int) { Value = currentUserID }
+                 new SqlParameter("@UserID", SqlDbType.VarChar) { Value = currentUserID }
             };
 
-
             return ClsGetResults.GetResultsFrom<string>(query, parameters, out errorMessage);
-
         }
 
 

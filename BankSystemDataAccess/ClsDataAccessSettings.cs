@@ -8,9 +8,7 @@ namespace ContactsDataAccessLayer
     public static class ClsDataAccessSettings
     {
 
-        public static string ConnectionString = @"Server=.\MYSQLSERVER1; Database=BankSystemDB; Integrated Security=True; TrustServerCertificate=True;";
-
-
+        public static string ConnectionString = @"Server=.\MYSQLSERVER1; Database=BankSystemDB; User Id=app_admin; Password=Optimistic; TrustServerCertificate=True;";
 
         public static bool CheckDatabaseConnection(ref string ErrorMessage)
 

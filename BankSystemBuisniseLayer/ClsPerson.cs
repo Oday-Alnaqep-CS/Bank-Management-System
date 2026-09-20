@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.ComTypes;
+using System.Windows;
 
 namespace BankSystemBuisniseLayer
 {
@@ -146,6 +147,7 @@ namespace BankSystemBuisniseLayer
                                             CityID, ref dateOFBirth, ref ImagePath, ref ErrorMessage))
             {
 
+               
                 return new ClsPerson(ID, NationalID, FirstName, LastName, Gender, Email, Phone, Address, ImagePath, CityID, dateOFBirth);
             }
 
