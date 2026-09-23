@@ -83,7 +83,7 @@
             this.label1.ForeColor = System.Drawing.Color.LightGray;
             this.label1.Location = new System.Drawing.Point(118, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 23);
+            this.label1.Size = new System.Drawing.Size(125, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "Total Currency";
             // 
@@ -131,7 +131,7 @@
             this.label2.ForeColor = System.Drawing.Color.Silver;
             this.label2.Location = new System.Drawing.Point(9, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(166, 37);
+            this.label2.Size = new System.Drawing.Size(161, 37);
             this.label2.TabIndex = 6;
             this.label2.Text = "FX Rates";
             // 
@@ -186,7 +186,7 @@
             this.lblDateLastUpdate.ForeColor = System.Drawing.Color.Chartreuse;
             this.lblDateLastUpdate.Location = new System.Drawing.Point(111, 43);
             this.lblDateLastUpdate.Name = "lblDateLastUpdate";
-            this.lblDateLastUpdate.Size = new System.Drawing.Size(27, 33);
+            this.lblDateLastUpdate.Size = new System.Drawing.Size(26, 31);
             this.lblDateLastUpdate.TabIndex = 2;
             this.lblDateLastUpdate.Text = "c";
             // 
@@ -214,7 +214,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label3.Location = new System.Drawing.Point(108, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 23);
+            this.label3.Size = new System.Drawing.Size(104, 22);
             this.label3.TabIndex = 0;
             this.label3.Text = "Last Update";
             // 
@@ -279,7 +279,7 @@
             this.lblTotalCurrencies.ForeColor = System.Drawing.Color.White;
             this.lblTotalCurrencies.Location = new System.Drawing.Point(116, 52);
             this.lblTotalCurrencies.Name = "lblTotalCurrencies";
-            this.lblTotalCurrencies.Size = new System.Drawing.Size(83, 33);
+            this.lblTotalCurrencies.Size = new System.Drawing.Size(78, 31);
             this.lblTotalCurrencies.TabIndex = 2;
             this.lblTotalCurrencies.Text = "1,235";
             // 
@@ -334,7 +334,8 @@
             // guna2Panel4K
             // 
             this.guna2Panel4K.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.guna2Panel4K.BorderColor = System.Drawing.Color.White;
+            this.guna2Panel4K.BorderColor = System.Drawing.Color.DimGray;
+            this.guna2Panel4K.BorderRadius = 12;
             this.guna2Panel4K.BorderThickness = 1;
             this.guna2Panel4K.Controls.Add(this.guna2ProgressBar5);
             this.guna2Panel4K.Controls.Add(this.guna2Panel2);
@@ -376,7 +377,7 @@
             this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(75)))));
             this.guna2Panel2.Location = new System.Drawing.Point(1, 208);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(1337, 524);
+            this.guna2Panel2.Size = new System.Drawing.Size(1336, 524);
             this.guna2Panel2.TabIndex = 8;
             // 
             // txtSearch
@@ -440,7 +441,7 @@
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label8.Location = new System.Drawing.Point(495, 11);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(87, 27);
+            this.label8.Size = new System.Drawing.Size(84, 25);
             this.label8.TabIndex = 15;
             this.label8.Text = "Status :";
             // 
@@ -531,7 +532,7 @@
             this.lblInActiveUsers.ForeColor = System.Drawing.Color.White;
             this.lblInActiveUsers.Location = new System.Drawing.Point(113, 46);
             this.lblInActiveUsers.Name = "lblInActiveUsers";
-            this.lblInActiveUsers.Size = new System.Drawing.Size(85, 33);
+            this.lblInActiveUsers.Size = new System.Drawing.Size(84, 31);
             this.lblInActiveUsers.TabIndex = 2;
             this.lblInActiveUsers.Text = "Active";
             // 
@@ -559,7 +560,7 @@
             this.label13.ForeColor = System.Drawing.Color.LightGray;
             this.label13.Location = new System.Drawing.Point(114, 16);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(161, 23);
+            this.label13.Size = new System.Drawing.Size(153, 22);
             this.label13.TabIndex = 0;
             this.label13.Text = "Rate Active Status";
             // 

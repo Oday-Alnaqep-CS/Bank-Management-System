@@ -124,7 +124,7 @@
             this.lblTotalRoles.ForeColor = System.Drawing.Color.MediumSlateBlue;
             this.lblTotalRoles.Location = new System.Drawing.Point(95, 46);
             this.lblTotalRoles.Name = "lblTotalRoles";
-            this.lblTotalRoles.Size = new System.Drawing.Size(83, 33);
+            this.lblTotalRoles.Size = new System.Drawing.Size(78, 31);
             this.lblTotalRoles.TabIndex = 2;
             this.lblTotalRoles.Text = "1,235";
             // 
@@ -178,7 +178,7 @@
             this.lblInActiveUsers.ForeColor = System.Drawing.Color.White;
             this.lblInActiveUsers.Location = new System.Drawing.Point(92, 46);
             this.lblInActiveUsers.Name = "lblInActiveUsers";
-            this.lblInActiveUsers.Size = new System.Drawing.Size(83, 33);
+            this.lblInActiveUsers.Size = new System.Drawing.Size(78, 31);
             this.lblInActiveUsers.TabIndex = 2;
             this.lblInActiveUsers.Text = "1,235";
             // 
@@ -206,7 +206,7 @@
             this.label13.ForeColor = System.Drawing.Color.LightGray;
             this.label13.Location = new System.Drawing.Point(93, 16);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(128, 23);
+            this.label13.Size = new System.Drawing.Size(123, 22);
             this.label13.TabIndex = 0;
             this.label13.Text = "InActive Users";
             // 
@@ -234,14 +234,15 @@
             this.label5.ForeColor = System.Drawing.Color.LemonChiffon;
             this.label5.Location = new System.Drawing.Point(97, 16);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 23);
+            this.label5.Size = new System.Drawing.Size(108, 22);
             this.label5.TabIndex = 0;
             this.label5.Text = "Admin Roles";
             // 
             // guna2Panel4K
             // 
             this.guna2Panel4K.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.guna2Panel4K.BorderColor = System.Drawing.Color.White;
+            this.guna2Panel4K.BorderColor = System.Drawing.Color.DimGray;
+            this.guna2Panel4K.BorderRadius = 12;
             this.guna2Panel4K.BorderThickness = 1;
             this.guna2Panel4K.Controls.Add(this.guna2ProgressBar5);
             this.guna2Panel4K.Controls.Add(this.guna2Panel2);
@@ -284,7 +285,7 @@
             this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(75)))));
             this.guna2Panel2.Location = new System.Drawing.Point(1, 208);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(1338, 524);
+            this.guna2Panel2.Size = new System.Drawing.Size(1336, 524);
             this.guna2Panel2.TabIndex = 8;
             // 
             // cbFilterStatus
@@ -321,7 +322,7 @@
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label8.Location = new System.Drawing.Point(522, 13);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(87, 27);
+            this.label8.Size = new System.Drawing.Size(84, 25);
             this.label8.TabIndex = 15;
             this.label8.Text = "Status :";
             // 
@@ -362,7 +363,7 @@
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label7.Location = new System.Drawing.Point(76, 14);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(125, 27);
+            this.label7.Size = new System.Drawing.Size(120, 25);
             this.label7.TabIndex = 13;
             this.label7.Text = "Role Filter :";
             // 
@@ -485,7 +486,7 @@
             this.label2.ForeColor = System.Drawing.Color.Silver;
             this.label2.Location = new System.Drawing.Point(9, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(336, 37);
+            this.label2.Size = new System.Drawing.Size(326, 37);
             this.label2.TabIndex = 6;
             this.label2.Text = "Users Management";
             // 
@@ -579,7 +580,7 @@
             this.lblActiveUsers.ForeColor = System.Drawing.Color.Chartreuse;
             this.lblActiveUsers.Location = new System.Drawing.Point(102, 43);
             this.lblActiveUsers.Name = "lblActiveUsers";
-            this.lblActiveUsers.Size = new System.Drawing.Size(27, 33);
+            this.lblActiveUsers.Size = new System.Drawing.Size(26, 31);
             this.lblActiveUsers.TabIndex = 2;
             this.lblActiveUsers.Text = "c";
             // 
@@ -607,7 +608,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label3.Location = new System.Drawing.Point(99, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(110, 23);
+            this.label3.Size = new System.Drawing.Size(106, 22);
             this.label3.TabIndex = 0;
             this.label3.Text = "Active Users";
             // 
@@ -661,7 +662,7 @@
             this.lblTotalUsers.ForeColor = System.Drawing.Color.White;
             this.lblTotalUsers.Location = new System.Drawing.Point(99, 52);
             this.lblTotalUsers.Name = "lblTotalUsers";
-            this.lblTotalUsers.Size = new System.Drawing.Size(83, 33);
+            this.lblTotalUsers.Size = new System.Drawing.Size(78, 31);
             this.lblTotalUsers.TabIndex = 2;
             this.lblTotalUsers.Text = "1,235";
             // 
@@ -689,7 +690,7 @@
             this.label1.ForeColor = System.Drawing.Color.LightGray;
             this.label1.Location = new System.Drawing.Point(101, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 23);
+            this.label1.Size = new System.Drawing.Size(99, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "Total Users";
             // 

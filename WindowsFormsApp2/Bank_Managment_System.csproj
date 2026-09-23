@@ -154,12 +154,6 @@
     <Compile Include="FrmWithdraw.Designer.cs">
       <DependentUpon>FrmWithdraw.cs</DependentUpon>
     </Compile>
-    <Compile Include="Mainss.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Mainss.Designer.cs">
-      <DependentUpon>Mainss.cs</DependentUpon>
-    </Compile>
     <Compile Include="PopupNotifier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="UC_AccountManagement.cs">
@@ -251,9 +245,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmWithdraw.resx">
       <DependentUpon>FrmWithdraw.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Mainss.resx">
-      <DependentUpon>Mainss.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

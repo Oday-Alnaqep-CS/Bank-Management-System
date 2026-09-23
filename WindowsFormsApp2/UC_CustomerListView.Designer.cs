@@ -65,7 +65,7 @@
             this.lblTypeAction.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.lblTypeAction.Location = new System.Drawing.Point(745, 12);
             this.lblTypeAction.Name = "lblTypeAction";
-            this.lblTypeAction.Size = new System.Drawing.Size(249, 36);
+            this.lblTypeAction.Size = new System.Drawing.Size(241, 35);
             this.lblTypeAction.TabIndex = 3;
             this.lblTypeAction.Text = "All System Clients";
             // 
@@ -104,7 +104,7 @@
             this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(110)))), ((int)(((byte)(125)))), ((int)(((byte)(150)))));
             this.guna2Panel2.Location = new System.Drawing.Point(0, 79);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(1338, 652);
+            this.guna2Panel2.Size = new System.Drawing.Size(1336, 652);
             this.guna2Panel2.TabIndex = 1;
             // 
             // DataGridViewAllClients
@@ -115,7 +115,7 @@
             this.DataGridViewAllClients.Name = "DataGridViewAllClients";
             this.DataGridViewAllClients.RowHeadersWidth = 51;
             this.DataGridViewAllClients.RowTemplate.Height = 26;
-            this.DataGridViewAllClients.Size = new System.Drawing.Size(1338, 591);
+            this.DataGridViewAllClients.Size = new System.Drawing.Size(1336, 591);
             this.DataGridViewAllClients.TabIndex = 10;
             this.DataGridViewAllClients.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewAllClients_CellFormatting);
             // 
@@ -173,7 +173,7 @@
             this.guna2CheckBox1.ForeColor = System.Drawing.Color.White;
             this.guna2CheckBox1.Location = new System.Drawing.Point(396, 10);
             this.guna2CheckBox1.Name = "guna2CheckBox1";
-            this.guna2CheckBox1.Size = new System.Drawing.Size(84, 32);
+            this.guna2CheckBox1.Size = new System.Drawing.Size(81, 32);
             this.guna2CheckBox1.TabIndex = 6;
             this.guna2CheckBox1.Text = "Filter";
             this.guna2CheckBox1.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));

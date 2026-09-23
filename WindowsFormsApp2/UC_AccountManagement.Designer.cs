@@ -78,7 +78,8 @@
             // guna2Panel4K
             // 
             this.guna2Panel4K.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.guna2Panel4K.BorderColor = System.Drawing.Color.White;
+            this.guna2Panel4K.BorderColor = System.Drawing.Color.DimGray;
+            this.guna2Panel4K.BorderRadius = 12;
             this.guna2Panel4K.BorderThickness = 1;
             this.guna2Panel4K.Controls.Add(this.guna2Panel2);
             this.guna2Panel4K.Controls.Add(this.guna2Panel1);
@@ -263,7 +264,7 @@
             this.lblInActiveAccounts.ForeColor = System.Drawing.Color.White;
             this.lblInActiveAccounts.Location = new System.Drawing.Point(93, 46);
             this.lblInActiveAccounts.Name = "lblInActiveAccounts";
-            this.lblInActiveAccounts.Size = new System.Drawing.Size(83, 33);
+            this.lblInActiveAccounts.Size = new System.Drawing.Size(78, 31);
             this.lblInActiveAccounts.TabIndex = 2;
             this.lblInActiveAccounts.Text = "1,235";
             // 
@@ -291,7 +292,7 @@
             this.label13.ForeColor = System.Drawing.Color.LightGray;
             this.label13.Location = new System.Drawing.Point(94, 16);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(145, 23);
+            this.label13.Size = new System.Drawing.Size(139, 22);
             this.label13.TabIndex = 0;
             this.label13.Text = "Closed Accounts";
             // 
@@ -303,7 +304,7 @@
             this.label2.ForeColor = System.Drawing.Color.Silver;
             this.label2.Location = new System.Drawing.Point(9, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(396, 37);
+            this.label2.Size = new System.Drawing.Size(382, 37);
             this.label2.TabIndex = 6;
             this.label2.Text = "Accounts Management";
             // 
@@ -378,7 +379,7 @@
             this.lblDormantAccounts.ForeColor = System.Drawing.Color.White;
             this.lblDormantAccounts.Location = new System.Drawing.Point(99, 46);
             this.lblDormantAccounts.Name = "lblDormantAccounts";
-            this.lblDormantAccounts.Size = new System.Drawing.Size(83, 33);
+            this.lblDormantAccounts.Size = new System.Drawing.Size(78, 31);
             this.lblDormantAccounts.TabIndex = 2;
             this.lblDormantAccounts.Text = "1,235";
             // 
@@ -406,7 +407,7 @@
             this.label5.ForeColor = System.Drawing.Color.LemonChiffon;
             this.label5.Location = new System.Drawing.Point(103, 16);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(172, 23);
+            this.label5.Size = new System.Drawing.Size(163, 22);
             this.label5.TabIndex = 0;
             this.label5.Text = "Dormants Accounts";
             // 
@@ -459,7 +460,7 @@
             this.lblActiveAccounts.ForeColor = System.Drawing.Color.White;
             this.lblActiveAccounts.Location = new System.Drawing.Point(99, 43);
             this.lblActiveAccounts.Name = "lblActiveAccounts";
-            this.lblActiveAccounts.Size = new System.Drawing.Size(27, 33);
+            this.lblActiveAccounts.Size = new System.Drawing.Size(26, 31);
             this.lblActiveAccounts.TabIndex = 2;
             this.lblActiveAccounts.Text = "c";
             // 
@@ -487,7 +488,7 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label3.Location = new System.Drawing.Point(104, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(140, 23);
+            this.label3.Size = new System.Drawing.Size(134, 22);
             this.label3.TabIndex = 0;
             this.label3.Text = "Active Accounts";
             // 
@@ -540,7 +541,7 @@
             this.lblTotalAccounts.ForeColor = System.Drawing.Color.White;
             this.lblTotalAccounts.Location = new System.Drawing.Point(100, 52);
             this.lblTotalAccounts.Name = "lblTotalAccounts";
-            this.lblTotalAccounts.Size = new System.Drawing.Size(83, 33);
+            this.lblTotalAccounts.Size = new System.Drawing.Size(78, 31);
             this.lblTotalAccounts.TabIndex = 2;
             this.lblTotalAccounts.Text = "1,235";
             // 
@@ -568,7 +569,7 @@
             this.label1.ForeColor = System.Drawing.Color.LightGray;
             this.label1.Location = new System.Drawing.Point(102, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 23);
+            this.label1.Size = new System.Drawing.Size(127, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "Total Accounts";
             // 

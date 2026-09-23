@@ -31,10 +31,6 @@ namespace Bank_Managment_System
             this.BackgroundImage = Properties.Resources.FrmLogin1;
 
             this.DialogResult = DialogResult.None;
- 
-
-
-
             string username = "";
             string password = "";
 
@@ -215,7 +211,7 @@ namespace Bank_Managment_System
                     ClsGlobal.RememberUsernameAndPassword("", "");
                 }
 
-                Mainss MainForm = new Mainss();
+                FrmMain MainForm = new FrmMain();
                 MainForm.Show();
                 this.Hide();
 
@@ -238,6 +234,7 @@ namespace Bank_Managment_System
 
 
         {
+            //string Aiman = "انا هنا ههههههه لاحقني بنخربه اليوم ههههههههههههه";
             get
             {
                 CreateParams cp = base.CreateParams;

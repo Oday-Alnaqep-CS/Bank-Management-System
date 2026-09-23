@@ -100,7 +100,8 @@
             // guna2Panel4K
             // 
             this.guna2Panel4K.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.guna2Panel4K.BorderColor = System.Drawing.Color.White;
+            this.guna2Panel4K.BorderColor = System.Drawing.Color.DimGray;
+            this.guna2Panel4K.BorderRadius = 12;
             this.guna2Panel4K.BorderThickness = 1;
             this.guna2Panel4K.Controls.Add(this.guna2Panel2);
             this.guna2Panel4K.Controls.Add(this.guna2Panel1);
@@ -129,7 +130,7 @@
             this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(75)))));
             this.guna2Panel2.Location = new System.Drawing.Point(1, 220);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(1338, 511);
+            this.guna2Panel2.Size = new System.Drawing.Size(1336, 511);
             this.guna2Panel2.TabIndex = 8;
             // 
             // btnAddNewCustoer
@@ -164,7 +165,7 @@
             this.DataGridViewAllCustomers.Name = "DataGridViewAllCustomers";
             this.DataGridViewAllCustomers.RowHeadersWidth = 51;
             this.DataGridViewAllCustomers.RowTemplate.Height = 26;
-            this.DataGridViewAllCustomers.Size = new System.Drawing.Size(1338, 450);
+            this.DataGridViewAllCustomers.Size = new System.Drawing.Size(1336, 450);
             this.DataGridViewAllCustomers.TabIndex = 10;
             this.DataGridViewAllCustomers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewAllCustomers_CellContentClick);
             this.DataGridViewAllCustomers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DataGridViewAllCustomers_CellFormatting);
