@@ -1,6 +1,0 @@
-C:\My Projects - Apps\BankSystemDataAccess\bin\Debug\BankSystemDataAccess.dll
-C:\My Projects - Apps\BankSystemDataAccess\bin\Debug\BankSystemDataAccess.pdb
-C:\My Projects - Apps\BankSystemDataAccess\obj\Debug\BankSystemDataAccess.csproj.AssemblyReference.cache
-C:\My Projects - Apps\BankSystemDataAccess\obj\Debug\BankSystemDataAccess.csproj.CoreCompileInputs.cache
-C:\My Projects - Apps\BankSystemDataAccess\obj\Debug\BankSystemDataAccess.dll
-C:\My Projects - Apps\BankSystemDataAccess\obj\Debug\BankSystemDataAccess.pdb
