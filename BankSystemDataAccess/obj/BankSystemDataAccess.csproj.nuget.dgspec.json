@@ -1,0 +1,124 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\My Projects - Apps\\Bank_Managment_System\\BankSystemDataAccess\\BankSystemDataAccess.csproj": {}
+  },
+  "projects": {
+    "C:\\My Projects - Apps\\Bank_Managment_System\\BankSystemDataAccess\\BankSystemDataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\My Projects - Apps\\Bank_Managment_System\\BankSystemDataAccess\\BankSystemDataAccess.csproj",
+        "projectName": "BankSystemDataAccess",
+        "projectPath": "C:\\My Projects - Apps\\Bank_Managment_System\\BankSystemDataAccess\\BankSystemDataAccess.csproj",
+        "packagesPath": "C:\\Users\\AL RAHAL\\.nuget\\packages\\",
+        "outputPath": "C:\\My Projects - Apps\\Bank_Managment_System\\BankSystemDataAccess\\obj\\",
+        "projectStyle": "PackageReference",
+        "skipContentFileWrite": true,
+        "UsingMicrosoftNETSdk": false,
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\AL RAHAL\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net472"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net472": {
+            "framework": "net472",
+            "projectReferences": {}
+          }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net472": {
+          "framework": "net472",
+          "dependencies": {
+            "FontAwesome": {
+              "target": "Package",
+              "version": "[4.7.0, )"
+            },
+            "FontAwesome.Sharp": {
+              "target": "Package",
+              "version": "[6.6.0, )"
+            },
+            "FontAwesome.Sharp.Pro": {
+              "target": "Package",
+              "version": "[6.6.0, )"
+            },
+            "FontAwesome.WPF": {
+              "target": "Package",
+              "version": "[4.7.0.9, )"
+            },
+            "Guna.UI2.WinForms": {
+              "target": "Package",
+              "version": "[2.0.4.8, )"
+            },
+            "LiveCharts": {
+              "target": "Package",
+              "version": "[0.9.7, )"
+            },
+            "MaterialSkin": {
+              "target": "Package",
+              "version": "[0.2.1, )"
+            },
+            "MaterialSkin.2": {
+              "target": "Package",
+              "version": "[2.3.1, )"
+            },
+            "Microsoft.IdentityModel.Protocols": {
+              "target": "Package",
+              "version": "[8.23.0, )"
+            },
+            "Siticone.Desktop.UI": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[11.0.0, )"
+            },
+            "ThinkGeo.UI.WinForms": {
+              "target": "Package",
+              "version": "[15.0.0-beta124, )"
+            },
+            "Tulpep.ActiveDirectoryObjectPicker": {
+              "target": "Package",
+              "version": "[3.0.11, )"
+            },
+            "Tulpep.NotificationWindow": {
+              "target": "Package",
+              "version": "[1.1.38, )"
+            }
+          }
+        }
+      },
+      "runtimes": {
+        "win": {
+          "#import": []
+        },
+        "win-arm64": {
+          "#import": []
+        },
+        "win-x64": {
+          "#import": []
+        },
+        "win-x86": {
+          "#import": []
+        }
+      }
+    }
+  }
+}
