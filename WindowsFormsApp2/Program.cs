@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BankSystemBuisniseLayer;
 
 namespace Bank_Managment_System
 {
@@ -14,8 +15,10 @@ namespace Bank_Managment_System
         [STAThread]
         static void Main()
         {
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            clsBankSystemDataBaseManager.InitializeDatabase();
             Application.Run(new FrmLogin());
         }
     }

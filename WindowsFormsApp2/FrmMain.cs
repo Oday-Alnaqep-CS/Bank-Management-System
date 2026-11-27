@@ -1,5 +1,6 @@
 ﻿using Bank_Managment_System;
 using BankSystemBuisniseLayer;
+using BankSystemBusinessLayer;
 using FontAwesome;
 using FontAwesome.Sharp;
 using Guna.UI2.WinForms;
@@ -10,6 +11,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -17,6 +19,7 @@ using System.Threading.Tasks;
 using System.Windows.Documents;
 using System.Windows.Forms;
 using Tulpep.NotificationWindow;
+using Volo.Abp.Users;
 using static Bank_Managment_System.ClsBankingNotification;
 
 
@@ -34,9 +37,11 @@ namespace Bank_Managment_System
         private UC_UsersManagement _US_UserManagement = new UC_UsersManagement();
         private UC_AccountManagement _US_AccountManagement = new UC_AccountManagement();
         private UC_TransfersManagement _US_TransfersManagement = new UC_TransfersManagement();
+        private UC_TransactionsManagement UC_TransactionsManagement = new UC_TransactionsManagement();
+        private UC_FXRates _UC_FXRates = new UC_FXRates();
         private UC_Notifications _UC_Notifications = new UC_Notifications();
         ClsBankingNotification notification = new ClsBankingNotification();
-        public static ClsUser CurrentUser = new ClsUser();
+        // public static ClsUser CurrentUser = new ClsUser();
 
         ClsClient _Client = new ClsClient();
 
@@ -61,28 +66,30 @@ namespace Bank_Managment_System
         {
             string errorMessage = null;
 
-           
-           
+
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+
+
             string JobTitle = ClsGlobal.CurrentUser.JobTitle;
             string UserName = ClsGlobal.CurrentUser.UserName;
-             this.DoubleBuffered = true;
+            this.DoubleBuffered = true;
 
             Design();
             _US_Dashboard = new UC_Dashboard();
             lblUserInfo.Text = $"{UserName} ({JobTitle})";
             RenderDatabaseStatus();
             GetBranchName();
+            GetRole();
             LoadUserControl(_US_Dashboard);
             SetupSidebarButtons();
             timer1.Start();
-
         }
 
         private void UpdateNotificationBadge()
 
 
         {
-           
+
 
             if (ClsGlobal.CurrentUser == null) return;
 
@@ -94,6 +101,12 @@ namespace Bank_Managment_System
             UpdateNotificationCount(unreadCount);
 
 
+        }
+
+    
+        private void timer1_Tick(object sender, EventArgs e) 
+        {
+            _LoadNotificationData();
         }
 
         private void UpdateNotificationCount(int count)
@@ -111,7 +124,7 @@ namespace Bank_Managment_System
 
                 lblNotificationCountf.Text = 0.ToString();
 
-                
+
             }
         }
 
@@ -119,38 +132,21 @@ namespace Bank_Managment_System
 
 
         {
-           
+
             if (ClsGlobal.CurrentUser != null)
             {
-               lblUserInfo.Text = $"  {ClsGlobal.CurrentUser.PersonInfo.FullName } ({ClsGlobal.CurrentUser.JobTitle}) |";
+
+
+                lblUserInfo.Text = $"  {ClsGlobal.CurrentUser.PersonInfo.FirstName} {ClsGlobal.CurrentUser.PersonInfo.LastName} ({ClsGlobal.CurrentUser.JobTitle})";
+
+
             }
             else
             {
-                lblUserInfo.Text = "Oday Al-Naqep (System Admin)"; 
+                lblUserInfo.Text = "Oday Al-Naqep (System Admin)";
             }
 
-         
-           
-        }
 
-        private void btnLogout_Click_1(object sender, EventArgs e)
-        {
-
-
-            DialogResult result = MessageBox.Show( "Are you sure you want to log out?", "Confirm Logout",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-
-            if (result == DialogResult.Yes)
-
-            {
-                
-                ClsGlobal.CurrentUser = null;
-
-
-                FrmLogin frmLogin = new FrmLogin();
-                frmLogin.Show();
-
-                this.Close();
-            }
 
         }
 
@@ -161,7 +157,7 @@ namespace Bank_Managment_System
 
             Font logoFont = new Font("Segoe MDL2 Assets", 22F, FontStyle.Regular);
             Font iconFont = new Font("Segoe MDL2 Assets", 12F, FontStyle.Regular);
-           // Font logoFont = new Font("Century Schoolbook", 20F, FontStyle.Bold);
+            // Font logoFont = new Font("Century Schoolbook", 20F, FontStyle.Bold);
             lblBankLogo.Font = logoFont;
             lblBankLogo.Text = "\uE80F  BANK MANAGEMENT SYSTEM";
 
@@ -177,12 +173,29 @@ namespace Bank_Managment_System
             btnDashBoard.Image = IconChar.HomeAlt.ToBitmap(Color.White, 50);
             btnLogout.Image = IconChar.SignOutAlt.ToBitmap(Color.FromArgb(239, 68, 68), 20);
 
-      
-            lblUserInfo.IconLeft = FontAwesome.Sharp.IconChar.UserAlt.ToBitmap(Color.White, 500);
+            string ErrorMessage = string.Empty;
+
+            ClsGlobal.CurrentUser = ClsUser.Find(ClsGlobal.CurrentUser.UserID, ref ErrorMessage);
+
+            if (!string.IsNullOrEmpty(ClsGlobal.CurrentUser.PersonInfo.ImagePath) &&
+             File.Exists(ClsGlobal.CurrentUser.PersonInfo.ImagePath))
+            {
+
+                using (Image orginalImage = Image.FromFile(ClsGlobal.CurrentUser.PersonInfo.ImagePath))
+                {
+                    lblUserInfo.IconLeft = ClsImageSetting.GetCircularImage(orginalImage);
+                }
+
+            }
+            else
+            {
+
+                lblUserInfo.IconLeft = Properties.Resources.DefaultImage;
+            }
 
 
 
-          
+
             SetupTopBarIconsAndData();
             UpdateNotificationBadge();
 
@@ -190,10 +203,10 @@ namespace Bank_Managment_System
 
 
 
-          
+
             btnRole.Image = IconChar.UserShield.ToBitmap(Color.SteelBlue, 50);
 
-           
+
             btnVersion.Image = IconChar.InfoCircle.ToBitmap(Color.SteelBlue, 50);
 
         }
@@ -287,9 +300,11 @@ namespace Bank_Managment_System
 
             string ErrorMessage = string.Empty;
 
-           // lblBranchName.Text =  ClsGetResultWhatDoyouWannt.GetCurrentBranchName(ClsGlobal.CurrentUser.BranchID, out ErrorMessage);
-             btnBranch.Text =  ClsGetResultWhatDoyouWannt.GetCurrentBranchName(ClsGlobal.CurrentUser.BranchID, out ErrorMessage);
-            //MessageBox.Show(Resulr);
+            ClsGlobal.CurrentUser = ClsUser.Find(ClsGlobal.CurrentUser.UserID, ref ErrorMessage);
+
+
+            btnBranch.Text = $"Branche :  {ClsGetResultWhatDoyouWannt.GetCurrentBranchName(ClsGlobal.CurrentUser.BranchID, out ErrorMessage)}";
+
         }
 
         private void GetRole()
@@ -298,65 +313,119 @@ namespace Bank_Managment_System
 
             string ErrorMessage = string.Empty;
 
-            //lblBranchName.Text =  ClsGetResultWhatDoyouWannt.GetCurrentBranchName(ClsGlobal.CurrentUser.BranchID, out ErrorMessage);
-            btnBranch.Text = ClsGetResultWhatDoyouWannt.GetCurrentBranchName(ClsGlobal.CurrentUser.BranchID, out ErrorMessage);
+            btnRole.Text = $"Role :  {ClsGlobal.CurrentUser.RoleName}";
+
 
         }
 
-        private void btnBashBoard_Click(object sender, EventArgs e)
+        private void _LoadNotificationData()
+
         {
 
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.View_Branch_Reports.ToString()))
+            {
+                // ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.", ClsBankingNotification.NotificationType.Error);
+                return;
+            }
 
-            LoadUserControl(_US_Dashboard);
+            string ErrorMessage = string.Empty;
+            lblNotificationCountf.Text = ClsNotification.GetNotificationCount(ClsGlobal.CurrentUser.UserID, ref ErrorMessage).ToString();
+        }
 
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+
+            
 
         }
+
+        private void btnBashBoard_Click(object sender, EventArgs e) { LoadUserControl(_US_Dashboard);  }
 
         private void btnCustomers_Click(object sender, EventArgs e)
         {
 
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Customers.ToString()) &&
+            !ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.View_Customer_Financials.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.", ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
             LoadUserControl(_US_CustomersManage);
+
 
         }
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Users.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.", ClsBankingNotification.NotificationType.Error);
+                return;
+            }
 
             LoadUserControl(_US_UserManagement);
 
         }
 
-        private void btnAccounts_Click(object sender, EventArgs e)
+        private void btnAccounts_Click(object sender, EventArgs e) 
         {
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Manage_Branch_Accounts.ToString()) &&
+                !ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.View_Branch_Reports.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.", ClsBankingNotification.NotificationType.Error);
+                return;
+            }
 
             LoadUserControl(_US_AccountManagement);
         }
 
-        private void btnTransfers_Click(object sender, EventArgs e)
+        private void btnTransfers_Click(object sender, EventArgs e) 
         {
+
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.Execute_Transfers.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.", ClsBankingNotification.NotificationType.Error);
+                return;
+            }
 
             LoadUserControl(_US_TransfersManagement);
+
         }
 
-        private void btnNotification_Click(object sender, EventArgs e)
+        private void btnTransactions_Click(object sender, EventArgs e)
         {
-            LoadUserControl(_UC_Notifications);
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.View_Branch_Reports.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.", ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
+            LoadUserControl(UC_TransactionsManagement);
         }
 
-
-        private void _LoadNotificationData()
-
+        private void btnLogout_Click_1(object sender, EventArgs e) 
         {
-            string ErrorMessage = string.Empty;
-            lblNotificationCountf.Text = ClsNotification.GetNotificationCount(ClsGlobal.CurrentUser.UserID, ref ErrorMessage).ToString();
+
+
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+
+            {
+
+                ClsGlobal.CurrentUser = null;
+
+
+                FrmLogin frmLogin = new FrmLogin();
+                frmLogin.Show();
+
+                this.Close();
+            }
+
+
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            _LoadNotificationData();
-        }
-
-        
         protected override CreateParams CreateParams
 
 
@@ -369,5 +438,40 @@ namespace Bank_Managment_System
             }
         }
 
+        private void btnFXRates_Click(object sender, EventArgs e)
+        {
+
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.System_Settings.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.", ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
+            LoadUserControl(_UC_FXRates);
+
+        }
+
+        private void btnLones_Click(object sender, EventArgs e)
+        {
+
+            if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.View_Customer_Financials.ToString()))
+            {
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.", ClsBankingNotification.NotificationType.Error);
+                return;
+            }
+
+
+        }
+
+        private void btnNotification_Click(object sender, EventArgs e)
+        {
+
+            LoadUserControl(_UC_Notifications);
+        }
+
+        private void btnSettings_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -115,9 +115,9 @@
             this.btnBranch.ForeColor = System.Drawing.Color.Silver;
             this.btnBranch.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnBranch.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnBranch.Location = new System.Drawing.Point(520, 15);
+            this.btnBranch.Location = new System.Drawing.Point(502, 15);
             this.btnBranch.Name = "btnBranch";
-            this.btnBranch.Size = new System.Drawing.Size(337, 45);
+            this.btnBranch.Size = new System.Drawing.Size(447, 45);
             this.btnBranch.TabIndex = 16;
             this.btnBranch.Text = "Branch : Main Branch ( Taiz )";
             this.btnBranch.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
@@ -146,9 +146,9 @@
             this.btnVersion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnVersion.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnVersion.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnVersion.Location = new System.Drawing.Point(1584, 15);
+            this.btnVersion.Location = new System.Drawing.Point(1528, 15);
             this.btnVersion.Name = "btnVersion";
-            this.btnVersion.Size = new System.Drawing.Size(278, 45);
+            this.btnVersion.Size = new System.Drawing.Size(334, 45);
             this.btnVersion.TabIndex = 14;
             this.btnVersion.Text = "Version 1.0.0";
             // 
@@ -177,9 +177,9 @@
             this.btnRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnRole.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnRole.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnRole.Location = new System.Drawing.Point(1072, 15);
+            this.btnRole.Location = new System.Drawing.Point(987, 15);
             this.btnRole.Name = "btnRole";
-            this.btnRole.Size = new System.Drawing.Size(278, 45);
+            this.btnRole.Size = new System.Drawing.Size(488, 45);
             this.btnRole.TabIndex = 12;
             this.btnRole.Text = "Role : Full Admin Access";
             // 
@@ -279,6 +279,7 @@
             this.btnFXRates.Size = new System.Drawing.Size(267, 55);
             this.btnFXRates.TabIndex = 8;
             this.btnFXRates.Text = "FX Rates";
+            this.btnFXRates.Click += new System.EventHandler(this.btnFXRates_Click);
             // 
             // btnSettings
             // 
@@ -300,6 +301,7 @@
             this.btnSettings.Size = new System.Drawing.Size(267, 55);
             this.btnSettings.TabIndex = 7;
             this.btnSettings.Text = "Settings";
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click_1);
             // 
             // btnAccounts
             // 
@@ -343,6 +345,7 @@
             this.btnLones.Size = new System.Drawing.Size(267, 55);
             this.btnLones.TabIndex = 5;
             this.btnLones.Text = "Loans & Cards";
+            this.btnLones.Click += new System.EventHandler(this.btnLones_Click);
             // 
             // btnTransactions
             // 
@@ -364,6 +367,7 @@
             this.btnTransactions.Size = new System.Drawing.Size(267, 55);
             this.btnTransactions.TabIndex = 4;
             this.btnTransactions.Text = "Transactions";
+            this.btnTransactions.Click += new System.EventHandler(this.btnTransactions_Click);
             // 
             // btnTransfers
             // 
@@ -504,12 +508,12 @@
             this.lblUserInfo.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.lblUserInfo.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(20)))), ((int)(((byte)(30)))));
             this.lblUserInfo.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.lblUserInfo.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserInfo.Font = new System.Drawing.Font("Gabriola", 16.5F, System.Drawing.FontStyle.Bold);
             this.lblUserInfo.ForeColor = System.Drawing.Color.White;
             this.lblUserInfo.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.lblUserInfo.IconLeftSize = new System.Drawing.Size(32, 32);
-            this.lblUserInfo.IconRightOffset = new System.Drawing.Point(32, 32);
-            this.lblUserInfo.IconRightSize = new System.Drawing.Size(32, 32);
+            this.lblUserInfo.IconLeftSize = new System.Drawing.Size(40, 40);
+            this.lblUserInfo.IconRightOffset = new System.Drawing.Point(40, 40);
+            this.lblUserInfo.IconRightSize = new System.Drawing.Size(40, 40);
             this.lblUserInfo.Location = new System.Drawing.Point(1241, 11);
             this.lblUserInfo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.lblUserInfo.Name = "lblUserInfo";

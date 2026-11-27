@@ -12,7 +12,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <PublishUrl>publish\</PublishUrl>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\My Projects - Apps\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -24,8 +25,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -89,7 +90,19 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationManifest>cls Global\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>767C1EAA9A85D74D07A1483E2A8D240BB4D4A763</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Bank_Managment_System_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LiveCharts.WinForms">
@@ -110,30 +123,54 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application Manifest File.cs" />
-    <Compile Include="ClsBankingNotification.cs" />
-    <Compile Include="ClsControls.cs" />
-    <Compile Include="ClsEncryption.cs" />
-    <Compile Include="ClsGetResultWhatDoyouWannt.cs" />
-    <Compile Include="ClsGlobal.cs" />
-    <Compile Include="ClsImageSetting.cs" />
-    <Compile Include="ClsShowNotification.cs" />
-    <Compile Include="FrmCurrencyDifference.cs">
+    <Compile Include="Account\UC_AccountManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Account\UC_AccountManagement.Designer.cs">
+      <DependentUpon>UC_AccountManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="cls Global\Application Manifest File.cs" />
+    <Compile Include="Notification\ClsBankingNotification.cs" />
+    <Compile Include="cls Global\ClsControls.cs" />
+    <Compile Include="User\ClsEncryption.cs" />
+    <Compile Include="Transaction\ClsGetResultWhatDoyouWannt.cs" />
+    <Compile Include="User\ClsGlobal.cs" />
+    <Compile Include="Image\ClsImageSetting.cs" />
+    <Compile Include="Notification\ClsShowNotification.cs" />
+    <Compile Include="Currency\FrmCurrencyDifference.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCurrencyDifference.Designer.cs">
+    <Compile Include="Currency\FrmCurrencyDifference.Designer.cs">
       <DependentUpon>FrmCurrencyDifference.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmDeposit.cs">
+    <Compile Include="Currency\FrmUpdateFX.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmDeposit.Designer.cs">
-      <DependentUpon>FrmDeposit.cs</DependentUpon>
+    <Compile Include="Currency\FrmUpdateFX.Designer.cs">
+      <DependentUpon>FrmUpdateFX.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmLogin.cs">
+    <Compile Include="Currency\UC_FXRates.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Currency\UC_FXRates.Designer.cs">
+      <DependentUpon>UC_FXRates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\UC_CustomerListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customer\UC_CustomerListView.Designer.cs">
+      <DependentUpon>UC_CustomerListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\UC_CustomersManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customer\UC_CustomersManagement.Designer.cs">
+      <DependentUpon>UC_CustomersManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmLogin.Designer.cs">
+    <Compile Include="Login\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMain.cs">
@@ -142,109 +179,91 @@
     <Compile Include="FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmUpdateFX.cs">
+    <Compile Include="Notification\PopupNotifier.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Transaction\FrmDeposit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmUpdateFX.Designer.cs">
-      <DependentUpon>FrmUpdateFX.cs</DependentUpon>
+    <Compile Include="Transaction\FrmDeposit.Designer.cs">
+      <DependentUpon>FrmDeposit.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmWithdraw.cs">
+    <Compile Include="Transaction\FrmWithdraw.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmWithdraw.Designer.cs">
+    <Compile Include="Transaction\FrmWithdraw.Designer.cs">
       <DependentUpon>FrmWithdraw.cs</DependentUpon>
     </Compile>
-    <Compile Include="PopupNotifier.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="UC_AccountManagement.cs">
+    <Compile Include="Transaction\UC_TransactionsManagement.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_AccountManagement.Designer.cs">
-      <DependentUpon>UC_AccountManagement.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_AddCustomer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_AddCustomer.Designer.cs">
-      <DependentUpon>UC_AddCustomer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_FXRates.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_FXRates.Designer.cs">
-      <DependentUpon>UC_FXRates.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_Notifications.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_Notifications.Designer.cs">
-      <DependentUpon>UC_Notifications.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_TotalBalance.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_TotalBalance.Designer.cs">
-      <DependentUpon>UC_TotalBalance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_Dashboard.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_Dashboard.Designer.cs">
-      <DependentUpon>UC_Dashboard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_CustomerListView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_CustomerListView.Designer.cs">
-      <DependentUpon>UC_CustomerListView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_CustomersManagement.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_CustomersManagement.Designer.cs">
-      <DependentUpon>UC_CustomersManagement.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_AddUser.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_AddUser.Designer.cs">
-      <DependentUpon>UC_AddUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UC_TransactionsManagement.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UC_TransactionsManagement.Designer.cs">
+    <Compile Include="Transaction\UC_TransactionsManagement.Designer.cs">
       <DependentUpon>UC_TransactionsManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_TransfersManagement.cs">
+    <Compile Include="Transfer\UC_TransfersManagement.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_TransfersManagement.Designer.cs">
+    <Compile Include="Transfer\UC_TransfersManagement.Designer.cs">
       <DependentUpon>UC_TransfersManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_UsersManagement.cs">
+    <Compile Include="Customer\UC_AddCustomer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UC_UsersManagement.Designer.cs">
+    <Compile Include="Customer\UC_AddCustomer.Designer.cs">
+      <DependentUpon>UC_AddCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Notification\UC_Notifications.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Notification\UC_Notifications.Designer.cs">
+      <DependentUpon>UC_Notifications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Balance\UC_TotalBalance.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Balance\UC_TotalBalance.Designer.cs">
+      <DependentUpon>UC_TotalBalance.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Dash Board\UC_Dashboard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dash Board\UC_Dashboard.Designer.cs">
+      <DependentUpon>UC_Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\UC_AddUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User\UC_AddUser.Designer.cs">
+      <DependentUpon>UC_AddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User\UC_UsersManagement.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="User\UC_UsersManagement.Designer.cs">
       <DependentUpon>UC_UsersManagement.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FrmCurrencyDifference.resx">
+    <EmbeddedResource Include="Account\UC_AccountManagement.resx">
+      <DependentUpon>UC_AccountManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Currency\FrmCurrencyDifference.resx">
       <DependentUpon>FrmCurrencyDifference.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmDeposit.resx">
-      <DependentUpon>FrmDeposit.cs</DependentUpon>
+    <EmbeddedResource Include="Currency\FrmUpdateFX.resx">
+      <DependentUpon>FrmUpdateFX.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmLogin.resx">
+    <EmbeddedResource Include="Currency\UC_FXRates.resx">
+      <DependentUpon>UC_FXRates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\UC_CustomerListView.resx">
+      <DependentUpon>UC_CustomerListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\UC_CustomersManagement.resx">
+      <DependentUpon>UC_CustomersManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmUpdateFX.resx">
-      <DependentUpon>FrmUpdateFX.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmWithdraw.resx">
-      <DependentUpon>FrmWithdraw.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -256,43 +275,37 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UC_AccountManagement.resx">
-      <DependentUpon>UC_AccountManagement.cs</DependentUpon>
+    <EmbeddedResource Include="Transaction\FrmDeposit.resx">
+      <DependentUpon>FrmDeposit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_AddCustomer.resx">
-      <DependentUpon>UC_AddCustomer.cs</DependentUpon>
+    <EmbeddedResource Include="Transaction\FrmWithdraw.resx">
+      <DependentUpon>FrmWithdraw.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_FXRates.resx">
-      <DependentUpon>UC_FXRates.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_Notifications.resx">
-      <DependentUpon>UC_Notifications.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_TotalBalance.resx">
-      <DependentUpon>UC_TotalBalance.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_Dashboard.resx">
-      <DependentUpon>UC_Dashboard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_CustomerListView.resx">
-      <DependentUpon>UC_CustomerListView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_CustomersManagement.resx">
-      <DependentUpon>UC_CustomersManagement.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_AddUser.resx">
-      <DependentUpon>UC_AddUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UC_TransactionsManagement.resx">
+    <EmbeddedResource Include="Transaction\UC_TransactionsManagement.resx">
       <DependentUpon>UC_TransactionsManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_TransfersManagement.resx">
+    <EmbeddedResource Include="Transfer\UC_TransfersManagement.resx">
       <DependentUpon>UC_TransfersManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UC_UsersManagement.resx">
+    <EmbeddedResource Include="Customer\UC_AddCustomer.resx">
+      <DependentUpon>UC_AddCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Notification\UC_Notifications.resx">
+      <DependentUpon>UC_Notifications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Balance\UC_TotalBalance.resx">
+      <DependentUpon>UC_TotalBalance.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dash Board\UC_Dashboard.resx">
+      <DependentUpon>UC_Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\UC_AddUser.resx">
+      <DependentUpon>UC_AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User\UC_UsersManagement.resx">
       <DependentUpon>UC_UsersManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.manifest" />
+    <None Include="cls Global\app.manifest" />
     <None Include="Image\CountriesFlag\MClient.text" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -385,6 +398,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DataBaseSql\BankSystemDB.sql" />
     <Content Include="Image\CountriesFlag\Afghanistan.png" />
     <Content Include="Image\CountriesFlag\Albania.png" />
     <Content Include="Image\CountriesFlag\Algeria.png" />
@@ -440,7 +454,7 @@
     <Content Include="Image\CountriesFlag\Vietnam.png" />
     <Content Include="Image\CountriesFlag\Yemen.png" />
     <Content Include="Image\CountriesFlag\Zimbabwe.png" />
-    <Content Include="FrmLogin.jpg" />
+    <Content Include="Login\FrmLogin.jpg" />
     <Content Include="Image\CustomersImage\Abdelilah.png" />
     <Content Include="Image\CustomersImage\Alaa.png" />
     <Content Include="Image\CustomersImage\Amr.png" />
@@ -454,7 +468,7 @@
     <Content Include="Image\CustomersImage\Yahya.png" />
     <Content Include="Image\UsersImage\Oday.jpg" />
     <Content Include="Image\UsersImage\Salah.jpg" />
-    <Content Include="RememberMe.txt" />
+    <Content Include="Login\RememberMe.txt" />
     <None Include="Resources\Folder.png" />
     <None Include="Resources\Camera.png" />
     <None Include="Resources\ActiveImage.png" />

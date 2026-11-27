@@ -331,34 +331,6 @@ namespace Bank_Managment_System
 
 
 
-           // //btnNewClient.ForeColor = Color.FromArgb(29, 0, 107);
-           // // btnNewClient.Image = IconChar.UserPlus.ToBitmap(Color.FromArgb(29, 0, 107), 30);
-           // btnNewClient.FillColor = Color.FromArgb(234, 232, 255);
-
-           // // 2. New User (أخضر هادئ)
-           // btnNewUser.FillColor = Color.FromArgb(232, 248, 234);
-           //// btnNewUser.ForeColor = Color.FromArgb(13, 122, 19);
-           //// btnNewUser.Image = IconChar.UserPlus.ToBitmap(Color.FromArgb(13, 122, 19), 30);
-
-           //// // 3. New Deposit (وردي/بنفسجي هادئ)
-           // btnNewDeposit.FillColor = Color.FromArgb(248, 232, 248);
-           //// btnNewDeposit.ForeColor = Color.FromArgb(112, 0, 110);
-           //// btnNewDeposit.Image = IconChar.FileDownload.ToBitmap(Color.FromArgb(112, 0, 110), 30);
-
-           //// // 4. New Withdraw (برتقالي هادئ)
-           // btnNewWithdraw.FillColor = Color.FromArgb(255, 242, 226);
-           //// btnNewWithdraw.ForeColor = Color.FromArgb(198, 83, 0);
-           //// btnNewWithdraw.Image = IconChar.ArrowCircleUp.ToBitmap(Color.FromArgb(198, 83, 0), 30);
-
-           //// // 5. New Transfer (سماوي/تيركواز هادئ)
-           // btnNewTransfer.FillColor = Color.FromArgb(229, 248, 248);
-           //// btnNewTransfer.ForeColor = Color.FromArgb(0, 122, 122);
-           //// btnNewTransfer.Image = IconChar.ExchangeAlt.ToBitmap(Color.FromArgb(0, 122, 122), 30);
-
-           //// // 6. Currency Diff (أحمر هادئ)
-           // btnCurrencyDiff.FillColor = Color.FromArgb(255, 234, 234);
-           //// btnCurrencyDiff.ForeColor = Color.FromArgb(161, 0, 0);
-           //// btnCurrencyDiff.Image = IconChar.HandHoldingUsd.ToBitmap(Color.FromArgb(161, 0, 0), 30);
         }
 
         private void btnViewAllClients_Click(object sender, EventArgs e)
@@ -484,10 +456,11 @@ namespace Bank_Managment_System
 
             if (!ClsPermission.CheckUserPermission(ClsGlobal.CurrentUser.UserID, ClsPermission.enPermissions.System_Settings.ToString()))
             {
-                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.",
-                                                                   ClsBankingNotification.NotificationType.Error);
+                ClsBankingNotification.ShowBankingNotification("Access Denied", "You do not have the required permissions to perform this action.", ClsBankingNotification.NotificationType.Error);
                 return;
             }
+
+            ((FrmMain)this.FindForm()).LoadUserControl(new UC_FXRates());
 
         }
 

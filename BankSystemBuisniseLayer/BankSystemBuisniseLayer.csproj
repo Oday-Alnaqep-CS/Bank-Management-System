@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClsBalance.cs" />
+    <Compile Include="clsBankSystemDataBaseManager.cs" />
     <Compile Include="ClsBranch.cs" />
     <Compile Include="ClsCard.cs" />
     <Compile Include="ClsCities.cs" />

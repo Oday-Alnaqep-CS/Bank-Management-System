@@ -298,7 +298,8 @@ namespace Bank_Managment_System
                 return;
             }
 
-
+            FrmCurrencyDifference frm = new FrmCurrencyDifference();
+            frm.ShowDialog();
         }
     }
 }
