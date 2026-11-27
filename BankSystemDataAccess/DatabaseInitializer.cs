@@ -44,7 +44,7 @@ namespace BankDataAccessLayer
             string scriptPath = Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory,
                 "Database",
-                "BankSystemDB_Clean.sql"
+                "BankSystemDB.sql"
             );
 
             if (!File.Exists(scriptPath))
