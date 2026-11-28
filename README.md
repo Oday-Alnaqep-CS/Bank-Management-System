@@ -306,33 +306,88 @@ The database schema contains multiple interconnected tables covering different b
 
 The database also includes views to simplify access to related data and support application operations.
 
-### 🖼️ Database ERD Preview
-
-<p align="center">
-  <img
-    src="WindowsFormsApp2/Screenshots/ERD.png"
-    width="100%"
-    alt="Bank Management System Entity Relationship Diagram"
-  />
-</p>
-
-<p align="center">
-  <sub>Entity Relationship Diagram — Visual Preview</sub>
-</p>
-
 ---
 
-### 📄 Full Database ERD
+<!-- ================= SYSTEM ARCHITECTURE ================= -->
+
+## 🏗️ System Architecture
 
 <p align="center">
-  <a href="WindowsFormsApp2/ERD_Bank_System.pdf">
-    <strong>📥 View Full Entity Relationship Diagram (PDF) ↗</strong>
+  <strong>Explore How the System Works</strong>
+  <br/>
+  <sub>
+    Discover the application workflow, three-tier architecture,
+    core components, and interactions between system layers.
+  </sub>
+</p>
+
+<p align="center">
+  <a href="https://gitdiagram.com/oday-alnaqep-cs/bank-management-system">
+    <strong>🚀 Open Interactive Architecture ↗</strong>
   </a>
 </p>
 
+<details>
+  <summary><strong>👁️ Show Architecture Diagram</strong></summary>
+
+  <br/>
+
+  <p align="center">
+    <a href="https://gitdiagram.com/oday-alnaqep-cs/bank-management-system">
+      <img
+        src="WindowsFormsApp2/Documentation/diagram.png"
+        width="100%"
+        alt="Bank Management System Architecture"
+      />
+    </a>
+  </p>
+
+  <p align="center">
+    <sub>Click the diagram to explore its interactive version.</sub>
+  </p>
+
+</details>
+
+---
+
+<!-- ================= DATABASE ERD ================= -->
+
+## 🗄️ Database Entity Relationship Diagram (ERD)
+
 <p align="center">
-  <sub>Open the complete database diagram in PDF format.</sub>
+  <strong>Explore the Database Structure</strong>
+  <br/>
+  <sub>
+    Understand the database entities, table relationships,
+    and overall data model.
+  </sub>
 </p>
+
+<p align="center">
+  <a href="WindowsFormsApp2/ERD_Bank_System.pdf">
+    <strong>📄 Open Full Database ERD (PDF) ↗</strong>
+  </a>
+</p>
+
+<details>
+  <summary><strong>🔍 Show Database Relationships Preview</strong></summary>
+
+  <br/>
+
+  <p align="center">
+    <img
+      src="WindowsFormsApp2/Screenshots/ERD.png"
+      width="100%"
+      alt="Bank Management System Database ERD"
+    />
+  </p>
+
+  <p align="center">
+    <sub>Database Entity Relationship Diagram — Visual Preview</sub>
+  </p>
+
+</details>
+
 ---
 
 ## 📂 Project Structure
