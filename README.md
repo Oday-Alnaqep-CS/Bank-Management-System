@@ -339,7 +339,7 @@ The database also includes views to simplify access to related data and support 
   <p align="center">
     <a href="https://gitdiagram.com/oday-alnaqep-cs/bank-management-system">
       <img
-        src="Documentation/diagram.png"
+        src="WindowsFormsApp2/Documentation/diagram.png"
         width="100%"
         alt="Detailed System Architecture Diagram"
       />
