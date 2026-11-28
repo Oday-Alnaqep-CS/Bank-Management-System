@@ -14,9 +14,66 @@
 
 <p align="center">
   <a href="https://github.com/Oday-Alnaqep-CS/Bank-Management-System">
-    <strong>GitHub Repository</strong>
+    <strong>Explore Current Repository</strong>
   </a>
 </p>
+
+---
+
+## 📚 Project Versions
+
+<p align="center">
+  <strong>Explore the evolution of the Bank Management System across its development releases.</strong>
+</p>
+
+<table align="center">
+  <tr>
+    <th>Version</th>
+    <th>Release</th>
+    <th>Status</th>
+    <th>Repository</th>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>V1.0</strong>
+    </td>
+    <td align="center">First Release</td>
+    <td align="center">
+      <img src="https://img.shields.io/badge/Coming-Soon-orange?style=flat-square" alt="Coming Soon"/>
+    </td>
+    <td align="center">
+      <strong>Coming Soon</strong>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>V2.0</strong>
+    </td>
+    <td align="center">Second Release</td>
+    <td align="center">
+      <img src="https://img.shields.io/badge/Previous-Version-lightgrey?style=flat-square" alt="Previous Version"/>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Oday-Alnaqep-CS/Bank-Management-System-OOP">
+        <strong>View Project ↗</strong>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>V3.0</strong>
+    </td>
+    <td align="center">Third Release</td>
+    <td align="center">
+      <img src="https://img.shields.io/badge/Current-Version-success?style=flat-square" alt="Current Version"/>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Oday-Alnaqep-CS/Bank-Management-System">
+        <strong>View Project ↗</strong>
+      </a>
+    </td>
+  </tr>
+</table>
 
 ---
 
@@ -85,19 +142,19 @@ This project represents the third version of an ongoing development journey, wit
 ### Dashboard
 
 <p align="center">
-  <img src="Screenshots/Dashboard.png" width="90%" alt="Dashboard"/>
+  <img src="WindowsFormsApp2/Screenshots/Dashboard.png" width="90%" alt="Dashboard"/>
 </p>
 
 ### Main Management Modules
 
 | Customers Management | Accounts Management |
 |:---:|:---:|
-| <img src="Screenshots/Customers.png" width="100%" alt="Customers"/> | <img src="Screenshots/Accounts.png" width="100%" alt="Accounts"/> |
+| <img src="WindowsFormsApp2/Screenshots/Customers.png" width="100%" alt="Customers"/> | <img src="WindowsFormsApp2/Screenshots/Accounts.png" width="100%" alt="Accounts"/> |
 
 ### Transactions
 
 <p align="center">
-  <img src="Screenshots/Transactions.png" width="85%" alt="Transactions"/>
+  <img src="WindowsFormsApp2/Screenshots/Transactions.png" width="85%" alt="Transactions"/>
 </p>
 
 <details>
@@ -105,31 +162,31 @@ This project represents the third version of an ongoing development journey, wit
 
 ### Users Management
 
-![Users](Screenshots/Users.png)
+![Users](WindowsFormsApp2/Screenshots/Users.png)
 
 ### Transfers
 
-![Transfers](Screenshots/Transfers.png)
+![Transfers](WindowsFormsApp2/Screenshots/Transfers.png)
 
 ### Deposit
 
-![Deposit](Screenshots/Deposit.png)
+![Deposit](WindowsFormsApp2/Screenshots/Deposit.png)
 
 ### Withdraw
 
-![Withdraw](Screenshots/Withdraw.png)
+![Withdraw](WindowsFormsApp2/Screenshots/Withdraw.png)
 
 ### Exchange Rates
 
-![Rates](Screenshots/Rates.png)
+![Rates](WindowsFormsApp2/Screenshots/Rates.png)
 
 ### Exchange Rate Difference
 
-![Exchange Rate Difference](Screenshots/ExchangeRateDiff.png)
+![Exchange Rate Difference](WindowsFormsApp2/Screenshots/ExchangeRateDiff.png)
 
 ### Update Exchange Rate
 
-![Update Exchange Rate](Screenshots/UpdateEchangeRate.png)
+![Update Exchange Rate](WindowsFormsApp2/Screenshots/UpdateEchangeRate.png)
 
 </details>
 
@@ -176,6 +233,7 @@ This architectural approach separates the application into three independent lay
 ```
 
 ### 1. Presentation Layer
+
 Responsible for:
 - Windows Forms interfaces.
 - User interaction.
@@ -185,6 +243,7 @@ Responsible for:
 **Project:** `WindowsFormsApp2`
 
 ### 2. Business Logic Layer
+
 Responsible for:
 - Implementing business rules.
 - Processing application operations.
@@ -194,6 +253,7 @@ Responsible for:
 **Project:** `BankSystemBuisniseLayer`
 
 ### 3. Data Access Layer
+
 Responsible for:
 - Database connectivity.
 - Executing SQL queries.
@@ -273,6 +333,19 @@ Bank-Management-System/
 │   ├── DataBaseSql/
 │   │   └── BankSystemDB.sql
 │   │
+│   ├── Screenshots/
+│   │   ├── Dashboard.png
+│   │   ├── Customers.png
+│   │   ├── Users.png
+│   │   ├── Accounts.png
+│   │   ├── Transactions.png
+│   │   ├── Transfers.png
+│   │   ├── Deposit.png
+│   │   ├── Withdraw.png
+│   │   ├── Rates.png
+│   │   ├── ExchangeRateDiff.png
+│   │   └── UpdateEchangeRate.png
+│   │
 │   ├── ERD_Bank_System.pdf
 │   ├── App.config
 │   └── Program.cs
@@ -284,19 +357,6 @@ Bank-Management-System/
 │   ├── DatabaseInitializer.cs
 │   ├── ClsDataAccessSettings.cs
 │   └── Data Access Classes
-│
-├── Screenshots/
-│   ├── Dashboard.png
-│   ├── Customers.png
-│   ├── Users.png
-│   ├── Accounts.png
-│   ├── Transactions.png
-│   ├── Transfers.png
-│   ├── Deposit.png
-│   ├── Withdraw.png
-│   ├── Rates.png
-│   ├── ExchangeRateDiff.png
-│   └── UpdateEchangeRate.png
 │
 └── README.md
 ```
@@ -391,7 +451,7 @@ Check Database Existence
            Login Form
 ```
 
-The initialization process is designed to check whether the database exists before attempting to create it.
+The initialization process checks whether the database exists before attempting to create it.
 
 ---
 
@@ -409,20 +469,6 @@ Throughout the development of this project, several software engineering concept
 - ADO.NET.
 - Code Reusability.
 - Maintainable Code Organization.
-
----
-
-## 🔄 Project Versions
-
-This project is part of a continuous development journey.
-
-| Version | Description |
-|---|---|
-| Version 1.0 | Initial implementation |
-| Version 2.0 | Object-Oriented Programming improvements |
-| Version 3.0 | Further architectural and functional development |
-
-Each version builds upon the previous one, introducing improvements in implementation and overall project organization.
 
 ---
 
