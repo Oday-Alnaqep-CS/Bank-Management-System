@@ -308,34 +308,27 @@ The database also includes views to simplify access to related data and support 
 
 ---
 
-<!-- ==================== SYSTEM ARCHITECTURE ==================== -->
+<!-- ================= SYSTEM ARCHITECTURE ================= -->
 
 ## 🏗️ System Architecture
 
 <p align="center">
-  <img src="https://img.shields.io/badge/ARCHITECTURE-3--TIER%20DESIGN-6C63FF?style=for-the-badge&logo=diagrams.net&logoColor=white" alt="Architecture"/>
-  <img src="https://img.shields.io/badge/DOCUMENTATION-APPLICATION%20FLOW-0078D7?style=for-the-badge&logo=readthedocs&logoColor=white" alt="Application Flow"/>
-</p>
-
-<p align="center">
-  <strong>Understand How the Entire System Works</strong>
+  <strong>Explore How the System Works</strong>
   <br/>
   <sub>
-    Explore the application workflow, architectural layers,
-    core components, and their interactions.
+    Discover the application workflow, three-tier architecture,
+    core components, and interactions between system layers.
   </sub>
 </p>
 
 <p align="center">
   <a href="https://gitdiagram.com/oday-alnaqep-cs/bank-management-system">
-    <img src="https://img.shields.io/badge/🚀_EXPLORE_INTERACTIVE_DIAGRAM-Visit%20GitDiagram-7C3AED?style=for-the-badge" alt="Explore Interactive Diagram"/>
+    <strong>🚀 Open Interactive Architecture ↗</strong>
   </a>
 </p>
 
 <details>
-  <summary>
-    <strong>👁️ View System Architecture Diagram</strong>
-  </summary>
+  <summary><strong>👁️ Show Architecture Diagram</strong></summary>
 
   <br/>
 
@@ -344,51 +337,40 @@ The database also includes views to simplify access to related data and support 
       <img
         src="WindowsFormsApp2/Documentation/diagram.png"
         width="100%"
-        alt="Bank Management System Architecture Diagram"
+        alt="Bank Management System Architecture"
       />
     </a>
   </p>
 
   <p align="center">
-    <sub>
-      Click the diagram to open and explore its interactive version.
-    </sub>
+    <sub>Click the diagram to explore its interactive version.</sub>
   </p>
 
 </details>
 
-<br/>
-
 ---
 
-<!-- ==================== DATABASE ERD ==================== -->
+<!-- ================= DATABASE ERD ================= -->
 
 ## 🗄️ Database Entity Relationship Diagram (ERD)
-
-<p align="center">
-  <img src="https://img.shields.io/badge/DATABASE-ENTITY%20RELATIONSHIPS-16A085?style=for-the-badge&logo=microsoftsqlserver&logoColor=white" alt="Database ERD"/>
-  <img src="https://img.shields.io/badge/DESIGN-SQL%20SERVER-CC2927?style=for-the-badge&logo=microsoftsqlserver&logoColor=white" alt="SQL Server"/>
-</p>
 
 <p align="center">
   <strong>Explore the Database Structure</strong>
   <br/>
   <sub>
-    A visual representation of database entities,
-    relationships, and the overall data model.
+    Understand the database entities, table relationships,
+    and overall data model.
   </sub>
 </p>
 
 <p align="center">
   <a href="WindowsFormsApp2/ERD_Bank_System.pdf">
-    <img src="https://img.shields.io/badge/📄_VIEW_FULL_ERD-Open%20PDF-DC3545?style=for-the-badge" alt="View Full ERD PDF"/>
+    <strong>📄 Open Full Database ERD (PDF) ↗</strong>
   </a>
 </p>
 
 <details>
-  <summary>
-    <strong>🔍 View Database Relationships Preview</strong>
-  </summary>
+  <summary><strong>🔍 Show Database Relationships Preview</strong></summary>
 
   <br/>
 
@@ -401,12 +383,11 @@ The database also includes views to simplify access to related data and support 
   </p>
 
   <p align="center">
-    <sub>
-      Database Entity Relationship Diagram — Visual Preview
-    </sub>
+    <sub>Database Entity Relationship Diagram — Visual Preview</sub>
   </p>
 
 </details>
+
 ---
 
 ## 📂 Project Structure
