@@ -45,7 +45,7 @@ namespace BankDataAccessLayer
             
             string scriptPath = Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory,
-                "Database",
+                "DataBaseSql",
                 "BankSystemDB.sql"
             );
 

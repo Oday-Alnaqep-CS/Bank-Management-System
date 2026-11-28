@@ -398,7 +398,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DataBaseSql\BankSystemDB.sql" />
+    <Content Include="DataBaseSql\BankSystemDB.sql">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Documentation\diagram.png" />
     <Content Include="Image\CountriesFlag\Afghanistan.png" />
     <Content Include="Image\CountriesFlag\Albania.png" />
