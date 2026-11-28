@@ -469,6 +469,17 @@
     <Content Include="Image\UsersImage\Oday.jpg" />
     <Content Include="Image\UsersImage\Salah.jpg" />
     <Content Include="Login\RememberMe.txt" />
+    <Content Include="Screenshots\Accounts.png" />
+    <Content Include="Screenshots\Customers.png" />
+    <Content Include="Screenshots\Dashboard.png" />
+    <Content Include="Screenshots\Deposit.png" />
+    <Content Include="Screenshots\ExchangeRateDiff.png" />
+    <Content Include="Screenshots\Rates.png" />
+    <Content Include="Screenshots\Transactions.png" />
+    <Content Include="Screenshots\Transfers.png" />
+    <Content Include="Screenshots\UpdateEchangeRate.png" />
+    <Content Include="Screenshots\Users.png" />
+    <Content Include="Screenshots\Withdraw.png" />
     <None Include="Resources\Folder.png" />
     <None Include="Resources\Camera.png" />
     <None Include="Resources\ActiveImage.png" />
