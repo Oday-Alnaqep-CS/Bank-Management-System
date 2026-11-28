@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Windows;
 
 
 namespace BankDataAccessLayer
@@ -19,7 +20,7 @@ namespace BankDataAccessLayer
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-
+                
                 string query = @"
                     SELECT COUNT(*)
                     FROM sys.databases
@@ -41,6 +42,7 @@ namespace BankDataAccessLayer
 
         private static void CreateDatabase(SqlConnection connection)
         {
+            
             string scriptPath = Path.Combine(
                 AppDomain.CurrentDomain.BaseDirectory,
                 "Database",
