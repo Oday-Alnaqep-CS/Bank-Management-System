@@ -473,6 +473,7 @@
     <Content Include="Screenshots\Customers.png" />
     <Content Include="Screenshots\Dashboard.png" />
     <Content Include="Screenshots\Deposit.png" />
+    <Content Include="Screenshots\ERD.png" />
     <Content Include="Screenshots\ExchangeRateDiff.png" />
     <Content Include="Screenshots\Rates.png" />
     <Content Include="Screenshots\Transactions.png" />
