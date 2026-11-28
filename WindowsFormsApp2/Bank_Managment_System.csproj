@@ -167,10 +167,10 @@
     <Compile Include="Customer\UC_CustomersManagement.Designer.cs">
       <DependentUpon>UC_CustomersManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login\FrmLogin.cs">
+    <Compile Include="Image\Login\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login\FrmLogin.Designer.cs">
+    <Compile Include="Image\Login\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmMain.cs">
@@ -259,7 +259,7 @@
     <EmbeddedResource Include="Customer\UC_CustomersManagement.resx">
       <DependentUpon>UC_CustomersManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login\FrmLogin.resx">
+    <EmbeddedResource Include="Image\Login\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmMain.resx">
@@ -399,6 +399,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="DataBaseSql\BankSystemDB.sql" />
+    <Content Include="Documentation\diagram.png" />
     <Content Include="Image\CountriesFlag\Afghanistan.png" />
     <Content Include="Image\CountriesFlag\Albania.png" />
     <Content Include="Image\CountriesFlag\Algeria.png" />
@@ -454,7 +455,7 @@
     <Content Include="Image\CountriesFlag\Vietnam.png" />
     <Content Include="Image\CountriesFlag\Yemen.png" />
     <Content Include="Image\CountriesFlag\Zimbabwe.png" />
-    <Content Include="Login\FrmLogin.jpg" />
+    <Content Include="Image\Login\FrmLogin.jpg" />
     <Content Include="Image\CustomersImage\Abdelilah.png" />
     <Content Include="Image\CustomersImage\Alaa.png" />
     <Content Include="Image\CustomersImage\Amr.png" />
@@ -468,7 +469,7 @@
     <Content Include="Image\CustomersImage\Yahya.png" />
     <Content Include="Image\UsersImage\Oday.jpg" />
     <Content Include="Image\UsersImage\Salah.jpg" />
-    <Content Include="Login\RememberMe.txt" />
+    <Content Include="Image\Login\RememberMe.txt" />
     <Content Include="Screenshots\Accounts.png" />
     <Content Include="Screenshots\Customers.png" />
     <Content Include="Screenshots\Dashboard.png" />
