@@ -306,14 +306,33 @@ The database schema contains multiple interconnected tables covering different b
 
 The database also includes views to simplify access to related data and support application operations.
 
-### Database ERD
+### 🖼️ Database ERD Preview
+
+<p align="center">
+  <img
+    src="WindowsFormsApp2/Screenshots/ERD.png"
+    width="100%"
+    alt="Bank Management System Entity Relationship Diagram"
+  />
+</p>
+
+<p align="center">
+  <sub>Entity Relationship Diagram — Visual Preview</sub>
+</p>
+
+---
+
+### 📄 Full Database ERD
 
 <p align="center">
   <a href="WindowsFormsApp2/ERD_Bank_System.pdf">
-    <strong>📄 View Database Entity Relationship Diagram (ERD)</strong>
+    <strong>📥 View Full Entity Relationship Diagram (PDF) ↗</strong>
   </a>
 </p>
 
+<p align="center">
+  <sub>Open the complete database diagram in PDF format.</sub>
+</p>
 ---
 
 ## 📂 Project Structure
