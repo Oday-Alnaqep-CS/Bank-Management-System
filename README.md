@@ -306,18 +306,55 @@ The database schema contains multiple interconnected tables covering different b
 
 The database also includes views to simplify access to related data and support application operations.
 
-### 🖼️ Database ERD Preview
+---
+
+## 🏗️ System Architecture
+
+The following diagram illustrates the overall architecture of the Bank Management System, including its application workflow, architectural layers, and interactions between the main components.
 
 <p align="center">
-  <img
-    src="WindowsFormsApp2/Screenshots/ERD.png"
-    width="100%"
-    alt="Bank Management System Entity Relationship Diagram"
-  />
+  <a href="https://gitdiagram.com/oday-alnaqep-cs/bank-management-system">
+    <img
+      src="Documentation/diagram.png"
+      width="100%"
+      alt="Bank Management System Architecture Diagram"
+    />
+  </a>
 </p>
 
 <p align="center">
-  <sub>Entity Relationship Diagram — Visual Preview</sub>
+  <a href="https://gitdiagram.com/oday-alnaqep-cs/bank-management-system">
+    <strong>🔍 Explore Interactive Architecture Diagram ↗</strong>
+  </a>
+</p>
+
+---
+
+### 🖼️ Database ERD Preview
+
+<details>
+  <summary><strong>🔍 Click to View ERD Preview</strong></summary>
+
+  <br/>
+
+  <p align="center">
+    <img
+      src="WindowsFormsApp2/Screenshots/ERD.png"
+      width="100%"
+      alt="Bank Management System Entity Relationship Diagram"
+    />
+  </p>
+
+  <p align="center">
+    <sub>Entity Relationship Diagram — Visual Preview</sub>
+  </p>
+
+</details>
+
+<p align="center">
+  <a href="WindowsFormsApp2/ERD_Bank_System.pdf">
+    <strong>📄 View Full Database ERD (PDF) ↗</strong>
+  </a>
 </p>
 
 ---
