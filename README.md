@@ -310,21 +310,57 @@ The database also includes views to simplify access to related data and support 
 
 ## 🏗️ System Architecture
 
-The following diagram illustrates the overall architecture of the Bank Management System, including its application workflow, architectural layers, and interactions between the main components.
+<p align="center">
+  <strong>Explore the Architecture Behind the System</strong>
+  <br/>
+  <sub>
+    A visual representation of the system architecture, application workflow,
+    architectural layers, and interactions between core components.
+  </sub>
+</p>
 
 <p align="center">
   <a href="https://gitdiagram.com/oday-alnaqep-cs/bank-management-system">
     <img
       src="Documentation/diagram.png"
       width="100%"
-      alt="Bank Management System Architecture Diagram"
+      alt="Bank Management System Architecture"
     />
   </a>
 </p>
 
+<details>
+  <summary>
+    <strong>🔍 Explore Architecture Preview</strong>
+  </summary>
+
+  <br/>
+
+  <p align="center">
+    <a href="https://gitdiagram.com/oday-alnaqep-cs/bank-management-system">
+      <img
+        src="Documentation/diagram.png"
+        width="100%"
+        alt="Detailed System Architecture Diagram"
+      />
+    </a>
+  </p>
+
+  <p align="center">
+    <sub>
+      Click the diagram to explore the interactive version.
+    </sub>
+  </p>
+</details>
+
+<br/>
+
 <p align="center">
   <a href="https://gitdiagram.com/oday-alnaqep-cs/bank-management-system">
-    <strong>🔍 Explore Interactive Architecture Diagram ↗</strong>
+    <img
+      src="https://img.shields.io/badge/Explore-Interactive%20Diagram-2F80ED?style=for-the-badge&logo=diagrams.net&logoColor=white"
+      alt="Explore Interactive Architecture"
+    />
   </a>
 </p>
 
